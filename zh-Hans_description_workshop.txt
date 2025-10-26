@@ -49,8 +49,8 @@
 
 欢迎查看我们发布的其他官方 DLC 和兼容模组：
 [list]
-	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3485175010]诸神黄昏：炼狱蚀光[/url]，一个为本模组添加大量额外物品的DLC扩展
-	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3557455275&searchtext=Homeward+Ragnaork]旅人归途&诸神黄昏：炼狱蚀光 兼容[/url]，一个为本模组添加旅人归途兼容的DLC扩展
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3485175010]诸神黄昏：炼狱蚀光武器DLC[/url]，一个为本模组添加大量额外物品的DLC扩展
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3557455275&searchtext=Homeward+Ragnaork]旅人黄昏[/url]，一个为本模组添加旅人归途兼容的DLC
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder]WHummus的灾厄/瑟银平衡[/url]，本扩展中大部分物品平衡调整出自该模组并由其作者设计！
 [/list]
 
