@@ -25,6 +25,8 @@ using InfernalEclipseAPI.Core.World;
 using CalamityMod.NPCs.Polterghast;
 using InfernalEclipseAPI.Core.Players.ThoriumMulticlassNerf;
 using InfernalEclipseAPI.Core;
+using InfernalEclipseAPI.Core.Systems;
+using InfernalEclipseAPI.Core.Utils.ConfigSetup;
 
 namespace InfernalEclipseAPI
 {
@@ -56,8 +58,19 @@ namespace InfernalEclipseAPI
         {
             DifficultyManagementSystem.DisableDifficultyModes = false;
 
-            // Cache the WhiteFlare projectile type from Thorium
-            if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
+            if (InfernalConfig.Instance.AutomatedConfigSetup)
+            {
+                string cfgDir = Path.Combine(Main.SavePath, "ModConfigs");
+                Directory.CreateDirectory(cfgDir);
+
+                if (InfernalCrossmod.RagnarokMod.Loaded)
+                {
+                    RagnaorkModConfigSetup.SetupConfigs(cfgDir);
+                }
+            }
+
+                // Cache the WhiteFlare projectile type from Thorium
+                if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
             {
                 if (thorium.TryFind<ModProjectile>("WhiteFlare", out var whiteFlare))
                     WhiteFlareType = whiteFlare.Type;

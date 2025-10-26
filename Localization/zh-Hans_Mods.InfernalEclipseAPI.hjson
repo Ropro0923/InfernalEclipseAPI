@@ -1429,6 +1429,11 @@ Configs: {
 			Label: 锁定标题页
 			Tooltip: 将诸神黄昏：炼狱蚀光标题页设为默认主题
 		}
+
+		AutomatedConfigSetup: {
+			// Label: Automated Config Setup
+			// Tooltip: ""
+		}
 	}
 
 	Difficulty: {

@@ -1433,6 +1433,11 @@ Configs: {
 			Label: Force Menu Theme
 			Tooltip: Forces the Infernal Eclipse of Ragnarok Menu theme to be selected on mod load.
 		}
+
+		AutomatedConfigSetup: {
+			Label: Automated Config Setup
+			Tooltip: Automatically sets up some other mod's configs to be the intended configs for the Infernal Eclipse of Ragnarok modpack.
+		}
 	}
 
 	Difficulty: {
