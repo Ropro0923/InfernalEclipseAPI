@@ -75,6 +75,14 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     recipe.AddIngredient(ModContent.ItemType<DepthCells>(), 3);
                 }
 
+                if (ModLoader.TryGetMod("CalamityAmmo", out Mod calAmmo))
+                {
+                    if (recipe.HasResult(calAmmo.Find<ModItem>("HardTack")))
+                    {
+                        recipe.DisableDecraft();
+                    }
+                }
+
                 if (InfernalConfig.Instance.CalamityRecipeTweaks)
                 {
                     //Cosmilite post-DoG - Maybe add its own config?
@@ -787,6 +795,12 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
 
                         if (thorium != null)
                         {
+                            if (recipe.HasIngredient(sots.Find<ModItem>("VibrantBar")) && recipe.HasTile(TileID.Anvils))
+                            {
+                                recipe.RemoveTile(TileID.Anvils);
+                                recipe.AddTile(thorium.Find<ModTile>("ThoriumAnvil"));
+                            }
+
                             if (recipe.HasResult(thorium.Find<ModItem>("SubspaceWings")))
                                 recipe.AddIngredient(sots.Find<ModItem>("SoulOfPlight"), 5);
 

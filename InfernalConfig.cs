@@ -10,6 +10,10 @@ namespace InfernalEclipseAPI
         public override ConfigScope Mode => ConfigScope.ServerSide;
         #region IEoR Main
         [Header("Main")]
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool AutomatedConfigSetup { get; set; }
+
         [DefaultValue(false)]
         public bool InfernumModeForced { get; set; }
 
@@ -143,6 +147,10 @@ namespace InfernalEclipseAPI
 
         //[DefaultValue(true)]
         //public bool PlayInfernumExoMechThemeWithWoTM {  get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool MoveDeerclopsChecklistEntry { get; set; }
 
         [DefaultValue(true)]
         [ReloadRequired]
