@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ModLoader;
-using ThoriumMod.Buffs.Healer;
+﻿using ThoriumMod.Buffs.Healer;
 using ThoriumMod.Projectiles.Healer;
 using Microsoft.Xna.Framework;
 using InfernalEclipseAPI.Content.Buffs;
-using Terraria.ID;
 
 namespace InfernalEclipseAPI.Common.GlobalProjectiles.ProjectileReworks
 {

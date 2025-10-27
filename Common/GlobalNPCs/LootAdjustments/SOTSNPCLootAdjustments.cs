@@ -12,9 +12,7 @@ using SOTS.NPCs.Boss.Lux;
 using SOTS.NPCs.Boss.Polaris;
 using SOTS.NPCs.Boss.Polaris.NewPolaris;
 using SOTS.NPCs.TreasureSlimes;
-using Terraria;
 using Terraria.GameContent.ItemDropRules;
-using Terraria.ModLoader;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs.LootAdjustments
 {

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ModLoader;
+﻿using Microsoft.Xna.Framework;
 
 namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
 {
@@ -51,11 +44,9 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
                     Projectile.NewProjectile(source, position, perturbedSpeed, type, damage, knockback, player.whoAmI);
                 }
 
-                // Prevent vanilla projectile from firing
                 return false;
             }
 
-            // Let vanilla behavior happen otherwise
             return base.Shoot(item, player, source, position, velocity, type, damage, knockback);
         }
     }

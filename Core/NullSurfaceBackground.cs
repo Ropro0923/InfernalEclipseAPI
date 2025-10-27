@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.ModLoader;
 
 namespace InfernalEclipseAPI.Core
 {

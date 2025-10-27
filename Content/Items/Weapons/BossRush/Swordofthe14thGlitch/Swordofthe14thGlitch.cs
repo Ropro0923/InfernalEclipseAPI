@@ -1,13 +1,9 @@
-﻿using System;
-using CalamityMod;
+﻿using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
 using InfernumMode;
 using InfernumMode.Content.Rarities.InfernumRarities;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using InfernalEclipseAPI.Content.Items.Weapons.Melee.SwordoftheFirst;

@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items;
-using Terraria;
-using Terraria.ModLoader;
+﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items.Accessories;
-using Terraria.ID;
-using System.Security.Policy;
 
 namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.ShieldCraftingTree
 {

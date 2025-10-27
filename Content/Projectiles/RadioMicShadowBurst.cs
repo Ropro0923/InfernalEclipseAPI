@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using ThoriumMod;
+﻿using ThoriumMod;
 using Microsoft.Xna.Framework;
 using ThoriumMod.Projectiles.Bard;
+using InfernalEclipseAPI.Core.Systems;
 
 namespace InfernalEclipseAPI.Content.Projectiles
 {
-    [ExtendsFromMod("ThoriumMod")]
+    [JITWhenModsEnabled(InfernalCrossmod.Thorium.Name)]
+    [ExtendsFromMod(InfernalCrossmod.Thorium.Name)]
     public class RadioMicShadowBurst : BardProjectile
     {
         public override string Texture => "Terraria/Images/Projectile_645";

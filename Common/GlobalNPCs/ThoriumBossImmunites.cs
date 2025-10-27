@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CalamityMod;
 using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.NPCs.Perforator;
 using CalamityMod.NPCs.ProfanedGuardians;
 using CalamityMod.NPCs.SlimeGod;
 using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ModLoader;
 using ThoriumMod.Buffs;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs
@@ -85,7 +79,6 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
 
             if (npc.ModNPC.Mod.Name == "ThoriumMod" && ThoriumBossNames.Contains(npc.ModNPC.Name))
             {
-                // TEMP: ignore BossZen to test
                 if (CalamityConfig.Instance.BossZen)
                 {
                     for (int i = 0; i < Main.maxPlayers; i++)

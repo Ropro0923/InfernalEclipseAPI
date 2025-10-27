@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod;
+﻿using System.Collections.Generic;
 using CalamityMod.Items.LoreItems;
 using CalamityMod.Rarities;
 using InfernumMode.Content.Items.Placeables;
 using Microsoft.Xna.Framework.Input;
-using Terraria;
-using Terraria.GameContent;
-using Terraria.ID;
 using Terraria.Localization;
-using Terraria.ModLoader;
 
 namespace InfernalEclipseAPI.Content.Items.Lore.InfernalEclipse
 {

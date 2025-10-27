@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.GameContent.Generation;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
+﻿using Terraria.GameContent.Generation;
 using Terraria.IO;
 using Terraria.WorldBuilding;
 using Terraria.GameContent.ItemDropRules;
-using static CatalystMod.NPCs.DropRulesBuilder;
 
 namespace InfernalEclipseAPI.Common.Balance.Vanilla
 {

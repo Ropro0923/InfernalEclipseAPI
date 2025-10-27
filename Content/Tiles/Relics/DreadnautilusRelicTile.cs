@@ -1,13 +1,9 @@
-﻿using System;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using ReLogic.Content;
 using Terraria.DataStructures;
 using Terraria.Enums;
-using Terraria.ID;
 using Terraria.Localization;
-using Terraria;
-using Terraria.ModLoader;
 using Terraria.ObjectData;
 
 namespace InfernalEclipseAPI.Content.Tiles.Relics

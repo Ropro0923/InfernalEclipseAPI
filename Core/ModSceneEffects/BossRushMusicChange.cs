@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CalamityMod.Events;
-using CalamityMod.Items.Accessories;
 using CalamityMod.NPCs.CalClone;
-using CalamityMod.NPCs.DevourerofGods;
 using CalamityMod.NPCs.ProfanedGuardians;
 using CalamityMod.NPCs.SupremeCalamitas;
-using rail;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
 
 namespace InfernalEclipseAPI.Core.ModSceneEffects
 {

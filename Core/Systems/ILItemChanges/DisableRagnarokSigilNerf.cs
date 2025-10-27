@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
-using Terraria;
-using Terraria.ModLoader;
 using ThoriumMod.Utilities;
 
 namespace InfernalEclipseAPI.Core.Systems.ILItemChanges

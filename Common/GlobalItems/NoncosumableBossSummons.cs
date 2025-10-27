@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using CalamityMod.Items;
+﻿using System.Collections.Generic;
 using InfernumMode.Content.Items.SummonItems;
 using Microsoft.Xna.Framework;
 

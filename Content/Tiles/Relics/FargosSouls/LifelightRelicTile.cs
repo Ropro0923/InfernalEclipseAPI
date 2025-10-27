@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InfernalEclipseAPI.Content.Items.Placeables.Relics.FargosSouls;
+﻿using InfernalEclipseAPI.Content.Items.Placeables.Relics.FargosSouls;
+using InfernalEclipseAPI.Core.Systems;
 using InfernumMode.Content.Tiles.Relics;
-using Terraria.ModLoader;
 
 namespace InfernalEclipseAPI.Content.Tiles.Relics.FargosSouls
 {
+    [JITWhenModsEnabled(InfernalCrossmod.FargosSouls.Name)]
+    [ExtendsFromMod(InfernalCrossmod.FargosSouls.Name)]
     public class LifelightRelicTile : BaseInfernumBossRelic
     {
         public override int DropItemID => ModContent.ItemType<LifelightRelic>();

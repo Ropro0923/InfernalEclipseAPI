@@ -1,14 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using System.Collections.Generic;
-using Terraria.GameContent;
-
-namespace InfernalEclipseAPI.Common.Balance.Recipes.CrossModArmorChanges
+﻿namespace InfernalEclipseAPI.Common.Balance.Recipes.CrossModArmorChanges
 {
     public class CalCrossmodArmorRecipeChanges : ModSystem
     {

@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Localization;
-using Terraria;
-using Terraria.ModLoader;
 using ThoriumMod.Core.Handlers.WhisperingSetQuotesHandler;
 using ThoriumMod.Items.BossForgottenOne;
-using CalamityMod.Items.Weapons.DraedonsArsenal;
 using CalamityMod.NPCs.DesertScourge;
 using ThoriumMod.Utilities;
 
@@ -19,7 +14,7 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return true;
+            return false;
         }
 
         private static int TypeRunning;

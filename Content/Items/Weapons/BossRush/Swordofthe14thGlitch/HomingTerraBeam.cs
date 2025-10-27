@@ -1,8 +1,5 @@
 ﻿using InfernalEclipseAPI.Core.Graphics.Automators;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
 using InfernalEclipseAPI.Core.Utils;
 using Microsoft.Xna.Framework;
 using static Microsoft.Xna.Framework.MathHelper;

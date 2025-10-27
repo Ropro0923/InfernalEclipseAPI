@@ -22,12 +22,7 @@ using CalamityMod.NPCs.SunkenSea;
 using CalamityMod.NPCs.SupremeCalamitas;
 using InfernumMode.Core.GlobalInstances.Systems;
 using Luminance.Core.Balancing;
-using System;
 using System.Collections.Generic;
-using Terraria;
-using Terraria.ModLoader;
-using tModPorter;
-
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace InfernalEclipseAPI.Common.Tools.Easings
+﻿namespace InfernalEclipseAPI.Common.Tools.Easings
 {
     public class PolynomialEasing : EasingCurve
     {

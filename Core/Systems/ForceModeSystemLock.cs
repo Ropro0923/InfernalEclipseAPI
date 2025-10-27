@@ -1,13 +1,6 @@
-﻿using Terraria.ModLoader;
-using MonoMod.Cil;
-using System;
-using Mono.Cecil.Cil;
-using MonoMod.RuntimeDetour;
-using CalamityMod.UI.ModeIndicator;
-using Terraria.Localization;
+﻿using CalamityMod.UI.ModeIndicator;
 using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria;
 using Microsoft.Xna.Framework;
 
 namespace InfernalEclipseAPI.Core

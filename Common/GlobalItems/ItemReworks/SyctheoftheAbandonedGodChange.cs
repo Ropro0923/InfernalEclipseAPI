@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Terraria;
-using Terraria.ModLoader;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria.Localization;
 
@@ -17,13 +14,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
 
         public override void UpdateInventory(Item item, Player player)
         {
-            if (!TryGetScytheModItem(out ModItem scythe) || item.type != scythe.Type || !InfernalConfig.Instance.CalamityBalanceChanges
-                //|| ModLoader.TryGetMod("WHummusMultiModBalancing", out _)
-                )
+            if (!TryGetScytheModItem(out ModItem scythe) || item.type != scythe.Type || !InfernalConfig.Instance.CalamityBalanceChanges)
                 return;
 
             int ProgressionDamage;
-            if (CalamityMod.DownedBossSystem.downedBoomerDuke) //thanks fabsol for that name i guess lmao
+            if (CalamityMod.DownedBossSystem.downedBoomerDuke)
             {
                 ProgressionDamage = BaseDamage;
             }

@@ -1,9 +1,4 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using ThoriumMod.Projectiles;
-
-namespace InfernalEclipseAPI.Common.GlobalProjectiles
+﻿namespace InfernalEclipseAPI.Common.GlobalProjectiles
 {
     //Wardrobe Hummus
     public class ProjectileDebuffs : GlobalProjectile
@@ -26,7 +21,7 @@ namespace InfernalEclipseAPI.Common.GlobalProjectiles
             {
                 if (projectile.type == thoriumMod.Find<ModProjectile>("ThunderTalonPro").Type)
                 {
-                    target.AddBuff(144, 180); // Electrified
+                    target.AddBuff(BuffID.Electrified, 180);
                 }
 
                 if (projectile.type == (thoriumMod.Find<ModProjectile>("VoltHatchetPro")?.Type ?? -1))

@@ -12,7 +12,6 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
 {
     public class CelestialBeam : BaseLaserbeamProjectile
     {
-
         public override float Lifetime => 180f;
         public override float MaxScale => CalamityConditions.DownedProvidence.IsMet() ? 1.6f : 1f;
         private int Cooldown => CalamityConditions.DownedProvidence.IsMet() ? 8 : 6;

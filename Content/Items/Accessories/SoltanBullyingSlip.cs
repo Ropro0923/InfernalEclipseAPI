@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod;
+﻿using System.Collections.Generic;
 using CalamityMod.Items;
 using CalamityMod.Items.LoreItems;
 using CalamityMod.Rarities;

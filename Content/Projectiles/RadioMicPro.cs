@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InfernalEclipseAPI.Core.Systems;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Projectiles.Bard;
 
 namespace InfernalEclipseAPI.Content.Projectiles
 {
-    [ExtendsFromMod("ThoriumMod")]
+    [JITWhenModsEnabled(InfernalCrossmod.Thorium.Name)]
+    [ExtendsFromMod(InfernalCrossmod.Thorium.Name)]
     public class RadioMicPro : BardProjectile
     {
         public override string Texture => "Terraria/Images/Projectile_645";

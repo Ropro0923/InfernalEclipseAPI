@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.DataStructures;
-using Terraria;
-using Terraria.ModLoader;
+﻿using Terraria.DataStructures;
 using CalamityMod.Buffs.DamageOverTime;
-using Terraria.ID;
 using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs

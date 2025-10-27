@@ -1,9 +1,5 @@
 ﻿using CalamityMod.Items.Materials;
-using Terraria;
-using Terraria.ID;
 using Terraria.Localization;
-using Terraria.ModLoader;
-using InfernalEclipseAPI.Common.GlobalItems;
 using InfernalEclipseAPI.Content.Items.Materials;
 using CalamityMod.Items;
 

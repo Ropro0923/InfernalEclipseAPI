@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InfernalEclipseAPI.Core.Graphics.Automators;
+﻿using InfernalEclipseAPI.Core.Graphics.Automators;
 using Luminance.Common.Utilities;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.ModLoader;
 using static Microsoft.Xna.Framework.MathHelper;
 using Microsoft.Xna.Framework;
 using InfernalEclipseAPI.Core.Utils;
 using ReLogic.Content;
-using Terraria.ID;
 
 namespace InfernalEclipseAPI.Content.Items.Weapons.BossRush.Swordofthe14thGlitch
 {

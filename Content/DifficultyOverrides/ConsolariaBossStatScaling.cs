@@ -1,6 +1,4 @@
-﻿using Terraria.ModLoader;
-using Terraria;
-using InfernumSaveSystem = InfernumMode.Core.GlobalInstances.Systems.WorldSaveSystem;
+﻿using InfernumSaveSystem = InfernumMode.Core.GlobalInstances.Systems.WorldSaveSystem;
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {
@@ -54,7 +52,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 //Boss Rush Boost
                 if ((num1 & num2) != 0)
                 {
-                    npc.lifeMax += (int)(((double).25 * (double)npc.lifeMax));
+                    npc.lifeMax += (int)((double).25 * npc.lifeMax);
                 }
 
                 npc.lifeMax += (int)(0.30 * npc.lifeMax);

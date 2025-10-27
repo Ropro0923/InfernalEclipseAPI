@@ -10,7 +10,7 @@ namespace InfernalEclipseAPI.Common.Balance
         {
             if (InfernalConfig.Instance.BossKillCheckOnOres)
             {
-                TileID.Sets.CanBeClearedDuringOreRunner[37] = true;
+                TileID.Sets.CanBeClearedDuringOreRunner[TileID.Meteorite] = true;
                 TileID.Sets.CanBeClearedDuringOreRunner[ModContent.TileType<ExodiumOre>()] = true;
             }
         }

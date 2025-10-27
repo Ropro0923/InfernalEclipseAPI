@@ -1,7 +1,4 @@
-﻿using Terraria.ModLoader;
-using MonoMod.Cil;
-using Mono.Cecil.Cil;
-using System;
+﻿using MonoMod.Cil;
 using System.Reflection;
 using MonoMod.RuntimeDetour;
 

@@ -1,24 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using CalamityMod.NPCs.Abyss;
-using Terraria.Localization;
+﻿using Terraria.Localization;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using InfernalEclipseAPI.Core.World;
 using Terraria.Audio;
 using Terraria.Chat;
-using CalamityMod.NPCs.BrimstoneElemental;
-using CalamityMod.NPCs.AquaticScourge;
 using CalamityMod.NPCs.Yharon;
-using ThoriumMod.Items.Lodestone;
-using YouBoss.Content.Items.ItemReworks;
-using ThoriumMod;
 using InfernalEclipseAPI.Core.Players;
 
 namespace InfernalEclipseAPI.Common.Balance.ChangeUseConditions
@@ -50,6 +35,7 @@ namespace InfernalEclipseAPI.Common.Balance.ChangeUseConditions
         private static int lostOasisID;
 
         public delegate bool CanItemDoActionWithPlayerDelegate(Item item, Player player);
+
         public static event CanItemDoActionWithPlayerDelegate CanUseItemEvent;
         public override void Unload()
         {

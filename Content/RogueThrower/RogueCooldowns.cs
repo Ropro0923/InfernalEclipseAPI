@@ -1,15 +1,14 @@
-﻿using Terraria;
+﻿using InfernalEclipseAPI.Core.Systems;
 using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Buffs.Thrower;
 using ThoriumMod.Projectiles.Thrower;
 
 namespace InfernalEclipseAPI.Content.RogueThrower
 {
-    [ExtendsFromMod("ThoriumMod")]
+    [JITWhenModsEnabled(InfernalCrossmod.Thorium.Name)]
+    [ExtendsFromMod(InfernalCrossmod.Thorium.Name)]
     public class RogueCooldowns : GlobalProjectile
     {
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)

@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.GameContent.ItemDropRules;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
+﻿using Terraria.GameContent.ItemDropRules;
 using RagnarokMod.Items.HealerItems.Other;
-using CalamityMod.NPCs.OldDuke;
 using CalamityMod.NPCs.AcidRain;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs.LootAdjustments

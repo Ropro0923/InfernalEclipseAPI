@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod;
-using CalamityMod.CalPlayer;
-using CalamityMod.Events;
+﻿using System.Collections.Generic;
 using CatalystMod;
 using CatalystMod.Items;
 using CatalystMod.Items.SummonItems;
 using CatalystMod.Projectiles;
-using Terraria;
 using Terraria.Audio;
 using Terraria.Localization;
-using Terraria.ModLoader;
 using InfernumSaveSystem = InfernumMode.Core.GlobalInstances.Systems.WorldSaveSystem;
 using Microsoft.Xna.Framework;
 

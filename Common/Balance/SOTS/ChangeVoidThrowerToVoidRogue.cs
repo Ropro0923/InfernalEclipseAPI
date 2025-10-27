@@ -1,5 +1,4 @@
-﻿using CalamityMod;
-using InfernalEclipseAPI.Core.DamageClasses;
+﻿using InfernalEclipseAPI.Core.DamageClasses;
 
 namespace InfernalEclipseAPI.Common.Balance.SOTS
 {

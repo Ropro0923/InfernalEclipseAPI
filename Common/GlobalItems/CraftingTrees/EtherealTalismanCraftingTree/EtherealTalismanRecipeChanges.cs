@@ -1,16 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using CalamityMod.CalPlayer;
-using Microsoft.Xna.Framework;
-using CalamityMod.Items.Accessories;
-using ThoriumMod;
-using CalamityMod;
-using Steamworks;
+﻿using CalamityMod.Items.Accessories;
 using Terraria.Localization;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;

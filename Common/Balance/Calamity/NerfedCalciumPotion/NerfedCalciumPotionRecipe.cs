@@ -1,7 +1,4 @@
 ﻿using CalamityMod.Items.Potions;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 #nullable disable
 namespace InfernalEclipseAPI.Common.Balance.Calamity.NerfedCalciumPotion;

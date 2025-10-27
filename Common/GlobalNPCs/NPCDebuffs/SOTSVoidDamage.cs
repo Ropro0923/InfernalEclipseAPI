@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod.NPCs.SupremeCalamitas;
-using CalamityMod.Projectiles.Boss;
+﻿using CalamityMod.Projectiles.Boss;
 using InfernumMode.Content.BehaviorOverrides.BossAIs.SupremeCalamitas;
 using SOTS.Void;
 

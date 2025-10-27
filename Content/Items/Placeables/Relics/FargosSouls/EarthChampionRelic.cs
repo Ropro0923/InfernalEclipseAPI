@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InfernalEclipseAPI.Content.Tiles.Relics.FargosSouls;
+﻿using InfernalEclipseAPI.Content.Tiles.Relics.FargosSouls;
+using InfernalEclipseAPI.Core.Systems;
 using InfernumMode.Content.Items.Relics;
-using Terraria.ModLoader;
 
 namespace InfernalEclipseAPI.Content.Items.Placeables.Relics.FargosSouls
 {
+    [JITWhenModsEnabled(InfernalCrossmod.FargosSouls.Name)]
+    [ExtendsFromMod(InfernalCrossmod.FargosSouls.Name)]
     public class EarthChampionRelic : BaseRelicItem
     {
         public override string DisplayNameToUse => "Infernal Champion of Earth Relic";

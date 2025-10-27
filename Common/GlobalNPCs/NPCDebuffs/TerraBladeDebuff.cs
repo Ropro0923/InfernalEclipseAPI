@@ -1,7 +1,4 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-using YouBoss.Content.NPCs.Bosses.TerraBlade;
-using YouBoss.Core.Graphics.Shaders.Screen;
+﻿using YouBoss.Content.NPCs.Bosses.TerraBlade;
 using InfernumSaveSystem = InfernumMode.Core.GlobalInstances.Systems.WorldSaveSystem;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs.NPCDebuffs

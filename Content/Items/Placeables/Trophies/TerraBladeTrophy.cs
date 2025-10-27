@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InfernalEclipseAPI.Content.Tiles.Trophies;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using InfernalEclipseAPI.Content.Tiles.Trophies;
 
 namespace InfernalEclipseAPI.Content.Items.Placeables.Trophies
 {

@@ -40,9 +40,9 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs.LootAdjustments
             GameModeData gameModeInfo = Main.GameModeInfo;
             if (gameModeInfo.IsMasterMode)
                 return false;
-            if (Terraria.ModLoader.ModLoader.HasMod("CalamityMod"))
+            if (ModLoader.HasMod("CalamityMod"))
             {
-                Mod mod1 = Terraria.ModLoader.ModLoader.GetMod("CalamityMod");
+                Mod mod1 = ModLoader.GetMod("CalamityMod");
                 bool flag = (bool)mod1.Call(new object[2]
                 {
         (object) "GetDifficultyActive",
@@ -55,7 +55,7 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs.LootAdjustments
           (object) "death"
                     });
                 Mod mod2;
-                if (Terraria.ModLoader.ModLoader.TryGetMod("FargowiltasSouls", out mod2) && !flag)
+                if (ModLoader.TryGetMod("FargowiltasSouls", out mod2) && !flag)
                 {
                     int num;
                     if (!(bool)mod2.Call(new object[1]
@@ -71,19 +71,19 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs.LootAdjustments
                     flag = num != 0;
                 }
                 Mod mod3;
-                if (Terraria.ModLoader.ModLoader.TryGetMod("InfernumMode", out mod3) && !flag)
+                if (ModLoader.TryGetMod("InfernumMode", out mod3) && !flag)
                     flag = (bool)mod3.Call(new object[1]
                     {
           (object) "GetInfernumActive"
                     });
                 return flag;
             }
-            Terraria.ModLoader.ModLoader.HasMod("CalamityMod");
+            ModLoader.HasMod("CalamityMod");
             return false;
         }
 
         public bool CanShowItemDropInUI() => true;
 
-        public string GetConditionDescription() => RevengenceMode.Description.Value;
+        public string GetConditionDescription() => Description.Value;
     }
 }

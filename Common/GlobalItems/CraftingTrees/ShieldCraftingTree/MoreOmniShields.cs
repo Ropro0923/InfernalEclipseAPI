@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
-using Terraria;
+﻿using System.Collections.Generic;
 using ThoriumMod.Items;
-using System.Reflection;
 using CalamityMod.Items.Accessories;
 using Microsoft.Xna.Framework;
 using Terraria.Localization;

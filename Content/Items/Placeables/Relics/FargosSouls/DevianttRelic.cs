@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InfernalEclipseAPI.Content.Tiles.Relics.FargosSouls;
+﻿using InfernalEclipseAPI.Content.Tiles.Relics.FargosSouls;
 using InfernumMode.Content.Items.Relics;
 using Terraria.Localization;
-using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using InfernalEclipseAPI.Core.Systems;
 
 namespace InfernalEclipseAPI.Content.Items.Placeables.Relics.FargosSouls
 {
+    [JITWhenModsEnabled(InfernalCrossmod.FargosSouls.Name)]
+    [ExtendsFromMod(InfernalCrossmod.FargosSouls.Name)]
     public class DevianttRelic : BaseRelicItem
     {
         public override string DisplayNameToUse => "Infernal Deviantt Relic";

@@ -4,9 +4,12 @@ using ThoriumMod;
 using Terraria.Audio;
 using CalamityMod.Buffs.DamageOverTime;
 using ThoriumMod.Projectiles.Bard;
+using InfernalEclipseAPI.Core.Systems;
+
 namespace InfernalEclipseAPI.Content.Projectiles
 {
-    [ExtendsFromMod("ThoriumMod")]
+    [JITWhenModsEnabled(InfernalCrossmod.Thorium.Name)]
+    [ExtendsFromMod(InfernalCrossmod.Thorium.Name)]
     public class FriendlyBrimstoneGigablast : BardProjectile
     {
         public override string Texture => "CalamityMod/Projectiles/Boss/SCalBrimstoneGigablast";

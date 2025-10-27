@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod.Items.Materials;
+﻿using CalamityMod.Items.Materials;
 using SOTS.Items.CritBonus;
-using Terraria;
-using Terraria.ModLoader;
 
 namespace InfernalEclipseAPI.Content.Items.Accessories.ExoSights
 {

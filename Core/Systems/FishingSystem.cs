@@ -1,11 +1,7 @@
 ﻿using CalamityMod.Items.Fishing;
 using CalamityMod.Items.TreasureBags.MiscGrabBags;
 using System.Collections.Generic;
-using Terraria;
 using Terraria.DataStructures;
-using Terraria.Localization;
-using Terraria.ModLoader;
-using Terraria.ID;
 
 namespace InfernalEclipseAPI.Core.Systems;
 //another drunk class i can't tell you
