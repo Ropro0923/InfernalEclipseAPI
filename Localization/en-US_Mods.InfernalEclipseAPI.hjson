@@ -1438,6 +1438,11 @@ Configs: {
 			Label: Automated Config Setup
 			Tooltip: Automatically sets up some other mod's configs to be the intended configs for the Infernal Eclipse of Ragnarok modpack.
 		}
+
+		MoveDeerclopsChecklistEntry: {
+			Label: Move Deerclops Checklist Entry
+			Tooltip: Moves Deerclops to be before Skeletron in boss checklist to match Calamity & Infernum's tier placement.
+		}
 	}
 
 	Difficulty: {

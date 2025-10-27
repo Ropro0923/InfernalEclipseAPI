@@ -1432,6 +1432,11 @@ Configs: {
 
 		AutomatedConfigSetup: {
 			// Label: Automated Config Setup
+			// Tooltip: Automatically sets up some other mod's configs to be the intended configs for the Infernal Eclipse of Ragnarok modpack.
+		}
+
+		MoveDeerclopsChecklistEntry: {
+			// Label: Move Deerclops Checklist Entry
 			// Tooltip: ""
 		}
 	}

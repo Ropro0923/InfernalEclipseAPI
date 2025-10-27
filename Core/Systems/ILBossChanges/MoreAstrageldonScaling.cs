@@ -1,11 +1,8 @@
 ﻿using CatalystMod.NPCs.Boss.Astrageldon;
-using System;
 using System.Reflection;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
-using Terraria;
-using Terraria.ModLoader;
 using CalamityMod.Events;
 using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
 

@@ -118,6 +118,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             //Special Thanks
             "N0t_UNowen",
             "javyz",
+            "habble",
             "Lucille Karma",
             "Nycro",
             "brome",
