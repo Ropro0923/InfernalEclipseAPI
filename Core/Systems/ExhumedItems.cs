@@ -1,4 +1,3 @@
-
 using InfernalEclipseAPI.Content.Items.Lore.InfernalEclipse;
 using InfernalEclipseAPI.Content.Items.SpawnItems;
 

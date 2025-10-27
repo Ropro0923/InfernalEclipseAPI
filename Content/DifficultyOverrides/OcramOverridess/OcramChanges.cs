@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
+﻿using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
 namespace InfernalEclipseAPI.Content.DifficultyOverrides.OcramOverridess
 {
     public class OcramBehavior : GlobalNPC

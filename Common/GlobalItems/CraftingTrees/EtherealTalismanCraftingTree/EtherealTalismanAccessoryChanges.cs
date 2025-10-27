@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ModLoader;
-using CalamityMod.CalPlayer;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using CalamityMod.Items.Accessories;
-using ThoriumMod;
-using CalamityMod;
-using Steamworks;
 using Terraria.Localization;
-using Terraria.ModLoader.Config;
 
 namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.EtherealTalismanCraftingTree
 {

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.Audio;
-using Terraria.ModLoader;
+﻿using Terraria.Audio;
 using Microsoft.Xna.Framework;
 using static CalamityMod.Events.BossRushEvent;
 using Microsoft.Xna.Framework.Graphics;

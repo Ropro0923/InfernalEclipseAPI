@@ -11,9 +11,7 @@ using InfernalEclipseAPI.Content.Items.Placeables.Relics.CalamityAddons.WoTG;
 using NoxusBoss.Content.Items;
 using NoxusBoss.Content.NPCs.Bosses.Avatar.SecondPhaseForm;
 using NoxusBoss.Content.NPCs.Bosses.NamelessDeity;
-using Terraria;
 using Terraria.GameContent.ItemDropRules;
-using Terraria.ModLoader;
 using InfernumSaveSystem = InfernumMode.Core.GlobalInstances.Systems.WorldSaveSystem;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs.InfernalRelics

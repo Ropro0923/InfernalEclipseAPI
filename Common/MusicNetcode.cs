@@ -32,8 +32,8 @@ namespace InfernalEclipseAPI.Common
 
                     default:
                         {
-                            InfernalEclipseAPI.Instance.Logger.Error($"Failed to parse VCMM packet: No VCMM packet exists with ID {msgType}.");
-                            throw new Exception("Failed to parse VCMM packet: Invalid VCMM packet ID.");
+                            InfernalEclipseAPI.Instance.Logger.Error($"Failed to parse IEoR packet: No IEoR packet exists with ID {msgType}.");
+                            throw new Exception("Failed to parse IEoR packet: Invalid IEoR packet ID.");
                         }
                 }
             }
@@ -41,15 +41,15 @@ namespace InfernalEclipseAPI.Common
             {
                 if (e is EndOfStreamException eose)
                 {
-                    InfernalEclipseAPI.Instance.Logger.Error("Failed to parse VCMM packet: Packet was too short, missing data, or otherwise corrupt.", eose);
+                    InfernalEclipseAPI.Instance.Logger.Error("Failed to parse IEoR packet: Packet was too short, missing data, or otherwise corrupt.", eose);
                 }
                 else if (e is ObjectDisposedException ode)
                 {
-                    InfernalEclipseAPI.Instance.Logger.Error("Failed to parse VCMM packet: Packet reader disposed or destroyed.", ode);
+                    InfernalEclipseAPI.Instance.Logger.Error("Failed to parse IEoR packet: Packet reader disposed or destroyed.", ode);
                 }
                 else if (e is IOException ioe)
                 {
-                    InfernalEclipseAPI.Instance.Logger.Error("Failed to parse VCMM packet: An unknown I/O error occurred.", ioe);
+                    InfernalEclipseAPI.Instance.Logger.Error("Failed to parse IEoR packet: An unknown I/O error occurred.", ioe);
                 }
                 else
                 {

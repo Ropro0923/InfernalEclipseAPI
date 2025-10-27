@@ -1,10 +1,6 @@
-﻿using System.Runtime.CompilerServices;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using Terraria;
-using System;
 using Terraria.GameContent;
-using Terraria.ID;
 
 namespace InfernalEclipseAPI.Core.Utils
 {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Luminance.Common.Easings;
-using static Microsoft.Xna.Framework.MathHelper;
+﻿using static Microsoft.Xna.Framework.MathHelper;
 
 namespace InfernalEclipseAPI.Common.Tools.Easings
 {

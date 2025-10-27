@@ -1,16 +1,8 @@
-﻿using InfernalEclipseAPI.Common.GlobalProjectiles;
-using InfernalEclipseAPI.Content.Buffs;
+﻿using InfernalEclipseAPI.Content.Buffs;
 using Microsoft.CSharp.RuntimeBinder;
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 using System.Runtime.CompilerServices;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using ThoriumMod;
 
 namespace InfernalEclipseAPI.Core.Players
 {

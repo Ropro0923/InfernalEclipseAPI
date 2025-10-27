@@ -1,7 +1,4 @@
-﻿using System;
-using Terraria.DataStructures;
-using Terraria;
-using Terraria.ModLoader;
+﻿using Terraria.DataStructures;
 using InfernalEclipseAPI.Content.Projectiles;
 using Microsoft.Xna.Framework;
 
@@ -18,7 +15,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
             {
                 if (ModLoader.TryGetMod("RagnarokMod", out Mod ragnarokMod))
                 {
-                    // Try to find the item type safely by internal name
                     if (ragnarokMod.TryFind("Lamentation", out ModItem calamityBell))
                     {
                         if (item.type == calamityBell.Type)

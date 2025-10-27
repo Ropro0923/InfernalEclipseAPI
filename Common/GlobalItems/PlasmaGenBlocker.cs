@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod.Items.Accessories;
+﻿using CalamityMod.Items.Accessories;
 using CalamityMod.NPCs.CalClone;
 using CalamityMod.NPCs.ExoMechs.Apollo;
 using CalamityMod.NPCs.ExoMechs.Ares;
@@ -12,8 +6,6 @@ using CalamityMod.NPCs.ExoMechs.Artemis;
 using CalamityMod.NPCs.ExoMechs.Thanatos;
 using CalamityMod.NPCs.ProfanedGuardians;
 using CalamityMod.NPCs.SupremeCalamitas;
-using Terraria;
-using Terraria.ModLoader;
 using ThoriumMod.Items.Donate;
 using ThoriumMod.Utilities;
 

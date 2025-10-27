@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using InfernalEclipseAPI.Core.Utils;
+﻿using InfernalEclipseAPI.Core.Utils;
 using Microsoft.Xna.Framework;
 using static Microsoft.Xna.Framework.MathHelper;
 

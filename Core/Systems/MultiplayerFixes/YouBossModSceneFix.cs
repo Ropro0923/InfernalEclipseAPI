@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using MonoMod.RuntimeDetour;
-using Terraria;
-using Terraria.ModLoader;
 using YouBoss.Content.NPCs.Bosses.TerraBlade.SpecificEffectManagers;
 using YouBoss.Content.NPCs.Bosses.TerraBlade;
 using CalamityMod.Events;

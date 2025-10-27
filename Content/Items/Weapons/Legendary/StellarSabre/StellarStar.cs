@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
+﻿using Microsoft.Xna.Framework;
 using CalamityMod.Buffs.DamageOverTime;
 using InfernalEclipseAPI.Core.DamageClasses.LegendaryClass;
 
@@ -14,7 +6,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
 {
     public class StellarStar : ModProjectile
     {
-        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.Starfury; // Use Starfury projectile texture
+        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.Starfury;
         public override void SetDefaults()
         {
             Projectile.width = 22;
@@ -25,7 +17,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
             Projectile.timeLeft = 300;
-            Projectile.aiStyle = 1; // Starfury behavior
+            Projectile.aiStyle = 1;
             AIType = ProjectileID.Starfury;
         }
 
@@ -123,7 +115,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
                     Projectile.GetSource_FromThis(),
                     new Vector2(Projectile.Center.X, Projectile.Center.Y - 300),
                     fallVelocity,
-                    ProjectileID.Starfury, // vanilla star
+                    ProjectileID.Starfury,
                     Projectile.damage,
                     Projectile.knockBack,
                     Projectile.owner

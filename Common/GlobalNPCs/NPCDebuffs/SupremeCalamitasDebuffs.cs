@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod.NPCs.SupremeCalamitas;
-using SOTS.NPCs.Boss;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using CalamityMod.NPCs.SupremeCalamitas;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs.NPCDebuffs
 {

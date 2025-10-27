@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod;
-using InfernalEclipseAPI.Content.Items.Placeables.Relics;
+﻿using CalamityMod;
 using InfernalEclipseAPI.Content.Items.Placeables.Relics.Thorium;
-using Terraria;
-using Terraria.GameContent.ItemDropRules;
-using Terraria.ModLoader;
 using ThoriumMod.NPCs.BossBoreanStrider;
 using ThoriumMod.NPCs.BossBuriedChampion;
 using ThoriumMod.NPCs.BossFallenBeholder;

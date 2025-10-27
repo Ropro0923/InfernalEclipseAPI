@@ -1,21 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod;
 using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using InfernalEclipseAPI.Content.Items.Weapons.BossRush.Swordofthe14thGlitch;
 using InfernumMode.Content.Rarities.InfernumRarities;
 using Microsoft.Xna.Framework;
-using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace InfernalEclipseAPI.Content.Items.Weapons.Melee.SwordoftheCorrupted
 {

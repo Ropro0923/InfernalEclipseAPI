@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria.GameContent;
-using Terraria;
-using Terraria.ModLoader;
 
 namespace InfernalEclipseAPI.Common.GlobalProjectiles.ProjectileReworks
 {
@@ -61,20 +54,18 @@ namespace InfernalEclipseAPI.Common.GlobalProjectiles.ProjectileReworks
                 projectile.ModProjectile.Mod.Name == "RagnarokMod" &&
                 projectile.ModProjectile.Name == "AuricDamruFlareBomb")
             {
-                // Try to find Calamity's MeteorStarExplosion projectile ID
                 Mod calamity = ModLoader.GetMod("CalamityMod");
                 if (calamity != null)
                 {
                     int meteorProjType = calamity.Find<ModProjectile>("BettyExplosion").Type;
 
-                    // Spawn the Calamity projectile for visual flair
                     Projectile.NewProjectile(
                         projectile.GetSource_Death(),
                         projectile.Center,
-                        Microsoft.Xna.Framework.Vector2.Zero, // no velocity
+                        Microsoft.Xna.Framework.Vector2.Zero,
                         meteorProjType,
-                        0, // damage (0 = just visual)
-                        0, // knockback
+                        0,
+                        0,
                         projectile.owner
                     );
                 }
@@ -87,7 +78,7 @@ namespace InfernalEclipseAPI.Common.GlobalProjectiles.ProjectileReworks
                 projectile.ModProjectile.Mod.Name == "RagnarokMod" &&
                 projectile.ModProjectile.Name == "AuricDamruShock")
             {
-                return false; // Skip original draw
+                return false;
             }
 
             return true;

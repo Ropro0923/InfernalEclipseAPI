@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod;
-using CalamityMod.Events;
+﻿using CalamityMod.Events;
+using InfernalEclipseAPI.Core.Systems;
 using SOTS.Items.Celestial;
 using SOTS.NPCs.Boss;
-using Terraria;
 using Terraria.Audio;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace InfernalEclipseAPI.Content.Items.SpawnItems
 {
-    [ExtendsFromMod("SOTS")]
+    [JITWhenModsEnabled(InfernalCrossmod.SOTS.Name)]
+    [ExtendsFromMod(InfernalCrossmod.SOTS.Name)]
     public class CatalyzedCrystal : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return !ModLoader.HasMod("SecretsoftheSouls");
+        }
         public override void SetStaticDefaults()
         {
             ItemID.Sets.SortingPriorityBossSpawns[Type] = 13;

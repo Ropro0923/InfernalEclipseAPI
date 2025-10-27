@@ -1,5 +1,4 @@
-﻿using Terraria.ModLoader;
-using SOTS.Void;
+﻿using SOTS.Void;
 using CalamityMod;
 
 namespace InfernalEclipseAPI.Core.DamageClasses

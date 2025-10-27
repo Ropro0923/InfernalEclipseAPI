@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using ThoriumMod.Projectiles;
+﻿using ThoriumMod.Projectiles;
 using ThoriumMod.Buffs;
-using CalamityMod;
 
 namespace InfernalEclipseAPI.Common.GlobalProjectiles.ProjectileReworks
 {

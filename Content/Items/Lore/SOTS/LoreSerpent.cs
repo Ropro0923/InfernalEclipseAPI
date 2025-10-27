@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
 using CalamityMod.Items.LoreItems;
-using ThoriumMod.NPCs;
 using Terraria.Localization;
 
 namespace InfernalEclipseAPI.Content.Items.Lore.SOTS

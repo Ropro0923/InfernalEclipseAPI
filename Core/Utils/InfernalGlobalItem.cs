@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod;
-using Terraria;
+﻿using CalamityMod;
 using Terraria.DataStructures;
-using Terraria.ModLoader;
 using Terraria.Utilities;
 using ThoriumMod;
 

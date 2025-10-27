@@ -1,12 +1,5 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using MonoMod.Cil;
+﻿using MonoMod.Cil;
 using Mono.Cecil.Cil;
-using System;
-using Terraria.ID;
-using Humanizer;
-using ThoriumMod.Utilities;
 using MonoMod.RuntimeDetour;
 using System.Reflection;
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ModLoader;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using System.Reflection;
 using Terraria.Localization;
@@ -82,7 +76,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
             if (!ModLoader.TryGetMod("ThoriumRework", out mod) || !mod.TryFind("Oneirophobia", out modItem) || item.type != modItem.Type || !InfernalConfig.Instance.ThoriumBalanceChangess || ModLoader.TryGetMod("WHummusMultiModBalancing", out Mod WHBalance))
                 return;
             string str = Main.LocalPlayer.slotsMinions > 0.0 ? Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.ScytheSummonOn") : Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.ScytheSummon");
-            Color color = Color.Lerp(Color.White, new Color(30, 144 /*0x90*/, byte.MaxValue), (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 2.0) * 0.5 + 0.5));
+            Color color = Color.Lerp(Color.White, new Color(30, 144, byte.MaxValue), (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 2.0) * 0.5 + 0.5));
             tooltips.Add(new TooltipLine(Mod, "OneirophobiaInfo1", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.OneirophobiaSummon"))
             {
                 OverrideColor = new Color?(color)

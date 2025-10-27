@@ -1,6 +1,4 @@
-﻿using Terraria.ModLoader;
-
-namespace InfernalEclipseAPI.Core.DamageClasses.LegendaryClass
+﻿namespace InfernalEclipseAPI.Core.DamageClasses.LegendaryClass
 {
     public class LegendaryMagic : DamageClass
     {

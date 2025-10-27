@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InfernalEclipseAPI.Core.Players;
-using Terraria;
-using Terraria.ModLoader;
-using ThoriumMod.Projectiles.Minions;
+﻿using InfernalEclipseAPI.Core.Players;
 
 namespace InfernalEclipseAPI.Common.GlobalProjectiles
 {
     //Proived by Wardrobe Hummus
     public class HealerAccessoryCooldown : GlobalProjectile
     {
+        /*
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (!projectile.friendly || projectile.trap || projectile.minion || ModLoader.TryGetMod("WHummusMultiModBalancing", out Mod WHBalance))
@@ -28,7 +21,6 @@ namespace InfernalEclipseAPI.Common.GlobalProjectiles
                 }
             }
         }
-
-        public override bool InstancePerEntity => false;
+        */
     }
 }

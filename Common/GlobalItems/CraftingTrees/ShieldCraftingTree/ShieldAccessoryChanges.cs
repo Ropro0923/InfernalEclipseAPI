@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ModLoader;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using CalamityMod.Items.Accessories;
-using Terraria.ID;
-using ThoriumMod.Items.Donate;
 using CalamityMod.CalPlayer;
-using CalamityMod.NPCs;
 using Terraria.Localization;
 
 namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.ShieldCraftingTree

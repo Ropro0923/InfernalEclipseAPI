@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using InfernumMode.Content.Items.Relics;
+﻿using InfernumMode.Content.Items.Relics;
 using InfernalEclipseAPI.Content.Tiles.MusicBoxes;
 
 namespace InfernalEclipseAPI.Content.Items.Placeables.MusicBoxes

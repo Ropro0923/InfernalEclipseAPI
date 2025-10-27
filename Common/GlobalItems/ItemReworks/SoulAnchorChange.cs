@@ -2,9 +2,6 @@
 using InfernalEclipseAPI.Core.Players;
 using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
 namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
@@ -50,14 +47,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
                 modPlayer.SetAnchor();
             }
 
-            return false; // cancel projectile
+            return false;
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (!ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod) || !InfernalConfig.Instance.ThoriumBalanceChangess 
-                //|| ModLoader.TryGetMod("InfernalEclipseAPI", out _) //Don't add tooltip twice if both mods are enabled.
-                )
+            if (!ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod) || !InfernalConfig.Instance.ThoriumBalanceChangess)
                 return;
 
             if (!thoriumMod.TryFind("SoulAnchor", out ModItem soulAnchor))
@@ -90,7 +85,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
             return ModLoader.TryGetMod("ThoriumMod", out Mod thorium) &&
                    thorium.TryFind("SoulAnchor", out ModItem soulAnchor) &&
                    item.type == soulAnchor.Type 
-                   && InfernalConfig.Instance.ThoriumBalanceChangess; //remove this line to always change
+                   && InfernalConfig.Instance.ThoriumBalanceChangess;
         }
     }
 }

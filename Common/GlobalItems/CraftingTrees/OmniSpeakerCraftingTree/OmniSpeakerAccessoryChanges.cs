@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ModLoader;
+﻿using System.Collections.Generic;
 using ThoriumMod;
 using ThoriumMod.Utilities;
 using Microsoft.Xna.Framework;
-using System.Security.Policy;
 using Terraria.Localization;
 
 

@@ -1,29 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod.Items.Accessories;
-using CalamityMod;
-using Terraria;
-using Terraria.ModLoader;
-using CalamityMod.Items.Weapons.Summon;
+﻿using CalamityMod;
 using Terraria.GameContent.ItemDropRules;
-using InfernumMode.Content.Items.SummonItems;
-using Terraria.ID;
 
 namespace InfernalEclipseAPI.Common.Balance.Calamity
 {
     public class ItemAdjustments : GlobalItem
     {
         //idk honestly i was on something when i wrote this code
+        //i also do not care to clean it either; calamity fixes this soon anyway
         public override void ModifyItemLoot(Item item, ItemLoot loot)
         {
             if (!CalamityConfig.Instance.EarlyHardmodeProgressionRework) { return; }
 
             if (item.type == ItemID.CorruptFishingCrate || item.type == ItemID.CorruptFishingCrateHard || item.type == ItemID.DungeonFishingCrateHard || item.type == ItemID.FloatingIslandFishingCrateHard || item.type == ItemID.FrozenCrateHard || item.type == ItemID.GoldenCrateHard || item.type == ItemID.HallowedFishingCrateHard || item.type == ItemID.IronCrateHard || item.type == ItemID.JungleFishingCrateHard || item.type == ItemID.LavaCrateHard || item.type == ItemID.OasisCrateHard || item.type == ItemID.OceanCrateHard || item.type == ItemID.WoodenCrateHard)
             {
-                ((ItemLoot)loot).RemoveWhere((Predicate<IItemDropRule>)(cobalto => cobalto is CommonDrop commonDrop1 && commonDrop1.itemId == 364), true);
+                loot.RemoveWhere(cobalto => cobalto is CommonDrop commonDrop1 && commonDrop1.itemId == 364, true);
                 ((ItemLoot)loot).RemoveWhere((Predicate<IItemDropRule>)(cobaltb => cobaltb is CommonDrop commonDrop2 && commonDrop2.itemId == 381), true);
                 ((ItemLoot)loot).RemoveWhere((Predicate<IItemDropRule>)(pallo => pallo is CommonDrop commonDrop3 && commonDrop3.itemId == 1104), true);
                 ((ItemLoot)loot).RemoveWhere((Predicate<IItemDropRule>)(pallb => pallb is CommonDrop commonDrop4 && commonDrop4.itemId == 1184), true);
@@ -103,22 +93,22 @@ namespace InfernalEclipseAPI.Common.Balance.Calamity
                     return true;
                 return NPC.downedMechBoss3 && NPC.downedMechBoss1;
             }), 366, 7, 35, 45);
-            ((ILoot)(object)loot).AddIf((Func<bool>)(() => Main.hardMode), 381, 17, 5, 16 /*0x10*/);
-            ((ILoot)(object)loot).AddIf((Func<bool>)(() => Main.hardMode), 1184, 17, 5, 16 /*0x10*/);
-            ((ILoot)(object)loot).AddIf((Func<bool>)(() => Main.hardMode && NPC.downedMechBossAny), 382, 17, 5, 16 /*0x10*/);
-            ((ILoot)(object)loot).AddIf((Func<bool>)(() => Main.hardMode && NPC.downedMechBossAny), 1191, 17, 5, 16 /*0x10*/);
+            ((ILoot)(object)loot).AddIf((Func<bool>)(() => Main.hardMode), 381, 17, 5, 16;
+            ((ILoot)(object)loot).AddIf((Func<bool>)(() => Main.hardMode), 1184, 17, 5, 16);
+            ((ILoot)(object)loot).AddIf((Func<bool>)(() => Main.hardMode && NPC.downedMechBossAny), 382, 17, 5, 16);
+            ((ILoot)(object)loot).AddIf((Func<bool>)(() => Main.hardMode && NPC.downedMechBossAny), 1191, 17, 5, 16);
             ((ILoot)(object)loot).AddIf((Func<bool>)(() =>
             {
                 if (Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 || NPC.downedMechBoss2 && NPC.downedMechBoss3)
                     return true;
                 return NPC.downedMechBoss3 && NPC.downedMechBoss1;
-            }), 1198, 17, 5, 16 /*0x10*/);
+            }), 1198, 17, 5, 16);
             ((ILoot)(object)loot).AddIf((Func<bool>)(() =>
             {
                 if (Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 || NPC.downedMechBoss2 && NPC.downedMechBoss3)
                     return true;
                 return NPC.downedMechBoss3 && NPC.downedMechBoss1;
-            }), 391, 17, 5, 16 /*0x10*/);
+            }), 391, 17, 5, 16);
         }
     }
 }

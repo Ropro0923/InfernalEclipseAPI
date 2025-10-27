@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod;
+﻿using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
 using CalamityMod.Items.SummonItems;
@@ -11,10 +6,6 @@ using CalamityMod.Tiles.DraedonSummoner;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using InfernalEclipseAPI.Content.Items.Materials;
 using InfernumMode.Content.Items.SummonItems;
-using Terraria;
-using Terraria.GameContent.ItemDropRules;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace InfernalEclipseAPI.Common.ProgressionRework
 {
@@ -271,7 +262,7 @@ namespace InfernalEclipseAPI.Common.ProgressionRework
             recipe8.Register();
 
             //Pirate Map
-            Recipe recipe11 = Recipe.Create(1315, 1);
+            Recipe recipe11 = Recipe.Create(ItemID.PirateMap, 1);
             recipe11.AddIngredient(ItemID.AncientCloth, 10);
             recipe11.AddIngredient(ItemID.BlackInk, 2);
             recipe11.AddIngredient(ItemID.GoldCoin, 20);

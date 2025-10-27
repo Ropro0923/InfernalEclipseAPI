@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CalamityMod.Items.Accessories;
-using Terraria;
-using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using CalamityMod.Projectiles.Melee;
 using Terraria.Localization;
 
 namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.RadianceCraftingTree

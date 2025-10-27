@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using System.Collections.Generic;
 using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework;
 using Terraria.Localization;
@@ -26,7 +22,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 var thunderTalon = thoriumMod.Find<ModItem>("ThunderTalon");
                 if (thunderTalon != null && item.type == thunderTalon.Type)
                 {
-                    target.AddBuff(144, 180); // Electrified
+                    target.AddBuff(BuffID.Electrified, 180);
                 }
 
                 var lifeQuartz = thoriumMod.Find<ModItem>("LifeQuartzClaymore");
@@ -66,7 +62,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
         private void HealPlayer(Player player, int healAmount)
         {
             player.statLife += healAmount;
-            player.HealEffect(healAmount, true); // true = play heal effect number popup
+            player.HealEffect(healAmount, true);
         }
 
         public void AddTooltip(List<TooltipLine> tooltips, string stealthTooltip, bool InfernalRedActive = false)

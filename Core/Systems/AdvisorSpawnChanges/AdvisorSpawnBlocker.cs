@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using MonoMod.Cil;
+﻿using System.Reflection;
 using MonoMod.RuntimeDetour;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace InfernalEclipseAPI.Core.Systems.AdvisorSpawnChanges
 {

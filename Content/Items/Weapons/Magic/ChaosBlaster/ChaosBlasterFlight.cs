@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using InfernalEclipseAPI.Core.Systems;
 using Luminance.Core.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace InfernalEclipseAPI.Content.Items.Weapons.Magic.ChaosBlaster
 {
-    [ExtendsFromMod("NoxusBoss")]
+    [JITWhenModsEnabled(InfernalCrossmod.NoxusBoss.Name)]
+    [ExtendsFromMod(InfernalCrossmod.NoxusBoss.Name)]
     public class ChaosBlasterFlight : ModPlayer, IPixelatedPrimitiveRenderer
     {
         private const float FlightSpeed = 21f;

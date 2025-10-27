@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Terraria.Audio;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
 using InfernalEclipseAPI.Core.Utils;
 using Luminance.Common.Utilities;
 using static Microsoft.Xna.Framework.MathHelper;

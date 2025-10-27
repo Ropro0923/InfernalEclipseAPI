@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
-using Terraria.ID;
 using Terraria.Localization;
-using Terraria.ModLoader;
-using Terraria;
 using CalamityMod.Items.LoreItems;
 using Microsoft.Xna.Framework.Graphics;
 using Luminance.Core.Graphics;
 using Microsoft.Xna.Framework;
+using InfernalEclipseAPI.Core.Systems;
 
 namespace InfernalEclipseAPI.Content.Items.Lore.FargosSouls
 {
+    [JITWhenModsEnabled(InfernalCrossmod.FargosSouls.Name)]
+    [ExtendsFromMod(InfernalCrossmod.FargosSouls.Name)]
     public class LoreAbominationn : LoreItem
     {
         public override bool IsLoadingEnabled(Mod mod)

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InfernalEclipseAPI.Content.Buffs;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
+﻿using InfernalEclipseAPI.Content.Buffs;
 using ThoriumMod;
 using InfernalEclipseAPI.Core.Players.ThoriumMulticlassNerf;
 

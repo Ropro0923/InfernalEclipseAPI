@@ -1,9 +1,7 @@
 ﻿using Luminance.Core.Hooking;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Graphics;
-using Terraria;
 using Terraria.GameContent;
-using Terraria.ID;
 using Terraria.Localization;
 using Microsoft.Xna.Framework;
 using InfernalEclipseAPI.Core.Players;

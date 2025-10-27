@@ -1,11 +1,7 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using InfernumMode.Content.Rarities.InfernumRarities;
 using CalamityMod.Items.Materials;
-using System;
 using Terraria.Localization;
 using InfernalEclipseAPI.Core.DamageClasses.LegendaryClass;
 
@@ -15,14 +11,14 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
     {
         public override void SetDefaults()
         {
-            Item.damage = 30; // will scale in ModifyWeaponDamage
+            Item.damage = 30;
             Item.DamageType = LegendaryMelee.Instance;
             Item.width = 40;
             Item.height = 40;
             Item.useTime = 12;
             Item.useAnimation = 12;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.knockBack = 5f; // will scale in ModifyWeaponKnockback
+            Item.knockBack = 5f;
             Item.value = Item.sellPrice(gold: 10);
             Item.rare = ModContent.RarityType<InfernumProfanedRarity>();
             Item.UseSound = SoundID.Item1;
@@ -84,7 +80,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
                 }
             }
 
-            return false; // Prevent vanilla shooting
+            return false;
         }
 
         public override void AddRecipes()
@@ -96,8 +92,6 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
             recipe.AddIngredient(ModContent.ItemType<AerialiteBar>(), 8);
             recipe.AddTile(TileID.DemonAltar);
             recipe.Register();
-
-            // Add further upgrade recipes here for later tiers
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)

@@ -1,22 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables;
-using CalamityMod.Items.Placeables.Ores;
-using CalamityMod.Items.Potions;
-using CalamityMod.Items.SummonItems;
+﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Tiles.DraedonSummoner;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using CalamityMod.Items;
 
 namespace InfernalEclipseAPI.Common.Balance.Calamity
 {
@@ -27,6 +11,9 @@ namespace InfernalEclipseAPI.Common.Balance.Calamity
             for (int index = 0; index < Recipe.numRecipes; ++index)
             {
                 Recipe recipe = Main.recipe[index];
+
+                if (recipe.Mod.Name == "Fargowiltas" || recipe.Mod.Name == "FargowiltasSouls" || recipe.Mod.Name == "FargowiltasCrossmod" || recipe.Mod == null) //prevent us from disabling mutant mod recipes or any vanilla recipes that exist
+                    return;
 
                 bool hasThor = false;
                 if (ModLoader.TryGetMod("ThoriumMod", out Mod mod4))
@@ -55,227 +42,211 @@ namespace InfernalEclipseAPI.Common.Balance.Calamity
 
 
                 if (!InfernalConfig.Instance.CalamityRecipeTweaks)
-                {
                     return;
-                }
 
-                if (recipe.HasResult(65))
+                if (recipe.HasResult(ItemID.Starfury))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(989))
+                if (recipe.HasResult(ItemID.EnchantedSword))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(155))
+                if (recipe.HasResult(ItemID.Muramasa))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(670))
+                if (recipe.HasResult(ItemID.IceBoomerang))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(53))
+                if (recipe.HasResult(ItemID.CloudinaBottle))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(4341))
+                if (recipe.HasResult(ItemID.PortableStool))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(54))
+                if (recipe.HasResult(ItemID.HermesBoots))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(987))
+                if (recipe.HasResult(ItemID.BlizzardinaBottle))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(857))
+                if (recipe.HasResult(ItemID.SandstorminaBottle))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(2423))
+                if (recipe.HasResult(ItemID.FrogLeg))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(934))
+                if (recipe.HasResult(ItemID.FlyingCarpet))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(285))
+                if (recipe.HasResult(ItemID.Aglet))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(212))
+                if (recipe.HasResult(ItemID.AnkletoftheWind))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(863))
+                if (recipe.HasResult(ItemID.WaterWalkingBoots))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(159))
+                if (recipe.HasResult(ItemID.ShinyRedBalloon))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(158))
+                if (recipe.HasResult(ItemID.LuckyHorseshoe))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(950))
+                if (recipe.HasResult(ItemID.IceSkates))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(906))
+                if (recipe.HasResult(ItemID.LavaCharm))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1323))
+                if (recipe.HasResult(ItemID.ObsidianRose))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(211))
+                if (recipe.HasResult(ItemID.FeralClaws))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(3084))
+                if (recipe.HasResult(ItemID.Radar))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(3102))
+                if (recipe.HasResult(ItemID.MetalDetector))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(3119))
+                if (recipe.HasResult(ItemID.DPSMeter))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(49))
+                if (recipe.HasResult(ItemID.BandofRegeneration))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(930))
+                if (recipe.HasResult(ItemID.FlareGun))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(156))
+                if (recipe.HasResult(ItemID.CobaltShield))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(886))
+                if (recipe.HasResult(ItemID.ArmorPolish))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(885))
+                if (recipe.HasResult(ItemID.AdhesiveBandage))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(887))
+                if (recipe.HasResult(ItemID.Bezoar))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(891))
+                if (recipe.HasResult(ItemID.Nazar))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(892))
+                if (recipe.HasResult(ItemID.Vitamins))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(888))
+                if (recipe.HasResult(ItemID.Blindfold))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(893))
+                if (recipe.HasResult(ItemID.TrifoldMap))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(889))
+                if (recipe.HasResult(ItemID.FastClock))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(890))
+                if (recipe.HasResult(ItemID.Megaphone))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(3781))
+                if (recipe.HasResult(ItemID.PocketMirror))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1321))
+                if (recipe.HasResult(ItemID.MagicQuiver))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1253))
+                if (recipe.HasResult(ItemID.FrozenTurtleShell))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(946))
+                if (recipe.HasResult(ItemID.Umbrella))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1991))
+                if (recipe.HasResult(ItemID.BugNet))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(4271))
+                if (recipe.HasResult(ItemID.StaffofRegrowth))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(213))
+                if (recipe.HasResult(ItemID.ShadowKey))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(329))
+                if (recipe.HasResult(ItemID.SkyMill))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(2197))
+                if (recipe.HasResult(ItemID.IceMachine))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(2198))
+                if (recipe.HasResult(ItemID.CatBast))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(4276))
+                if (recipe.HasResult(ItemID.TempleKey))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(4346))
+                if (recipe.HasResult(ItemID.ShoeSpikes))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(267))
+                if (recipe.HasResult(ItemID.ClimbingClaws))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(4988))
+                if (recipe.HasResult(ItemID.SlimeHook))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1141))
+                if (recipe.HasResult(ItemID.SlimySaddle))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1293))
+                if (recipe.HasResult(ItemID.NinjaHood))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(975))
+                if (recipe.HasResult(ItemID.NinjaPants))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(953))
+                if (recipe.HasResult(ItemID.NinjaShirt))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(848))
+                if (recipe.HasResult(ItemID.BeeKeeper))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(866))
+                if (recipe.HasResult(ItemID.BeesKnees))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(2585))
+                if (recipe.HasResult(ItemID.BeeGun))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(2430))
+                if (recipe.HasResult(ItemID.HoneyComb))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(256))
+                if (recipe.HasResult(ItemID.HoneyedGoggles))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(258))
+                if (recipe.HasResult(ItemID.SkeletronHand))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(257))
+                if (recipe.HasResult(ItemID.BookofSkulls))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1123))
+                if (recipe.HasResult(ItemID.BreakerBlade))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(2888))
+                if (recipe.HasResult(ItemID.ClockworkAssaultRifle))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1121))
+                if (recipe.HasResult(ItemID.LaserRifle))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1132))
+                if (recipe.HasResult(ItemID.FireWhip))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(2502))
+                if (recipe.HasResult(ItemID.WarriorEmblem))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1273))
+                if (recipe.HasResult(ItemID.SummonerEmblem))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1313))
+                if (recipe.HasResult(ItemID.SorcererEmblem))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(426))
+                if (recipe.HasResult(ItemID.RangerEmblem))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(434))
+                if (recipe.HasResult(ItemID.GrenadeLauncher))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(514))
+                if (recipe.HasResult(ItemID.VenusMagnum))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(4912))
+                if (recipe.HasResult(ItemID.NettleBurst))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(490))
+                if (recipe.HasResult(ItemID.LeafBlower))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(2998))
+                if (recipe.HasResult(ItemID.Seedler))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(489))
+                if (recipe.HasResult(ItemID.FlowerPow))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(491))
+                if (recipe.HasResult(ItemID.WaspGun))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(758))
+                if (recipe.HasResult(ItemID.PygmyStaff))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1255))
+                if (recipe.HasResult(ItemID.TheAxe))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(788))
+                if (recipe.HasResult(ItemID.ThornHook))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1178))
+                if (recipe.HasResult(ItemID.Picksaw))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(3018))
+                if (recipe.HasResult(ItemID.Stynger))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1259))
+                if (recipe.HasResult(ItemID.PossessedHatchet))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1155))
+                if (recipe.HasResult(ItemID.SunStone))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1157))
+                if (recipe.HasResult(ItemID.EyeoftheGolem))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1305))
+                if (recipe.HasResult(ItemID.HeatRay))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(3021))
+                if (recipe.HasResult(ItemID.StaffofEarth))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1294))
+                if (recipe.HasResult(ItemID.GolemFist))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1258))
+                if (recipe.HasResult(ItemID.Flairon))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1122))
+                if (recipe.HasResult(ItemID.Tsunami))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(899))
+                if (recipe.HasResult(ItemID.RazorbladeTyphoon))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1248))
+                if (recipe.HasResult(ItemID.BubbleGun))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1295))
+                if (recipe.HasResult(ItemID.TempestStaff))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1296))
+                if (recipe.HasResult(ItemID.FishronWings))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(1297))
+                if (recipe.HasResult(ItemID.Meowmere))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(2611))
+                if (recipe.HasResult(ItemID.Terrarian))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(2624))
+                if (recipe.HasResult(ItemID.StarWrath))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(2622))
+                if (recipe.HasResult(ItemID.SDMG))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(2623))
+                if (recipe.HasResult(ItemID.LastPrism))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(2621))
+                if (recipe.HasResult(ItemID.LunarFlareBook))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(2609))
+                if (recipe.HasResult(ItemID.Celeb2))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(3063))
+                if (recipe.HasResult(ItemID.MoonlordTurretStaff))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(3389))
+                if (recipe.HasResult(ItemID.RainbowCrystalStaff))
                     recipe.DisableRecipe();
-                if (recipe.HasResult(3065))
-                    recipe.DisableRecipe();
-                if (recipe.HasResult(1553))
-                    recipe.DisableRecipe();
-                if (recipe.HasResult(3541))
-                    recipe.DisableRecipe();
-                if (recipe.HasResult(3570))
-                    recipe.DisableRecipe();
-                if (recipe.HasResult(3930))
-                    recipe.DisableRecipe();
-                if (recipe.HasResult(3569))
-                    recipe.DisableRecipe();
-                if (recipe.HasResult(3571))
-                    recipe.DisableRecipe();
-                if (recipe.HasResult(29))
+                if (recipe.HasResult(ItemID.LifeCrystal))
                 {
                     if (hasThor)
                     {
@@ -289,7 +260,7 @@ namespace InfernalEclipseAPI.Common.Balance.Calamity
                         recipe.DisableRecipe();
                     }
                 }
-                if (recipe.HasResult(1291))
+                if (recipe.HasResult(ItemID.LifeFruit))
                     recipe.DisableRecipe();
             }
         }

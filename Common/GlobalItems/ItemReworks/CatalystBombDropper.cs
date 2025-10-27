@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InfernalEclipseAPI.Content.Items.SpawnItems;
+﻿using InfernalEclipseAPI.Content.Items.SpawnItems;
 using SOTS.Items.Celestial;
-using Terraria;
-using Terraria.ModLoader;
 
 namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
 {

@@ -1,26 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using System.Reflection;
+﻿using System.Reflection;
 using Terraria.DataStructures;
 using InfernumSaveSystem = InfernumMode.Core.GlobalInstances.Systems.WorldSaveSystem;
-using Terraria.WorldBuilding;
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {
     public class ClamityBossStatScaling : GlobalNPC
     {
-        private bool GetCalDifficulty(string diff)
-        {
-            return ModLoader.TryGetMod("CalamityMod", out Mod calamity) &&
-                   calamity.Call("GetDifficultyActive", diff) is bool b && b;
-        }
-
         private bool IsInfernumActive()
         {
             return InfernumSaveSystem.InfernumModeEnabled;

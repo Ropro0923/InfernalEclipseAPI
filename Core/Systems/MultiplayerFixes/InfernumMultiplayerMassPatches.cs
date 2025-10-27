@@ -1,47 +1,10 @@
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using System;
-using CalamityMod;
 using CalamityMod.NPCs;
-using System.Collections.Generic;
-using MonoMod.RuntimeDetour;
-using MonoMod.Utils;
 using System.Reflection;
-using InfernumMode.Content.Subworlds;
 using System.Linq;
 using InfernumMode;
-using System.Numerics;
-using CalamityMod.NPCs.CalClone;
-using ReLogic.Content.Sources;
-using Terraria.Audio;
-using InfernumMode.Assets.Sounds;
-using InfernumMode.Core.GlobalInstances.Systems;
-using System.IO;
-using InfernumMode.Content.Achievements.InfernumAchievements;
-using CalamityMod.NPCs.ExoMechs.Thanatos;
-using CalamityMod.NPCs.ExoMechs.Ares;
-using CalamityMod.NPCs.ExoMechs.Apollo;
-using CalamityMod.NPCs.ExoMechs.Artemis;
-using Microsoft.Xna.Framework;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
-using InfernumMode.Content.BehaviorOverrides.BossAIs.Draedon.Ares;
-using static InfernumMode.Content.BehaviorOverrides.BossAIs.Draedon.Ares.AresBodyBehaviorOverride;
-using static InfernumMode.Content.BehaviorOverrides.BossAIs.Draedon.ArtemisAndApollo.ApolloBehaviorOverride;
-using InfernumMode.Content.BehaviorOverrides.BossAIs.Draedon;
 using MonoMod.Cil;
 using static Mono.Cecil.Cil.OpCodes;
-using Mono.Cecil.Cil;
-using CalamityMod.CalPlayer;
-using log4net.Repository.Hierarchy;
-using CalamityMod.Balancing;
-using Terraria.GameContent.Events;
-using CalamityMod.Items.Accessories;
-using InfernumMode.Core.GlobalInstances;
-using CalamityMod.Events;
-using CalamityMod.NPCs.CeaselessVoid;
-using CalamityMod.Items;
-using InfernalEclipseAPI.Core.Systems.MultiplayerFixes.ExoMechs;
 
 namespace InfernalEclipseAPI.Core.Systems.MultiplayerFixSystems
 {

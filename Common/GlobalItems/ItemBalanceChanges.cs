@@ -1,16 +1,8 @@
-﻿using System;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using CalamityMod;
+﻿using CalamityMod;
 using System.Reflection;
-using InfernumMode.Core.Balancing;
-using System.Security.Policy;
 using CalamityMod.Items.Tools;
 using CalamityMod.Items.Weapons.Melee;
-using InfernumMode.Content.Items.Weapons.Melee;
 using InfernalEclipseAPI.Core.DamageClasses.MythicClass;
-using System.Collections.Generic;
 using CalamityMod.Items.Weapons.DraedonsArsenal;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Ranged;
@@ -18,9 +10,6 @@ using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Summon;
 using CalamityMod.Items;
 using Terraria.Localization;
-using System.Data;
-using InfernalEclipseAPI.Core.Players;
-
 namespace InfernalEclipseAPI.Common.GlobalItems
 {
     public class ItemBalanceChanges : GlobalItem

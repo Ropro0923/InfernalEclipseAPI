@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ModLoader;
-
-namespace InfernalEclipseAPI.Common.GlobalProjectiles.ProjectileReworks
+﻿namespace InfernalEclipseAPI.Common.GlobalProjectiles.ProjectileReworks
 {
     //WH
     public class GraspOfVoidFixes : GlobalProjectile
     {
-        public override bool InstancePerEntity => true;  // So each projectile has its own data
+        public override bool InstancePerEntity => true;
 
         public override void SetDefaults(Projectile projectile)
         {

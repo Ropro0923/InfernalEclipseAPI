@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
-using Terraria.ModLoader;
 
 namespace InfernalEclipseAPI.Core.Systems.BossChecklistChanges
 {
@@ -46,7 +40,7 @@ namespace InfernalEclipseAPI.Core.Systems.BossChecklistChanges
                 // The next instruction should be ldc.r4 8.5 (the float value)
                 if (c.Next != null && c.Next.MatchLdcR4(8.5f))
                 {
-                    c.Next.Operand = 8.51f; // Change to your desired value
+                    c.Next.Operand = 8.51f;
                 }
             }
         }

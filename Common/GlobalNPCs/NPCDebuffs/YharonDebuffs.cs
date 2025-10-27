@@ -1,8 +1,4 @@
 ﻿using CalamityMod.NPCs.Yharon;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using YouBoss.Content.NPCs.Bosses.TerraBlade;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs.NPCDebuffs
 {

@@ -40,11 +40,6 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
 
         public override void ApplyDifficultyAndPlayerScaling(NPC npc, int numPlayers, float balance, float bossAdjustment)
         {
-            //Crossmod intagration for WHummus code (remove the comments)
-            //only load if InfernalEclipseAPI isn't active for no overlaps
-            //if (ModLoader.TryGetMod("InfernalEclipseAPI", out _)
-            //return;
-
             //Boss Rush, 
             if (GetCalDifficulty("bossrush"))
             {

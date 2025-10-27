@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CalamityMod.Items.SummonItems;
 using InfernumMode.Content.Subworlds;
 using InfernumMode.Core.GlobalInstances.Systems;
 using SubworldLibrary;
-using Terraria;
-using Terraria.ID;
 using Terraria.Localization;
-using Terraria.ModLoader;
 using InfernumSaveSystem = InfernumMode.Core.GlobalInstances.Systems.WorldSaveSystem;
 using Microsoft.Xna.Framework;
 using InfernumMode;

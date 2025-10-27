@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
-using Terraria.ID;
+﻿using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
 using CalamityMod.Events;
 using InfernumSaveSystem = InfernumMode.Core.GlobalInstances.Systems.WorldSaveSystem;
 using SOTS.NPCs.Boss;

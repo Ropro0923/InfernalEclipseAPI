@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ModLoader;
-
-namespace InfernalEclipseAPI.Common.Balance.Calamity
+﻿namespace InfernalEclipseAPI.Common.Balance.Calamity
 {
     public class VanillaTrapDamageRevert : ModPlayer
     {
@@ -14,11 +6,11 @@ namespace InfernalEclipseAPI.Common.Balance.Calamity
         {
             ref StatModifier sourceDamage = ref modifiers.SourceDamage;
 
-            if (proj.type == 108)
+            if (proj.type == ProjectileID.Explosives)
             {
                 sourceDamage /= Main.expertMode ? 0.225f : 0.35f;
             }
-            else if (proj.type == 727 || proj.type == 763)
+            else if (proj.type == ProjectileID.RollingCactus || proj.type == ProjectileID.RollingCactusSpike)
             {
                 sourceDamage /= Main.expertMode ? 0.3f : 0.5f;
             }
@@ -26,15 +18,15 @@ namespace InfernalEclipseAPI.Common.Balance.Calamity
             if (!Main.expertMode)
                 return;
 
-            if (proj.type == 99 || proj.type == 1005)
+            if (proj.type == ProjectileID.Boulder || proj.type == ProjectileID.MiniBoulder)
             {
                 sourceDamage /= 0.65f;
             }
-            else if (proj.type == 185 || proj.type == 187 || proj.type == 184)
+            else if (proj.type == ProjectileID.SpikyBallTrap || proj.type == ProjectileID.FlamethrowerTrap || proj.type == ProjectileID.PoisonDartTrap)
             {
                 sourceDamage /= 0.625f;
             }
-            else if (proj.type == 186)
+            else if (proj.type == ProjectileID.SpearTrap)
             {
                 sourceDamage /= 0.6f;
             }

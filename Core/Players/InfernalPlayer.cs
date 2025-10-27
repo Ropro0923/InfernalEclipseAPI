@@ -1,12 +1,9 @@
 ﻿using CalamityMod;
 using InfernumMode.Core.GlobalInstances.Systems;
-using Terraria;
-using Terraria.ModLoader;
 using Terraria.Audio;
 using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
 using Microsoft.Xna.Framework;
 using InfernalEclipseAPI.Content.Buffs;
-using Terraria.ID;
 using Terraria.DataStructures;
 using InfernalEclipseAPI.Core.World;
 using Terraria.Localization;

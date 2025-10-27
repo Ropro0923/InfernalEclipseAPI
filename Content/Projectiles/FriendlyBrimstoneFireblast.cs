@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
-using Terraria.ModLoader;
-using Terraria;
 using ThoriumMod;
 using ThoriumMod.Projectiles.Bard;
+using InfernalEclipseAPI.Core.Systems;
 
 namespace InfernalEclipseAPI.Content.Projectiles
 {
-    [ExtendsFromMod("ThoriumMod")]
+    [JITWhenModsEnabled(InfernalCrossmod.Thorium.Name)]
+    [ExtendsFromMod(InfernalCrossmod.Thorium.Name)]
     public class FriendlyBrimstoneFireblast : BardProjectile
     {
         public override string Texture => "CalamityMod/Projectiles/Boss/SCalBrimstoneFireblast";

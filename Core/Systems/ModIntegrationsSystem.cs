@@ -79,14 +79,14 @@ namespace InfernalEclipseAPI.Core.Systems
             ModLoader.TryGetMod("CalamityMod", out CalamityMod);
             if (!ModLoader.TryGetMod("BossChecklist", out mod1) || mod1.Version < new Version(1, 6))
                 return;
-            this.ChecklistAddPseudoMiniboss(((ModType)this).Mod, "Dreadnautilus", 7.9f, (Func<bool>)(() => InfernalDownedBossSystem.downedDreadNautilus), 618);
+            ChecklistAddPseudoMiniboss(Mod, "Dreadnautilus", 7.9f, (() => InfernalDownedBossSystem.downedDreadNautilus), 618);
             //ChecklistAddPseudoMiniboss(CalamityMod, "???", 22.75f, () => DownedBossSystem.downedPrimordialWyrm, ModContent.NPCType<PrimordialWyrmHead>());
 
             mod1.Call(new object[3]
             {
-            (object) "AddToBossCollection",
-            (object) "CalamityMod Exo Mechs",
-            (object) new List<int>()
+                "AddToBossCollection",
+                "CalamityMod Exo Mechs",
+                new List<int>()
                 {
                     ModContent.ItemType<CatastrophicFabricationsMusicBox>()
                 }
@@ -191,7 +191,7 @@ namespace InfernalEclipseAPI.Core.Systems
                     introText,
                     150,                            // display time
                     true,                           // center text?
-                    (Func<bool>)(() => NPC.AnyNPCs(marsType)),
+                    (() => NPC.AnyNPCs(marsType)),
                     (Func<float, float, Color>)((completionRatio, _) =>
                     {
                         // Base gradient between pink and yellow
@@ -219,15 +219,15 @@ namespace InfernalEclipseAPI.Core.Systems
                     "SetupMainSound",
                     intro,
                     (Func<int, int, float, float, bool>)((t, _, __, ___) => true),
-                    (Func<SoundStyle>)(() => spawn)
+                    () => spawn
                 );
 
-                Infernum.Call("SetupLetterAdditionSound", intro, (Func<SoundStyle>)(() => SoundID.NPCHit4));
+                Infernum.Call("SetupLetterAdditionSound", intro, () => SoundID.NPCHit4);
                 Infernum.Call("SetupLetterDisplayCompletionRatio", intro, (Func<int, float>)(count => count / 10f));
 
                 // Register and optional completion effects
                 Infernum.Call("RegisterIntroScreen", intro);
-                Infernum.Call("SetupCompletionEffects", intro, (Action)(() => { }));
+                Infernum.Call("SetupCompletionEffects", intro, () => { });
 
                 // Add Avatar of Emptiness card
                 int avatarType = noxus.Find<ModNPC>("AvatarOfEmptiness").Type;
@@ -268,10 +268,10 @@ namespace InfernalEclipseAPI.Core.Systems
                     "SetupMainSound",
                     avatarIntro,
                     (Func<int, int, float, float, bool>)((t, _, __, ___) => t == 0),
-                    (Func<SoundStyle>)(() => avatarSpawn)
+                    (() => avatarSpawn)
                 );
 
-                Infernum.Call("SetupLetterAdditionSound", avatarIntro, (Func<SoundStyle>)(() => SoundID.NPCHit4));
+                Infernum.Call("SetupLetterAdditionSound", avatarIntro, () => SoundID.NPCHit4);
                 Infernum.Call("SetupLetterDisplayCompletionRatio", avatarIntro, (Func<int, float>)(animationTimer =>
                 {
                     // Wait 750 frames before starting text display
@@ -282,7 +282,7 @@ namespace InfernalEclipseAPI.Core.Systems
 
                 // Register and optional completion effects
                 Infernum.Call("RegisterIntroScreen", avatarIntro);
-                Infernum.Call("SetupCompletionEffects", avatarIntro, (Action)(() => { }));
+                Infernum.Call("SetupCompletionEffects", avatarIntro, () => { });
             }
             if (ModLoader.TryGetMod("Clamity", out Mod clam))
             {
@@ -304,7 +304,7 @@ namespace InfernalEclipseAPI.Core.Systems
                     introText,
                     150,                            // display time
                     true,                           // center text?
-                    (Func<bool>)(() => NPC.AnyNPCs(astrageldonType)),
+                    () => NPC.AnyNPCs(astrageldonType),
                     (Func<float, float, Color>)((completionRatio, _) =>
                     {
                         // Base gradient between purple and pink
@@ -332,15 +332,15 @@ namespace InfernalEclipseAPI.Core.Systems
                     "SetupMainSound",
                     intro,
                     (Func<int, int, float, float, bool>)((t, _, __, ___) => t == 0),
-                    (Func<SoundStyle>)(() => spawn)
+                    () => spawn
                 );
 
-                Infernum.Call("SetupLetterAdditionSound", intro, (Func<SoundStyle>)(() => SoundID.MenuTick));
+                Infernum.Call("SetupLetterAdditionSound", intro, () => SoundID.MenuTick);
                 Infernum.Call("SetupLetterDisplayCompletionRatio", intro, (Func<int, float>)(count => count / 10f));
 
                 // Register and optional completion effects
                 Infernum.Call("RegisterIntroScreen", intro);
-                Infernum.Call("SetupCompletionEffects", intro, (Action)(() => { }));
+                Infernum.Call("SetupCompletionEffects", intro, () => { });
             }
         }
         internal void MakeCard(int type, Func<float, float, Color> color, string title, SoundStyle tickSound, SoundStyle endSound, int time = 300, float size = 1f)
@@ -425,7 +425,7 @@ namespace InfernalEclipseAPI.Core.Systems
                 {
                     if (InternalName == "Dreadnautilus")
                     {
-                        Action<SpriteBatch, Rectangle, Color> action = (Action<SpriteBatch, Rectangle, Color>)((sb, rect, color) =>
+                        Action<SpriteBatch, Rectangle, Color> action = (sb, rect, color) =>
                         {
                             Texture2D texture2D = ModContent.Request<Texture2D>("InfernalEclipseAPI/Assets/Textures/BossChecklist/Dreadnautilus", (AssetRequestMode)2).Value;
                             Vector2 vector2;
@@ -435,7 +435,7 @@ namespace InfernalEclipseAPI.Core.Systems
                                 rect.Y + rect.Height / 2f - texture2D.Height / 2f
                             );
                             sb.Draw(texture2D, vector2, color);
-                        });
+                        };
                         dictionary.Add("customPortrait", action);
                         dictionary.Add("displayName", Language.GetText("NPCName.BloodNautilus"));
                         dictionary.Add("overrideHeadTextures", "InfernalEclipseAPI/Assets/Textures/BossChecklist/DreadnautilusIcon");
@@ -448,7 +448,7 @@ namespace InfernalEclipseAPI.Core.Systems
                 {
                     if (InternalName == "PrimordialWyrmHead")
                     {
-                        Action<SpriteBatch, Rectangle, Color> action = (Action<SpriteBatch, Rectangle, Color>)((sb, rect, color) =>
+                        Action<SpriteBatch, Rectangle, Color> action = (sb, rect, color) =>
                         {
                             Texture2D texture2D = ModContent.Request<Texture2D>("InfernalEclipseAPI/Assets/Textures/BossChecklist/AbyssBottom", (AssetRequestMode)2).Value;
                             Vector2 vector2;
@@ -458,7 +458,7 @@ namespace InfernalEclipseAPI.Core.Systems
                                 rect.Y + rect.Height / 2f - texture2D.Height / 2f
                             );
                             sb.Draw(texture2D, vector2, color);
-                        });
+                        };
                         dictionary.Add("customPortrait", action);
                         dictionary.Add("displayName", "???");
                     }

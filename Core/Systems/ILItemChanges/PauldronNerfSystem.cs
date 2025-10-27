@@ -1,17 +1,10 @@
-﻿using Terraria.ModLoader;
-using MonoMod.Cil;
-using Mono.Cecil.Cil;
-using System.Reflection;
+﻿using System.Reflection;
 using MonoMod.RuntimeDetour;
-using Terraria;
 using CalamityMod.CalPlayer;
 using Microsoft.Xna.Framework;
 using CalamityMod;
-using InfernalEclipseAPI;
 using System.Collections.Generic;
-using System;
 using Terraria.Audio;
-using Terraria.ID;
 
 public class PauldronNerfSystem : ModSystem
 {

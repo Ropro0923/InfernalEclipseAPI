@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
+﻿using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {
@@ -36,7 +28,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             if ((num1 & num2) != 0)
             {
                 ModNPC modNPC14 = npc.ModNPC;
-                if ((modNPC14 != null ? (((ModType)modNPC14).Name.Contains("Goozma") ? 1 : 0) : 0) != 0)
+                if ((modNPC14 != null ? (modNPC14.Name.Contains("Goozma") ? 1 : 0) : 0) != 0)
                 {
                     npc.lifeMax *= 10;
                 }
