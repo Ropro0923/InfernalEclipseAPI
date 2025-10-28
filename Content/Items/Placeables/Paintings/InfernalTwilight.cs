@@ -76,6 +76,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
 
             //Designers
             "Tyr",
+            "ma3allim",
             "Yob",
             "Soltan",
 
@@ -90,7 +91,6 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Prime",
             "Mr. Puzzles",
             "Dandel",
-            "ma3allim",
             "Nobody",
             "Peter Fung",
             "Pudd1ng",
