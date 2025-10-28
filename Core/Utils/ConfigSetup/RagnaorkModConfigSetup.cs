@@ -7,7 +7,7 @@ namespace InfernalEclipseAPI.Core.Utils.ConfigSetup
 {
     [JITWhenModsEnabled(InfernalCrossmod.RagnarokMod.Name)]
     [ExtendsFromMod(InfernalCrossmod.RagnarokMod.Name)]
-    public static class RagnaorkModConfigSetup
+    public static class RagnarokModConfigSetup
     {
         private static JObject DesiredBossDefaults() => new JObject
         {
