@@ -12,7 +12,10 @@ namespace InfernalEclipseAPI.Common.Balance.Calamity
             {
                 Recipe recipe = Main.recipe[index];
 
-                if (recipe.Mod.Name == "Fargowiltas" || recipe.Mod.Name == "FargowiltasSouls" || recipe.Mod.Name == "FargowiltasCrossmod" || recipe.Mod == null) //prevent us from disabling mutant mod recipes or any vanilla recipes that exist
+                if (recipe.Mod == null)
+                    return;
+
+                if (recipe.Mod.Name == "Fargowiltas" || recipe.Mod.Name == "FargowiltasSouls" || recipe.Mod.Name == "FargowiltasCrossmod") //prevent us from disabling mutant mod recipes or any vanilla recipes that exist
                     return;
 
                 bool hasThor = false;
