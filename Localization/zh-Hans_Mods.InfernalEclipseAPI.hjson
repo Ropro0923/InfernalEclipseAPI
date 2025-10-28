@@ -1431,13 +1431,13 @@ Configs: {
 		}
 
 		AutomatedConfigSetup: {
-			// Label: Automated Config Setup
-			// Tooltip: Automatically sets up some other mod's configs to be the intended configs for the Infernal Eclipse of Ragnarok modpack.
+			Label: 自动配置模组
+			Tooltip: 自动调整其他模组的配置文件，以获得诸神黄昏：炼狱蚀光的预期体验
 		}
 
 		MoveDeerclopsChecklistEntry: {
-			// Label: Move Deerclops Checklist Entry
-			// Tooltip: Moves Deerclops to be before Skeletron in boss checklist to match Calamity & Infernum's tier placement.
+			Label: 调整独眼巨鹿Boss Checklist顺序
+			Tooltip: 将独眼巨鹿在Boss Checklist中的顺序调整到骷髅王之前，以匹配灾厄&炼狱的进程
 		}
 	}
 
