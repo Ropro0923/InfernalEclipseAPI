@@ -93,7 +93,7 @@ namespace InfernalEclipseAPI.Common.Balance.Calamity
                     return true;
                 return NPC.downedMechBoss3 && NPC.downedMechBoss1;
             }), 366, 7, 35, 45);
-            ((ILoot)(object)loot).AddIf((Func<bool>)(() => Main.hardMode), 381, 17, 5, 16;
+            ((ILoot)(object)loot).AddIf((Func<bool>)(() => Main.hardMode), 381, 17, 5, 16);
             ((ILoot)(object)loot).AddIf((Func<bool>)(() => Main.hardMode), 1184, 17, 5, 16);
             ((ILoot)(object)loot).AddIf((Func<bool>)(() => Main.hardMode && NPC.downedMechBossAny), 382, 17, 5, 16);
             ((ILoot)(object)loot).AddIf((Func<bool>)(() => Main.hardMode && NPC.downedMechBossAny), 1191, 17, 5, 16);
