@@ -644,7 +644,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         recipe.AddIngredient(elementalReaper.Type);
                     }
 
-                    if (recipe.HasResult(ragCal.Find<ModItem>("MarbleScythe")))
+                    if (recipe.HasResult(ragCal.Find<ModItem>("MarbleScythe")) && !ModLoader.TryGetMod("WHummusMultiModBalancing", out _))
                     {
                         recipe.ChangeIngredientStack(ragCal.Find<ModItem>("EnchantedMarble").Type, 3);
                         recipe.AddIngredient(thorium.Find<ModItem>("BronzeAlloyFragments"), 8);
