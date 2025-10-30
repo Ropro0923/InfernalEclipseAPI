@@ -1,5 +1,7 @@
 ﻿using Terraria.ModLoader.IO;
 using System.IO;
+using CalamityMod.UI;
+using InfernalEclipseAPI.Core.Systems;
 
 namespace InfernalEclipseAPI.Core.World
 {
@@ -33,6 +35,13 @@ namespace InfernalEclipseAPI.Core.World
         public override void OnWorldLoad()
         {
             ResetFlags();
+
+            if (InfernalCrossmod.SOTS.Loaded)
+            {
+                int advisorType = InfernalCrossmod.SOTS.Mod.Find<ModNPC>("TheAdvisorHead").Type;
+                if (!BossHealthBarManager.BossExclusionList.Contains(advisorType))
+                    BossHealthBarManager.BossExclusionList.Add(advisorType);
+            }
         }
 
         public override void OnWorldUnload()

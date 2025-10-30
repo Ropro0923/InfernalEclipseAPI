@@ -47,6 +47,7 @@ ItemTooltip: {
 	MBeamUsage: 长按左键，发射星流解离炮，造成神话远程伤害
 	SFlight: 长按右键获得快速无限飞行能力
 	StarlitForgeExtra: 更令人称奇的是，它甚至可以复制某些物品
+	// BladecrestNerf: An evil force is sapping part of its power...
 	ScytheThrow:
 		'''
 		右键投掷镰刀，它会以弧线轨迹返回

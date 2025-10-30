@@ -10,6 +10,9 @@ using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Summon;
 using CalamityMod.Items;
 using Terraria.Localization;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+
 namespace InfernalEclipseAPI.Common.GlobalItems
 {
     public class ItemBalanceChanges : GlobalItem
@@ -5254,6 +5257,57 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 {
                     //player.GetModPlayer<GelWingsDashPlayer>().Active = true;
                 }
+            }
+        }
+
+        public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
+        {
+            if (item.type == ModContent.ItemType<BladecrestOathsword>() && !NPC.downedBoss2)
+            {
+                damage *= 0.71f;
+            }
+        }
+
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            if (item.type == ModContent.ItemType<BladecrestOathsword>() && !NPC.downedBoss2)
+            {
+                AddTooltip(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.BladecrestNerf"));
+            }
+        }
+
+        public void AddTooltip(List<TooltipLine> tooltips, string stealthTooltip)
+        {
+            Color InfernalRed = Color.Lerp(
+               Color.White,
+               new Color(255, 80, 0), // Infernal red/orange
+               (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 2.0) * 0.5 + 0.5)
+            );
+
+            int maxTooltipIndex = -1;
+            int maxNumber = -1;
+
+            // Find the TooltipLine with the highest TooltipX name
+            for (int i = 0; i < tooltips.Count; i++)
+            {
+                if (tooltips[i].Mod == "Terraria" && tooltips[i].Name.StartsWith("Tooltip"))
+                {
+                    if (int.TryParse(tooltips[i].Name.Substring(7), out int num) && num > maxNumber)
+                    {
+                        maxNumber = num;
+                        maxTooltipIndex = i;
+                    }
+                }
+            }
+
+            // If found, insert a new TooltipLine right after it with the desired color
+            if (maxTooltipIndex != -1)
+            {
+                int insertIndex = maxTooltipIndex + 1;
+                TooltipLine customLine = new TooltipLine(Mod, "StealthTooltip", stealthTooltip);
+                customLine.OverrideColor = InfernalRed;
+
+                tooltips.Insert(insertIndex, customLine);
             }
         }
 
