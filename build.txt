@@ -8,4 +8,5 @@ sortBefore = RagnarokMod, ThrowerUnification
 sortAfter = CalamityMod, InfernumMode, NoxusBoss, CalamityHunt, ThoriumMod, ThoriumRework, YouBoss, FargowiltasSouls, FargowiltasCrossmod, Clamity, CatalystMod, InfernumMode, RevengeancePlus, CalamityMinus, ZenithToilet, Consolaria, SOTS, NoxusPort, SOTSBardHealer, CalamityBardHealer, ssm, CalamityAmmo, DraedonExpansion, SpookyBardHealer, Spooky
 hideCode = true
 hideResources = true
+buildIgnore = .vs\*, Properties\*, *.csproj, *.user, obj\*, bin\*, *.config, .git\*, .github\*, LICENSE, README.md, .editorconfig, .gitignore, .gitattributes
 homepage = https://discord.gg/RXdTXbKY
