@@ -6,6 +6,7 @@ using InfernalEclipseAPI.Content.Items.Placeables.Paintings;
 using CalamityMod.Items.Placeables.Furniture.DevPaintings;
 using Terraria.GameContent.ItemDropRules;
 using InfernalEclipseAPI.Core.Systems;
+using System.Collections.Generic;
 namespace InfernalEclipseAPI.Common.GlobalNPCs
 {
     public class InfernalGlobalNPC : GlobalNPC
@@ -64,6 +65,23 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<InfernalTwilight>(), ThankYouPainting.DropInt));
             }
+        }
+
+        public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
+        {
+            Player player = spawnInfo.Player;
+            if (InfernalCrossmod.SOTS.Loaded)
+            {
+                if (player.ZoneHallow && Main.hardMode && !twoMechsDowned())
+                {
+                    pool.Remove(InfernalCrossmod.SOTS.Mod.Find<ModNPC>("HallowTreasureSlime").Type);
+                }
+            }
+        }
+
+        public static bool twoMechsDowned()
+        {
+            return (NPC.downedMechBoss1 && NPC.downedMechBoss2) || (NPC.downedMechBoss1 && NPC.downedMechBoss3) || (NPC.downedMechBoss2 && NPC.downedMechBoss3);
         }
 
         public override bool CheckDead(NPC npc)
