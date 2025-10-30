@@ -1374,16 +1374,6 @@ Configs: {
 				'''
 		}
 
-		MergeThrowerIntoRogue: {
-			Label: Merge Thrower Into Rogue
-			Tooltip:
-				'''
-				Merges the Thrower & Rogue class into one refined class. 
-				Allows converted thrower weapons to still recieve thier orginal reforges.
-				Also keeps the stealth bar damage scaling intact.
-				'''
-		}
-
 		EnableInterlude4: {
 			Label: Enable Interlude 4
 			Tooltip:

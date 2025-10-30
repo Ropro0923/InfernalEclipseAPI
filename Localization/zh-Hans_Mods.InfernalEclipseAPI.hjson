@@ -1371,16 +1371,6 @@ Configs: {
 				'''
 		}
 
-		MergeThrowerIntoRogue: {
-			Label: 融合盗贼和投手伤害
-			Tooltip:
-				'''
-				将投手和盗贼职业融合为一个职业
-				允许融合后的投手武器使用它们原本的重铸修饰语
-				同时保持潜伏条的伤害加成效果不变
-				'''
-		}
-
 		EnableInterlude4: {
 			Label: 启用插曲4
 			Tooltip:
