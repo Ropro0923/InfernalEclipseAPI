@@ -62,6 +62,14 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     }
                 }
 
+                if (InfernalConfig.Instance.BossKillCheckOnOres)
+                {
+                    if (recipe.HasResult(ItemID.DemonConch))
+                    {
+                        recipe.DisableDecraft();
+                    }
+                }
+
                 //Calamity
                 //If any mods allow the terminus to be crafted, disable it.
                 if (recipe.HasResult(ModContent.ItemType<Terminus>()))
