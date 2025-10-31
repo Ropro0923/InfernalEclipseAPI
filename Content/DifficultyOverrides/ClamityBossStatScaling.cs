@@ -83,13 +83,13 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
         public override void PostAI(NPC npc)
         {
             ModNPC modNPC14 = npc.ModNPC;
-            if (!((modNPC14 != null ? (((ModType)modNPC14).Name.Contains("ClamitasBoss") ? 1 : 0) : 0) != 0))
+            if (!((modNPC14 != null ? (((ModType)modNPC14).Name.Contains("ClamitasBoss") ? 1 : 0) : 0) != 0) && npc.type != ModContent.NPCType<PyrogenBoss>())
             {
                 npc.position += npc.velocity * 0.1f;
 
                 if (IsWorldLegendary())
                 {
-                    npc.lifeMax += (int)(0.1 * npc.lifeMax);
+                    npc.position += 0.1f * npc.velocity;
                 }
                 if (IsInfernumActive() || GetFargoDifficullty("MasochistMode"))
                 {
