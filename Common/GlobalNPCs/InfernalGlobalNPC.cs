@@ -7,6 +7,9 @@ using CalamityMod.Items.Placeables.Furniture.DevPaintings;
 using Terraria.GameContent.ItemDropRules;
 using InfernalEclipseAPI.Core.Systems;
 using System.Collections.Generic;
+using InfernumMode.Core.GlobalInstances.Systems;
+using CalamityMod.World;
+
 namespace InfernalEclipseAPI.Common.GlobalNPCs
 {
     public class InfernalGlobalNPC : GlobalNPC
@@ -19,6 +22,16 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
                 {
                     entity.buffImmune[InfernalCrossmod.Thorium.Mod.Find<ModBuff>("Stunned").Type] = true;
                 }
+            }
+
+            switch (entity.type)
+            {
+                case NPCID.DetonatingBubble:
+                    if (WorldSaveSystem.InfernumModeEnabled && Main.masterMode && CalamityWorld.revenge && NPC.AnyNPCs(NPCID.DukeFishron))
+                        entity.dontTakeDamage = false;
+                    break;
+                default:
+                    break;
             }
         }
 

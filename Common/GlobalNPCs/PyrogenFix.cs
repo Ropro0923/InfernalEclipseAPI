@@ -4,6 +4,7 @@ using Clamity.Content.Bosses.Pyrogen.NPCs;
 using System.Reflection;
 using Terraria.DataStructures;
 using InfernumMode.Core.GlobalInstances.Systems;
+using CalamityMod.Events;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs
 {
@@ -41,9 +42,21 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
                 npc.damage = 35;
         }
 
+        public override void PostAI(NPC npc)
+        {
+            npc.position += npc.velocity * 0.1f;
+
+            if (IsWorldLegendary())
+                npc.position += npc.velocity * 0.05f;
+            if (WorldSaveSystem.InfernumModeEnabled)
+                npc.position += npc.velocity * 0.2f;
+        }
+
         public override void OnHitPlayer(NPC npc, Player target, Player.HurtInfo hurtInfo)
         {
             target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
+            if (hurtInfo.Damage > 400 && !BossRushEvent.BossRushActive)
+                hurtInfo.Damage = 400;
         }
 
         private bool IsWorldLegendary()
