@@ -3097,7 +3097,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     //Sacred Bludgeon
                     if (GetItem(thorium, "SacredBludgeon", item))
                     {
-                        item.shootSpeed = 22;
                         item.damage = 95;
                     }
 
@@ -3169,7 +3168,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     if (GetItem(thorium, "TheEffuser", item))
                     {
                         item.damage = 152;
-                        item.shootSpeed = 22;
                     }
 
                     if (GetItem(thorium, "HallowedBlessing", item))
