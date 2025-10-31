@@ -1,68 +1,56 @@
-﻿using Terraria.DataStructures;
-using CalamityMod.Buffs.DamageOverTime;
-using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
+﻿using CalamityMod.Buffs.DamageOverTime;
+using InfernalEclipseAPI.Core.Systems;
+using Clamity.Content.Bosses.Pyrogen.NPCs;
+using System.Reflection;
+using Terraria.DataStructures;
+using InfernumMode.Core.GlobalInstances.Systems;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs
 {
+    [JITWhenModsEnabled(InfernalCrossmod.Clamity.Name)]
+    [ExtendsFromMod(InfernalCrossmod.Clamity.Name)]
     public class PyrogenFix : GlobalNPC
     {
         public override bool InstancePerEntity => true;
 
-        public override void SetDefaults(NPC npc)
+        public override bool AppliesToEntity(NPC entity, bool lateInstantiation)
         {
-            if (!ModLoader.TryGetMod("Clamity", out Mod clam) || !InfernumActive.InfernumActive)
-                return;
-
-            int pyrogenType = clam.Find<ModNPC>("PyrogenBoss")?.Type ?? -1;
-            int shieldType = clam.Find<ModNPC>("PyrogenShield")?.Type ?? -1;
-
-            if (npc.type == pyrogenType || npc.type == shieldType)
-            {
-                npc.lifeMax = (int)(npc.lifeMax * 1.35f);
-            }
+            return entity.type == ModContent.NPCType<PyrogenBoss>() || entity.type == ModContent.NPCType<PyrogenShield>();
         }
 
-        public override void PostAI(NPC npc)
+        public override void SetDefaults(NPC npc)
         {
-            // Try to get Clamity mod and types
-            if (!ModLoader.TryGetMod("Clamity", out Mod clam))
-                return;
-            int pyrogenType = clam.Find<ModNPC>("PyrogenBoss")?.Type ?? -1;
-            int shieldType = clam.Find<ModNPC>("PyrogenShield")?.Type ?? -1;
-
-            if (npc.type != pyrogenType 
-                //&& npc.type != shieldType
-                )
-                return;
-
-            // Only on server or singleplayer
-            if (Main.netMode == NetmodeID.MultiplayerClient)
-                return;
-
-            // Check all players
-            foreach (Player player in Main.player)
+            if (npc.type == ModContent.NPCType<PyrogenBoss>())
             {
-                if (player is null || !player.active || player.dead)
-                    continue;
+                npc.damage = 45;
 
-                // Check intersection
-                if (npc.Hitbox.Intersects(player.Hitbox))
+                float lifeBoost = 0f;
+
+                if (IsWorldLegendary())
                 {
-                    // Optionally check opacity/radius for shield, or always apply
-                    int intendedDamage = npc.type == pyrogenType ? 140 : 110;
-
-                    // Find Brimstone Flames
-                    int brimstoneFlamesBuff = ModContent.BuffType<BrimstoneFlames>();
-
-                    // Only apply if the player is not on damage cooldown (immune)
-                    if (player.immuneTime <= 0)
-                    {
-                        player.Hurt(PlayerDeathReason.ByNPC(npc.whoAmI), intendedDamage, 0);
-                        if (brimstoneFlamesBuff != -1)
-                            player.AddBuff(brimstoneFlamesBuff, 300);
-                    }
+                    lifeBoost += 0.1f;
                 }
+                if (WorldSaveSystem.InfernumModeEnabled)
+                {
+                    lifeBoost += 0.25f;
+                }
+
+                npc.lifeMax += (int)(npc.lifeMax * lifeBoost);
             }
+            else
+                npc.damage = 35;
+        }
+
+        public override void OnHitPlayer(NPC npc, Player target, Player.HurtInfo hurtInfo)
+        {
+            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
+        }
+
+        private bool IsWorldLegendary()
+        {
+            FieldInfo findInfo = typeof(Main).GetField("_currentGameModeInfo", BindingFlags.Static | BindingFlags.NonPublic);
+            GameModeData data = (GameModeData)findInfo.GetValue(null);
+            return (Main.getGoodWorld && data.IsMasterMode);
         }
     }
 }

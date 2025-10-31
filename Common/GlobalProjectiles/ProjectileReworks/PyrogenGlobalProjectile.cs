@@ -1,24 +1,51 @@
 ﻿using Terraria.DataStructures;
 using CalamityMod.Buffs.DamageOverTime;
+using InfernalEclipseAPI.Core.Systems;
+using Clamity.Content.Bosses.Pyrogen.Projectiles;
 
 namespace InfernalEclipseAPI.Common.GlobalProjectiles.ProjectileReworks
 {
+    [JITWhenModsEnabled(InfernalCrossmod.Clamity.Name)]
+    [ExtendsFromMod(InfernalCrossmod.Clamity.Name)]
     public class PyrogenGlobalProjectile : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
 
+        public bool applyDebuff = false;
+
+        public override void OnSpawn(Projectile projectile, IEntitySource source)
+        {
+            if (projectile.type == ModContent.ProjectileType<FireBarrage>() || projectile.type == ModContent.ProjectileType<FireBarrageHoming>())
+            {
+                projectile.damage = 80;
+                applyDebuff = true;
+            }
+
+            if (projectile.type == ModContent.ProjectileType<Fireblast>())
+            {
+                projectile.damage = 130;
+                applyDebuff = true;
+            }
+
+            if (projectile.type == ModContent.ProjectileType<FireBomb>() || projectile.type == ModContent.ProjectileType<Firethrower>())
+            {
+                projectile.damage = 70;
+                applyDebuff = true;
+            }
+
+            if (projectile.type == ModContent.ProjectileType<FireBombExplosion>())
+            {
+                projectile.damage = 100;
+                applyDebuff = true;
+            }
+        }
+
         public override void OnHitPlayer(Projectile projectile, Player target, Player.HurtInfo info)
         {
-            if (!projectile.hostile)
-                return;
-
-            if (!ModLoader.TryGetMod("Clamity", out Mod clam))
-                return;
-
             // Helper: check if projectile matches a Clamity projectile internal name
             bool IsClamityProj(string name)
             {
-                return clam.Find<ModProjectile>(name)?.Type == projectile.type;
+                return InfernalCrossmod.Clamity.Mod.Find<ModProjectile>(name)?.Type == projectile.type;
             }
 
             int intendedDamage = 0;
@@ -58,12 +85,7 @@ namespace InfernalEclipseAPI.Common.GlobalProjectiles.ProjectileReworks
             // Apply Brimstone Flames debuff if possible
             if (applyDebuff)
             {
-                int brimstoneFlamesBuff = ModContent.BuffType<BrimstoneFlames>();
-
-                if (brimstoneFlamesBuff != -1)
-                {
-                    target.AddBuff(brimstoneFlamesBuff, 300);
-                }
+                target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 180);
             }
         }
     }
