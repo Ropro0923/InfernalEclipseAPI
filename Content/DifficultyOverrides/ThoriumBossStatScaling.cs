@@ -143,21 +143,21 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             float damageMod = 0;
 
             if (name.Contains("SlagFury") || name.Contains("Aquaius") || name.Contains("Omnicide") || name.Contains("DreamEater"))
-                damageMod += 0.40f;
+                damageMod += 0.35f;
 
             if (IsWorldLegendary())
             {
-                damageMod += 1.05f;
+                damageMod += 1.1f;
             }
             if (IsInfernumActive() || GetFargoDifficullty("MasochistMode"))
             {
-                damageMod += 1.275f;
+                damageMod += 1.35f;
             }
             else
             {
                 if (GetFargoDifficullty("EternityMode"))
                 {
-                    damageMod += 1.2f;
+                    damageMod += 1.25f;
                 }
                 else if (GetCalDifficulty("death"))
                 {

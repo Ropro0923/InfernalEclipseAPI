@@ -47,6 +47,7 @@ ItemTooltip: {
 	MBeamUsage: Hold Left-Click to release a Exo Disintegrator beam that deals mythic ranged damage
 	SFlight: Holding right click grants fast, unlimited flight
 	StarlitForgeExtra: Even more curiously, it can even duplicate some items
+	BladecrestNerf: An evil force is sapping part of its power...
 	ScytheThrow:
 		'''
 		Right Click to throw the Scythe, which will curve on it's way back
@@ -1371,16 +1372,6 @@ Configs: {
 				'''
 				Converts the Mutant from Fargo's Souls to Yharim.
 				This setting doesn't do anything if Fargo's Souls isn't enabled.
-				'''
-		}
-
-		MergeThrowerIntoRogue: {
-			Label: Merge Thrower Into Rogue
-			Tooltip:
-				'''
-				Merges the Thrower & Rogue class into one refined class. 
-				Allows converted thrower weapons to still recieve thier orginal reforges.
-				Also keeps the stealth bar damage scaling intact.
 				'''
 		}
 

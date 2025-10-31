@@ -35,6 +35,7 @@ namespace InfernalEclipseAPI
         [Header("BalanceChanges")]
 
         [DefaultValue(true)]
+        [ReloadRequired]
         public bool BossKillCheckOnOres { get; set; }
 
         [DefaultValue(false)]
@@ -151,10 +152,6 @@ namespace InfernalEclipseAPI
         [DefaultValue(true)]
         [ReloadRequired]
         public bool MoveDeerclopsChecklistEntry { get; set; }
-
-        [DefaultValue(true)]
-        [ReloadRequired]
-        public bool AdjustAdvisorSpawnConditions { get; set; }
         #endregion
     }
 

@@ -62,6 +62,14 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     }
                 }
 
+                if (InfernalConfig.Instance.BossKillCheckOnOres)
+                {
+                    if (recipe.HasResult(ItemID.DemonConch))
+                    {
+                        recipe.DisableDecraft();
+                    }
+                }
+
                 //Calamity
                 //If any mods allow the terminus to be crafted, disable it.
                 if (recipe.HasResult(ModContent.ItemType<Terminus>()))
@@ -644,7 +652,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         recipe.AddIngredient(elementalReaper.Type);
                     }
 
-                    if (recipe.HasResult(ragCal.Find<ModItem>("MarbleScythe")))
+                    if (recipe.HasResult(ragCal.Find<ModItem>("MarbleScythe")) && !ModLoader.TryGetMod("WHummusMultiModBalancing", out _))
                     {
                         recipe.ChangeIngredientStack(ragCal.Find<ModItem>("EnchantedMarble").Type, 3);
                         recipe.AddIngredient(thorium.Find<ModItem>("BronzeAlloyFragments"), 8);

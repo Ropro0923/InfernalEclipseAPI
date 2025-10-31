@@ -1,9 +1,13 @@
 ﻿using System.Reflection;
+using Clamity.Content.Bosses.Pyrogen.NPCs;
+using InfernalEclipseAPI.Core.Systems;
 using Terraria.DataStructures;
 using InfernumSaveSystem = InfernumMode.Core.GlobalInstances.Systems.WorldSaveSystem;
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {
+    [JITWhenModsEnabled(InfernalCrossmod.Clamity.Name)]
+    [ExtendsFromMod(InfernalCrossmod.Clamity.Name)]
     public class ClamityBossStatScaling : GlobalNPC
     {
         private bool IsInfernumActive()
@@ -33,7 +37,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
 
         public override void ApplyDifficultyAndPlayerScaling(NPC npc, int numPlayers, float balance, float bossAdjustment)
         {
-            if (npc.boss)
+            if (npc.boss && npc.type != ModContent.NPCType<PyrogenBoss>())
             {
                 npc.lifeMax += npc.lifeMax;
 

@@ -2,6 +2,9 @@
 using CalamityMod.Events;
 using InfernumSaveSystem = InfernumMode.Core.GlobalInstances.Systems.WorldSaveSystem;
 using SOTS.NPCs.Boss;
+using SOTS.NPCs.Boss.Advisor;
+using CalamityMod;
+using CalamityMod.UI;
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {
@@ -93,22 +96,29 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             }
         }
 
+        [ExtendsFromMod("SOTS")]
         public class AdvisorDefenseReset : GlobalNPC
         {
             public override bool InstancePerEntity => true;
             // This issue has been fixed in main Revengence+ - ..nevermind
             private bool scaledBossRushHP = false;
+
+            public override bool AppliesToEntity(NPC entity, bool lateInstantiation)
+            {
+                return entity.type == ModContent.NPCType<TheAdvisorHead>();
+            }
+
+            public override bool PreAI(NPC npc)
+            {
+                if (!npc.boss && !BossHealthBarManager.BossExclusionList.Contains(npc.type))
+                    BossHealthBarManager.BossExclusionList.Add(npc.type);
+                else if (npc.boss && BossHealthBarManager.BossExclusionList.Contains(npc.type))
+                    BossHealthBarManager.BossExclusionList.Remove(npc.type);
+                return base.PreAI(npc);
+            }
+
             public override void PostAI(NPC npc)
             {
-                // 1) Only target SOTS's TheAdvisorHead
-                if (npc.ModNPC is not ModNPC modNpc
-                    || modNpc.Mod.Name != "SOTS"
-                    || modNpc.Name != "TheAdvisorHead")
-                {
-                    return;
-                }
-
-                // 2) If Calamity Boss Rush is active, do nothing
                 if (BossRushEvent.BossRushActive && !scaledBossRushHP)
                 {
                     npc.lifeMax += (int)(((double).25) * (double)npc.lifeMax);
@@ -117,10 +127,8 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                     return;
                 }
 
-                // 3) Default to base SOTS defense
                 int targetDefense = 24;
 
-                // 4) If Calamity is loaded, ask it which alternate difficulty is active
                 if (ModLoader.TryGetMod("CalamityMod", out Mod calamity))
                 {
                     // These calls must match Calamity's internal names exactly:
@@ -141,19 +149,11 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                     }
                 }
 
-                // 5) Clamp it on the NPC
                 npc.defense = targetDefense;
             }
 
             public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
             {
-                if (npc.ModNPC is not ModNPC modNpc
-                                   || modNpc.Mod.Name != "SOTS"
-                                   || modNpc.Name != "TheAdvisorHead")
-                {
-                    return;
-                }
-
                 if (InfernumSaveSystem.InfernumModeEnabled)
                     modifiers.SourceDamage *= 1.35f;
             }
