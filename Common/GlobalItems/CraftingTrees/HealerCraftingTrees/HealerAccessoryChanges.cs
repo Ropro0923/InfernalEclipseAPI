@@ -120,7 +120,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.HealerCraftingTree
 
             if (ThoriumRework != null)
             {
-                /*
+                
                 if (item.type == ThoriumRework.Find<ModItem>("SealedContract").Type)
                 {
                     foreach (TooltipLine tooltip in tooltips)
@@ -143,7 +143,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.HealerCraftingTree
                         }
                     }
                 }
-                */
+                
             }
         }
     }
