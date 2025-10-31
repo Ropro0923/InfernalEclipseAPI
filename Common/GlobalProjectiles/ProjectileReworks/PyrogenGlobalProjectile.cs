@@ -15,6 +15,7 @@ namespace InfernalEclipseAPI.Common.GlobalProjectiles.ProjectileReworks
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
+            /*
             if (projectile.type == ModContent.ProjectileType<FireBarrage>() || projectile.type == ModContent.ProjectileType<FireBarrageHoming>())
             {
                 projectile.damage = 80;
@@ -38,6 +39,7 @@ namespace InfernalEclipseAPI.Common.GlobalProjectiles.ProjectileReworks
                 projectile.damage = 100;
                 applyDebuff = true;
             }
+            */
         }
 
         public override void OnHitPlayer(Projectile projectile, Player target, Player.HurtInfo info)
@@ -76,13 +78,11 @@ namespace InfernalEclipseAPI.Common.GlobalProjectiles.ProjectileReworks
                 return;
             }
 
-            // Apply intended damage if too low
             if (info.Damage < intendedDamage)
             {
                 target.Hurt(PlayerDeathReason.ByProjectile(target.whoAmI, projectile.whoAmI), intendedDamage, 0);
             }
 
-            // Apply Brimstone Flames debuff if possible
             if (applyDebuff)
             {
                 target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 180);

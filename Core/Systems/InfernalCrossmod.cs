@@ -4,10 +4,9 @@ namespace InfernalEclipseAPI.Core.Systems
     {
         public static class Calamity
         {
-            public const string Name = "CalamityMod";
+            public static string Name = "CalamityMod";
             public static Mod Mod => ModLoader.GetMod(Name);
             public static bool Loaded => ModLoader.HasMod(Name);
-
         }
         public static class ThrowerUnification
         {
@@ -45,6 +44,13 @@ namespace InfernalEclipseAPI.Core.Systems
         public static class Consolaria
         {
             public const string Name = "Consolaria";
+            public static bool Loaded => ModLoader.HasMod(Name);
+            public static Mod Mod => ModLoader.GetMod(Name);
+        }
+
+        public static class FargosMutant
+        {
+            public const string Name = "Fargowiltas";
             public static bool Loaded => ModLoader.HasMod(Name);
             public static Mod Mod => ModLoader.GetMod(Name);
         }
