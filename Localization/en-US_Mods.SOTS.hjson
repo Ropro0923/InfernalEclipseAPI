@@ -5,3 +5,4 @@ VisionAmuletTextList2.3:
 	Increases max mana and mana received from potions by 40
 	'''
 NPCs.CorpseBloom.DisplayName: Rotbloom
+Items.Sharanga.DisplayName: Kodanda
