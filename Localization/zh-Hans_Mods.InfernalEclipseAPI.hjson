@@ -1434,20 +1434,76 @@ Configs: {
 
 	Difficulty: {
 		Tooltip: ""
-		AlwaysOff.Label: 保持关闭
-		AlwaysOn.Label: 保持开启
-		Expert.Label: 专家
-		Master.Label: 大师
-		Legendary.Label: 传奇
-		Revengence.Label: 复仇
-		MasterRevengence.Label: 大师复仇
-		LegendaryRevengence.Label: 传奇复仇
-		Death.Label: 死亡
-		MasterDeath.Label: 大师死亡
-		LegendaryDeath.Label: 传奇死亡
-		Infernum.Label: 炼狱
-		MasterInfernum.Label: 大师炼狱
-		LegendaryInfernum.Label: 传奇炼狱
+
+		AlwaysOff: {
+			Label: 保持关闭
+			// Tooltip: ""
+		}
+
+		AlwaysOn: {
+			Label: 保持开启
+			// Tooltip: ""
+		}
+
+		Expert: {
+			Label: 专家
+			// Tooltip: ""
+		}
+
+		Master: {
+			Label: 大师
+			// Tooltip: ""
+		}
+
+		Legendary: {
+			Label: 传奇
+			// Tooltip: ""
+		}
+
+		Revengence: {
+			Label: 复仇
+			// Tooltip: ""
+		}
+
+		MasterRevengence: {
+			Label: 大师复仇
+			// Tooltip: ""
+		}
+
+		LegendaryRevengence: {
+			Label: 传奇复仇
+			// Tooltip: ""
+		}
+
+		Death: {
+			Label: 死亡
+			// Tooltip: ""
+		}
+
+		MasterDeath: {
+			Label: 大师死亡
+			// Tooltip: ""
+		}
+
+		LegendaryDeath: {
+			Label: 传奇死亡
+			// Tooltip: ""
+		}
+
+		Infernum: {
+			Label: 炼狱
+			// Tooltip: ""
+		}
+
+		MasterInfernum: {
+			Label: 大师炼狱
+			// Tooltip: ""
+		}
+
+		LegendaryInfernum: {
+			Label: 传奇炼狱
+			// Tooltip: ""
+		}
 	}
 }
 

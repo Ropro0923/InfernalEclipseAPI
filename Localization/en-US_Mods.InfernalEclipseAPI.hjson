@@ -1438,20 +1438,76 @@ Configs: {
 
 	Difficulty: {
 		Tooltip: ""
-		AlwaysOff.Label: Always Off
-		AlwaysOn.Label: Always On
-		Expert.Label: Expert
-		Master.Label: Master
-		Legendary.Label: Legendary
-		Revengence.Label: Revengence
-		MasterRevengence.Label: Master Revengence
-		LegendaryRevengence.Label: Legendary Revengence
-		Death.Label: Death
-		MasterDeath.Label: Master Death
-		LegendaryDeath.Label: Legendary Death
-		Infernum.Label: Infernum
-		MasterInfernum.Label: Master Infernum
-		LegendaryInfernum.Label: Legendary Infernum
+
+		AlwaysOff: {
+			Label: Always Off
+			Tooltip: ""
+		}
+
+		AlwaysOn: {
+			Label: Always On
+			Tooltip: ""
+		}
+
+		Expert: {
+			Label: Expert
+			Tooltip: ""
+		}
+
+		Master: {
+			Label: Master
+			Tooltip: ""
+		}
+
+		Legendary: {
+			Label: Legendary
+			Tooltip: ""
+		}
+
+		Revengence: {
+			Label: Revengence
+			Tooltip: ""
+		}
+
+		MasterRevengence: {
+			Label: Master Revengence
+			Tooltip: ""
+		}
+
+		LegendaryRevengence: {
+			Label: Legendary Revengence
+			Tooltip: ""
+		}
+
+		Death: {
+			Label: Death
+			Tooltip: ""
+		}
+
+		MasterDeath: {
+			Label: Master Death
+			Tooltip: ""
+		}
+
+		LegendaryDeath: {
+			Label: Legendary Death
+			Tooltip: ""
+		}
+
+		Infernum: {
+			Label: Infernum
+			Tooltip: ""
+		}
+
+		MasterInfernum: {
+			Label: Master Infernum
+			Tooltip: ""
+		}
+
+		LegendaryInfernum: {
+			Label: Legendary Infernum
+			Tooltip: ""
+		}
 	}
 }
 
