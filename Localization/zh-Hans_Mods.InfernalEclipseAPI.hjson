@@ -1437,72 +1437,72 @@ Configs: {
 
 		AlwaysOff: {
 			Label: 保持关闭
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		AlwaysOn: {
 			Label: 保持开启
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Expert: {
 			Label: 专家
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Master: {
 			Label: 大师
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Legendary: {
 			Label: 传奇
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Revengence: {
 			Label: 复仇
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		MasterRevengence: {
 			Label: 大师复仇
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		LegendaryRevengence: {
 			Label: 传奇复仇
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Death: {
 			Label: 死亡
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		MasterDeath: {
 			Label: 大师死亡
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		LegendaryDeath: {
 			Label: 传奇死亡
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Infernum: {
 			Label: 炼狱
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		MasterInfernum: {
 			Label: 大师炼狱
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		LegendaryInfernum: {
 			Label: 传奇炼狱
-			// Tooltip: ""
+			Tooltip: ""
 		}
 	}
 }
