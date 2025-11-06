@@ -1,4 +1,6 @@
-﻿using Terraria.GameContent.ItemDropRules;
+﻿using CalamityMod;
+using InfernalEclipseAPI.Core.World;
+using Terraria.GameContent.ItemDropRules;
 
 namespace InfernalEclipseAPI.Content.Items.Materials
 {
@@ -19,18 +21,31 @@ namespace InfernalEclipseAPI.Content.Items.Materials
         {
             int[] cthulhuBosses =
             {
-                NPCID.EyeofCthulhu,
-                NPCID.EaterofWorldsHead,
-                NPCID.BrainofCthulhu,
-                NPCID.SkeletronHead,
-                NPCID.WallofFlesh
+            NPCID.EyeofCthulhu,
+            NPCID.EaterofWorldsHead,
+            NPCID.EaterofWorldsBody,
+            NPCID.EaterofWorldsTail,
+            NPCID.BrainofCthulhu,
+            NPCID.SkeletronHead,
+            NPCID.WallofFlesh
             };
 
             foreach (int bossID in cthulhuBosses)
             {
                 if (npc.type == bossID)
                 {
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AbandonedWorkshop>()));
+                    if (npc.type == NPCID.EaterofWorldsHead || npc.type == NPCID.EaterofWorldsBody || npc.type == NPCID.EaterofWorldsTail)
+                    {
+                        LeadingConditionRule EoWKill = new(DropHelper.If((info) => info.npc.boss && !InfernalWorld.craftedWorkshop));
+                        EoWKill.Add(ModContent.ItemType<AbandonedWorkshop>());
+                        npcLoot.Add(EoWKill);
+                    }
+                    else
+                    {
+                        LeadingConditionRule craftedWorkshop = new(DropHelper.If((info) => !InfernalWorld.craftedWorkshop));
+                        craftedWorkshop.Add(ItemDropRule.Common(ModContent.ItemType<AbandonedWorkshop>()));
+                        npcLoot.Add(craftedWorkshop);
+                    }
                 }
             }
         }
