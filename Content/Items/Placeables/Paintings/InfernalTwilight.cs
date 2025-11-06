@@ -95,8 +95,14 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Peter Fung",
             "Pudd1ng",
 
+            //Partners
+            "brome",
+            "Verveine",
+
             //Other
             "Kes",
+            "Feldy",
+            "TacoConKvass",
             "KaiTheExaminer",
             "konte1m",
             "LeEr206",
@@ -112,7 +118,14 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Tencvin",
             "Jillyfish",
 
+            //Supporters
+            "Lylittle",
+            "PoMin",
+            "Sharktank6",
+
             //Donors
+            "bryce27",
+            "evil81",
             "rosé",
 
             //Special Thanks
@@ -120,8 +133,8 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "javyz",
             "habble",
             "Lucille Karma",
+            "tomat",
             "Nycro",
-            "brome",
             "Cataclysmic Armageddon"
         };
 

@@ -1,7 +1,11 @@
-﻿using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
+﻿using InfernalEclipseAPI.Core.Systems;
+using NoxusBoss.Content.NPCs.Bosses.Avatar.SecondPhaseForm;
+using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {
+    [JITWhenModsEnabled(InfernalCrossmod.NoxusBoss.Name)]
+    [ExtendsFromMod(InfernalCrossmod.NoxusBoss.Name)]
     public class NoxusBossStatScaling : GlobalNPC
     {
         public override bool AppliesToEntity(NPC npc, bool lateInstatiation)
@@ -52,7 +56,12 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
 
             if (InfernumActive.InfernumActive)
             {
-                npc.lifeMax += (int)(((double).35) * (double)npc.lifeMax);
+                if (npc.type == ModContent.NPCType<AvatarOfEmptiness>())
+                {
+                    npc.lifeMax += (int)(0.20 * npc.lifeMax);
+                }
+                else
+                    npc.lifeMax += (int)(((double).35) * (double)npc.lifeMax);
             }
         }
 

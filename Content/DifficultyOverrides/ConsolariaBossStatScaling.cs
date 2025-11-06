@@ -1,7 +1,11 @@
-﻿using InfernumSaveSystem = InfernumMode.Core.GlobalInstances.Systems.WorldSaveSystem;
+﻿using Consolaria.Content.NPCs.Bosses.Ocram;
+using InfernalEclipseAPI.Core.Systems;
+using InfernumSaveSystem = InfernumMode.Core.GlobalInstances.Systems.WorldSaveSystem;
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {
+    [JITWhenModsEnabled(InfernalCrossmod.Consolaria.Name)]
+    [ExtendsFromMod(InfernalCrossmod.Consolaria.Name)]
     public class ConsolariaBossStatScaling : GlobalNPC
     {
         private bool GetCalDifficulty(string diff)
@@ -94,25 +98,34 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
 
         public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
         {
+            float sourceDamage = 0f;
+
+            if (npc.type == ModContent.NPCType<Ocram>())
+            {
+                sourceDamage += 0.1f;
+            }
+
             if (IsInfernumActive() || GetFargoDifficullty("MasochistMode"))
             {
-                modifiers.SourceDamage *= 1.25f;
+                sourceDamage += 1.25f;
             }
             else
             {
                 if (GetFargoDifficullty("EternityMode"))
                 {
-                    modifiers.SourceDamage *= 1.20f;
+                    sourceDamage += 1.20f;
                 }
                 else if (GetCalDifficulty("death"))
                 {
-                    modifiers.SourceDamage *= 1.15f;
+                    sourceDamage += 1.15f;
                 }
                 else if (GetCalDifficulty("revengeance"))
                 {
-                    modifiers.SourceDamage *= 1.05f;
+                    sourceDamage += 1.05f;
                 }
             }
+
+            modifiers.SourceDamage *= sourceDamage;
         }
 
         public override void PostAI(NPC npc)
