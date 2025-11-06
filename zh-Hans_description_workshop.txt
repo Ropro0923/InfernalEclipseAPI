@@ -3,7 +3,8 @@
 
 [h2]中文用户如果有讨论/反馈需要，欢迎加入讨论群：709532049[/h2]
 
-查看关联的[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456508757]模组整合包[/url]
+请查看我们推荐使用的[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3571911634]炼狱蚀光汉化合集[/url]，此合集完全按照主创推荐整合，并收录了对应的汉化模组
+如果电脑性能受限，可以考虑使用[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3597199137]炼狱蚀光性能合集[/url]，上述合集均可以自行增删非核心的模组
 
 诸神黄昏：炼狱蚀光是一款基于灾厄炼狱模式的大型扩展，目前主要支持整合包内的以下核心模组：
 [list]
