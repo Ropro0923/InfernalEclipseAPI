@@ -68,7 +68,7 @@ namespace InfernalEclipseAPI
 
                 if (InfernalCrossmod.RagnarokMod.Loaded)
                 {
-                    RagnarokModConfigSetup.SetupConfigs(cfgDir);
+                    RagnaorkModConfigSetup.SetupConfigs(cfgDir);
                 }
             }
 

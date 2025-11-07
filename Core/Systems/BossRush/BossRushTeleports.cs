@@ -62,7 +62,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 using static CalamityMod.Events.BossRushEvent;
-namespace InfernalEclipseAPI.Core.Systems
+namespace InfernalEclipseAPI.Core.Systems.BossRush
 {
     public class BossRushTeleports : ModSystem
     {

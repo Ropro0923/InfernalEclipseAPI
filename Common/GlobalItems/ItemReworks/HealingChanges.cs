@@ -25,6 +25,10 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
                 ["EaterOfPain"] = 3,
                 ["ChiLantern"] = 5,
                 // Add more ThoriumMod items here
+            },
+            ["ThoriumRework"] = new Dictionary<string, int>
+            {
+                ["RedCresent"] = 4
             }
         };
 

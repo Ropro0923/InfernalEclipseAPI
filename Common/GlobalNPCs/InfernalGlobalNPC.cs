@@ -9,6 +9,13 @@ using InfernalEclipseAPI.Core.Systems;
 using System.Collections.Generic;
 using InfernumMode.Core.GlobalInstances.Systems;
 using CalamityMod.World;
+using CalamityMod.NPCs.Crags;
+using CalamityMod.Items.Fishing.FishingRods;
+using CalamityMod;
+using System.Linq;
+using Terraria.Localization;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs
 {
@@ -72,12 +79,45 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
             }
         }
 
+        private sealed class EvilBossDownedCondition : IItemDropRuleCondition
+        {
+            public bool CanDrop(DropAttemptInfo info) => NPC.downedBoss2;
+            public bool CanShowItemDropInUI() => true;
+            public string GetConditionDescription() => "Downed Evil Boss";
+        }
+
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
             if (npc.boss) //anything that is considered a boss will have a 1/100 chance to drop our dev painting directly
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<InfernalTwilight>(), ThankYouPainting.DropInt));
             }
+            if (npc.type == ModContent.NPCType<SoulSlurper>() && InfernalConfig.Instance.BossKillCheckOnOres)
+            {
+                int slurperPole = ModContent.ItemType<SlurperPole>();
+
+                npcLoot.RemoveWhere(rule =>
+                    rule is CommonDrop cd && cd.itemId == slurperPole ||
+                    rule is ItemDropWithConditionRule iwc && iwc.itemId == slurperPole);
+
+                foreach (var rule in npcLoot.Get())
+                    PruneFromChains(rule, slurperPole);
+
+                npcLoot.Add(ItemDropRule.ByCondition(new EvilBossDownedCondition(), slurperPole, 30));
+            }
+        }
+
+        private static void PruneFromChains(IItemDropRule rule, int itemId)
+        {
+            if (rule.ChainedRules is null || rule.ChainedRules.Count == 0)
+                return;
+
+            rule.ChainedRules.RemoveAll(c =>
+                c.RuleToChain is CommonDrop cd && cd.itemId == itemId ||
+                c.RuleToChain is ItemDropWithConditionRule iwc && iwc.itemId == itemId);
+
+            foreach (var chain in rule.ChainedRules.ToList())
+                PruneFromChains(chain.RuleToChain, itemId);
         }
 
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)

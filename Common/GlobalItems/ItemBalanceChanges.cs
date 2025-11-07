@@ -12,6 +12,7 @@ using CalamityMod.Items;
 using Terraria.Localization;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using InfernalEclipseAPI.Core.Systems;
 
 namespace InfernalEclipseAPI.Common.GlobalItems
 {
@@ -1285,6 +1286,13 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                     #region Ranged
                     #region Pre-Hardmode
+                    //Champions Trifecta Shot
+                    if (item.type == thorium.Find<ModItem>("ChampionsTrifectaShot").Type)
+                    {
+                        item.useTime = 18;
+                        item.useAnimation = 18;
+                    }
+
                     //Frost Fury
                     if (item.type == thorium.Find<ModItem>("FrostFury").Type)
                     {
@@ -2346,6 +2354,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                         item.shootSpeed = 16;
                     }
 
+                    //Enchanted Knife
+                    if (item.type ==thorium.Find<ModItem>("EnchantedKnife").Type)
+                    {
+                        item.damage = 14;
+                    }
+
                     //Lasting Pliers
                     if (item.type == thorium.Find<ModItem>("LastingPliers").Type)
                     {
@@ -2918,7 +2932,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     //Rotten Cod
                     if (item.type == thorium.Find<ModItem>("RottenCod").Type)
                     {
-                        item.damage = 36;
+                        item.damage = 24;
                     }
 
                     //Deep Staff
@@ -2966,7 +2980,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     //Shadow Wand
                     if (item.type == thorium.Find<ModItem>("ShadowWand").Type)
                     {
-                        item.damage = 30;
+                        item.damage = 17;
                         item.useTime = 12;
                         item.useAnimation = 12;
                     }
@@ -2988,7 +3002,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     //The Stalker
                     if (item.type == thorium.Find<ModItem>("TheStalker").Type)
                     {
-                        item.damage = 53;
+                        item.damage = 36;
                     }
 
                     //Eater of Pain
@@ -3040,7 +3054,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     //Templar's Judgement
                     if (item.type == thorium.Find<ModItem>("TemplarJudgment").Type)
                     {
-                        item.damage = 80;
+                        item.damage = 46;
                     }
 
                     //Light's Lament
@@ -3305,7 +3319,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     //Tambourine
                     if (item.type == thorium.Find<ModItem>("Tambourine").Type)
                     {
-                        item.damage = 19;
+                        item.damage = 13;
                         item.useAnimation = 10;
                         item.useTime = 10;
                         item.shootSpeed = 12;
@@ -3379,7 +3393,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     //Dynasty Guzheng
                     if (item.type == thorium.Find<ModItem>("DynastyGuzheng").Type)
                     {
-                        item.damage = 28;
+                        //item.damage = 28;
                     }
 
                     //Marine Wine Glasss
