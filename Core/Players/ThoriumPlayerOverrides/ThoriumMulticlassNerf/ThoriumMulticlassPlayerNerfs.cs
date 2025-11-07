@@ -5,7 +5,7 @@ using InfernalEclipseAPI.Core.DamageClasses.MythicClass;
 using CalamityMod.CalPlayer;
 using Terraria.GameContent.Events;
 
-namespace InfernalEclipseAPI.Core.Players.ThoriumMulticlassNerf
+namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides.ThoriumMulticlassNerf
 {
     [ExtendsFromMod("ThoriumMod")]
     public class ThoriumMulticlassPlayerNerfs : ModPlayer

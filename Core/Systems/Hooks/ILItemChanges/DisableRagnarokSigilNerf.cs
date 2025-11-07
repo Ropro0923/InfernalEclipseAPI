@@ -5,7 +5,7 @@ using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 using ThoriumMod.Utilities;
 
-namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
+namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges
 {
     [ExtendsFromMod("RagnarokMod")]
     public class DisableRagnarokSigilNerf : ModSystem
@@ -91,7 +91,7 @@ namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
 
             // if (IsShinobiSigil(item)) return;
             c.Emit(OpCodes.Ldarg_1); // Item item
-            c.EmitDelegate<Func<Item, bool>>(IsShinobiSigil);
+            c.EmitDelegate(IsShinobiSigil);
             c.Emit(OpCodes.Brfalse_S, continueLbl);
             c.Emit(OpCodes.Ret);
             c.MarkLabel(continueLbl);

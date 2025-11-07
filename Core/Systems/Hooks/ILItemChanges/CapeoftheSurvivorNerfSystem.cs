@@ -2,7 +2,7 @@
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 
-namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
+namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges
 {
     [ExtendsFromMod("ThoriumMod")]
     public class CapeoftheSurvivorNerfSystem : ModSystem

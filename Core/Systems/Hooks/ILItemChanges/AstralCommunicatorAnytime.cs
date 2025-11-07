@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader.IO;
 using Microsoft.Xna.Framework;
 
-namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
+namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges
 {
     [ExtendsFromMod("CatalystMod")]
     public class AstralCommunicatorAnytime : ModSystem
@@ -46,17 +46,17 @@ namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
             // Hooks (MonoMod.RuntimeDetour.HookGen style)
             MonoModHooks.Add(
                 _communicatorCanUseItem,
-                (Func<orig_CommunicatorCanUseItem, AstralCommunicator, Player, bool>)CanUseCheck
+                CanUseCheck
             );
 
             MonoModHooks.Add(
                 _communicatorTooltip,
-                (Action<orig_CommunicatorTooltip, AstralCommunicator, List<TooltipLine>>)TooltipCheck
+                TooltipCheck
             );
 
             MonoModHooks.Add(
                 _communicatorPreDrawInventory,
-                (Func<orig_CommunicatorPreDrawInventory, AstralCommunicator, SpriteBatch, Vector2, Rectangle, Color, Color, Vector2, float, bool>)InventoryDraw
+                InventoryDraw
             );
 
             MonoModHooks.Add(
@@ -66,17 +66,17 @@ namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
 
             MonoModHooks.Add(
                 _playerUpdateEquips,
-                (Action<orig_PlayerEquips, CatalystPlayer>)EquipsCheck
+                EquipsCheck
             );
 
             MonoModHooks.Add(
                 _playerLoadData,
-                (Action<orig_PlayerLoadData, CatalystPlayer, TagCompound>)ForceData
+                ForceData
             );
 
             MonoModHooks.Add(
                 _npcPreKill,
-                (Func<orig_NPCPreKill, CatalystNPC, NPC, bool>)PreKillCheck
+                PreKillCheck
             );
         }
 

@@ -1,6 +1,6 @@
 ﻿using InfernalEclipseAPI.Content.Buffs;
 using ThoriumMod;
-using InfernalEclipseAPI.Core.Players.ThoriumMulticlassNerf;
+using InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides.ThoriumMulticlassNerf;
 
 namespace InfernalEclipseAPI.Common.GlobalItems
 {

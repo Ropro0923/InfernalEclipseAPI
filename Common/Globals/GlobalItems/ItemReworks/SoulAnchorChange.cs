@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using InfernalEclipseAPI.Core.Players;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
+using InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides;
 
 namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
 {

@@ -2,7 +2,7 @@
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 
-namespace InfernalEclipseAPI.Core.Systems.BossChecklistChanges
+namespace InfernalEclipseAPI.Core.Systems.Hooks.BossChecklistChanges
 {
     public class ClamityBCLKeyChanger : ModSystem 
     {

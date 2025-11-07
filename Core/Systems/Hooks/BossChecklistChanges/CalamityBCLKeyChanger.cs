@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 
-namespace InfernalEclipseAPI.Core.Systems.BossChecklistChanges
+namespace InfernalEclipseAPI.Core.Systems.Hooks.BossChecklistChanges
 {
     public class CalamityBCLKeyChanger : ModSystem
     {

@@ -3,7 +3,7 @@ using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 
-namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
+namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges
 {
     //WH
     public class MoltenThresherPostDrawIL : ModSystem
@@ -27,7 +27,7 @@ namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
                 return;
 
             // Hook: insert an immediate 'ret' at the start so PostDraw does nothing
-            thresherPostDrawIL = new ILHook(method, (ILContext il) =>
+            thresherPostDrawIL = new ILHook(method, (il) =>
             {
                 var c = new ILCursor(il);
                 c.Goto(0);           // beginning of the method

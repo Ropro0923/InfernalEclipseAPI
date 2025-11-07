@@ -5,7 +5,7 @@ using CalamityMod.CalPlayer;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 
-namespace InfernalEclipseAPI.Core.Players.ThoriumMulticlassNerf
+namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides.ThoriumMulticlassNerf
 {
     [ExtendsFromMod("ThoriumMod")]
     public class MulticlassEmpowermentRemover : GlobalItem
@@ -111,10 +111,10 @@ namespace InfernalEclipseAPI.Core.Players.ThoriumMulticlassNerf
         {
             try
             {
-                var thoriumPlayer = player.GetModPlayer<ThoriumMod.ThoriumPlayer>();
+                var thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
                 if (thoriumPlayer == null) return;
 
-                var empField = typeof(ThoriumMod.ThoriumPlayer)
+                var empField = typeof(ThoriumPlayer)
                     .GetField("Empowerments", BindingFlags.Instance | BindingFlags.NonPublic);
                 var data = empField?.GetValue(thoriumPlayer);
                 if (data == null) return;

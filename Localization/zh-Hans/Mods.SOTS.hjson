@@ -32,4 +32,8 @@ VisionAmuletTextList2: {
 }
 
 NPCs.CorpseBloom.DisplayName: 腐尸之花
-// Items.Sharanga.DisplayName: Kodanda
+
+Items: {
+	// Sharanga.DisplayName: Kodanda
+	// VigorPotion.Tooltip: Grants the ability to dash 25 times
+}

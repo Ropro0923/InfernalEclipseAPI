@@ -1,28 +1,28 @@
 ﻿using System.Reflection;
 using MonoMod.RuntimeDetour;
 
-namespace InfernalEclipseAPI.Core.Systems.ILItemChanges.VoidCostChanges
+namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges.VoidCostChanges
 {
-    public class GoopwoodSplitVoidCostAdjustment : ModSystem
+    public class TurboSlicerVoidCostAdjustment : ModSystem
     {
         private static Hook _voidCostHook;
+
         public override bool IsLoadingEnabled(Mod mod)
         {
             return InfernalConfig.Instance.SOTSBalanceChanges;
         }
-
         public override void Load()
         {
-            if (!ModLoader.TryGetMod("SOTSBardHealer", out var sotsBh))
+            if (!ModLoader.TryGetMod("SOTSBardHealer", out var sotsBH))
                 return;
 
-            var t = sotsBh.Code?.GetType("SOTSBardHealer.Items.GoopwoodSplit");
+            var t = sotsBH.Code?.GetType("SOTSBardHealer.Items.TurboSlicer");
             if (t == null) return;
 
-            var getter = t.GetMethod("get_VoidCost", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            var getter = t.GetMethod("get_VoidCost", BindingFlags.Instance | BindingFlags.Public);
             if (getter == null) return;
 
-            _voidCostHook = new Hook(getter, (Getter)((self) => 8));
+            _voidCostHook = new Hook(getter, (Getter)((self) => 2));
         }
 
         public override void Unload()

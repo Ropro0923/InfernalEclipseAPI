@@ -7,7 +7,7 @@ using Terraria.Chat;
 using Terraria.Localization;
 using InfernalEclipseAPI.Content.Buffs;
 
-namespace InfernalEclipseAPI.Core.Players
+namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides
 {
     public class SoulAnchorPlayer : ModPlayer
     {

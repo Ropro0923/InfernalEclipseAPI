@@ -4,7 +4,7 @@ using SOTS;
 using SOTS.Void;
 using InfernalEclipseAPI.Core.Players;
 
-namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
+namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges
 {
     [JITWhenModsEnabled(InfernalCrossmod.SOTS.Name)]
     [ExtendsFromMod(InfernalCrossmod.SOTS.Name)]

@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using MonoMod.RuntimeDetour;
 
-namespace InfernalEclipseAPI.Core.Systems.ILItemChanges.VoidCostChanges
+namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges.VoidCostChanges
 {
     public class GreenJellyfishStaffVoidCostAdjustment : ModSystem
     {

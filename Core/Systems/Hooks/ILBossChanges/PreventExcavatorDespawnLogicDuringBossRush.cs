@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using SOTS;
 using CalamityMod.Events;
 
-namespace InfernalEclipseAPI.Core.Systems.ILBossChanges
+namespace InfernalEclipseAPI.Core.Systems.Hooks.ILBossChanges
 {
     [JITWhenModsEnabled(InfernalCrossmod.SOTS.Name)]
     [ExtendsFromMod(InfernalCrossmod.SOTS.Name)]
