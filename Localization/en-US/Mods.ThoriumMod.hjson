@@ -12,11 +12,11 @@ Items: {
 
 	/*
 	ScryingGlass: {
-		DisplayName: Scrying Glass
-		Tooltip: Pressing the '{$Keybinds.AccessoryAbility.DisplayName}' key will toggle an increased range of view
+	DisplayName: Scrying Glass
+	Tooltip: Pressing the '{$Keybinds.AccessoryAbility.DisplayName}' key will toggle an increased range of view
 	}
 	*/
-
+	
 	SoulofPlight: {
 		DisplayName: Soul of Spite
 		Tooltip: "'The essence of damned creatures'"

@@ -18,6 +18,10 @@ namespace InfernalEclipseAPI.Core.Players
 {
     public class InfernalPlayer : ModPlayer
     {
+        public bool LazyCrafterAmulet;
+        public bool statShareAll;
+        public bool scalingArmorPenetration;
+
         private const int AdjRadius = 4;
 
         public override void PlayerConnect()
@@ -159,6 +163,9 @@ namespace InfernalEclipseAPI.Core.Players
 
             soltanBullying = false;
             HarvestMoonBuff = false;
+            scalingArmorPenetration = false;
+            statShareAll = false;
+            LazyCrafterAmulet = false;
         }
 
         public override void PreUpdate()
@@ -273,19 +280,153 @@ namespace InfernalEclipseAPI.Core.Players
 
         public override void PostUpdateEquips()
         {
-            /*
-            //Why why why why SOTS
-            bool nearRealAlchemyTable = IsNearTile(TileID.AlchemyTable, AdjRadius);
-
-            if (!nearRealAlchemyTable)
+            if (LazyCrafterAmulet)
             {
-                if (Player.adjTile[TileID.AlchemyTable]) // 355
-                    Player.adjTile[TileID.AlchemyTable] = false;
-
-                if (Player.alchemyTable)
-                    Player.alchemyTable = false;
+                Player.adjTile[TileID.WorkBenches] = true;
+                Player.adjTile[TileID.Furnaces] = true;
+                Player.adjTile[TileID.Anvils] = true;
+                Player.adjTile[TileID.Bottles] = true;
+                Player.adjTile[TileID.Tables] = true;
             }
-            */
+
+            var meleeDamage = Player.GetDamage(DamageClass.Melee);
+            float meleeAdd = (meleeDamage.Additive - 1f) * 0.1f;
+            float meleeFlat = meleeDamage.Flat * 0.1f;
+            float meleeMult = ((meleeDamage.Multiplicative - 1f) * 0.1f) + 1f;
+            float meleeBase = meleeDamage.Base * 0.1f;
+
+            var rangedDamage = Player.GetDamage(DamageClass.Ranged);
+            float rangedAdd = (rangedDamage.Additive - 1f) * 0.1f;
+            float rangedFlat = rangedDamage.Flat * 0.1f;
+            float rangedMult = ((rangedDamage.Multiplicative - 1f) * 0.1f) + 1f;
+            float rangedBase = rangedDamage.Base * 0.1f;
+
+            var magicDamage = Player.GetDamage(DamageClass.Magic);
+            float magicAdd = (magicDamage.Additive - 1f) * 0.1f;
+            float magicFlat = magicDamage.Flat * 0.1f;
+            float magicMult = ((magicDamage.Multiplicative - 1f) * 0.1f) + 1f;
+            float magicBase = magicDamage.Base * 0.1f;
+
+            var summonDamage = Player.GetDamage(DamageClass.Summon);
+            float summonAdd = (summonDamage.Additive - 1f) * 0.1f;
+            float summonFlat = summonDamage.Flat * 0.1f;
+            float summonMult = ((summonDamage.Multiplicative - 1f) * 0.1f) + 1f;
+            float summonBase = summonDamage.Base * 0.1f;
+
+            if (statShareAll)
+            {
+                if (meleeAdd > 0f)
+                {
+                    ref var generic = ref Player.GetDamage(DamageClass.Generic);
+                    ref var melee = ref Player.GetDamage(DamageClass.Melee);
+                    generic += meleeAdd;
+                    melee -= meleeAdd;
+                }
+
+                if (meleeFlat > 0f)
+                {
+                    Player.GetDamage(DamageClass.Generic).Flat += meleeFlat;
+                    Player.GetDamage(DamageClass.Melee).Flat -= meleeFlat;
+                }
+
+                if (meleeMult > 1f)
+                {
+                    ref var generic = ref Player.GetDamage(DamageClass.Generic);
+                    ref var melee = ref Player.GetDamage(DamageClass.Melee);
+                    generic *= meleeMult;
+                    melee /= meleeMult;
+                }
+
+                if (meleeBase > 0f)
+                {
+                    Player.GetDamage(DamageClass.Generic).Base += meleeBase;
+                    Player.GetDamage(DamageClass.Melee).Base -= meleeBase;
+                }
+
+                if (rangedAdd > 0f)
+                {
+                    ref var generic = ref Player.GetDamage(DamageClass.Generic);
+                    ref var ranged = ref Player.GetDamage(DamageClass.Ranged);
+                    generic += rangedAdd;
+                    ranged -= rangedAdd;
+                }
+
+                if (rangedFlat > 0f)
+                {
+                    Player.GetDamage(DamageClass.Generic).Flat += rangedFlat;
+                    Player.GetDamage(DamageClass.Ranged).Flat -= rangedFlat;
+                }
+
+                if (rangedMult > 1f)
+                {
+                    ref var generic = ref Player.GetDamage(DamageClass.Generic);
+                    ref var ranged = ref Player.GetDamage(DamageClass.Ranged);
+                    generic *= rangedMult;
+                    ranged /= rangedMult;
+                }
+
+                if (rangedBase > 0f)
+                {
+                    Player.GetDamage(DamageClass.Generic).Base += rangedBase;
+                    Player.GetDamage(DamageClass.Ranged).Base -= rangedBase;
+                }
+
+                if (magicAdd > 0f)
+                {
+                    ref var generic = ref Player.GetDamage(DamageClass.Generic);
+                    ref var magic = ref Player.GetDamage(DamageClass.Magic);
+                    generic += magicAdd;
+                    magic -= magicAdd;
+                }
+
+                if (magicFlat > 0f)
+                {
+                    Player.GetDamage(DamageClass.Generic).Flat += magicFlat;
+                    Player.GetDamage(DamageClass.Magic).Flat -= magicFlat;
+                }
+
+                if (magicMult > 1f)
+                {
+                    ref var generic = ref Player.GetDamage(DamageClass.Generic);
+                    ref var magic = ref Player.GetDamage(DamageClass.Magic);
+                    generic *= magicMult;
+                    magic /= magicMult;
+                }
+
+                if (magicBase > 0f)
+                {
+                    Player.GetDamage(DamageClass.Generic).Base += magicBase;
+                    Player.GetDamage(DamageClass.Magic).Base -= magicBase;
+                }
+
+                if (summonAdd > 0f)
+                {
+                    ref var generic = ref Player.GetDamage(DamageClass.Generic);
+                    ref var summon = ref Player.GetDamage(DamageClass.Summon);
+                    generic += summonAdd;
+                    summon -= summonAdd;
+                }
+
+                if (summonFlat > 0f)
+                {
+                    Player.GetDamage(DamageClass.Generic).Flat += summonFlat;
+                    Player.GetDamage(DamageClass.Summon).Flat -= summonFlat;
+                }
+
+                if (summonMult > 1f)
+                {
+                    ref var generic = ref Player.GetDamage(DamageClass.Generic);
+                    ref var summon = ref Player.GetDamage(DamageClass.Summon);
+                    generic *= summonMult;
+                    summon /= summonMult;
+                }
+
+                if (summonBase > 0f)
+                {
+                    Player.GetDamage(DamageClass.Generic).Base += summonBase;
+                    Player.GetDamage(DamageClass.Summon).Base -= summonBase;
+                }
+            }
         }
 
         public void ConvertSummonMeleeToMelee(Player player, Item item, ref StatModifier damage)
@@ -317,6 +458,14 @@ namespace InfernalEclipseAPI.Core.Players
             ConvertSummonMeleeToMelee(Player, item, ref damage);
         }
 
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            if (scalingArmorPenetration)
+            {
+                modifiers.DefenseEffectiveness *= 0.2f;
+            }
+        }
+
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (Player.whoAmI != Main.myPlayer) return;
@@ -341,25 +490,6 @@ namespace InfernalEclipseAPI.Core.Players
             {
                 hit.Damage -= (int)(hit.Damage * 0.2);
             }
-        }
-
-        private bool IsNearTile(ushort tileType, int radius)
-        {
-            int px = (int)(Player.Center.X / 16f);
-            int py = (int)(Player.Center.Y / 16f);
-
-            for (int x = px - radius; x <= px + radius; x++)
-            {
-                if (x < 0 || x >= Main.maxTilesX) continue;
-                for (int y = py - radius; y <= py + radius; y++)
-                {
-                    if (y < 0 || y >= Main.maxTilesY) continue;
-                    Tile t = Main.tile[x, y];
-                    if (t != null && t.HasTile && t.TileType == tileType)
-                        return true;
-                }
-            }
-            return false;
         }
     }
 

@@ -1,8 +1,35 @@
-VisionAmuletTextList2.3:
-	'''
+VisionAmuletTextList: {
+	// 4: Increases critical strike damage by 5%
+	/* 6:
+		'''
+		Increases max life by 20
+		Increases damage by 5%
+		''' */
+}
 
-	可访问工作台，熔炉，和铁砧制作站
-	增加40点最大魔力值和从药水恢复的魔力值
-	'''
+VisionAmuletTextList2: {
+	/* 1:
+		'''
+
+		Decreases mana cost by 20% 
+		''' */
+	3:
+		'''
+
+		可访问工作台，熔炉，和铁砧制作站
+		增加40点最大魔力值和从药水恢复的魔力值
+		'''
+	/* 4:
+		'''
+
+		Increases all damage by 10% of the increases received to any other damage type from other sources
+		''' */
+	/* 5:
+		'''
+
+		Efficacy of enemy defense is reduced by 20%
+		''' */
+}
+
 NPCs.CorpseBloom.DisplayName: 腐尸之花
-//Items.Sharanga.DisplayName: Kodanda
+// Items.Sharanga.DisplayName: Kodanda
