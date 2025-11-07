@@ -13,15 +13,15 @@ using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.PermanentBoosters;
 using CalamityMod.Items.Weapons.Summon;
-using InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre;
 using InfernalEclipseAPI.Content.Items.Accessories.ChromaticMassInABottle;
 using InfernalEclipseAPI.Content.Items.Weapons.BossRush.NovaBomb;
 using InfernalEclipseAPI.Content.Items.Weapons.BossRush.Swordofthe14thGlitch;
 using CalamityMod.Items.DraedonMisc;
 using CalamityMod.Items.Placeables;
-using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
 using InfernalEclipseAPI.Content.Items.Weapons.Magic.ChaosBlaster;
 using InfernalEclipseAPI.Content.Items.Weapons.Nameless.NebulaGigabeam;
+using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
+using InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre;
 
 namespace InfernalEclipseAPI.Common.Balance.Recipes
 {
@@ -604,12 +604,6 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                                         recipe.AddTile(TileID.Anvils);
                                     }
                                 }
-                            }
-
-                            if (recipe.HasResult(thorium.Find<ModItem>("IridescentHelmet")) || recipe.HasResult(thorium.Find<ModItem>("IridescentMail")) || recipe.HasResult(thorium.Find<ModItem>("IridescentGreaves")))
-                            {
-                                recipe.RemoveTile(16);
-                                recipe.AddTile(thorium.Find<ModTile>("ArcaneArmorFabricator"));
                             }
 
                             if (recipe.HasResult(thorium.Find<ModItem>("CrystalArrow")))

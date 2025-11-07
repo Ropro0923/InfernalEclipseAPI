@@ -49,7 +49,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 {
                     string name = npc.ModNPC?.Name ?? "";
                     if (name.Contains("Excavator"))
-                        npc.lifeMax *= 105;
+                        npc.lifeMax *= 90;
 
                     npc.lifeMax += (int)(((double).25 * (double)npc.lifeMax));
                 }
@@ -61,7 +61,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
 
                 if (npc.type == ModContent.NPCType<PutridPinkyPhase2>())
                 {
-                    npc.lifeMax += (int)(((double).25) * npc.lifeMax);
+                    npc.lifeMax += (int)(((double).15) * npc.lifeMax);
                 }
                 else npc.lifeMax += (int)(((double).35) * npc.lifeMax);
             }
@@ -88,11 +88,14 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
         {
             if (InfernumActive.InfernumActive)
             {
+                /*
                 if (npc.type == ModContent.NPCType<PutridPinkyPhase2>())
                 {
                     npc.position += npc.velocity * 0.3f;
                 }
-                else npc.position += npc.velocity * 0.35f;
+                else 
+                */
+                npc.position += npc.velocity * 0.35f;
             }
         }
 
