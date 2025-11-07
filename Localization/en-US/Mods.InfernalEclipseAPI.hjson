@@ -1160,6 +1160,17 @@ Items: {
 		DisplayName: Music Box (Infernal Eclipse of Ragnarok Title)
 		Tooltip: Plays 'Teardrops of Dragonfire' by Peter Fung
 	}
+
+	Streetsign: {
+		DisplayName: Streetsign
+		Tooltip:
+			'''
+			While holding this weapon, you have a improbability bar
+			The bar charges by dealing or taking damage
+			When the bar is full, you gain increased weapon stats and movement speed 
+			[c/7C0A02: YOU DO NOT KILL CLOWN!!! CLOWN KILLS YOU!!!]
+			'''
+	}
 }
 
 Projectiles: {

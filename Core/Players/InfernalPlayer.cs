@@ -7,12 +7,12 @@ using InfernalEclipseAPI.Content.Buffs;
 using Terraria.DataStructures;
 using InfernalEclipseAPI.Core.World;
 using Terraria.Localization;
-using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Projectiles.Rogue;
 using CalamityMod.NPCs.SupremeCalamitas;
 using InfernalEclipseAPI.Core.DamageClasses;
 using Terraria.ModLoader.IO;
+using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
 
 namespace InfernalEclipseAPI.Core.Players
 {
