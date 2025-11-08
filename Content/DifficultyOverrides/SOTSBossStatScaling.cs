@@ -94,7 +94,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                     npc.position += npc.velocity * 0.3f;
                 }
                 */
-                else npc.position += npc.velocity * 0.35f;
+                npc.position += npc.velocity * 0.35f;
             }
         }
 
