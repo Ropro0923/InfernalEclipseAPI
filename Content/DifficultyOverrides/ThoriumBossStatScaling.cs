@@ -1,9 +1,13 @@
 ﻿using InfernumSaveSystem = InfernumMode.Core.GlobalInstances.Systems.WorldSaveSystem;
 using System.Reflection;
 using Terraria.DataStructures;
+using ThoriumMod.NPCs.BossBoreanStrider;
+using Microsoft.CodeAnalysis;
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {
+    [JITWhenModsEnabled("ThoriumMod")]
+    [ExtendsFromMod("ThoriumMod")]
     public class ThoriumBossStatScaling : GlobalNPC
     {
         private bool GetCalDifficulty(string diff)
@@ -36,6 +40,21 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
         public override bool AppliesToEntity(NPC npc, bool lateInstantiation)
         {
             return npc.boss && npc.ModNPC?.Mod?.Name == "ThoriumMod";
+        }
+
+        public override void SetDefaults(NPC entity)
+        {
+            if (IsInfernumActive()) 
+            {
+                if (entity.type == ModContent.NPCType<BoreanStrider>())
+                {
+                    entity.defense += 10;
+                }
+                if (entity.type == ModContent.NPCType<BoreanStriderPopped>())
+                {
+                    entity.defense += 5;
+                }
+            }
         }
 
         public override void ApplyDifficultyAndPlayerScaling(NPC npc, int numPlayers, float balance, float bossAdjustment)
@@ -83,7 +102,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 {
                     npc.lifeMax += (int)npc.lifeMax;
                 }
-                if (npc.ModNPC?.Name?.Contains("StarScouter") == true)
+                if (npc.ModNPC?.Name?.Contains("StarScouter") == true || npc.type == ModContent.NPCType<BoreanStrider>() || npc.type == ModContent.NPCType<BoreanStriderPopped>())
                 {
                     npc.lifeMax += (int)(0.75 * npc.lifeMax);
                 }
@@ -101,7 +120,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                     {
                         npc.lifeMax += (int)(0.75 * npc.lifeMax);
                     }
-                    if (npc.ModNPC?.Name?.Contains("StarScouter") == true)
+                    if (npc.ModNPC?.Name?.Contains("StarScouter") == true || npc.type == ModContent.NPCType<BoreanStrider>() || npc.type == ModContent.NPCType<BoreanStriderPopped>())
                     {
                         npc.lifeMax += (int)(0.5 * npc.lifeMax);
                     }
@@ -114,7 +133,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                     {
                         npc.lifeMax += (int)(0.5 * npc.lifeMax);
                     }
-                    if (npc.ModNPC?.Name?.Contains("StarScouter") == true)
+                    if (npc.ModNPC?.Name?.Contains("StarScouter") == true || npc.type == ModContent.NPCType<BoreanStrider>() || npc.type == ModContent.NPCType<BoreanStriderPopped>())
                     {
                         npc.lifeMax += (int)(0.375 * npc.lifeMax);
                     }
@@ -127,7 +146,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                     {
                         npc.lifeMax += (int)(0.25 * npc.lifeMax);
                     }
-                    if (npc.ModNPC?.Name?.Contains("StarScouter") == true)
+                    if (npc.ModNPC?.Name?.Contains("StarScouter") == true || npc.type == ModContent.NPCType<BoreanStrider>() || npc.type == ModContent.NPCType<BoreanStriderPopped>())
                     {
                         npc.lifeMax += (int)(0.1875 * npc.lifeMax);
                     }

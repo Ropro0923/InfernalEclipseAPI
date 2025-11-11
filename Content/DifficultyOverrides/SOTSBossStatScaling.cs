@@ -18,7 +18,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
 
         public override void SetDefaults(NPC entity)
         {
-            if (entity.ModNPC.Name.Contains("Excavator"))
+            if (entity.ModNPC.Name.Contains("Excavator") && InfernumActive.InfernumActive)
             {
                 entity.defense += 5;
             }
