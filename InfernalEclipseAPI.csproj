@@ -6,7 +6,7 @@
 	<!-- General -->
 	<PropertyGroup>
 	  <Platforms>AnyCPU;x64</Platforms>
-	  <PlatformTarget>x64</PlatformTarget>
+	  <PlatformTarget>AnyCPU</PlatformTarget>
 	</PropertyGroup>
 	<ItemGroup>
 	  <Folder Include="Assets\Sounds\Custom\TerraBlade\" />
@@ -60,7 +60,7 @@
 		  <HintPath>..\ModAssemblies\RevengeancePlus_v0.4.6.dll</HintPath>
 		</Reference>
 		<Reference Include="SOTS">
-		<HintPath>..\ModAssemblies\SOTS_v0.25.0.4.dll</HintPath>
+		<HintPath>..\ModAssemblies\SOTS_v0.25.1.0.dll</HintPath>
 		</Reference>
 		<Reference Include="SOTSBardHealer">
 		  <HintPath>..\ModAssemblies\SOTSBardHealer_v0.2.6.dll</HintPath>
