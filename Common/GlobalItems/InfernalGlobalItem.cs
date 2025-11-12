@@ -12,6 +12,26 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 {
     public class InfernalGlobalItem : GlobalItem
     {
+        public override bool? UseItem(Item item, Player player)
+        {
+            if (ModLoader.TryGetMod("YouBoss", out Mod you))
+            {
+                if (you.TryFind("FirstFractal", out ModItem firstFractal))
+                {
+                    if (item.type == firstFractal.Type)
+                    {
+                        if (player.mount.Active)
+                        {
+                            player.mount.Dismount(player);
+                        }
+                        player.RemoveAllGrapplingHooks();
+                    }
+                }
+            }
+
+            return base.UseItem(item, player);
+        }
+
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
         {
             if (item.type == ModContent.ItemType<StarterBag>())

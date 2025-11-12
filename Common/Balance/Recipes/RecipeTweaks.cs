@@ -22,6 +22,7 @@ using CalamityMod.Items.Placeables;
 using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
 using InfernalEclipseAPI.Content.Items.Weapons.Magic.ChaosBlaster;
 using InfernalEclipseAPI.Content.Items.Weapons.Nameless.NebulaGigabeam;
+using CalamityMod.Items.Potions;
 
 namespace InfernalEclipseAPI.Common.Balance.Recipes
 {
@@ -86,6 +87,14 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                 if (ModLoader.TryGetMod("CalamityAmmo", out Mod calAmmo))
                 {
                     if (recipe.HasResult(calAmmo.Find<ModItem>("HardTack")))
+                    {
+                        recipe.DisableDecraft();
+                    }
+                }
+
+                if (ModLoader.HasMod("NoxusBoss"))
+                {
+                    if (recipe.HasResult<GravityNormalizerPotion>())
                     {
                         recipe.DisableDecraft();
                     }

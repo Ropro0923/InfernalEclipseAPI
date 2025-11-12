@@ -1,4 +1,6 @@
-﻿namespace InfernalEclipseAPI.Common.GlobalProjectiles
+﻿using InfernalEclipseAPI.Core.Systems;
+
+namespace InfernalEclipseAPI.Common.GlobalProjectiles
 {
     public class CalamityLocaliFramesFix : GlobalProjectile
     {
@@ -21,6 +23,25 @@
                 //Make sure it's NOT using static ID-based immunity
                 projectile.usesIDStaticNPCImmunity = false;
             }
+        }
+
+        public override bool PreAI(Projectile projectile)
+        {
+            Player player = Main.player[projectile.owner];
+
+            if (InfernalCrossmod.YouBoss.Loaded)
+            {
+                if (projectile.type == InfernalCrossmod.YouBoss.Mod.Find<ModProjectile>("FirstFractalHoldout").Type)
+                {
+                    if (player.mount.Active && player.altFunctionUse == 2)
+                    {
+                        player.mount.Dismount(player);
+                    }
+                    player.RemoveAllGrapplingHooks();
+                }
+            }
+
+            return base.PreAI(projectile);
         }
     }
 }
