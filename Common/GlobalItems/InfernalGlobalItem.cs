@@ -7,12 +7,14 @@ using InfernalEclipseAPI.Core.World;
 using Terraria.DataStructures;
 using InfernalEclipseAPI.Content.Items.Placeables.Paintings;
 using InfernalEclipseAPI.Content.Items.Placeables.MusicBoxes;
+using CalamityMod.Items.Mounts;
+using InfernalEclipseAPI.Content.Items.Weapons.BossRush.Swordofthe14thGlitch;
 
 namespace InfernalEclipseAPI.Common.GlobalItems
 {
     public class InfernalGlobalItem : GlobalItem
     {
-        public override bool? UseItem(Item item, Player player)
+        public override bool CanUseItem(Item item, Player player)
         {
             if (ModLoader.TryGetMod("YouBoss", out Mod you))
             {
@@ -22,9 +24,61 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     {
                         if (player.mount.Active)
                         {
+                            return false;
+                        }
+                    }
+
+                    if (player.HeldItem.type == firstFractal.Type)
+                    {
+                        if (item.type == ModContent.ItemType<ExoThrone>())
+                        {
+                            return false;
+                        }
+
+                        if (ModLoader.TryGetMod("Clamity", out Mod clam))
+                        {
+                            if (clam.Find<ModItem>("PlagueStation").Type == item.type)
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (player.HeldItem.type == ModContent.ItemType<Swordofthe14thGlitch>())
+            {
+                if (item.type == ModContent.ItemType<ExoThrone>())
+                {
+                    return false;
+                }
+
+                if (ModLoader.TryGetMod("Clamity", out Mod clam))
+                {
+                    if (clam.Find<ModItem>("PlagueStation").Type == item.type)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return base.CanUseItem(item, player);
+        }
+
+        public override bool? UseItem(Item item, Player player)
+        {
+            if (ModLoader.TryGetMod("YouBoss", out Mod you))
+            {
+                if (you.TryFind("FirstFractal", out ModItem firstFractal))
+                {
+                    if (item.type == firstFractal.Type)
+                    {
+                        player.RemoveAllGrapplingHooks();
+                        if (player.mount.Active)
+                        {
                             player.mount.Dismount(player);
                         }
-                        player.RemoveAllGrapplingHooks();
+                        
                     }
                 }
             }

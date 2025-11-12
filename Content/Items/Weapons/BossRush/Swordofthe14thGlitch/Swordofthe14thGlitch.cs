@@ -70,10 +70,11 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.BossRush.Swordofthe14thGlitch
 
         public override bool CanUseItem(Player player)
         {
-            if (player.mount.Active && player.altFunctionUse == 2)
-                player.mount.Dismount(player);
             player.RemoveAllGrapplingHooks();
 
+            if (player.mount.Active && player.altFunctionUse == 2)
+                return false;
+           
             return player.ownedProjectileCounts[Item.shoot] <= 0;
         }
 

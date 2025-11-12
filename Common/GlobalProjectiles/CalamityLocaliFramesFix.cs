@@ -33,7 +33,7 @@ namespace InfernalEclipseAPI.Common.GlobalProjectiles
             {
                 if (projectile.type == InfernalCrossmod.YouBoss.Mod.Find<ModProjectile>("FirstFractalHoldout").Type)
                 {
-                    if (player.mount.Active && player.altFunctionUse == 2)
+                    if (player.mount.Active)
                     {
                         player.mount.Dismount(player);
                     }
