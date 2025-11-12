@@ -132,7 +132,7 @@ namespace InfernalEclipseAPI
         {
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamity))
             {
-                BossRushInjection(calamity);
+                //BossRushInjection(calamity);
             }
 
             if (InfernalConfig.Instance.ForceMenu)
@@ -297,6 +297,7 @@ namespace InfernalEclipseAPI
             //}
         }
 
+        /*
         public static void BossRushInjection(Mod calamity)
         {
             List<(int, int, Action<int>, int, bool, float, int[], int[])> brEntries = (List<(int, int, Action<int>, int, bool, float, int[], int[])>)calamity.Call("GetBossRushEntries");
@@ -862,5 +863,6 @@ namespace InfernalEclipseAPI
                 HostileProjectileKillCounter = 3;
             });
         }
+        */
     }
 }

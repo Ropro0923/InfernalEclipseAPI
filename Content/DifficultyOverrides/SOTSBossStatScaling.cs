@@ -49,7 +49,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 {
                     string name = npc.ModNPC?.Name ?? "";
                     if (name.Contains("Excavator"))
-                        npc.lifeMax *= 90;
+                        npc.lifeMax *= 75;
 
                     npc.lifeMax += (int)(((double).25 * (double)npc.lifeMax));
                 }

@@ -66,35 +66,117 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
 {
     public class BossRushTeleports : ModSystem
     {
-        internal static void BringPlayersBackToSpawn()
+        public static void BringPlayersBackToSpawn()
         {
             // Post-Wall of Flesh teleport back to spawn.
-            foreach (var player in Main.ActivePlayers) 
-            { 
+            foreach (Player player in Main.ActivePlayers)
+            {
+                if (player.active && !player.dead)
+                {
                     player.Spawn(PlayerSpawnContext.RecallFromItem);
                     SoundEngine.PlaySound(TeleportSound with { Volume = 1.6f }, player.Center);
-            }
-        }
-
-        public static Vector2 PyramidTeleport()
-        {
-            foreach (var player in Main.ActivePlayers)
-            {
-                for (int index1 = 0; index1 < Main.maxTilesX; ++index1)
-                {
-                    for (int index2 = 0; index2 < Main.maxTilesY; ++index2)
-                    {
-                        Tile tile = Main.tile[index1, index2];
-                        if (tile.TileType == ModLoader.GetMod("SOTS").Find<ModTile>("SarcophagusTile").Type)
-                        {
-                            return new Vector2((index1 + 1) * 16f, index2 * 16f);
-                        }
-                    }
                 }
             }
-            return new Vector2(0, 0);
         }
 
+        public static void PyramidTeleportAll()
+        {
+            Vector2? target = null;
+
+            // Find the sarcophagus tile once
+            for (int x = 0; x < Main.maxTilesX; x++)
+            {
+                for (int y = 0; y < Main.maxTilesY; y++)
+                {
+                    Tile tile = Main.tile[x, y];
+                    if (tile.HasTile && tile.TileType == ModLoader.GetMod("SOTS").Find<ModTile>("SarcophagusTile").Type)
+                    {
+                        target = new Vector2((x + 3f) * 16f, (y + 1.5f) * 16f);
+                        break;
+                    }
+                }
+                if (target.HasValue)
+                    break;
+            }
+
+            if (!target.HasValue)
+                return;
+
+            // Teleport every active player
+            foreach (Player player in Main.ActivePlayers)
+            {
+                if (player.active && !player.dead)
+                {
+                    player.Teleport(target.Value, 1);
+                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, player.whoAmI, target.Value.X, target.Value.Y, 1);
+                }
+            }
+        }
+
+        public static void HellTeleportAll()
+        {
+            foreach (Player player in Main.ActivePlayers)
+            {
+                if (player.active && !player.dead)
+                {
+                    player.DemonConch();
+                }
+            }
+        }
+
+        public static void GaurdiansTeleportAll()
+        {
+            Vector2 teleportPosition =
+            WorldSaveSystem.ProvidenceArena.TopLeft() * 16f +
+            new Vector2(WorldSaveSystem.ProvidenceArena.Width * 3.2f - 16f, 800f);
+
+            foreach (Player player in Main.ActivePlayers)
+            {
+                if (player.active && !player.dead)
+                {
+                    player.Teleport(teleportPosition, 1);
+                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, player.whoAmI, teleportPosition.X, teleportPosition.Y, 1);
+                }
+            }
+        }
+
+        public static void TeleportToForbiddenArchive()
+        {
+            // Compute teleport position
+            Vector2 teleportPosition =
+                WorldSaveSystem.ForbiddenArchiveCenter.ToWorldCoordinates() +
+                Vector2.UnitY * 1032f;
+
+            // Teleport all active, living players
+            foreach (Player player in Main.ActivePlayers)
+            {
+                if (player.active && !player.dead)
+                {
+                    player.Teleport(teleportPosition, 1);
+                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, player.whoAmI, teleportPosition.X, teleportPosition.Y, 1);
+                }
+            }
+        }
+
+        public static void TeleportToProvidence()
+        {
+            // Compute teleport position
+            Vector2 teleportPosition =
+                WorldSaveSystem.ProvidenceArena.TopRight() * 16f +
+                new Vector2(WorldSaveSystem.ProvidenceArena.Width * -3.2f - 16f, 800f);
+
+            // Teleport all active, living players
+            foreach (Player player in Main.ActivePlayers)
+            {
+                if (player.active && !player.dead)
+                {
+                    player.Teleport(teleportPosition, 1);
+                    NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, player.whoAmI, teleportPosition.X, teleportPosition.Y, 1);
+                }
+            }
+        }
+
+        /*
         public static void HandleTeleports()
         {
             if (BossRushStage < 0 || BossRushStage > Bosses.Count - 1)
@@ -178,5 +260,6 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
                 }
             }
         }
+        */
     }
 }

@@ -4,7 +4,7 @@ using CalamityMod.NPCs.CalClone;
 using CalamityMod.NPCs.ProfanedGuardians;
 using CalamityMod.NPCs.SupremeCalamitas;
 
-namespace InfernalEclipseAPI.Core.ModSceneEffects
+namespace InfernalEclipseAPI.Core.Systems.BossRush
 {
     public class BossRushMusicChange : ModSceneEffect
     {
@@ -24,7 +24,7 @@ namespace InfernalEclipseAPI.Core.ModSceneEffects
         {
             return 1f;
         }
-        public override SceneEffectPriority Priority => SceneEffectPriority.BossHigh + 4;
+        public override SceneEffectPriority Priority => SceneEffectPriority.BossHigh + 10;
 
         public override int Music
         {
