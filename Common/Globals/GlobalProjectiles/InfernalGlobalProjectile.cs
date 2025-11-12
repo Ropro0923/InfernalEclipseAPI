@@ -2,7 +2,7 @@
 
 namespace InfernalEclipseAPI.Common.GlobalProjectiles
 {
-    public class CalamityLocaliFramesFix : GlobalProjectile
+    public class InfernalGlobalProjectile : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
 
