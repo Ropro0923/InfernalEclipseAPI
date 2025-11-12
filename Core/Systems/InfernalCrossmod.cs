@@ -196,5 +196,12 @@ namespace InfernalEclipseAPI.Core.Systems
             public const string Name = "CalamityModMusic";
             public static Mod Mod => ModLoader.GetMod(Name);
         }
+
+        public static class BlueMoon
+        {
+            public const string Name = "BlueMoon";
+            public static bool Loaded => ModLoader.HasMod(Name);
+            public static Mod Mod => ModLoader.GetMod(Name);
+        }
     }
 }

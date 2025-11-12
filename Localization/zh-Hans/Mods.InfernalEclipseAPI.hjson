@@ -259,6 +259,11 @@ ItemTooltip: {
 			受伤时会产生钱币，并且在死亡时不会丢失钱币
 			开采方块时有概率掉落奖励资源，如钱币和泥沙
 			'''
+		/* AlchemistCharm:
+			'''
+			Increases healing and mana received from potions by 100
+			Increases buff duration by 67%
+			''' */
 	}
 
 	AmmoConversion.Mycelium: 发射真菌弹幕

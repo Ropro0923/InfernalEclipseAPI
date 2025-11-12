@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using CalamityMod.Items.Accessories;
 using Microsoft.Xna.Framework;
+using SOTS.Items;
 using Terraria.Localization;
 
 namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.MiscCraftingTrees
@@ -35,6 +36,15 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.MiscCraftingTrees
             {
                 if (thorium != null)
                     thorium.Find<ModItem>("MonsterCharm").UpdateAccessory(player, hideVisual);
+            }
+
+            if (item.type == ModContent.ItemType<ChaliceOfTheBloodGod>())
+            {
+                if (sots != null)
+                {
+                    sots.Find<ModItem>("AlchemistsCharm").UpdateAccessory(player, hideVisual);
+                    player.lifeRegen -= 2;
+                }
             }
 
             if (thorium != null)
@@ -91,6 +101,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.MiscCraftingTrees
             {
                 if (thorium != null)
                     AddTooltip(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.MonsterCharm"));
+            }
+
+            if (item.type == ModContent.ItemType<ChaliceOfTheBloodGod>())
+            {
+                if (sots != null)
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.AlchemistCharm"));
             }
 
             if (thorium != null)

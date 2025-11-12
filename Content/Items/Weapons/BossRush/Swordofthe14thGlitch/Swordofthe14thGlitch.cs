@@ -72,6 +72,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.BossRush.Swordofthe14thGlitch
         {
             if (player.mount.Active && player.altFunctionUse == 2)
                 player.mount.Dismount(player);
+            player.RemoveAllGrapplingHooks();
 
             return player.ownedProjectileCounts[Item.shoot] <= 0;
         }
@@ -82,6 +83,8 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.BossRush.Swordofthe14thGlitch
             {
                 player.mount.Dismount(player);
             }
+            player.RemoveAllGrapplingHooks();
+
             return base.UseItem(player);
         }
 

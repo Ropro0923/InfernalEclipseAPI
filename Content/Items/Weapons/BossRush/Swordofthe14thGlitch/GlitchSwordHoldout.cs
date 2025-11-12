@@ -11,6 +11,7 @@ using Luminance.Core.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 
@@ -143,6 +144,19 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.BossRush.Swordofthe14thGlitch
             float z = reader.ReadSingle();
             float w = reader.ReadSingle();
             Rotation = new(x, y, z, w);
+        }
+
+        public override bool PreAI()
+        {
+            Player player = Main.player[Projectile.owner];
+
+            if (player.mount.Active && player.altFunctionUse == 2)
+            {
+                player.mount.Dismount(player);
+            }
+            player.RemoveAllGrapplingHooks();
+
+            return base.PreAI();
         }
 
         public override void AI()

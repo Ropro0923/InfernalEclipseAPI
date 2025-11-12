@@ -543,6 +543,113 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 {
                     item.damage = 30;
                 }
+
+                //Bullets
+                if (UnsafeGetItem(calAmmo, "WulfrumBullet", item))
+                {
+                    item.damage = 7;
+                }
+
+                if (UnsafeGetItem(calAmmo, "VictideBullet", item))
+                {
+                    item.damage = 7;
+                }
+
+                if (UnsafeGetItem(calAmmo, "PearlBullet", item))
+                {
+                    item.damage = 6;
+                }
+
+                if (UnsafeGetItem(calAmmo, "SPBullet", item))
+                {
+                    item.damage = 8;
+                }
+
+                if (UnsafeGetItem(calAmmo, "BloodBullet", item))
+                {
+                    item.damage = 3;
+                }
+
+                if (UnsafeGetItem(calAmmo, "RottenBullet", item))
+                {
+                    item.damage = 13;
+                }
+
+                if (UnsafeGetItem(calAmmo, "ElementalBullet", item))
+                {
+                    item.damage = 13;
+                }
+
+                if (UnsafeGetItem(calAmmo, "HydrothermicBullet", item))
+                {
+                    item.damage = 3;
+                }
+
+                if (UnsafeGetItem(calAmmo, "FossilBullet", item))
+                {
+                    item.damage = 10;
+                }
+
+                if (UnsafeGetItem(calAmmo, "WeakAstralBullet", item))
+                {
+                    item.damage = 7;
+                }
+
+                if (UnsafeGetItem(calAmmo, "AstralBullet", item))
+                {
+                    item.damage = 7;
+                }
+
+                if (UnsafeGetItem(calAmmo, "DazzlingAstralBullet", item))
+                {
+                    item.damage = 1;
+                }
+
+                if (UnsafeGetItem(calAmmo, "NapalmBullet", item))
+                {
+                    item.damage = 9;
+                }
+
+                //Arrows
+                if (UnsafeGetItem(calAmmo, "WulfrumArrow", item))
+                {
+                    item.damage = 10;
+                }
+
+                if (UnsafeGetItem(calAmmo, "DesertFeatherArrow", item))
+                {
+                    item.damage = 9;
+                }
+
+                if (UnsafeGetItem(calAmmo, "GoldenFeatherArrow", item))
+                {
+                    item.damage = 9;
+                }
+
+                if (UnsafeGetItem(calAmmo, "DivineArrow", item))
+                {
+                    item.damage = 30;
+                }
+
+                if (UnsafeGetItem(calAmmo, "FossilArrow", item))
+                {
+                    item.damage = 8;
+                }
+
+                if (UnsafeGetItem(calAmmo, "HydrothermicArrow", item))
+                {
+                    item.damage = 3;
+                }
+
+                if (UnsafeGetItem(calAmmo, "AstralArrow", item))
+                {
+                    item.damage = 10;
+                }
+
+                if (UnsafeGetItem(calAmmo, "DazzlingAstralArrow", item))
+                {
+                    item.damage = 1;
+                }
             }
             #endregion
 
@@ -3424,7 +3531,9 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     //Sonar Cannon
                     if (item.type == thorium.Find<ModItem>("SonarCannon").Type)
                     {
-                        item.damage = 25;
+                        item.damage = 40;
+                        item.useTime = 26;
+                        item.useAnimation = 26;
                     }
 
                     //Bone Trumpet
@@ -4731,6 +4840,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.damage = 16;
                 }
 
+                if (GetItem(sots, "CoconutGun", item))
+                {
+                    item.damage = 8;
+                }
+
                 if (GetItem(sots, "IlluminantBow", item))
                 {
                     item.damage = 12;
@@ -4820,7 +4934,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                 if (GetItem(sots, "PhotonGeyser", item))
                 {
-                    item.damage = 16;
+                    item.damage = 20;
                 }
 
                 if (GetItem(sots, "WormWoodStaff", item))

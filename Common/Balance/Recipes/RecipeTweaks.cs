@@ -22,6 +22,8 @@ using InfernalEclipseAPI.Content.Items.Weapons.Magic.ChaosBlaster;
 using InfernalEclipseAPI.Content.Items.Weapons.Nameless.NebulaGigabeam;
 using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
 using InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre;
+using InfernalEclipseAPI.Core.Systems;
+using CalamityMod.Items.Potions;
 
 namespace InfernalEclipseAPI.Common.Balance.Recipes
 {
@@ -86,6 +88,14 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                 if (ModLoader.TryGetMod("CalamityAmmo", out Mod calAmmo))
                 {
                     if (recipe.HasResult(calAmmo.Find<ModItem>("HardTack")))
+                    {
+                        recipe.DisableDecraft();
+                    }
+                }
+
+                if (ModLoader.HasMod("NoxusBoss"))
+                {
+                    if (recipe.HasResult<GravityNormalizerPotion>())
                     {
                         recipe.DisableDecraft();
                     }
@@ -863,6 +873,17 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             if(recipe.HasResult(fishGun.Find<ModItem>("TrueMutantNightfish")))
                                 recipe.AddIngredient(sots.Find<ModItem>("SoulOfPlight"), 20);
                         }
+                    }
+                }
+
+                if (InfernalCrossmod.BlueMoon.Loaded)
+                {
+                    Mod blueMoon = InfernalCrossmod.BlueMoon.Mod;
+
+                    if (recipe.HasResult(blueMoon.Find<ModItem>("MoonsRing")))
+                    {
+                        recipe.RemoveTile(TileID.Anvils);
+                        recipe.AddTile(TileID.TinkerersWorkbench);
                     }
                 }
             }

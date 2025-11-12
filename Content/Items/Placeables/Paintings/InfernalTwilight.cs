@@ -94,6 +94,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Nobody",
             "Peter Fung",
             "Pudd1ng",
+            "Eduarrdo",
 
             //Partners
             "brome",

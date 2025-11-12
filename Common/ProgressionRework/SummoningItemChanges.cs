@@ -5,6 +5,7 @@ using CalamityMod.Items.SummonItems;
 using CalamityMod.Tiles.DraedonSummoner;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using InfernalEclipseAPI.Content.Items.Materials;
+using InfernalEclipseAPI.Core.Systems;
 using InfernumMode.Content.Items.SummonItems;
 
 namespace InfernalEclipseAPI.Common.ProgressionRework
@@ -213,6 +214,17 @@ namespace InfernalEclipseAPI.Common.ProgressionRework
                     }
                     recipe.RemoveTile(ItemID.LunarCraftingStation);
                     recipe.AddTile(ModContent.TileType<CosmicAnvil>());
+                }
+
+                //Terra Blade post-sentinals
+                if (InfernalCrossmod.YouBoss.Loaded)
+                {
+                    if (recipe.HasResult(InfernalCrossmod.YouBoss.Mod.Find<ModItem>("CursedMirror")))
+                    {
+                        recipe.AddIngredient<DarkPlasma>(3);
+                        recipe.AddIngredient<TwistingNether>(3);
+                        recipe.AddIngredient<RuinousSoul>(3);
+                    }
                 }
             }
         }

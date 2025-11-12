@@ -48,6 +48,15 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.MiscCraftingTrees
                     }
                 }
 
+                if (sots != null)
+                {
+                    if (recipe.HasResult<ChaliceOfTheBloodGod>())
+                    {
+                        recipe.RemoveIngredient(ItemID.CharmofMyths);
+                        recipe.AddIngredient(sots.Find<ModItem>("AlchemistsCharm").Type);
+                    }
+                }
+
                 if (ModLoader.HasMod("FargowiltasSouls"))
                 {
                     if (recipe.HasResult(ModLoader.GetMod("FargowiltasSouls").Find<ModItem>("EternitySoul")))
