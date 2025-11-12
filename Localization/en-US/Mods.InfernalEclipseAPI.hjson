@@ -461,10 +461,49 @@ Lore: {
 		'''
 	Glowmoth:
 		'''
-		This moth‑like creature is interesting, as it makes its homes within the same glowing, mushroom‑infested caves as another similar beast.
+		This moth-like creature is interesting, as it makes its homes within the same glowing, mushroom‑infested caves as another similar beast.
 		It seems to emit some sort of bioluminescent glow, reminiscent of the void...
 		perhaps it resides in these caves for their latent void energy?
 		Whatever the case may be, it is beyond me.
+		'''
+	Mjolnir:
+		'''
+		Thor, one of the many gods that had managed to evade my crusade,
+		yet he wiill never forget what I had done to him and family.
+		Asgard was merely a land of sinners, so I mererly did what they had done to so many others.
+		Thor had escaped me and I belived he still ruled over Asgard to this day,
+		but with his hammer in your hands, perhaps it is no more.
+		'''
+	Ragnarok:
+		'''
+		How curious.
+		Ragnarok, the fabled end of days, was a being rather than an event.
+		I had searched the world for how to start it, so I could destroy Asgard,
+		but in the end, I had found nothing.
+		The tales of serpents and fire were far from the truth,
+		but now Ragnarok lies in ruin just like the kingdom itself.
+
+		You are now seen as the hero for this land and may you find peace in the new age you have created.
+		However, beware, for with every end comes a new beginning...
+		[c/7C0A02: Do not push your luck further, Terrarian.]
+		'''
+	Primordials:
+		'''
+		Before the world was formed, there were only the Primordials.
+		Each of them represents an aspect of this world, and protect the world from Ragnarok.
+		During my war, I had wanted to slay them thinking they were merely sinners like the other gods,
+		however no matter what I did I could not get there attention.
+		Was I not worthy of their attention despite all I had done to the world?
+		Don't tell me they think I'm a spec in this worlds history compared to you...
+		'''
+	ThunderBird:
+		'''
+		These birds were once great and fearsome adversaries, fine foes worth the hunt.
+		Thier feathers could can channel the sun's dormant energy into potent lightning, hense the name.
+		However, these great battles were fleeting; and soon by generation selection,
+		they had lost most of thier potent strength.
+		The one you bested is not but a mellowed runt in comparision to what I had once seen,
+		yet forevermore the title of the Grand Thunder Bird lives on.
 		'''
 }
 
@@ -587,12 +626,15 @@ Items: {
 		LorePutrid.DisplayName: Putrid Pinky
 		LoreSerpent.DisplayName: Subspace Serpent
 		LoreProvi.DisplayName: The Radiant One
-		LoreMirror.DisplayName: The Mirror
+		LoreMirror.DisplayName: Cursed Mirror
 		LoreDylan.DisplayName: Dylan
 		LoreAbominationn.DisplayName: The Abominationn
 		LoreDeviantt.DisplayName: The Deviantt
 		LoreMutant.DisplayName: The Mutant
 		SoltanBullyingSlip.DisplayName: Dylan's Anti-Soltan Chipnote
+		LoreMjolnir.DisplayName: Mjolnir
+		LorePrimordials.DisplayName: The Primordials
+		LoreThunderBird.DisplayName: The Grand Thunder Bird
 	}
 
 	CatastrophicFabricationsMusicBox: {
@@ -1032,7 +1074,7 @@ Items: {
 	}
 
 	RingofTix: {
-		DisplayName: Ring of Tix
+		DisplayName: Tix-Burnt Ring
 		Tooltip: ""
 		SOTSTooltip: Right click while favorited to invert the currently selected gem, disabling the effect of the gem and enabling the inverted effect
 		G0: Chain together blocks when mining, breaking up to 50 blocks at once
@@ -1102,6 +1144,7 @@ Items: {
 			During the day, grants +2 HP/s life regen
 			During the night, grants +20 defense
 			During an eclipse, grants +1 HP/s life regen and +10 defense
+			'Behind the flames and the sparks, if you look deep enough, you will see your past and your future'
 			'''
 	}
 

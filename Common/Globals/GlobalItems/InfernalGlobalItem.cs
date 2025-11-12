@@ -7,6 +7,8 @@ using InfernalEclipseAPI.Core.World;
 using Terraria.DataStructures;
 using InfernalEclipseAPI.Content.Items.Placeables.Paintings;
 using InfernalEclipseAPI.Content.Items.Placeables.MusicBoxes;
+using InfernalEclipseAPI.Core.Systems;
+using InfernalEclipseAPI.Content.Items.Lore.Thorium;
 
 namespace InfernalEclipseAPI.Common.GlobalItems
 {
@@ -72,6 +74,20 @@ namespace InfernalEclipseAPI.Common.GlobalItems
             if (item.type == ItemID.TinkerersWorkshop)
             {
                 InfernalWorld.craftedWorkshop = true;
+            }
+
+            if (InfernalCrossmod.Thorium.Loaded)
+            {
+                if (item.type == InfernalCrossmod.Thorium.Mod.Find<ModItem>("Mjolnir").Type)
+                {
+                    Player p = Main.LocalPlayer;
+
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        int hammerLore = Item.NewItem(p.GetSource_Misc("IEoR_MjolnirCrafted"), (int)p.position.X, (int)p.position.Y, p.width, p.height, ModContent.ItemType<LoreMjolnir>());
+                        NetMessage.SendData(MessageID.InstancedItem, Main.myPlayer, -1, null, hammerLore);
+                    }
+                }
             }
 
             base.OnCreated(item, context);

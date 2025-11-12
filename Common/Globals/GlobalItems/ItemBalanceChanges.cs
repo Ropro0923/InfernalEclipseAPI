@@ -4401,6 +4401,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 {
                     item.defense = 0;
                 }
+
+                if (UnsafeGetItem(rethorium, "ZephyrWingsCosmetic", item))
+                {
+                    item.vanity = false;
+                }
             }
             #endregion
 

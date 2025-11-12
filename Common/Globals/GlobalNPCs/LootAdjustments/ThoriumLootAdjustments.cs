@@ -13,6 +13,9 @@ using ThoriumMod.NPCs;
 using ThoriumMod.NPCs.BossStarScouter;
 using Terraria.GameContent.ItemDropRules;
 using ThoriumMod.Items.BossStarScouter;
+using ThoriumMod;
+using InfernalEclipseAPI.Content.Items.Lore.Thorium;
+using ThoriumMod.NPCs.BossTheGrandThunderBird;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs.LootAdjustments
 {
@@ -40,6 +43,19 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs.LootAdjustments
             if (npc.type == NPCID.SandElemental)
             {
                 npcLoot.Add(ModContent.ItemType<DesertBiomeKey>());
+            }
+
+            if (npc.type == ModContent.NPCType<TheGrandThunderBird>())
+            {
+                bool firstBirdKill() => !ThoriumWorld.downedTheGrandThunderBird;
+                npcLoot.AddConditionalPerPlayer(firstBirdKill, ModContent.ItemType<LoreThunderBird>(), desc: DropHelper.FirstKillText);
+            }
+
+            if (npc.type == ModContent.NPCType<DreamEater>())
+            {
+                bool firstPrimordialKill() => !ThoriumWorld.downedThePrimordials;
+                npcLoot.AddConditionalPerPlayer(firstPrimordialKill, ModContent.ItemType<LorePrimordials>(), desc: DropHelper.FirstKillText);
+                npcLoot.AddConditionalPerPlayer(firstPrimordialKill, ModContent.ItemType<LoreRagnarok>(), desc: DropHelper.FirstKillText);
             }
 
             int[] meteoriteEnemies =
