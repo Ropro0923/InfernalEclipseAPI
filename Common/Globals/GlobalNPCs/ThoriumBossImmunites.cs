@@ -47,54 +47,5 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
                 npc.buffImmune[stunned] = true;
             }
         }
-
-        private static readonly HashSet<string> ThoriumBossNames = new()
-{
-            "TheGrandThunderBird",
-            "QueenJellyfish",
-            "Viscount",
-            "GraniteEnergyStorm",
-            "BuriedChampion",
-            "StarScouter",
-            "BoreanStrider",
-            "FallenBeholder",
-            "Lich",
-            "LichHeadless",
-            "ForgottenOne",
-            "ForgottenOneCracked",
-            "ForgottenOneReleased",
-            "DreamEater",
-            "Omnicide",
-            "SlagFury",
-            "Aquaius",
-            "PatchWerk",
-            "CorpseBloom",
-            "Illusionist",
-        };
-
-        public override void PostAI(NPC npc)
-        {
-            if (!npc.active || !npc.boss || npc.ModNPC == null)
-                return;
-
-            if (npc.ModNPC.Mod.Name == "ThoriumMod" && ThoriumBossNames.Contains(npc.ModNPC.Name))
-            {
-                if (CalamityConfig.Instance.BossZen)
-                {
-                    for (int i = 0; i < Main.maxPlayers; i++)
-                    {
-                        Player player = Main.player[i];
-                        if (!player.active || player.dead)
-                            continue;
-
-                        if (Vector2.Distance(player.Center, npc.Center) < 6400f)
-                        {
-                            // give at least 1 second to confirm it’s being applied
-                            player.AddBuff(ModContent.BuffType<BossEffects>(), 60, true, false);
-                        }
-                    }
-                }
-            }
-        }
     }
 }

@@ -463,6 +463,45 @@ Lore: {
 		或许正是那些洞穴中潜藏的虚空能量吸引了它？
 		无论如何，这一切仍超出我的理解范围。
 		'''
+	/* Mjolnir:
+		'''
+		Thor, one of the many gods that had managed to evade my crusade,
+		yet he wiill never forget what I had done to him and family.
+		Asgard was merely a land of sinners, so I mererly did what they had done to so many others.
+		Thor had escaped me and I belived he still ruled over Asgard to this day,
+		but with his hammer in your hands, perhaps it is no more.
+		''' */
+	/* Ragnarok:
+		'''
+		How curious.
+		Ragnarok, the fabled end of days, was a being rather than an event.
+		I had searched the world for how to start it, so I could destroy Asgard,
+		but in the end, I had found nothing.
+		The tales of serpents and fire were far from the truth,
+		but now Ragnarok lies in ruin just like the kingdom itself.
+
+		You are now seen as the hero for this land and may you find peace in the new age you have created.
+		However, beware, for with every end comes a new beginning...
+		[c/7C0A02: Do not push your luck further, Terrarian.]
+		''' */
+	/* Primordials:
+		'''
+		Before the world was formed, there were only the Primordials.
+		Each of them represents an aspect of this world, and protect the world from Ragnarok.
+		During my war, I had wanted to slay them thinking they were merely sinners like the other gods,
+		however no matter what I did I could not get there attention.
+		Was I not worthy of their attention despite all I had done to the world?
+		Don't tell me they think I'm a spec in this worlds history compared to you...
+		''' */
+	/* ThunderBird:
+		'''
+		These birds were once great and fearsome adversaries, fine foes worth the hunt.
+		Thier feathers could can channel the sun's dormant energy into potent lightning, hense the name.
+		However, these great battles were fleeting; and soon by generation selection,
+		they had lost most of thier potent strength.
+		The one you bested is not but a mellowed runt in comparision to what I had once seen,
+		yet forevermore the title of the Grand Thunder Bird lives on.
+		''' */
 }
 
 LegendaryTooltip.Base: 随着你击败强敌，此武器的力量可能不断增强。
@@ -590,6 +629,10 @@ Items: {
 		LoreDeviantt.DisplayName: 戴薇安
 		LoreMutant.DisplayName: 突变体
 		SoltanBullyingSlip.DisplayName: 迪伦的反索坦芯片便笺
+		// LoreMjolnir.DisplayName: Mjolnir
+		// LorePrimordials.DisplayName: The Primordials
+		// LoreThunderBird.DisplayName: The Grand Thunder Bird
+		// LoreRagnarok.DisplayName: Lore Ragnarok
 	}
 
 	CatastrophicFabricationsMusicBox: {

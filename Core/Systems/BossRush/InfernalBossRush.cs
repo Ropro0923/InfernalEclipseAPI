@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
+using System.Security.Policy;
 using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Enums;
@@ -52,7 +54,9 @@ using InfernumMode.Content.BehaviorOverrides.BossAIs.Polterghast;
 using InfernumMode.Content.BehaviorOverrides.BossAIs.ProfanedGuardians;
 using InfernumMode.Content.BehaviorOverrides.BossAIs.SlimeGod;
 using InfernumMode.Content.BehaviorOverrides.BossAIs.SupremeCalamitas;
+using InfernumMode.Core.GlobalInstances.Systems;
 using Microsoft.Xna.Framework;
+using MonoMod.RuntimeDetour;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using static CalamityMod.Events.BossRushEvent;
@@ -62,25 +66,84 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
 {
     public class InfernalBossRush : ModSystem
     {
+        private Hook handleTeleportsHook;
+
+        public override void Load()
+        {
+            MethodInfo target = typeof(BossRushChangesSystem).GetMethod(
+                "HandleTeleports",
+                BindingFlags.Public | BindingFlags.Static);
+
+            MethodInfo replacement = typeof(InfernalBossRush).GetMethod(
+                nameof(HandleTeleports_NoOp),
+                BindingFlags.NonPublic | BindingFlags.Static);
+
+            if (target != null && replacement != null)
+                handleTeleportsHook = new Hook(target, replacement);
+        }
+
+        public override void Unload()
+        {
+            handleTeleportsHook?.Dispose();
+            handleTeleportsHook = null;
+        }
+
+        // Signature matches MonoMod Hook pattern for a static void method with no parameters.
+        private static void HandleTeleports_NoOp(Action orig)
+        {
+            // Do nothing, effectively disabling the original method.
+        }
+
         public override void PostSetupContent()
         {
             Bosses = [];
 
             // Tier 1
-            if (InfernalCrossmod.Thorium.Loaded)
+            if (InfernalCrossmod.FargosSouls.Loaded)
             {
-                Bosses.Add(new Boss(ThoriumNPC("TheGrandThunderBird"), TimeChangeContext.Day, spawnContext: type => { 
+                Bosses.Add(new Boss(SoulsNPC("TrojanSquirrel"), spawnContext: type =>
+                {
+                    NPC.SpawnOnPlayer(ClosestPlayerToWorldCenter, type);
+
+                    if (!InfernalConfig.Instance.ForceFullXerocDialogue)
+                        DownedBossSystem.startedBossRushAtLeastOnce = true;
+                }, permittedNPCs: [SoulsNPC("TrojanSquirrelArms"), SoulsNPC("TrojanSquirrelHead")]));
+
+                if (InfernalCrossmod.Thorium.Loaded)
+                {
+                    Bosses.Add(new Boss(ThoriumNPC("TheGrandThunderBird"), TimeChangeContext.Day, permittedNPCs: new int[] { ThoriumNPC("StormHatchling"), ThoriumNPC("TheGrandThunderBird") }));
+                }
+
+                Bosses.Add(new Boss(NPCID.KingSlime,
+                    permittedNPCs: new int[] { NPCID.BlueSlime, NPCID.YellowSlime, NPCID.PurpleSlime, NPCID.RedSlime, NPCID.GreenSlime, NPCID.RedSlime, NPCID.IceSlime, NPCID.UmbrellaSlime, NPCID.Pinky, NPCID.SlimeSpiked, NPCID.RainbowSlime,
+                                                NPCType<KingSlimeJewelRuby>(), NPCType<KingSlimeJewelSapphire>(), NPCType<KingSlimeJewelEmerald>(), NPCType<Ninja>() }));
+            }
+            else if (InfernalCrossmod.Thorium.Loaded)
+            {
+                Bosses.Add(new Boss(ThoriumNPC("TheGrandThunderBird"), TimeChangeContext.Day, spawnContext: type => 
+                { 
                     NPC.SpawnOnPlayer(ClosestPlayerToWorldCenter, type); 
                 
                     if (!InfernalConfig.Instance.ForceFullXerocDialogue)
                         DownedBossSystem.startedBossRushAtLeastOnce = true;
                 }, permittedNPCs: new int[]
                     { ThoriumNPC("StormHatchling"), ThoriumNPC("TheGrandThunderBird") }));
-            }
 
-            Bosses.Add(new Boss(NPCID.KingSlime, 
-                permittedNPCs: new int[] { NPCID.BlueSlime, NPCID.YellowSlime, NPCID.PurpleSlime, NPCID.RedSlime, NPCID.GreenSlime, NPCID.RedSlime, NPCID.IceSlime, NPCID.UmbrellaSlime, NPCID.Pinky, NPCID.SlimeSpiked, NPCID.RainbowSlime,
-                                            NPCType<KingSlimeJewelRuby>(), NPCType<KingSlimeJewelSapphire>(), NPCType<KingSlimeJewelEmerald>(), NPCType<Ninja>() }));
+                Bosses.Add(new Boss(NPCID.KingSlime, 
+                    permittedNPCs: new int[] { NPCID.BlueSlime, NPCID.YellowSlime, NPCID.PurpleSlime, NPCID.RedSlime, NPCID.GreenSlime, NPCID.RedSlime, NPCID.IceSlime, NPCID.UmbrellaSlime, NPCID.Pinky, NPCID.SlimeSpiked, NPCID.RainbowSlime,
+                                                NPCType<KingSlimeJewelRuby>(), NPCType<KingSlimeJewelSapphire>(), NPCType<KingSlimeJewelEmerald>(), NPCType<Ninja>() }));
+            }
+            else
+            {
+                Bosses.Add(new Boss(NPCID.KingSlime, spawnContext: type =>
+                {
+                    NPC.SpawnOnPlayer(ClosestPlayerToWorldCenter, type);
+
+                    if (!InfernalConfig.Instance.ForceFullXerocDialogue)
+                        DownedBossSystem.startedBossRushAtLeastOnce = true;
+                }, permittedNPCs: new int[] { NPCID.BlueSlime, NPCID.YellowSlime, NPCID.PurpleSlime, NPCID.RedSlime, NPCID.GreenSlime, NPCID.RedSlime, NPCID.IceSlime, NPCID.UmbrellaSlime, NPCID.Pinky, NPCID.SlimeSpiked, NPCID.RainbowSlime,
+                                                NPCType<KingSlimeJewelRuby>(), NPCType<KingSlimeJewelSapphire>(), NPCType<KingSlimeJewelEmerald>(), NPCType<Ninja>() }));
+            }
 
             if (InfernalCrossmod.Consolaria.Loaded)
             {
@@ -94,12 +157,22 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
 
             Bosses.Add(new Boss(NPCID.EyeofCthulhu, TimeChangeContext.Night, permittedNPCs: [NPCID.ServantofCthulhu, NPCType<ExplodingServant>()]));
 
+            if (InfernalCrossmod.FargosSouls.Loaded)
+            {
+                //Cursed Coffin
+            }
+
             if (InfernalCrossmod.Thorium.Loaded)
             {
                 Bosses.Add(new Boss(ThoriumNPC("Viscount"), specialSpawnCountdown: 0, permittedNPCs: new int[] { ThoriumNPC("BiteyBaby") }));
             }
 
             Bosses.Add(new Boss(NPCID.EaterofWorldsHead, permittedNPCs: [NPCID.EaterofWorldsBody, NPCID.EaterofWorldsTail, NPCID.VileSpit]));
+
+            if (HomewardLoaded())
+            {
+                Bosses.Add(new Boss(HomewardNPC("GoblinChariot"), permittedNPCs: [HomewardNPC("GoblinChariot"), HomewardNPC("Bombie")]));
+            }
 
             Bosses.Add(new Boss(NPCID.WallofFlesh, spawnContext: type =>
             {
@@ -124,6 +197,11 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
                     ModContent.NPCType<PerforatorBodySmall>() ,ModContent.NPCType<PerforatorTailSmall>() ]));
 
             Bosses.Add(new Boss(NPCID.QueenBee, permittedNPCs: [NPCID.HornetFatty, NPCID.HornetHoney, NPCID.HornetStingy]));
+
+            if (HomewardLoaded())
+            {
+                Bosses.Add(new Boss(HomewardNPC("BigDipper"), permittedNPCs: [HomewardNPC("NodePointer")]));
+            }
 
             Bosses.Add(new Boss(NPCID.QueenSlimeBoss));
 
@@ -182,6 +260,11 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
             if (InfernalCrossmod.Clamity.Loaded)
             {
                 Bosses.Add(new Boss(ClamityNPC("PyrogenBoss"), permittedNPCs: new int[] { ClamityNPC("PyrogenShield") }));
+            }
+
+            if (InfernalCrossmod.FargosSouls.Loaded)
+            {
+                //Banished Baron
             }
 
             Bosses.Add(new Boss(ModContent.NPCType<RavagerBody>(), spawnContext: type =>
@@ -254,12 +337,23 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
 
             Bosses.Add(new Boss(ModContent.NPCType<Bumblefuck>(), TimeChangeContext.Day, permittedNPCs: [ModContent.NPCType<Bumblefuck2>(), NPCID.Spazmatism, NPCID.Retinazer]));
 
+            if (HomewardLoaded())
+            {
+                Bosses.Add(new Boss(HomewardNPC("TheLifebringerHead"), permittedNPCs: [HomewardNPC("TheLifebringerBody"), HomewardNPC("TheLifebringerTail"), HomewardNPC("PillarOfMercy"), HomewardNPC("PillarOfMildness"), HomewardNPC("PillarOfSeverity"), HomewardNPC("Sephirah"),
+                                                                                        HomewardNPC("SuperProbe"), HomewardNPC("TheLifebringer_Minion")]));
+
+                Bosses.Add(new Boss(HomewardNPC("TheMaterealizer"), permittedNPCs: [HomewardNPC("TheMaterealizer_Minion")]));
+
+                //Ordeals
+            }
+
             if (InfernalCrossmod.SOTS.Loaded)
             {
                 Bosses.Add(new Boss(SOTSNPC("TheAdvisorHead"), spawnContext: type =>
                 {
                     byte closest = Player.FindClosest(new Vector2(Main.maxTilesX * 8f, Main.maxTilesY * 8f), 0, 0);
-                    NPC.SpawnOnPlayer(closest, type);
+                    if (!NPC.AnyNPCs(type))
+                        NPC.SpawnOnPlayer(closest, type);
                     Main.npc[NPC.FindFirstNPC(type)].Center = Main.player[closest].Center;
                 }));
             }
@@ -276,6 +370,13 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
             }, permittedNPCs: NPCID.SkeletronHand));
 
             // Tier 3
+            if (HomewardLoaded())
+            {
+                //Puppet Opera
+
+                Bosses.Add(new Boss(HomewardNPC("MarquisMoonsquid"), permittedNPCs: [HomewardNPC("MarquisMoonsquid_Minion")]));
+            }
+
             if (InfernalCrossmod.Thorium.Loaded)
             {
                 Bosses.Add(new Boss(ThoriumNPC("BuriedChampion"), permittedNPCs: [ThoriumNPC("FallenChampion2")]));
@@ -330,6 +431,21 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
 
             Bosses.Add(new Boss(NPCID.SkeletronPrime, TimeChangeContext.Night, permittedNPCs: [ModContent.NPCType<SkeletronPrime2>(), NPCID.PrimeCannon, NPCID.PrimeSaw, NPCID.PrimeVice, NPCID.PrimeLaser, NPCID.Probe]));
 
+            if (HomewardLoaded())
+            {
+                Bosses.Add(new Boss(HomewardNPC("PriestessRod"), permittedNPCs: [HomewardNPC("PriestessRod_Minion")]));
+            }
+
+            if (InfernalCrossmod.FargosSouls.Loaded)
+            {
+                if (InfernalCrossmod.FargosSouls.Mod.Version < Version.Parse("1.8"))
+                {
+                    Bosses.Add(new Boss(SoulsNPC("LifeChallenger"), TimeChangeContext.Day));
+                }
+                else
+                    Bosses.Add(new Boss(SoulsNPC("Lifelight"), TimeChangeContext.Day));
+            }
+
             if (InfernalCrossmod.SOTS.Loaded)
             {
                 Bosses.Add(new Boss(SOTSNPC("NewPolaris")));
@@ -343,6 +459,16 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
                 CalamityUtils.BossAwakenMessage(boomerDuke);
             }, permittedNPCs: [ModContent.NPCType<OldDukeToothBall>(), ModContent.NPCType<SulphurousSharkron>()]));
 
+            if (HomewardLoaded())
+            {
+                Bosses.Add(new Boss(HomewardNPC("ScarabBelief"), permittedNPCs: [HomewardNPC("ScarabBelief_Minion")]));
+            }
+
+            if (InfernalCrossmod.FargosSouls.Loaded)
+            {
+                Bosses.Add(new Boss(SoulsNPC("DeviBoss")));
+            }
+
             Bosses.Add(new Boss(NPCID.Golem, TimeChangeContext.Day, type =>
             {
                 int sans = NPC.NewNPC(new EntitySource_WorldEvent(), (int)(Main.player[ClosestPlayerToWorldCenter].position.X + Main.rand.Next(-100, 101)), (int)(Main.player[ClosestPlayerToWorldCenter].position.Y - 400f), type, 1);
@@ -351,6 +477,13 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
             }, permittedNPCs: [NPCID.GolemFistLeft, NPCID.GolemFistRight, NPCID.GolemHead, NPCID.GolemHeadFree]));
 
             // Tier 4
+            if (HomewardLoaded())
+            {
+                Bosses.Add(new Boss(HomewardNPC("Diver"), permittedNPCs: [HomewardNPC("Diver_Minion"), HomewardNPC("AbyssPortal")]));
+
+                //Bosses.Add(new Boss(HomewardNPC("TheMotherbrain"), permittedNPCs: [HomewardNPC("TheMotherbrain_Minion")]));
+            }
+
             if (InfernalCrossmod.Thorium.Loaded)
             {
                 Bosses.Add(new Boss(ThoriumNPC("ForgottenOne"), TimeChangeContext.Day, permittedNPCs: [ThoriumNPC("AbyssalSpawn"), ThoriumNPC("ForgottenOneCracked"), ThoriumNPC("ForgottenOneReleased")]));
@@ -409,6 +542,17 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
             {
                 NPC.SpawnOnPlayer(ClosestPlayerToWorldCenter, type);
             }, permittedNPCs: [NPCID.MoonLordLeechBlob, NPCID.MoonLordHand, NPCID.MoonLordHead, NPCID.MoonLordFreeEye]));
+
+            if (HomewardLoaded())
+            {
+                //Wall of Shadow
+
+                Bosses.Add(new Boss(HomewardNPC("SlimeGod"), permittedNPCs: [HomewardNPC("BeamSlime"), HomewardNPC("FlyingSpikeSlime"), HomewardNPC("IcicleSlime"), HomewardNPC("NitroSlime"), HomewardNPC("PropellerSlime"), HomewardNPC("SlimeJupiter"), HomewardNPC("SlimeMars"),
+                                                                                HomewardNPC("SlimeMercury"), HomewardNPC("SlimeNeptune"), HomewardNPC("SlimePluto"), HomewardNPC("SlimeSaturn"), HomewardNPC("SlimeTerra"), HomewardNPC("SlimeUranus"), HomewardNPC("SlimeVenus"),
+                                                                                HomewardNPC("SnowflakeSlime")]));
+
+                Bosses.Add(new Boss(HomewardNPC("TheOverwatcher"), permittedNPCs: [HomewardNPC("TheOverwatcher_Minion"), HomewardNPC("Overseer")]));
+            }
 
             Bosses.Add(new Boss(ModContent.NPCType<CeaselessVoid>(), spawnContext: type =>
             {
@@ -469,6 +613,26 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
                 NPC.SpawnOnPlayer(whomst, NPCType<PrimordialWyrmHead>());
             }, permittedNPCs: new int[] { NPCType<PrimordialWyrmHead>(), NPCType<PrimordialWyrmBody>(), NPCType<PrimordialWyrmBodyAlt>(), NPCType<PrimordialWyrmTail>() }));
 
+            if (InfernalCrossmod.FargosSouls.Loaded)
+            {
+                Bosses.Add(new Boss(SoulsNPC("CosmosChampion"), spawnContext: type =>
+                {
+                    int erd = NPC.NewNPC(new EntitySource_WorldEvent(), (int)(Main.player[ClosestPlayerToWorldCenter].Center.X), (int)(Main.player[ClosestPlayerToWorldCenter].Center.Y - 400), type, 1);
+                    Main.npc[erd].timeLeft *= 20;
+                    CalamityUtils.BossAwakenMessage(erd);
+                }));
+            }
+
+            if (HomewardLoaded())
+            {
+                Bosses.Add(new Boss(HomewardNPC("WorldsEndEverlastingFallingWhale"), spawnContext: type =>
+                {
+                    BossRushTeleports.OceanTeleportAll();
+                    NPC.SpawnOnPlayer(ClosestPlayerToWorldCenter, type);
+                }, permittedNPCs: [HomewardNPC("AtlasMoth"), HomewardNPC("Griffin"), HomewardNPC("Loong_Body"), HomewardNPC("Loong_Head"), HomewardNPC("Mammoth"),
+                                                                                                        HomewardNPC("Python_Body"), HomewardNPC("Python_Head"), HomewardNPC("Turtle"), HomewardNPC("PhantomOfDeath_1"), HomewardNPC("PhantomOfDeath_2")]));
+            }
+
             Bosses.Add(new Boss(ModContent.NPCType<Providence>(), TimeChangeContext.Day, type =>
             {
                 BossRushTeleports.TeleportToProvidence();
@@ -478,7 +642,12 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
                 int prov = NPC.NewNPC(new EntitySource_WorldEvent(), (int)(player.position.X + Main.rand.Next(-500, 501)), (int)(player.position.Y - 250f), type, 1);
                 Main.npc[prov].timeLeft *= 20;
                 CalamityUtils.BossAwakenMessage(prov);
-            }, usesSpecialSound: true, permittedNPCs: [ModContent.NPCType<ProvSpawnOffense>(), ModContent.NPCType<ProvSpawnHealer>(), ModContent.NPCType<ProvSpawnDefense>()]));
+            }, specialSpawnCountdown: 240, usesSpecialSound: true, permittedNPCs: [ModContent.NPCType<ProvSpawnOffense>(), ModContent.NPCType<ProvSpawnHealer>(), ModContent.NPCType<ProvSpawnDefense>()]));
+
+            if (InfernalCrossmod.FargosSouls.Loaded)
+            {
+                Bosses.Add(new Boss(SoulsNPC("AbomBoss")));
+            }
 
             Bosses.Add(new Boss(ModContent.NPCType<Draedon>(), spawnContext: type =>
             {
@@ -522,6 +691,11 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
                 }, permittedNPCs: [calHunt.Find<ModNPC>("EbonianBehemuck").Type, calHunt.Find<ModNPC>("CrimulanGlopstrosity").Type, calHunt.Find<ModNPC>("DivineGargooptuar").Type, calHunt.Find<ModNPC>("DivineGargooptuar").Type, calHunt.Find<ModNPC>("Goozmite").Type]));
             }
 
+            if (HomewardLoaded())
+            {
+                //Bosses.Add(new Boss(HomewardNPC("TheSon"), permittedNPCs: [HomewardNPC("TheSon_Minion")]));
+            }
+
             if (InfernalCrossmod.NoxusBoss.Loaded && InfernalConfig.Instance.WrathoftheGodsBossesInBossRush)
             {
                 Bosses.Add(new Boss(WrathNPC("MarsBody"), TimeChangeContext.Night, permittedNPCs: [WrathNPC("BattleSolyn"), WrathNPC("TrappingHolographicForcefield")]));
@@ -530,6 +704,11 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
             if (InfernalCrossmod.NoxusPort.Loaded)
             {
                 Bosses.Add(new Boss(InfernalCrossmod.NoxusPort.Mod.Find<ModNPC>("EntropicGod").Type, specialSpawnCountdown: 270));
+            }
+
+            if (InfernalCrossmod.FargosSouls.Loaded)
+            {
+                Bosses.Add(new Boss(SoulsNPC("MutantBoss"), permittedNPCs: [SoulsNPC("MutantIllusion")]));
             }
 
             if (InfernalCrossmod.NoxusBoss.Loaded && InfernalConfig.Instance.WrathoftheGodsBossesInBossRush)
@@ -545,7 +724,7 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
             // Death IDs after defeat
             if (InfernalCrossmod.Thorium.Loaded)
             {
-                BossIDsAfterDeath[ThoriumNPC("BoreanStriderPopped")] = new int[] { ThoriumNPC("BoreanStriderPopped") };
+                BossIDsAfterDeath[ThoriumNPC("BoreanStrider")] = new int[] { ThoriumNPC("BoreanStriderPopped") };
                 BossIDsAfterDeath[ThoriumNPC("FallenBeholder")] = new int[] { ThoriumNPC("FallenBeholder"), ThoriumNPC("FallenBeholder2") };
                 BossIDsAfterDeath[ThoriumNPC("Lich")] = new int[] { ThoriumNPC("Lich"), ThoriumNPC("LichHeadless") };
                 BossIDsAfterDeath[ThoriumNPC("ForgottenOne")] = [ThoriumNPC("ForgottenOneReleased")];
@@ -567,15 +746,16 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
             ];
 
             // Death Effects
-            BossDeathEffects = new Dictionary<int, Action<NPC>>();
-            BossDeathEffects.Add(NPCID.WallofFlesh, npc => { BossRushTeleports.BringPlayersBackToSpawn(); });
-            BossDeathEffects.Add(NPCType<ProfanedGuardianCommander>(), npc =>
+            BossDeathEffects = new Dictionary<int, Action<NPC>>
+            {
+                [NPCID.WallofFlesh] = npc => { BossRushTeleports.BringPlayersBackToSpawn(); },
+                [NPCType<ProfanedGuardianCommander>()] = npc =>
                 {
                     BossRushDialogueSystem.StartDialogue(BossRushDialoguePhase.TierOneComplete);
                     CreateTierAnimation(2);
                     BossRushTeleports.BringPlayersBackToSpawn();
-                });
-            BossDeathEffects.Add(NPCID.SkeletronHead, npc =>
+                },
+                [NPCID.SkeletronHead] = npc =>
                 {
                     BossRushDialogueSystem.StartDialogue(BossRushDialoguePhase.TierTwoComplete);
 
@@ -592,22 +772,20 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
                             }
                         }
                     }
-                });
-            BossDeathEffects.Add(NPCID.Golem, npc =>
-            {
-                BossRushDialogueSystem.StartDialogue(BossRushDialoguePhase.TierThreeComplete);
-                CreateTierAnimation(4);
-            });
-            BossDeathEffects.Add(NPCType<CeaselessVoid>(), npc => { BossRushTeleports.BringPlayersBackToSpawn(); });
-            BossDeathEffects.Add(NPCType<CalamitasClone>(), npc =>
-            {
-                BossRushDialogueSystem.StartDialogue(BossRushDialoguePhase.TierFourComplete);
-                CreateTierAnimation(5);
-            });
-            BossDeathEffects.Add(NPCType<Providence>(), npc =>
-            {
-                BossRushTeleports.BringPlayersBackToSpawn();
-            });
+                },
+                [NPCID.Golem] = npc =>
+                {
+                    BossRushDialogueSystem.StartDialogue(BossRushDialoguePhase.TierThreeComplete);
+                    CreateTierAnimation(4);
+                },
+                [NPCType<CeaselessVoid>()] = npc => { BossRushTeleports.BringPlayersBackToSpawn(); },
+                [NPCType<CalamitasClone>()] = npc =>
+                {
+                    BossRushDialogueSystem.StartDialogue(BossRushDialoguePhase.TierFourComplete);
+                    CreateTierAnimation(5);
+                },
+                [NPCType<Providence>()] = npc => { BossRushTeleports.BringPlayersBackToSpawn(); }
+            };
 
             if (InfernalCrossmod.Consolaria.Loaded)
             {
@@ -634,7 +812,7 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
                 });
             }
 
-            if ((InfernalCrossmod.NoxusBoss.Loaded && InfernalConfig.Instance.WrathoftheGodsBossesInBossRush)|| InfernalCrossmod.NoxusPort.Loaded || calHunt != null)
+            if ((InfernalCrossmod.NoxusBoss.Loaded && InfernalConfig.Instance.WrathoftheGodsBossesInBossRush)|| InfernalCrossmod.NoxusPort.Loaded || calHunt != null || HomewardLoaded() || InfernalCrossmod.FargosSouls.Loaded)
             {
                 BossDeathEffects.Add(NPCType<SupremeCalamitas>(), npc =>
                 {
@@ -670,6 +848,23 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
                         HostileProjectileKillCounter = 3;
                     });
                 }
+                else if (InfernalCrossmod.FargosSouls.Loaded)
+                {
+                    BossDeathEffects.Add(SoulsNPC("MutantBoss"), npc =>
+                    {
+                        if (InfernalConfig.Instance.ForceFullXerocDialogue)
+                        {
+                            //Always play end dialgoue
+                            BossRushDialogueSystem.StartDialogue(BossRushDialoguePhase.End);
+                        }
+                        else
+                        {
+                            BossRushDialogueSystem.StartDialogue(DownedBossSystem.downedBossRush ? BossRushDialoguePhase.EndRepeat : BossRushDialoguePhase.End);
+                        }
+                        CalamityUtils.KillAllHostileProjectiles();
+                        HostileProjectileKillCounter = 3;
+                    });
+                }
                 else if (InfernalCrossmod.NoxusPort.Loaded)
                 {
                     BossDeathEffects.Add(InfernalCrossmod.NoxusPort.Mod.Find<ModNPC>("EntropicGod").Type, npc =>
@@ -687,6 +882,25 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
                         HostileProjectileKillCounter = 3;
                     });
                 }
+                /*
+                else if (HomewardLoaded())
+                {
+                    BossDeathEffects.Add(HomewardNPC("TheSon"), npc =>
+                    {
+                        if (InfernalConfig.Instance.ForceFullXerocDialogue)
+                        {
+                            //Always play end dialgoue
+                            BossRushDialogueSystem.StartDialogue(BossRushDialoguePhase.End);
+                        }
+                        else
+                        {
+                            BossRushDialogueSystem.StartDialogue(DownedBossSystem.downedBossRush ? BossRushDialoguePhase.EndRepeat : BossRushDialoguePhase.End);
+                        }
+                        CalamityUtils.KillAllHostileProjectiles();
+                        HostileProjectileKillCounter = 3;
+                    });
+                }
+                */
                 else if (calHunt != null)
                 {
                     BossDeathEffects.Add(calHunt.Find<ModNPC>("Goozma").Type, npc =>
@@ -745,6 +959,21 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
         public static int WrathNPC(string name)
         {
             return InfernalCrossmod.NoxusBoss.Mod.Find<ModNPC>(name).Type;
+        }
+
+        public static int SoulsNPC(string name)
+        {
+            return InfernalCrossmod.FargosSouls.Mod.Find<ModNPC>(name).Type;
+        }
+
+        public static int HomewardNPC(string name)
+        {
+            return ModLoader.GetMod("ContinentOfJourney").Find<ModNPC>(name).Type;
+        }
+
+        public static bool HomewardLoaded()
+        {
+            return ModLoader.HasMod("ContinentOfJourney");
         }
     }
 }
