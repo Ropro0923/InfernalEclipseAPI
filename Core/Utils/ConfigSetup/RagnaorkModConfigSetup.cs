@@ -12,12 +12,14 @@ namespace InfernalEclipseAPI.Core.Utils.ConfigSetup
         private static JObject DesiredBossDefaults() => new JObject
         {
             ["bossstatstweak"] = false,
-            ["bossrush"] = 2,
-            ["bird"] = 2,
-            ["jelly"] = 2,
-            ["viscount"] = 2,
-            ["granite"] = 2,
-            ["champion"] = 2
+            ["bossrush"] = 3,
+            ["bird"] = 3,
+            ["jelly"] = 3,
+            ["viscount"] = 3,
+            ["granite"] = 3,
+            ["champion"] = 3,
+            ["scouter"] = 3,
+            ["strider"] = 3
         };
 
         private static JObject DesiredBossProgression() => new JObject
