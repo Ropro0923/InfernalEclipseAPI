@@ -6,7 +6,7 @@
 	<!-- General -->
 	<PropertyGroup>
 	  <Platforms>AnyCPU;x64</Platforms>
-	  <PlatformTarget>x64</PlatformTarget>
+	  <PlatformTarget>AnyCPU</PlatformTarget>
 	</PropertyGroup>
 	<ItemGroup>
 	  <Folder Include="Assets\Sounds\Custom\TerraBlade\" />
