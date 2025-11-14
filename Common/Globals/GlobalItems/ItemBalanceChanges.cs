@@ -1880,7 +1880,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     if (item.type == thorium.Find<ModItem>("VesselBuster").Type)
                     {
                         item.useTime = 10;
-                        item.useAmmo = 10;
+                        item.useAnimation = 10;
                     }
 
                     //Magic Conch
