@@ -84,6 +84,11 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     recipe.AddIngredient(ModContent.ItemType<DepthCells>(), 3);
                 }
 
+                if (recipe.HasResult(ModContent.ItemType<Roxcalibur>()))
+                {
+                    recipe.DisableDecraft();
+                }
+
                 if (ModLoader.TryGetMod("CalamityAmmo", out Mod calAmmo))
                 {
                     if (recipe.HasResult(calAmmo.Find<ModItem>("HardTack")))
