@@ -59,7 +59,7 @@ namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges
                     player.GetCritChance(DamageClass.Generic) += 10f;
                     break;
                 case 4:
-                    sotsPlayer.CritBonusMultiplier += 0.05f;
+                    sotsPlayer.CritBonusMultiplier += Main.hardMode ? 0.1f : 0.05f;
                     break;
                 case 5:
                     sotsPlayer.additionalHeal += 40;
@@ -67,7 +67,7 @@ namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges
                     break;
                 case 6:
                     player.statLifeMax2 += 20;
-                    player.GetDamage(DamageClass.Generic) += 0.05f;
+                    player.GetDamage(DamageClass.Generic) += Main.hardMode ? 0.1f : 0.05f;
                     break;
                 case 7:
                     voidPlayer.voidRegenSpeed += 0.2f;
@@ -88,7 +88,10 @@ namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges
                     player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
                     break;
                 case 3:
-                    infernalPlayer.LazyCrafterAmulet = true;
+                    if (Main.hardMode)
+                        sotsPlayer.LazyCrafterAmulet = true;
+                    else
+                        infernalPlayer.LazyCrafterAmulet = true;
                     sotsPlayer.additionalPotionMana += 40;
                     player.statManaMax2 += 40;
                     break;

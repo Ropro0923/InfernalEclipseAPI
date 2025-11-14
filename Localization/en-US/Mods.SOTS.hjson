@@ -1,9 +1,9 @@
 VisionAmuletTextList: {
-	4: Increases critical strike damage by 5%
+	4: Increases critical strike damage by 5%, and is imporved to 10% in hardmode
 	6:
 		'''
 		Increases max life by 20
-		Increases damage by 5%
+		Increases damage by 5%, and is improved to 10% in hardmode
 		'''
 }
 
@@ -11,12 +11,13 @@ VisionAmuletTextList2: {
 	1:
 		'''
 
-		Decreases mana cost by 20% 
+		Decreases mana cost by 20%, and is improved to 25% in hardmode
 		'''
 	3:
 		'''
 
 		Provides access to Work Bench, Furnace, and Anvil crafting stations
+		Provides access to the Alchemy Table crafting station as well in hardmode
 		Increases max mana and mana received from potions by 40
 		'''
 	4:
@@ -27,7 +28,7 @@ VisionAmuletTextList2: {
 	5:
 		'''
 
-		Efficacy of enemy defense is reduced by 20%
+		Efficacy of enemy defense is reduced by 20%, and is improved to 25% in hardmode
 		'''
 }
 

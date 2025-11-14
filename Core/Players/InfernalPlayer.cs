@@ -462,7 +462,7 @@ namespace InfernalEclipseAPI.Core.Players
         {
             if (scalingArmorPenetration)
             {
-                modifiers.DefenseEffectiveness *= 0.2f;
+                modifiers.DefenseEffectiveness *= Main.hardMode ? 0.25f : 0.2f;
             }
         }
 
