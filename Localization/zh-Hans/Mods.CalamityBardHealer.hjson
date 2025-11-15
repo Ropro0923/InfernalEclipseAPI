@@ -64,4 +64,21 @@ Items: {
 			Healing spells heal an additional 10 life
 			''' */
 	}
+
+	ElementalBloom: {
+		// DisplayName: Elemental Bloom
+		/* Tooltip:
+			'''
+			Maximum life increased by 40
+			Maximum mana increased by 20
+			15% increased healing speed
+			15% increased radiant damage
+			10% increased radiant casting speed
+			5% increased radiant critical strike chance
+			Healing spells will heal an additional 2 life
+			Empowers certain radiant attacks with elemental energy
+			Increases the strength of damage over time effects by 66%
+			"When light and dark clash, they harmonize to a final shape"
+			''' */
+	}
 }

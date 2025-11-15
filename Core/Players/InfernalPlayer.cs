@@ -125,6 +125,7 @@ namespace InfernalEclipseAPI.Core.Players
         public int namelessDialogueCooldown;
         public int CloverCharmCooldown;
         public bool workshopHasBeenOwned;
+        public bool tixThumbRing;
 
         public override void Initialize()
         {
@@ -490,6 +491,9 @@ namespace InfernalEclipseAPI.Core.Players
             {
                 hit.Damage -= (int)(hit.Damage * 0.2);
             }
+
+            if (tixThumbRing && proj.arrow && hit.Crit)
+                target.AddBuff(BuffID.ShadowFlame, 60, false);
         }
     }
 

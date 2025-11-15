@@ -324,9 +324,10 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
 
                     if (InfernalConfig.Instance.ThoriumBalanceChangess)
                     {
-                        if (recipe.HasResult(ItemID.JungleHat) || recipe.HasResult(ItemID.JungleShirt) || recipe.HasResult(ItemID.JunglePants) || recipe.HasResult(thorium.Find<ModItem>("BountifulHarvest")))
+                        if (recipe.HasResult(ItemID.JungleHat) || recipe.HasResult(ItemID.JungleShirt) || recipe.HasResult(ItemID.JunglePants) || recipe.HasResult(thorium.Find<ModItem>("BountifulHarvest")) || recipe.HasResult(thorium.Find<ModItem>("MagickStaff")))
                         {
                             recipe.RemoveTile(TileID.Anvils);
+                            recipe.RemoveTile(TileID.WorkBenches);
                             recipe.AddTile(thorium.Find<ModTile>("ArcaneArmorFabricator"));
                         }
 
@@ -750,6 +751,13 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                                     recipe.AddIngredient(phaseBar, 6);
                                 }
                             }
+                        }
+
+                        // Tesseract
+                        if (recipe.HasResult(sots.Find<ModItem>("Tesseract")))
+                        {
+                            recipe.RemoveIngredient(ModContent.ItemType<AuricBar>());
+                            recipe.AddIngredient<ShadowspecBar>(5);
                         }
 
                         if (recipe.HasResult(sots.Find<ModItem>("PurpleJellyfishStaff")))

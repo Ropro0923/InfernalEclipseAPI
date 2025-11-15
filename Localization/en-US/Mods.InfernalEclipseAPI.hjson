@@ -94,7 +94,7 @@ ItemTooltip: {
 		SerpentsTongue:
 			'''
 			15% increased radiant damage
-			20% increased critical strike damage
+			10% increased critical strike damage
 			Enemies have a 10% chance to drop double the loot
 			20% when killed by critical strikes
 			Empowers certain attacks with dark energy
@@ -1136,6 +1136,8 @@ Items: {
 		NormalTooltip:
 			'''
 			18% increase to damage
+			Increases arrow damage by 5%
+			10% increased movement speed
 			+3.5 HP/s life regen and +2 max minions
 			Increased minion knockback
 			Increases all damage by 4
@@ -1145,6 +1147,8 @@ Items: {
 			During the day, grants +2 HP/s life regen
 			During the night, grants +20 defense
 			During an eclipse, grants +1 HP/s life regen and +10 defense
+			Arrow critical strikes briefly shadowflame enemies
+			Boosts your maximum flight time by 20%
 			'Behind the flames and the sparks, if you look deep enough, you will see your past and your future'
 			'''
 	}

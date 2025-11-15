@@ -1,0 +1,38 @@
+﻿using InfernalEclipseAPI.Core.Systems;
+using Microsoft.Xna.Framework;
+
+namespace InfernalEclipseAPI.Content.Items.Consumables
+{
+    public class AngryPudding : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 5;
+
+            ItemID.Sets.FoodParticleColors[Item.type] = new Color[]
+            {
+            new Color(180, 112, 82),
+            new Color(205, 133, 81),
+            new Color(255, 139, 190),
+            new Color(255, 224, 96)
+            };
+
+            ItemID.Sets.IsFood[Type] = true;
+        }
+
+        public override void SetDefaults()
+        {
+            Item.DefaultToFood(58, 36, -1, 60 * 10);
+        }
+
+        public override bool? UseItem(Player player)
+        {
+            player.AddBuff(BuffID.PotionSickness, player.pStone ? 25 : 30);
+            if (InfernalCrossmod.NoxusBoss.Loaded)
+            {
+                player.AddBuff(InfernalCrossmod.NoxusBoss.Mod.Find<ModBuff>("StarstrikinglySatiated").Type, 36000);
+            }
+            return true;
+        }
+    }
+}

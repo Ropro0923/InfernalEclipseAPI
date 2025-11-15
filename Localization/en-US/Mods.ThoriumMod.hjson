@@ -69,6 +69,16 @@ Items: {
 			'''
 	}
 
+	DemonTongue: {
+		DisplayName: Demon Tongue
+		Tooltip:
+			'''
+			Empowers certain radiant attacks with dark energy
+			10% increased radiant damage
+			Halves radiant life costs but not its life transferring effect
+			'''
+	}
+
 	ArchDemonCurse: {
 		DisplayName: Archdemon's Curse
 		Tooltip:
@@ -76,8 +86,8 @@ Items: {
 			Empowers certain radiant attacks with dark energy
 			Maximum life increased by 20
 			10% increased radiant casting speed
-			15% increased radiant damage
-			10% increased radiant critical strike chance
+			12% increased radiant damage
+			5% increased radiant critical strike chance
 			'''
 	}
 

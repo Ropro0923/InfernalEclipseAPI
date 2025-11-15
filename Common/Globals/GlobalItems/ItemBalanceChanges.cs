@@ -3563,7 +3563,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     //Roboboe
                     if (item.type == thorium.Find<ModItem>("Roboboe").Type)
                     {
-                        item.damage = 45;
+                        item.damage = 55;
                     }
                     #endregion
 
@@ -4515,7 +4515,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 //Cosmic Injector
                 if (GetItem(ragnarok, "CosmicInjector", item))
                 {
-                    item.damage = 150;
+                    item.damage = 120;
                 }
 
                 if (GetItem(ragnarok, "ExecutionerMark05", item))

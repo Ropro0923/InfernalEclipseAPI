@@ -111,6 +111,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) -= 0.05f;
                 }
 
+                if (item.type == ItemType<DemonTongue>())
+                {
+                    player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) -= 0.02f;
+                }
+
                 if (item.type == ItemType<DarkGlaze>())
                 {
                     player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) -= 0.05f;
@@ -119,8 +124,8 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                 if (item.type == ItemType<ArchDemonCurse>())
                 {
-                    player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) -= 0.05f;
-                    player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) -= 2f;
+                    player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) -= 0.08f;
+                    player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) -= 7f;
                 }
 
                 if (item.type == ItemType<FlightMail>())
@@ -316,6 +321,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                         player,
                         -8
                         });
+                    }
+
+                    if (item.type == FindItem("ElementalBloom"))
+                    {
+                        player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) -= 0.05f;
+                        player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) -= 7f;
                     }
                 }
             }

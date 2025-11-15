@@ -29,7 +29,15 @@ namespace InfernalEclipseAPI.Content.Items.Accessories.RingofTix
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityPlayer modPlayer = player.Calamity();
+            InfernalPlayer infernalPlayer = player.GetModPlayer<InfernalPlayer>();
+
+            modPlayer.harpyRing = true;
+            player.moveSpeed += 0.1f;
+
             modPlayer.darkSunRing = true;
+
+            player.arrowDamage += 0.05f;
+            infernalPlayer.tixThumbRing = true;
 
             player.GetDamage(DamageClass.Generic).Flat += 4;
             player.GetArmorPenetration(DamageClass.Generic) += 5;
@@ -61,9 +69,13 @@ namespace InfernalEclipseAPI.Content.Items.Accessories.RingofTix
         public override void AddRecipes()
         {
             Recipe tixRing = Recipe.Create(ModContent.ItemType<RingofTix>());
+            tixRing.AddIngredient<HarpyRing>();
             tixRing.AddIngredient<DarkSunRing>();
             if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
+            {
+                tixRing.AddIngredient(thorium.Find<ModItem>("ThumbRing"));
                 tixRing.AddIngredient(thorium.Find<ModItem>("TheRing"));
+            }
             if (ModLoader.TryGetMod("BlueMoon", out Mod moons))
                 tixRing.AddIngredient(moons.Find<ModItem>("MoonsRing"));
             if (ModLoader.TryGetMod("SOTS", out Mod sots))
