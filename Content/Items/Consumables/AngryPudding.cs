@@ -5,6 +5,11 @@ namespace InfernalEclipseAPI.Content.Items.Consumables
 {
     public class AngryPudding : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return false;
+        }
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 5;

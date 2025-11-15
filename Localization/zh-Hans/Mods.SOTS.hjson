@@ -36,4 +36,9 @@ NPCs.CorpseBloom.DisplayName: 腐尸之花
 Items: {
 	// Sharanga.DisplayName: Kodanda
 	// VigorPotion.Tooltip: Grants the ability to dash 25 times
+	/* HarvestersScythe.Tooltip:
+		'''
+		Increases critical strike damage by 5%
+		Enemies have a 10% chance to drop double the loot, or 20% when killed by critical strike
+		''' */
 }
