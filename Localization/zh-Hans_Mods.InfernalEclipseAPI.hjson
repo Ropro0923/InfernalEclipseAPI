@@ -1253,7 +1253,7 @@ Configs: {
 		CalamityBalanceChanges: {
 			Tooltip:
 				'''
-				对部分数值过低或过高的灾厄物品进行调整  
+				对部分数值过低或过高的灾厄及其附属的物品进行调整  
 				同时修改部分跨模组的合成配方以保持平衡
 				'''
 			Label: 灾厄平衡修改
@@ -1426,8 +1426,8 @@ Configs: {
 		}
 
 		DontEnableThis: {
-			// Label: Don't Enable This
-			// Tooltip: Don't enable this. It will probably give you the wrong idea and it will lead to unbalanced & broken gameplay.
+			Label: 不要启用这个
+			Tooltip: 请勿启用此选项，它可能会造成误解，并导致游戏玩法失衡甚至出现问题
 		}
 	}
 
