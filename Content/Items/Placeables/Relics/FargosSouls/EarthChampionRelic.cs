@@ -8,6 +8,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Relics.FargosSouls
     [ExtendsFromMod(InfernalCrossmod.FargosSouls.Name)]
     public class EarthChampionRelic : BaseRelicItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => InfernalConfig.Instance.DontEnableThis;
         public override string DisplayNameToUse => "Infernal Champion of Earth Relic";
 
         public override int TileID => ModContent.TileType<EarthChampionRelicTile>();

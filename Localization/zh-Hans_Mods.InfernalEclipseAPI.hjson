@@ -1332,11 +1332,7 @@ Configs: {
 
 		AdditonalVanillaBossAdjustments: {
 			Label: 额外原版Boss调整
-			Tooltip:
-				'''
-				小幅度调整了部分原版Boss的数值，让它们变得更有挑战性
-				部分调整会在开启Fargo's Souls永恒模式或受虐模式的情况下被自动禁用
-				'''
+			Tooltip: 小幅度调整了部分原版Boss的数值，让它们变得更有挑战性
 		}
 
 		MergeCraftingTrees: {
@@ -1368,15 +1364,6 @@ Configs: {
 		DisplayWorldEntryMessages: {
 			Label: 进入世界时显示提示信息
 			Tooltip: 开启/关闭进入世界时聊天框内的提示信息
-		}
-
-		UseAprilFoolsMutant: {
-			Label: 使用愚人节突变体
-			Tooltip:
-				'''
-				将突变体更换为亚利姆
-				若启用Fargo's Souls，则此设置不发挥任何作用
-				'''
 		}
 
 		EnableInterlude4: {
@@ -1436,6 +1423,11 @@ Configs: {
 		MoveDeerclopsChecklistEntry: {
 			Label: 调整独眼巨鹿Boss Checklist顺序
 			Tooltip: 将独眼巨鹿在Boss Checklist中的顺序调整到骷髅王之前，以匹配灾厄&炼狱的进程
+		}
+
+		DontEnableThis: {
+			// Label: Don't Enable This
+			// Tooltip: Don't enable this. It will probably give you the wrong idea and it will lead to unbalanced & broken gameplay.
 		}
 	}
 

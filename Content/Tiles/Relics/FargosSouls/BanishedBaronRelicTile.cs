@@ -8,6 +8,7 @@ namespace InfernalEclipseAPI.Content.Tiles.Relics.FargosSouls
     [ExtendsFromMod(InfernalCrossmod.FargosSouls.Name)]
     public class BanishedBaronRelicTile : BaseInfernumBossRelic
     {
+        public override bool IsLoadingEnabled(Mod mod) => InfernalConfig.Instance.DontEnableThis;
         public override int DropItemID => ModContent.ItemType<BanishedBaronRelic>();
 
         public override string RelicTextureName => "InfernalEclipseAPI/Content/Tiles/Relics/FargosSouls/BanishedBaronRelicTile";

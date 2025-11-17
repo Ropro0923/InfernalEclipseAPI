@@ -1244,19 +1244,19 @@ Configs: {
 		}
 
 		ThoriumBalanceChangess: {
-			Tooltip: Modifies a bunch Thorium and mutliple Thorium addon items to be in tune with Calamity's balance.
+			Tooltip: Modifies Thorium and mutliple Thorium addon items to be in tune with Calamity's balance.
 			Label: Thorium Balance Changes
 		}
 
 		CalamityRecipeTweaks: {
-			Tooltip: Adjusts a few of Calamity's recipes and removes most of the Vanilla QOL recipes
+			Tooltip: Adjusts a few Calamity recipes and removes most of the Vanilla QOL recipes
 			Label: Calamity Recipe Tweaks
 		}
 
 		CalamityBalanceChanges: {
 			Tooltip:
 				'''
-				Modifies a few Calamity items that are either undertuned or overtuned.
+				Modifies Calamity and mutliple Calamity addon items that are either undertuned or overtuned.
 				Also adjusts a few cross-mod recipes to mantain balance.
 				'''
 			Label: Calamity Balance Changes
@@ -1289,17 +1289,17 @@ Configs: {
 		}
 
 		SOTSBalanceChanges: {
-			Tooltip: Modifies a few Secrets of the Shadows items to be in tune with Calamity's balance.
+			Tooltip: Modifies Secrets of the Shadows items to be in tune with Calamity's balance.
 			Label: Secrets of the Shadows Balance Changes
 		}
 
 		ConsolariaBalanceChanges: {
-			Tooltip: Modifies a few Consolaria items to be in tune with Calamity's balance.
+			Tooltip: Modifies Consolaria items to be in tune with Calamity's balance.
 			Label: Consolaria Balance Changes
 		}
 
 		InfernumRecipeTweaks: {
-			Tooltip: Adjusts a few of Infernum's recipes.
+			Tooltip: Adjusts a few Infernum recipes.
 			Label: Infernum Recipe Tweaks
 		}
 
@@ -1325,7 +1325,7 @@ Configs: {
 
 		DisableUnfinisedContent: {
 			Label: Disable Unfinised Content
-			Tooltip: Disables any unfinished content from other mods to keep the player experience consistent.
+			Tooltip: Disables any unfinished content from mods to keep the player experience consistent.
 		}
 
 		DisableDuplicateContent: {
@@ -1335,11 +1335,7 @@ Configs: {
 
 		AdditonalVanillaBossAdjustments: {
 			Label: Additonal Vanilla Boss Adjustments
-			Tooltip:
-				'''
-				Slighty adjusts the stats of some vanilla bosses to be more of a challenge.
-				Some adjustments are always disabled when Fargo's Souls Eternity Mode or Masochist Mode is enabled.
-				'''
+			Tooltip: Slighty adjusts the stats of some vanilla bosses to be more of a challenge.
 		}
 
 		MergeCraftingTrees: {
@@ -1371,15 +1367,6 @@ Configs: {
 		DisplayWorldEntryMessages: {
 			Label: Display World Entry Messages
 			Tooltip: Enables/Disables the messages upon entering a world.
-		}
-
-		UseAprilFoolsMutant: {
-			Label: Use April Fools Mutant
-			Tooltip:
-				'''
-				Converts the Mutant from Fargo's Souls to Yharim.
-				This setting doesn't do anything if Fargo's Souls isn't enabled.
-				'''
 		}
 
 		EnableInterlude4: {
@@ -1440,6 +1427,11 @@ Configs: {
 		MoveDeerclopsChecklistEntry: {
 			Label: Move Deerclops Checklist Entry
 			Tooltip: Moves Deerclops to be before Skeletron in boss checklist to match Calamity & Infernum's tier placement.
+		}
+
+		DontEnableThis: {
+			Label: Don't Enable This
+			Tooltip: Don't enable this. It will probably give you the wrong idea and it will lead to unbalanced & broken gameplay.
 		}
 	}
 

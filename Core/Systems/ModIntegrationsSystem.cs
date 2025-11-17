@@ -128,7 +128,7 @@ namespace InfernalEclipseAPI.Core.Systems
                 MakeCard(SOTS.Find<ModNPC>("Polaris").Type, (horz, anim) => Color.Lerp(Color.Aquamarine, Color.Red, anim), "Polaris", SoundID.NPCHit4, new SoundStyle("InfernumMode/Assets/Sounds/Custom/ExoMechs/ThanatosTransition"));
                 MakeCard(SOTS.Find<ModNPC>("NewPolaris").Type, (horz, anim) => Color.Lerp(Color.Aquamarine, Color.Red, anim), "NewPolaris", SoundID.NPCHit4, new SoundStyle("InfernumMode/Assets/Sounds/Custom/ExoMechs/ThanatosTransition"));
             }
-            if (Fargos != null)
+            if (Fargos != null && InfernalConfig.Instance.DontEnableThis)
             {
                 MakeCard(Fargos.Find<ModNPC>("TrojanSquirrel").Type, (horz, anim) => Color.Lerp(Color.Brown, Color.SaddleBrown, anim), "TrojanSquirrel", SoundID.NPCHit4, SoundID.Item14);
                 MakeCard(Fargos.Find<ModNPC>("CursedCoffin").Type, (horz, anim) => Color.Lerp(Color.SandyBrown, Color.Yellow, anim), "CursedCoffin", SoundID.MenuTick, SoundID.Roar);
@@ -147,7 +147,7 @@ namespace InfernalEclipseAPI.Core.Systems
                 MakeCard(Fargos.Find<ModNPC>("AbomBoss").Type, (horz, anim) => Color.Lerp(Color.Purple, Color.Orange, anim), "AbomBoss", SoundID.MenuTick, InfernumMode.Assets.Sounds.InfernumSoundRegistry.ModeToggleLaugh);
                 MakeCard(Fargos.Find<ModNPC>("MutantBoss").Type, (horz, anim) => Color.Lerp(Color.LightBlue, Color.Cyan, anim), "Mutant", SoundID.DD2_BetsyFireballShot, SoundID.ScaryScream);
             }
-            if (Starlight != null)
+            if (Starlight != null && InfernalConfig.Instance.DontEnableThis)
             {
                 if (Starlight.Version <= Version.Parse("1.1.4.2"))
                 {

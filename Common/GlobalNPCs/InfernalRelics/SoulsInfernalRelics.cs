@@ -23,6 +23,7 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs.InfernalRelics
     [ExtendsFromMod("FargowiltasSouls")]
     public class SoulsInfernalRelics : GlobalNPC
     {
+        public override bool IsLoadingEnabled(Mod mod) => InfernalConfig.Instance.DontEnableThis;
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
             bool isInfernum() => InfernumSaveSystem.InfernumModeEnabled;

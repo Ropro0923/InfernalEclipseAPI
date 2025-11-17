@@ -13,9 +13,6 @@ using CalamityMod.Projectiles.Rogue;
 using CalamityMod.NPCs.SupremeCalamitas;
 using InfernalEclipseAPI.Core.DamageClasses;
 using Terraria.ModLoader.IO;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using InfernalEclipseAPI.Content.Items.Lore.InfernalEclipse;
-using Steamworks;
 
 namespace InfernalEclipseAPI.Core.Players
 {
@@ -30,9 +27,6 @@ namespace InfernalEclipseAPI.Core.Players
                 InfernalWorld.craftedWorkshop = true;
             }
 
-            if (!InfernalConfig.Instance.DisplayWorldEntryMessages) return;
-            Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.WelcomeMessage.MPConnect"), 95, 06, 06);
-
             if (InfernalConfig.Instance.InfernumModeForced && WorldSaveSystem.InfernumModeEnabled == false)
             {
                 WorldSaveSystem.InfernumModeEnabled = true;
@@ -42,6 +36,10 @@ namespace InfernalEclipseAPI.Core.Players
             {
                 DownedBossSystem.startedBossRushAtLeastOnce = false;
             }
+
+            if (!InfernalConfig.Instance.DisplayWorldEntryMessages) return;
+
+            Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.WelcomeMessage.MPConnect"), 95, 06, 06);
         }
 
         public override void OnEnterWorld()
@@ -51,11 +49,40 @@ namespace InfernalEclipseAPI.Core.Players
                 InfernalWorld.craftedWorkshop = true;
             }
 
+            //Alerts the player if they have Fargo's Souls enabled.
+            if (ModLoader.HasMod("FargowiltasSouls"))
+            {
+                Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.WelcomeMessage.SoulsWarning"), 255, 0, 0);
+            }
+
+            if (InfernumActive.InfernumActive)
+            {
+                if (InfernalConfig.Instance.DisplayWorldEntryMessages)
+                {
+                    Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.WelcomeMessage.InfernumActive"), 95, 06, 06);
+                    SoundEngine.PlaySound(InfernumMode.Assets.Sounds.InfernumSoundRegistry.ModeToggleLaugh, Player.Center);
+                }
+            }
+            else if (InfernalConfig.Instance.InfernumModeForced)
+            {
+                if (InfernalConfig.Instance.DisplayWorldEntryMessages)
+                {
+                    Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.WelcomeMessage.InfernumForced"), 95, 06, 06);
+                    SoundEngine.PlaySound(InfernumMode.Assets.Sounds.InfernumSoundRegistry.ModeToggleLaugh, Player.Center);
+                }
+                WorldSaveSystem.InfernumModeEnabled = true;
+            }
+
+            if (InfernalConfig.Instance.ForceFullXerocDialogue)
+            {
+                DownedBossSystem.startedBossRushAtLeastOnce = false;
+            }
+
             if (!InfernalConfig.Instance.DisplayWorldEntryMessages) return;
 
             Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.WelcomeMessage.Welcome"), 95, 06, 06);
 
-            if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
+            if (ModLoader.HasMod("ThoriumMod"))
             {
                 //This message should always popup upon entering a world if they are playing the mod pack.
                 if (ModLoader.TryGetMod("ThoriumRework", out Mod rework))
@@ -82,39 +109,15 @@ namespace InfernalEclipseAPI.Core.Players
                 }
             }
 
-            //Alerts the player if they have Fargo's Souls enabled.
-            if (ModLoader.TryGetMod("FargowiltasSouls", out Mod fargoSouls)) 
-            {
-                Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.WelcomeMessage.SoulsWarning"), 255, 0, 0);
-            }
-
-            if (ModLoader.TryGetMod("CalamityMinus", out Mod calMinus))
+            if (ModLoader.HasMod("CalamityMinus"))
             {
                 Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.WelcomeMessage.CalMinus"), 255, 255, 06);
             }
 
-            if (ModLoader.TryGetMod("CalBalChange", out Mod calBal))
+            if (ModLoader.HasMod("CalBalChange"))
             {
                 Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.WelcomeMessage.CalBalNotice"), 255, 255, 06);
             }
-
-            if (InfernumActive.InfernumActive)
-            {
-                Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.WelcomeMessage.InfernumActive"), 95, 06, 06);
-                SoundEngine.PlaySound(InfernumMode.Assets.Sounds.InfernumSoundRegistry.ModeToggleLaugh, Player.Center);
-            }
-            else if (InfernalConfig.Instance.InfernumModeForced)
-            {
-                Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.WelcomeMessage.InfernumForced"), 95, 06, 06);
-                SoundEngine.PlaySound(InfernumMode.Assets.Sounds.InfernumSoundRegistry.ModeToggleLaugh, Player.Center);
-                WorldSaveSystem.InfernumModeEnabled = true;
-            }
-
-            if (InfernalConfig.Instance.ForceFullXerocDialogue)
-            {
-                DownedBossSystem.startedBossRushAtLeastOnce = false;
-            }
-
         }
 
         private Vector2 previousPos;

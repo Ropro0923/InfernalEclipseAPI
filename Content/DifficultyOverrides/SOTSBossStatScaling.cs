@@ -88,7 +88,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 }
                 else if (npc.type == ModContent.NPCType<PutridPinky1>())
                 {
-                    modifiers.SourceDamage *= 3f;
+                    modifiers.SourceDamage *= 2.5f;
                 }
                 else modifiers.SourceDamage *= 1.35f;
 
