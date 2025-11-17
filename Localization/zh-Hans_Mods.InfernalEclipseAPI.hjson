@@ -69,6 +69,13 @@ ItemTooltip: {
 		在激活通往失落竞技场的传送门后才可使用
 		'''
 	SandstonePortalDeviceInfoMP: 在激活通往失落竞技场的门户后，召唤无邦封臣 <- currently unsued in API
+	/* GoldenBatRework:
+		'''
+		+30% coins from enemies
+		You constantly generate coins over time
+		'You're not greedy... you're batshit insane!'
+		Revengeance drop
+		''' */
 
 	MergedCraftingTreeTooltip: {
 		Gilded: 耀刃之翼效果

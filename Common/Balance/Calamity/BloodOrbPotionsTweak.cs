@@ -1,5 +1,6 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items.Potions;
+using InfernalEclipseAPI.Core.Systems;
 
 namespace InfernalEclipseAPI.Common.Balance.Calamity
 {
@@ -32,6 +33,29 @@ namespace InfernalEclipseAPI.Common.Balance.Calamity
                     if (InfernalConfig.Instance.DisableBloodOrbPotions || InfernalConfig.Instance.BloodOrbPotionDuplication)
                     {
                         recipe.DisableRecipe();
+                    }
+                }
+
+                if (recipe.HasResult(ModContent.ItemType<BloodOrb>()))
+                {
+                    recipe.DisableDecraft();
+
+                    if (recipe.Mod.Name == "CalamityBardHealer")
+                    {
+                        recipe.DisableRecipe();
+                    }
+                }
+
+                if (InfernalCrossmod.Thorium.Loaded)
+                {
+                    if (recipe.HasResult(InfernalCrossmod.Thorium.Mod.Find<ModItem>("UnholyShards")))
+                    {
+                        recipe.DisableDecraft();
+
+                        if (recipe.Mod.Name == "CalamityBardHealer")
+                        {
+                            recipe.DisableRecipe();
+                        }
                     }
                 }
             }
@@ -115,6 +139,7 @@ namespace InfernalEclipseAPI.Common.Balance.Calamity
                 recipe.AddIngredient(num, 1);
                 recipe.AddIngredient(ModContent.ItemType<BloodOrb>(), 10);
                 recipe.AddTile(TileID.AlchemyTable);
+                recipe.AddCondition(Condition.DownedSkeletron);
                 recipe.Register();
             }
             foreach (int num in numArray2)
@@ -132,6 +157,7 @@ namespace InfernalEclipseAPI.Common.Balance.Calamity
                 }
 
                 recipe.AddTile(TileID.AlchemyTable);
+                recipe.AddCondition(Condition.DownedSkeletron);
                 recipe.Register();
             }
 
@@ -165,6 +191,7 @@ namespace InfernalEclipseAPI.Common.Balance.Calamity
                     if (num == thorium.Find<ModItem>("KineticPotion").Type)
                         recipe.AddIngredient(ItemID.BlackPearl);
                     recipe.AddTile(TileID.AlchemyTable);
+                    recipe.AddCondition(Condition.DownedSkeletron);
                     recipe.Register();
                 }
             }

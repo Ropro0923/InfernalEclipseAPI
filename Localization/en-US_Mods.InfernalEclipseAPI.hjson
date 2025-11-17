@@ -69,6 +69,13 @@ ItemTooltip: {
 		Only works if the portal at the Lost Gateway alter has been activated
 		'''
 	SandstonePortalDeviceInfoMP: Summons the Bereft Vassal after the portal at the Lost Gateway has been activated <- currently unsued in API
+	GoldenBatRework:
+		'''
+		+30% coins from enemies
+		You constantly generate coins over time
+		'You're not greedy... you're batshit insane!'
+		Revengeance drop
+		'''
 
 	MergedCraftingTreeTooltip: {
 		Gilded: Effects of the Gilded Blade Wings

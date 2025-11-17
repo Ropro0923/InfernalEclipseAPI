@@ -4,13 +4,16 @@ using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.NPCs.Perforator;
 using CalamityMod.NPCs.ProfanedGuardians;
 using CalamityMod.NPCs.SlimeGod;
+using InfernalEclipseAPI.Core.Systems;
 using Microsoft.Xna.Framework;
 using ThoriumMod.Buffs;
+using ThoriumMod.Scenes;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs
 {
+    [JITWhenModsEnabled(InfernalCrossmod.Thorium.Name)]
     [ExtendsFromMod("ThoriumMod")]
-    public class ThoriumBossImmunites : GlobalNPC
+    public class ThoriumGlobalNPC : GlobalNPC
     {
         public override void SetDefaults(NPC npc)
         {

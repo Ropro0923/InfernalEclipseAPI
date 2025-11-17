@@ -227,9 +227,9 @@ namespace InfernalEclipseAPI.Common.ProgressionRework
                 {
                     if (recipe.HasResult(InfernalCrossmod.YouBoss.Mod.Find<ModItem>("CursedMirror")))
                     {
-                        recipe.AddIngredient<DarkPlasma>(3);
+                        recipe.AddIngredient<ArmoredShell>(3);
                         recipe.AddIngredient<TwistingNether>(3);
-                        recipe.AddIngredient<RuinousSoul>(3);
+                        recipe.AddIngredient<DarkPlasma>(3);
                     }
                 }
             }

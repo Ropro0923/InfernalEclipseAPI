@@ -7,8 +7,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using System.Collections.Generic;
+using Terraria;
 using Terraria.Audio;
 using Terraria.Localization;
+using ThoriumMod.Scenes;
 
 namespace InfernalEclipseAPI.Core.Systems
 {
@@ -39,6 +41,11 @@ namespace InfernalEclipseAPI.Core.Systems
             BossChecklistSetup();
             AddInfernumCards();
             ColoredDamageTypesSupport();
+
+            if (InfernalCrossmod.Thorium.Loaded)
+            {
+                AddThoriumMiniBoss.AddMiniBosses();
+            }
         }
         private void MusicDisplaySetup()
         {
@@ -477,6 +484,19 @@ namespace InfernalEclipseAPI.Core.Systems
                 dictionary.Add("spawnInfo", Language.GetText("Mods.InfernalEclipseAPI.SpawnInfo." + InternalName));
 
             return dictionary;
+        }
+    }
+
+    [JITWhenModsEnabled(InfernalCrossmod.Thorium.Name)]
+    [ExtendsFromMod(InfernalCrossmod.Thorium.Name)]
+    public static class AddThoriumMiniBoss
+    {
+        public static void AddMiniBosses()
+        {
+            if (InfernalCrossmod.SOTS.Loaded)
+            {
+                EventSceneBase<MiniBossScene>.Instance.NPCs.Add(InfernalCrossmod.SOTS.Mod.Find<ModNPC>("PutridPinky1").Type);
+            }
         }
     }
 }

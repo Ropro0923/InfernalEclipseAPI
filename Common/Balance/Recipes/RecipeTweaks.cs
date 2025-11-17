@@ -23,6 +23,7 @@ using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
 using InfernalEclipseAPI.Content.Items.Weapons.Magic.ChaosBlaster;
 using InfernalEclipseAPI.Content.Items.Weapons.Nameless.NebulaGigabeam;
 using CalamityMod.Items.Potions;
+using System.Security.Policy;
 
 namespace InfernalEclipseAPI.Common.Balance.Recipes
 {
@@ -774,6 +775,16 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         if (recipe.HasResult<AuricQuantumCoolingCell>())
                         {
                             recipe.AddIngredient(sots.Find<ModItem>("DissolvingAurora"));
+                        }
+
+                        if (recipe.HasResult(sots.Find<ModItem>("PhaseBar")) && recipe.HasIngredient(sots.Find<ModItem>("DissolvingBrilliance")))
+                        {
+                            recipe.DisableRecipe();
+                        }
+
+                        if (recipe.HasResult(sots.Find<ModItem>("VoidmageIncubator")))
+                        {
+                            recipe.AddIngredient(sots.Find<ModItem>("PhaseBar"), 3);
                         }
 
                         if (recipe.HasResult(ItemID.TrueNightsEdge))

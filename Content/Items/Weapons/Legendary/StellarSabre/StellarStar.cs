@@ -17,7 +17,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
             Projectile.timeLeft = 300;
-            Projectile.aiStyle = 1;
+            Projectile.aiStyle = ProjAIStyleID.Arrow;
             AIType = ProjectileID.Starfury;
         }
 

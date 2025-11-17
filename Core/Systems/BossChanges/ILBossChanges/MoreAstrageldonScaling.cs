@@ -6,7 +6,7 @@ using MonoMod.RuntimeDetour;
 using CalamityMod.Events;
 using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
 
-namespace InfernalEclipseAPI.Core.Systems.ILBossChanges
+namespace InfernalEclipseAPI.Core.Systems.BossChanges.ILBossChanges
 {
     [ExtendsFromMod("CatalystMod")]
     public class AstrageldonScalerSystem : ModSystem

@@ -13,6 +13,9 @@ using CalamityMod.Projectiles.Rogue;
 using CalamityMod.NPCs.SupremeCalamitas;
 using InfernalEclipseAPI.Core.DamageClasses;
 using Terraria.ModLoader.IO;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using InfernalEclipseAPI.Content.Items.Lore.InfernalEclipse;
+using Steamworks;
 
 namespace InfernalEclipseAPI.Core.Players
 {
@@ -118,9 +121,13 @@ namespace InfernalEclipseAPI.Core.Players
         private bool wasUsingItem;
         private int horrifiedTimer = 0;
         private int jamTimer = 0;
+        private int batCoinTimer = 0;
+
+        public int resonatorTimer = 0;
         public int namelessDialogueCooldown;
         public int CloverCharmCooldown;
         public bool workshopHasBeenOwned;
+        public bool batPoop;
 
         public override void Initialize()
         {
@@ -154,11 +161,39 @@ namespace InfernalEclipseAPI.Core.Players
             if (CloverCharmCooldown > 0)
                 CloverCharmCooldown--;
 
+            if (batPoop)
+            {
+                batCoinTimer++;
+                if (batCoinTimer == 60 * 5)
+                {
+                    int poopCoin = Player.QuickSpawnItem(Player.GetSource_Misc("IEoR_PoopCoin"), ItemID.GoldCoin, Main.rand.Next(1, 6));
+                    batCoinTimer = 0;
+                }
+            }
+            else
+                batCoinTimer = 0;
+
+            if (resonatorTimer > 0)
+                resonatorTimer--;
+
+            if (resonatorTimer == 1)
+            {
+                for (int i = 0; i < 24; i++)
+                {
+                    Vector2 pos = Player.Center + new Vector2(Main.rand.NextFloat(-16f, 16f), Main.rand.NextFloat(-24f, 8f));
+                    Vector2 vel = new Vector2(Main.rand.NextFloat(-0.4f, 0.4f), Main.rand.NextFloat(-0.6f, -0.1f));
+
+                    int d = Dust.NewDust(pos, 0, 0, DustID.Cloud, vel.X, vel.Y, 150, default, Main.rand.NextFloat(1.0f, 1.6f));
+                    Main.dust[d].noGravity = true;
+                }
+                SoundEngine.PlaySound(SoundID.MaxMana, Player.Center);
+            }
             if (namelessDialogueCooldown <= 0)
                 InfernalWorld.namelessDeveloperDiagloguePlayed = false;
 
             soltanBullying = false;
             HarvestMoonBuff = false;
+            batPoop = false;
         }
 
         public override void PreUpdate()
@@ -166,6 +201,8 @@ namespace InfernalEclipseAPI.Core.Players
             if (Player.ZoneLihzhardTemple && !NPC.downedPlantBoss)
             {
                 Player.statLife -= 1;
+                if (Player.statLife == 0)
+                    Player.KillMe(PlayerDeathReason.ByCustomReason($"{Player.name} fell to the jungles curse..."), 0, 0);
                 Player.AddBuff(BuffID.PotionSickness, 60);
             }
         }
@@ -268,6 +305,11 @@ namespace InfernalEclipseAPI.Core.Players
 
                 ref StatModifier summon = ref Player.GetDamage(DamageClass.Summon);
                 summon -= (float)(0.1 * Player.slotsMinions);
+            }
+
+            if (batPoop)
+            {
+
             }
         }
 
