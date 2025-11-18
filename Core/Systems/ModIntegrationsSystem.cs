@@ -6,9 +6,11 @@ using InfernalEclipseAPI.Core.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using SOTS.Void;
 using System.Collections.Generic;
 using Terraria.Audio;
 using Terraria.Localization;
+using static InfernalEclipseAPI.Core.Systems.InfernalCrossmod;
 
 namespace InfernalEclipseAPI.Core.Systems
 {
@@ -378,15 +380,10 @@ namespace InfernalEclipseAPI.Core.Systems
         {
             if (ModLoader.TryGetMod("ColoredDamageTypes", out Mod coloredDamageTypes))
             {
-                //Color mergedThrowerColor = new Color(255, 100, 100);
-
-                //Vector3 hslVector = Main.rgbToHsl(mergedThrowerColor);
-                //hslVector.Y = MathHelper.Lerp(hslVector.Y, 1f, 0.6f);
-                //Color mergedThrowerCritColor = Main.hslToRgb(hslVector);
-
-                //coloredDamageTypes.Call("AddDamageType", MergedThrowerRogue.Instance, mergedThrowerColor, mergedThrowerColor, mergedThrowerCritColor);
-
-                //coloredDamageTypes.Call("AddDamageType", MeleeWhip.Instance, new Color(170, 0, 0), new Color(170, 0, 0), new Color(255, 10, 50));
+                if (InfernalCrossmod.SOTS.Loaded)
+                {
+                    SOTSIntegrationsSystem.VoidColoredDamageTypes(coloredDamageTypes);
+                }
 
                 Color legendaryColor = new Color(255, 215, 0); // Gold
                 Vector3 hslVector = Main.rgbToHsl(legendaryColor);
@@ -452,7 +449,6 @@ namespace InfernalEclipseAPI.Core.Systems
                         {
                             Texture2D texture2D = ModContent.Request<Texture2D>("InfernalEclipseAPI/Assets/Textures/BossChecklist/AbyssBottom", (AssetRequestMode)2).Value;
                             Vector2 vector2;
-                            // ISSUE: explicit constructor call
                             vector2 = new Vector2(
                                 rect.X + rect.Width / 2f - texture2D.Width / 2f,
                                 rect.Y + rect.Height / 2f - texture2D.Height / 2f
@@ -477,6 +473,19 @@ namespace InfernalEclipseAPI.Core.Systems
                 dictionary.Add("spawnInfo", Language.GetText("Mods.InfernalEclipseAPI.SpawnInfo." + InternalName));
 
             return dictionary;
+        }
+    }
+
+    [JITWhenModsEnabled(InfernalCrossmod.SOTS.Name)]
+    [ExtendsFromMod(InfernalCrossmod.SOTS.Name)]
+    public static class SOTSIntegrationsSystem
+    {
+        public static void VoidColoredDamageTypes(Mod cDT)
+        {
+            cDT.Call("AddDamageType", ModContent.GetInstance<VoidGeneric>(), new Color(255, 255, 255), new Color(255, 255, 255), new Color(205, 205, 205));
+            cDT.Call("AddDamageType", ModContent.GetInstance<VoidMelee>(), new Color(70, 0, 0), new Color(30, 0, 0), new Color(70, 0, 0));
+            cDT.Call("AddDamageType", ModContent.GetInstance<VoidRanged>(), new Color(0, 70, 0), new Color(0, 30, 0), new Color(0, 70, 0));
+            cDT.Call("AddDamageType", ModContent.GetInstance<VoidMagic>(), new Color(0, 0, 70), new Color(0, 0, 30), new Color(0, 0, 70));
         }
     }
 }
