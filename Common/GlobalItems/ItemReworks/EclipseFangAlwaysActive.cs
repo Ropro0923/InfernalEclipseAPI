@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using ThoriumMod;
 using Microsoft.Xna.Framework;
+using Terraria.Localization;
+using InfernalEclipseAPI.Core.Systems;
 
 namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
 {
@@ -9,29 +11,44 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
     {
         public override bool? UseItem(Item item, Player player)
         {
-            Mod mod;
-            ModItem modItem;
-            if (!ModLoader.TryGetMod("ThoriumMod", out mod) || !mod.TryFind("EclipseFang", out modItem) || item.type != modItem.Type || !InfernalConfig.Instance.ThoriumBalanceChangess 
-                //|| ModLoader.TryGetMod("WHummusMultiModBalancing", out Mod WHBalance)
-                ) return base.UseItem(item, player);
+            if (!InfernalCrossmod.Thorium.Mod.TryFind("EclipseFang", out ModItem modItem) || item.type != modItem.Type || !InfernalConfig.Instance.ThoriumBalanceChangess) 
+                return base.UseItem(item, player);
+
             var thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
             thoriumPlayer.itemEclipseFangCharge = 40;
+
             return base.UseItem(item, player);
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            Mod mod;
-            ModItem modItem;
-            if (!ModLoader.TryGetMod("ThoriumMod", out mod) || !mod.TryFind("EclipseFang", out modItem) || item.type != modItem.Type || !InfernalConfig.Instance.ThoriumBalanceChangess 
-                //|| ModLoader.TryGetMod("WHummusMultiModBalancing", out Mod WHBalance)
-                ) return;
-            Color color = Color.Lerp(Color.White, new Color(30, 144, byte.MaxValue), (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 2.0) * 0.5 + 0.5));
-            string str = "[IEoR]: Weapon empowerment always active.";
-            tooltips.Add(new TooltipLine(Mod, "MjolnirInfo", str)
+            if (!InfernalCrossmod.Thorium.Mod.TryFind("EclipseFang", out ModItem modItem) || item.type != modItem.Type || !InfernalConfig.Instance.ThoriumBalanceChangess) 
+                return;
+
+            int maxTooltipIndex = -1;
+            int maxNumber = -1;
+
+            // Find the TooltipLine with the highest TooltipX name
+            for (int i = 0; i < tooltips.Count; i++)
             {
-                OverrideColor = new Color?(color)
-            });
+                if (tooltips[i].Mod == "Terraria" && tooltips[i].Name.StartsWith("Tooltip"))
+                {
+                    if (int.TryParse(tooltips[i].Name.Substring(7), out int num) && num > maxNumber)
+                    {
+                        maxNumber = num;
+                        maxTooltipIndex = i;
+                    }
+                }
+            }
+
+            // If found, insert a new TooltipLine right after it with the desired color
+            if (maxTooltipIndex != -1)
+            {
+                int insertIndex = maxTooltipIndex + 1;
+                TooltipLine customLine = new TooltipLine(ModLoader.GetMod("InfernalEclipseAPI"), "TooltipZ", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.EclipseFang"));
+                customLine.OverrideColor = Color.Lerp(Color.White, new Color(30, 144, byte.MaxValue), (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 2.0) * 0.5 + 0.5));
+                tooltips.Insert(insertIndex, customLine);
+            }
         }
     }
 }

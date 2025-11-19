@@ -2,6 +2,7 @@
 using CalamityMod.Items.Accessories;
 using Terraria.Localization;
 using System.Collections.Generic;
+using rail;
 
 namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.NucleogenesisTree
 {
@@ -282,6 +283,37 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.NucleogenesisTree
             }
         }
 
+        public void AddTooltip(List<TooltipLine> tooltips, string stealthTooltip, Color overrideColor = default)
+        {
+            int maxTooltipIndex = -1;
+            int maxNumber = -1;
+
+            // Find the TooltipLine with the highest TooltipX name
+            for (int i = 0; i < tooltips.Count; i++)
+            {
+                if (tooltips[i].Mod == "Terraria" && tooltips[i].Name.StartsWith("Tooltip"))
+                {
+                    if (int.TryParse(tooltips[i].Name.Substring(7), out int num) && num > maxNumber)
+                    {
+                        maxNumber = num;
+                        maxTooltipIndex = i;
+                    }
+                }
+            }
+
+            // If found, insert a new TooltipLine right after it with the desired color
+            if (maxTooltipIndex != -1)
+            {
+                int insertIndex = maxTooltipIndex + 1;
+                TooltipLine customLine = new TooltipLine(Mod, "MergedTreeTooltip", stealthTooltip);
+                if (overrideColor != default)
+                    customLine.OverrideColor = overrideColor;
+
+                tooltips.Insert(insertIndex, customLine);
+            }
+        }
+
+
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (!InfernalConfig.Instance.MergeCraftingTrees)
@@ -292,6 +324,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.NucleogenesisTree
                 new Color(255, 80, 0), // Infernal red/orange
                 (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 2.0) * 0.5 + 0.5)
             );
+
             Color NoSOTSPink = Color.Lerp(
                 Color.White,
                 new Color(251, 198, 207),
@@ -340,10 +373,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.NucleogenesisTree
                             tooltip.OverrideColor = new Color?(InfernalRed);
                         }
                     }
-                    tooltips.Add(new TooltipLine(Mod, "pearl", cyanPearlInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
+                    AddTooltip(tooltips, cyanPearlInfo, InfernalRed);
                 }
 
                 if (item.type == ModContent.ItemType<StatisBlessing>())
@@ -360,10 +390,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.NucleogenesisTree
                     //{
                     //    OverrideColor = new Color?(InfernalRed)
                     //});
-                    tooltips.Add(new TooltipLine(Mod, "scorpion", scorpionInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
+                    AddTooltip(tooltips, scorpionInfo, InfernalRed);
                     //tooltips.Add(new TooltipLine(Mod, "fortress", fortressInfo)
                     //{
                     //    OverrideColor = new Color?(InfernalRed)
@@ -388,10 +415,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.NucleogenesisTree
                     //{
                     //    OverrideColor = new Color?(InfernalRed)
                     //});
-                    tooltips.Add(new TooltipLine(Mod, "scorpion", scorpionInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
+                    AddTooltip(tooltips, scorpionInfo, InfernalRed);
                     //tooltips.Add(new TooltipLine(Mod, "fortress", fortressInfo)
                     //{
                     //    OverrideColor = new Color?(InfernalRed)
@@ -408,68 +432,38 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.NucleogenesisTree
 
                 if (item.type == ModContent.ItemType<StarTaintedGenerator>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "watch", watchInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
+                    AddTooltip(tooltips, watchInfo, InfernalRed);
                 }
 
                 if (item.type == ModContent.ItemType<Nucleogenesis>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "sentries", threeMoreSentries)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
+                    AddTooltip(tooltips, threeMoreSentries, InfernalRed);
                     //tooltips.Add(new TooltipLine(Mod, "scry", scryInfo)
                     //{
                     //    OverrideColor = new Color?(InfernalRed)
                     //});
-                    tooltips.Add(new TooltipLine(Mod, "skull", skullInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
-                    tooltips.Add(new TooltipLine(Mod, "scorpion", scorpionInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
-                    tooltips.Add(new TooltipLine(Mod, "fortress", fortressInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
-                    tooltips.Add(new TooltipLine(Mod, "watch", watchInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
+                    AddTooltip(tooltips, skullInfo, InfernalRed);
+                    AddTooltip(tooltips, scorpionInfo, InfernalRed);
+                    AddTooltip(tooltips, fortressInfo, InfernalRed);
+                    AddTooltip(tooltips, watchInfo, InfernalRed);
                     //tooltips.Add(new TooltipLine(Mod, "yuma", yumasInfo)
                     //{
                     //    OverrideColor = new Color?(InfernalRed)
                     //});
-                    tooltips.Add(new TooltipLine(Mod, "pearl", cyanPearlInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
+                    AddTooltip(tooltips, cyanPearlInfo, InfernalRed);
                 }
             }
             else if (thorium != null)
             {
                 if (item.type == ModContent.ItemType<StatisBlessing>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "sentries", twoMoreSentries)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
+                    AddTooltip(tooltips, twoMoreSentries, InfernalRed);
                     //tooltips.Add(new TooltipLine(Mod, "scry", scryInfo)
                     //{
                     //    OverrideColor = new Color?(InfernalRed)
                     //});
-                    tooltips.Add(new TooltipLine(Mod, "skull", skullInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
-                    tooltips.Add(new TooltipLine(Mod, "scorpion", scorpionInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
+                    AddTooltip(tooltips, skullInfo, InfernalRed);
+                    AddTooltip(tooltips, scorpionInfo, InfernalRed);
                     //tooltips.Add(new TooltipLine(Mod, "watch", watchInfo)
                     //{
                     //    OverrideColor = new Color?(InfernalRed)
@@ -478,22 +472,13 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.NucleogenesisTree
 
                 if (item.type == ModContent.ItemType<StatisCurse>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "sentries", threeMoreSentries)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
+                    AddTooltip(tooltips, threeMoreSentries, InfernalRed);
                     //tooltips.Add(new TooltipLine(Mod, "scry", scryInfo)
                     //{
                     //    OverrideColor = new Color?(InfernalRed)
                     //});
-                    tooltips.Add(new TooltipLine(Mod, "skull", skullInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
-                    tooltips.Add(new TooltipLine(Mod, "scorpion", scorpionInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
+                    AddTooltip(tooltips, skullInfo, InfernalRed);
+                    AddTooltip(tooltips, scorpionInfo, InfernalRed);
                     //tooltips.Add(new TooltipLine(Mod, "watch", watchInfo)
                     //{
                     //    OverrideColor = new Color?(InfernalRed)
@@ -506,42 +491,24 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.NucleogenesisTree
 
                 if (item.type == ModContent.ItemType<StarTaintedGenerator>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "watch", watchInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
+                    AddTooltip(tooltips, watchInfo, InfernalRed);
                 }
 
                 if (item.type == ModContent.ItemType<Nucleogenesis>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "sentries", threeMoreSentries)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
+                    AddTooltip(tooltips, threeMoreSentries, InfernalRed);
                     //tooltips.Add(new TooltipLine(Mod, "scry", scryInfo)
                     //{
                     //    OverrideColor = new Color?(InfernalRed)
                     //});
-                    tooltips.Add(new TooltipLine(Mod, "skull", skullInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
-                    tooltips.Add(new TooltipLine(Mod, "scorpion", scorpionInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
-                    tooltips.Add(new TooltipLine(Mod, "watch", watchInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
+                    AddTooltip(tooltips, skullInfo, InfernalRed);
+                    AddTooltip(tooltips, scorpionInfo, InfernalRed);
+                    AddTooltip(tooltips, watchInfo, InfernalRed);
                     //tooltips.Add(new TooltipLine(Mod, "yuma", yumasInfo)
                     //{
                     //    OverrideColor = new Color?(InfernalRed)
                     //});
-                    tooltips.Add(new TooltipLine(Mod, "pearl", cyanPearlInfo)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
+                    AddTooltip(tooltips, cyanPearlInfo, InfernalRed);
                 }
             }
             else if (sots != null)
@@ -576,18 +543,9 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.NucleogenesisTree
 
                 if (item.type == ModContent.ItemType<Nucleogenesis>())
                 {
-                    tooltips.Add(new TooltipLine(Mod, "sentries", threeMoreSentries)
-                    {
-                        OverrideColor = new Color?(InfernalRed)
-                    });
-                    tooltips.Add(new TooltipLine(Mod, "fortress", fortressInfoNoThor)
-                    {
-                        OverrideColor = new Color?(NoThorYellow)
-                    });
-                    tooltips.Add(new TooltipLine(Mod, "pearl", cyanPearlInfo)
-                    {
-                        OverrideColor = new Color?(NoThorYellow)
-                    });
+                    AddTooltip(tooltips, threeMoreSentries, InfernalRed);
+                    AddTooltip(tooltips, fortressInfoNoThor, NoThorYellow);
+                    AddTooltip(tooltips, cyanPearlInfo, InfernalRed);
                 }
             }
         }

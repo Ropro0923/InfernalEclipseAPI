@@ -48,6 +48,7 @@ ItemTooltip: {
 	SFlight: Holding right click grants fast, unlimited flight
 	StarlitForgeExtra: Even more curiously, it can even duplicate some items
 	BladecrestNerf: An evil force is sapping part of its power...
+	EclipseFang: "[IEoR]: Weapon empowerment always active."
 	ScytheThrow:
 		'''
 		Right Click to throw the Scythe, which will curve on it's way back
@@ -561,6 +562,14 @@ Items: {
 	ExoSights: {
 		DisplayName: Exo Sights
 		Tooltip: ""
+		SOTSBardHealerTooltip:
+			'''
+			Increases critical strike chance by 25%
+			Critical strikes deal 40 more damage, release a burst of damaging sparks, and may detonate enemies for 100% damage
+			Critical strikes steal life, regenerate void, recover mana and return inspiration
+			Life steal has a 0.5 second cooldown
+			Immunity to bleeding and poisoned debuffs, & grants night vision
+			'''
 		ThoriumTooltip:
 			'''
 			Increases critical strike chance by 25%

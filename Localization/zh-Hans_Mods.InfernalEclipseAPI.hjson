@@ -48,6 +48,7 @@ ItemTooltip: {
 	SFlight: 长按右键获得快速无限飞行能力
 	StarlitForgeExtra: 更令人称奇的是，它甚至可以复制某些物品
 	BladecrestNerf: 一股邪恶的力量正在侵蚀它的部分威能……
+	// EclipseFang: "[IEoR]: Weapon empowerment always active."
 	ScytheThrow:
 		'''
 		右键投掷镰刀，它会以弧线轨迹返回
@@ -558,6 +559,14 @@ Items: {
 	ExoSights: {
 		DisplayName: 星流视域
 		Tooltip: ""
+		/* SOTSBardHealerTooltip:
+			'''
+			Increases critical strike chance by 25%
+			Critical strikes deal 40 more damage, release a burst of damaging sparks, and may detonate enemies for 100% damage
+			Critical strikes steal life, regenerate void, recover mana and return inspiration
+			Life steal has a 0.5 second cooldown
+			Immunity to bleeding and poisoned debuffs, & grants night vision
+			''' */
 		ThoriumTooltip:
 			'''
 			暴击率提高25%

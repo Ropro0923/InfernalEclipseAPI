@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using InfernalEclipseAPI.Core.Systems;
 using Terraria.Localization;
 using ThoriumMod;
 using ThoriumMod.Utilities;
@@ -16,6 +17,11 @@ namespace InfernalEclipseAPI.Content.Items.Accessories.ExoSights
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
             player.GetThoriumPlayer().accInfernoLordsFocus = true;
+
+            if (InfernalCrossmod.SOTSBardHealer.Loaded)
+            {
+                InfernalCrossmod.SOTSBardHealer.Mod.Find<ModItem>("RingofRest").UpdateAccessory(player, hideVisual);
+            }
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

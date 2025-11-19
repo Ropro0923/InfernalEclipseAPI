@@ -73,6 +73,10 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 {
                     npc.lifeMax -= (int)(npc.lifeMax * 0.3);
                 }
+                else if (npc.ModNPC.Name.Contains("SubspaceSerpent"))
+                {
+                    npc.lifeMax += (int)(0.25f * npc.lifeMax);
+                }
                 else
                     npc.lifeMax += (int)(((double).35) * npc.lifeMax);
             }
@@ -109,7 +113,12 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                     npc.position += npc.velocity * 0.3f;
                 }
                 */
-                if (npc.type != ModContent.NPCType<PutridPinky1>())
+                if (npc.type == ModContent.NPCType<PutridPinky1>())
+                    return;
+
+                if (npc.type == ModContent.NPCType<SubspaceSerpentHead>())
+                    npc.position += npc.velocity * 0.25f;
+                else
                     npc.position += npc.velocity * 0.35f;
             }
         }
