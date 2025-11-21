@@ -761,6 +761,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
             #region Thorium
             if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
             {
+                if (GetItem(thorium, "EnchantedPickaxe", item))
+                {
+                    item.pick = 59;
+                }
+
                 if (GetItem(thorium, "ValadiumPickaxe", item) || GetItem(thorium, "LodeStonePickaxe", item))
                 {
                     item.pick = 190;
