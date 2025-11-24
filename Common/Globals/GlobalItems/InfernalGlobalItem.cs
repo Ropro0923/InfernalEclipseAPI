@@ -128,7 +128,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     if (item.type == calHunt.Find<ModItem>("TreasureTrunk").Type)
                     {
                         itemLoot.RemoveWhere(Tend => Tend is CommonDrop commonDrop && commonDrop.itemId == calHunt.Find<ModItem>("TendrilCursorAttachment").Type, true);
-                        DropHelper.Add(DropHelper.DefineConditionalDropSet((ILoot)(object)itemLoot, DropHelper.RevAndMaster), calHunt.Find<ModItem>("TendrilCursorAttachmentk").Type, 10, 1, 1, false);
+                        DropHelper.Add(DropHelper.DefineConditionalDropSet((ILoot)(object)itemLoot, DropHelper.RevAndMaster), calHunt.Find<ModItem>("TendrilCursorAttachment").Type, 10, 1, 1, false);
                     }
                 }
             }

@@ -1478,6 +1478,11 @@ Configs: {
 			Label: Move Deerclops Checklist Entry
 			Tooltip: Moves Deerclops to be before Skeletron in boss checklist to match Calamity & Infernum's tier placement.
 		}
+
+		CalamityExpertAccessories: {
+			Label: Calamity Expert Accessories
+			Tooltip: ""
+		}
 	}
 
 	Difficulty: {

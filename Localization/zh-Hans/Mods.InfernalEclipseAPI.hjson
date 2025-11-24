@@ -1401,17 +1401,6 @@ Configs: {
 			Tooltip: 将药水的血珠配方修改为使用血珠复制的配方
 		}
 
-		AutomaticallyReforgeThoriumRogueItems: {
-			Label: 自动重铸瑟银投手物品
-			Tooltip:
-				'''
-				自动将化境前缀应用到所有非消耗型瑟银投手物品上
-				可帮助瑟银投手物品追赶带前缀的灾厄物品——因为瑟银投手物品无法重铸
-				仅在启用 Ragnarok 或 Unofficial Calamity Bard & Healer 时生效
-				若启用融合盗贼和投手伤害，则此设置不发挥任何作用
-				'''
-		}
-
 		ChanageWeaponClasses: {
 			Label: 修改武器类别
 			Tooltip: 修改部分武器的伤害类别，以提供更多选项或使武器定位更合乎逻辑
@@ -1420,15 +1409,6 @@ Configs: {
 		DisplayWorldEntryMessages: {
 			Label: 进入世界时显示提示信息
 			Tooltip: 开启/关闭进入世界时聊天框内的提示信息
-		}
-
-		UseAprilFoolsMutant: {
-			Label: 使用愚人节突变体
-			Tooltip:
-				'''
-				将突变体更换为亚利姆
-				若启用Fargo's Souls，则此设置不发挥任何作用
-				'''
 		}
 
 		EnableInterlude4: {
@@ -1488,6 +1468,11 @@ Configs: {
 		MoveDeerclopsChecklistEntry: {
 			Label: 调整独眼巨鹿Boss Checklist顺序
 			Tooltip: 将独眼巨鹿在Boss Checklist中的顺序调整到骷髅王之前，以匹配灾厄&炼狱的进程
+		}
+
+		CalamityExpertAccessories: {
+			// Label: Calamity Expert Accessories
+			// Tooltip: ""
 		}
 	}
 
