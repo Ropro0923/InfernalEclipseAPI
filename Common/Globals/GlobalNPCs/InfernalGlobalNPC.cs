@@ -16,6 +16,10 @@ using System.Linq;
 using Terraria.Localization;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityMod.NPCs.ProfanedGuardians;
+using CalamityMod.Items;
+using CalamityMod.Items.Weapons.Typeless;
+using CalamityMod.Items.Accessories;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs
 {
@@ -92,6 +96,7 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<InfernalTwilight>(), ThankYouPainting.DropInt));
             }
+
             if (npc.type == ModContent.NPCType<SoulSlurper>() && InfernalConfig.Instance.BossKillCheckOnOres)
             {
                 int slurperPole = ModContent.ItemType<SlurperPole>();
@@ -104,6 +109,21 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
                     PruneFromChains(rule, slurperPole);
 
                 npcLoot.Add(ItemDropRule.ByCondition(new EvilBossDownedCondition(), slurperPole, 30));
+            }
+
+            if (InfernalConfig.Instance.CalamityExpertAccessories) 
+            {
+                if (npc.type == ModContent.NPCType<ProfanedGuardianHealer>())
+                    npcLoot.RemoveWhere(Relic1 => Relic1 is CommonDrop commonDrop1 && commonDrop1.itemId == ModContent.ItemType<RelicOfConvergence>(), true);
+                if (npc.type == ModContent.NPCType<ProfanedGuardianDefender>())
+                    npcLoot.RemoveWhere(Relic2 => Relic2 is CommonDrop commonDrop2 && commonDrop2.itemId == ModContent.ItemType<RelicOfResilience>(), true);
+                if (npc.type == ModContent.NPCType<ProfanedGuardianCommander>())
+                {
+                    npcLoot.RemoveWhere(Relic3 => Relic3 is CommonDrop commonDrop3 && commonDrop3.itemId == ModContent.ItemType<RelicOfDeliverance>(), true);
+                    npcLoot.RemoveWhere(Banner3 => Banner3 is CommonDrop commonDrop4 && commonDrop4.itemId == ModContent.ItemType<WarbanneroftheSun>(), true);
+                    DropHelper.Add(DropHelper.DefineConditionalDropSet((ILoot)(object)npcLoot, DropHelper.RevAndMaster), ModContent.ItemType<WarbanneroftheSun>(), 10, 1, 1, false);
+                    npcLoot.Add(new OneFromOptionsDropRule(1, 3, [ ModContent.ItemType<RelicOfConvergence>(), ModContent.ItemType<RelicOfDeliverance>(), ModContent.ItemType<RelicOfResilience>() ]));
+                }
             }
         }
 

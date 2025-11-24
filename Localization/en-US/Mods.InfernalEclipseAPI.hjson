@@ -1409,17 +1409,6 @@ Configs: {
 			Tooltip: Replaces the Blood Orb potion recipes with duplication recipes instead.
 		}
 
-		AutomaticallyReforgeThoriumRogueItems: {
-			Label: Automatically Reforge Thorium Rogue Items
-			Tooltip:
-				'''
-				Automatically adds the stat bonuses of the "Flawless" prefix onto all non-consumable Thorium Rogue Items. 
-				Can help Thorium items catch up to Calamity items with prefixes as Throium Rogue items can't be reforged.
-				Only works when Ragnarok or Unofficial Calamity Bard & Healer are enabled.
-				This setting does nothing if Merge Thrower Into Rogue is enabled.
-				'''
-		}
-
 		ChanageWeaponClasses: {
 			Label: Change Weapon Classes
 			Tooltip: Changes the class of some weapons to give more varity or to make more sense with the weapon.
@@ -1428,15 +1417,6 @@ Configs: {
 		DisplayWorldEntryMessages: {
 			Label: Display World Entry Messages
 			Tooltip: Enables/Disables the messages upon entering a world.
-		}
-
-		UseAprilFoolsMutant: {
-			Label: Use April Fools Mutant
-			Tooltip:
-				'''
-				Converts the Mutant from Fargo's Souls to Yharim.
-				This setting doesn't do anything if Fargo's Souls isn't enabled.
-				'''
 		}
 
 		EnableInterlude4: {

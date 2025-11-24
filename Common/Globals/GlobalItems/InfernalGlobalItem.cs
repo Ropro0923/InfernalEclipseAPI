@@ -9,6 +9,10 @@ using InfernalEclipseAPI.Content.Items.Placeables.Paintings;
 using InfernalEclipseAPI.Content.Items.Placeables.MusicBoxes;
 using InfernalEclipseAPI.Core.Systems;
 using InfernalEclipseAPI.Content.Items.Lore.Thorium;
+using CalamityMod.Items.TreasureBags;
+using CalamityMod.Items.Accessories;
+using CalamityMod;
+using CalamityMod.Items.Accessories.Wings;
 
 namespace InfernalEclipseAPI.Common.GlobalItems
 {
@@ -66,6 +70,67 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 itemLoot.Add(ItemDropRule.ByCondition(new CheesePlayerCondition(), ModContent.ItemType<DeathWhistle>()));
 
                 itemLoot.Add(ItemDropRule.ByCondition(new devListPlayerCondition(), ModContent.ItemType<InfernalTwilight>()));
+            }
+
+            if (InfernalConfig.Instance.CalamityExpertAccessories) 
+            {
+                if (item.type == ModContent.ItemType<AquaticScourgeBag>())
+                {
+                    itemLoot.RemoveWhere(aqua => aqua is CommonDrop commonDrop1 && commonDrop1.itemId == ModContent.ItemType<AquaticEmblem>(), true);
+                    itemLoot.RemoveWhere(spine => spine is CommonDrop commonDrop2 && commonDrop2.itemId == ModContent.ItemType<CorrosiveSpine>(), true);
+                    DropHelper.Add((ILoot)(object)itemLoot, ModContent.ItemType<CorrosiveSpine>(), 1, 1, 1);
+                    DropHelper.Add((ILoot)(object)itemLoot, ModContent.ItemType<AquaticEmblem>(), DropHelper.BagWeaponDropRateFraction, 1, 1);
+                }
+                if (item.type == ModContent.ItemType<CryogenBag>())
+                {
+                    itemLoot.RemoveWhere(flare => flare is CommonDrop commonDrop3 && commonDrop3.itemId == ModContent.ItemType<FrostFlare>(), true);
+                    itemLoot.RemoveWhere(soul => soul is CommonDrop commonDrop4 && commonDrop4.itemId == ModContent.ItemType<SoulofCryogen>(), true);
+                    DropHelper.Add((ILoot)(object)itemLoot, ModContent.ItemType<FrostFlare>(), 1, 1, 1);
+                    DropHelper.Add((ILoot)(object)itemLoot, ModContent.ItemType<SoulofCryogen>(), DropHelper.BagWeaponDropRateFraction, 1, 1);
+                }
+                if (item.type == ModContent.ItemType<DesertScourgeBag>())
+                {
+                    itemLoot.RemoveWhere(cloak => cloak is CommonDrop commonDrop5 && commonDrop5.itemId == ModContent.ItemType<SandCloak>(), true);
+                    itemLoot.RemoveWhere(crest => crest is CommonDrop commonDrop6 && commonDrop6.itemId == ModContent.ItemType<OceanCrest>(), true);
+                    DropHelper.Add((ILoot)(object)itemLoot, ModContent.ItemType<SandCloak>(), 1, 1, 1);
+                    DropHelper.Add((ILoot)(object)itemLoot, ModContent.ItemType<OceanCrest>(), DropHelper.BagWeaponDropRateFraction, 1, 1);
+                }
+                if (item.type == ModContent.ItemType<RavagerBag>())
+                {
+                    itemLoot.RemoveWhere(totem => totem is CommonDrop commonDrop7 && commonDrop7.itemId == ModContent.ItemType<FleshTotem>(), true);
+                    itemLoot.RemoveWhere(core => core is CommonDrop commonDrop8 && commonDrop8.itemId == ModContent.ItemType<BloodflareCore>(), true);
+                    DropHelper.Add((ILoot)(object)itemLoot, ModContent.ItemType<FleshTotem>(), 1, 1, 1);
+                    DropHelper.Add((ILoot)(object)itemLoot, ModContent.ItemType<BloodflareCore>(), DropHelper.BagWeaponDropRateFraction, 1, 1);
+                }
+                if (item.type == ItemID.BossBagBetsy)
+                {
+                    itemLoot.RemoveWhere(wing => wing is CommonDrop commonDrop && commonDrop.itemId == ItemID.BetsyWings, true);
+                    DropHelper.Add((ILoot)(object)itemLoot, 3883, 1, 1, 1);
+                }
+                if (item.type == ModContent.ItemType<LeviathanBag>())
+                {
+                    itemLoot.RemoveWhere(Community => Community is CommonDrop commonDrop && commonDrop.itemId == ModContent.ItemType<TheCommunity>(), true);
+                    DropHelper.Add(DropHelper.DefineConditionalDropSet((ILoot)(object)itemLoot, DropHelper.RevAndMaster), ModContent.ItemType<TheCommunity>(), 10, 1, 1, false);
+                }
+                if (item.type == ModContent.ItemType<CalamitasCloneBag>())
+                {
+                    itemLoot.RemoveWhere(regen => regen is CommonDrop commonDrop && commonDrop.itemId == ModContent.ItemType<Regenator>(), true);
+                    DropHelper.Add(DropHelper.DefineConditionalDropSet((ILoot)(object)itemLoot, DropHelper.RevAndMaster), ModContent.ItemType<Regenator>(), 10, 1, 1, false);
+                }
+                if (item.type == ItemID.QueenBeeBossBag)
+                {
+                    itemLoot.RemoveWhere(Bee => Bee is CommonDrop commonDrop9 && commonDrop9.itemId == ModContent.ItemType<TheBee>(), true);
+                    DropHelper.Add(DropHelper.DefineConditionalDropSet((ILoot)(object)itemLoot, DropHelper.RevAndMaster), ModContent.ItemType<TheBee>(), 10, 1, 1, false);
+                }
+
+                if (ModLoader.TryGetMod("CalamityHunt", out Mod calHunt))
+                {
+                    if (item.type == calHunt.Find<ModItem>("TreasureTrunk").Type)
+                    {
+                        itemLoot.RemoveWhere(Tend => Tend is CommonDrop commonDrop && commonDrop.itemId == calHunt.Find<ModItem>("TendrilCursorAttachment").Type, true);
+                        DropHelper.Add(DropHelper.DefineConditionalDropSet((ILoot)(object)itemLoot, DropHelper.RevAndMaster), calHunt.Find<ModItem>("TendrilCursorAttachmentk").Type, 10, 1, 1, false);
+                    }
+                }
             }
         }
 

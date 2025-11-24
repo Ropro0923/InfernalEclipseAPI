@@ -13,6 +13,9 @@ using Terraria.Localization;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using InfernalEclipseAPI.Core.Systems;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Weapons.Typeless;
+using System.Linq;
 
 namespace InfernalEclipseAPI.Common.GlobalItems
 {
@@ -339,171 +342,268 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 }
                 #endregion
             }
+
+            if (InfernalConfig.Instance.CalamityExpertAccessories)
+            {
+                int[] expertAccessoires =
+                [
+                    3883,
+                    3090,
+                    3097,
+                    3224,
+                    3223,
+                    3333,
+                    3245,
+                    5100,
+                    4987,
+                    3336,
+                    3337,
+                    4989,
+                    1131,
+                    ModContent.ItemType<SandCloak>(),
+                    ModContent.ItemType<ManaPolarizer>(),
+                    ModContent.ItemType<FungalClump>(),
+                    ModContent.ItemType<HideofAstrumDeus>(),
+                    ModContent.ItemType<FleshTotem>(),
+                    ModContent.ItemType<ToxicHeart>(),
+                    ModContent.ItemType<GravistarSabaton>(),
+                    ModContent.ItemType<LeviathanAmbergris>(),
+                    ModContent.ItemType<VoidofCalamity>(),
+                    ModContent.ItemType<FlameLickedShell>(),
+                    ModContent.ItemType<CorrosiveSpine>(),
+                    ModContent.ItemType<FrostFlare>(),
+                    ModContent.ItemType<Calamity>(),
+                    ModContent.ItemType<DraedonsHeart>(),
+                    ModContent.ItemType<YharimsGift>(),
+                    ModContent.ItemType<NebulousCore>(),
+                    ModContent.ItemType<Affliction>(),
+                    ModContent.ItemType<SpectralVeil>(),
+                    ModContent.ItemType<TheEvolution>(),
+                    ModContent.ItemType<DynamoStemCells>(),
+                    ModContent.ItemType<BloodyWormTooth>(),
+                    ModContent.ItemType<BloodyWormScarf>(),
+                    ModContent.ItemType<RottenBrain>(),
+                    ModContent.ItemType<AmalgamatedBrain>(),
+                    ModContent.ItemType<TheAmalgam>(),
+                    ModContent.ItemType<AscendantInsignia>(),
+                    ModContent.ItemType<TheCamper>(),
+                    ModContent.ItemType<ShieldoftheHighRuler>(),
+                    ModContent.ItemType<OldDukeScales>(),
+                    ModContent.ItemType<BlazingCore>(),
+                    ModContent.ItemType<RelicOfResilience>(),
+                    ModContent.ItemType<RelicOfDeliverance>(),
+                    ModContent.ItemType<RelicOfConvergence>(),
+                ];
+
+                int[] masterAccessories =
+                [
+                    ModContent.ItemType<Regenator>(),
+                    ModContent.ItemType<TheBee>(),
+                    ModContent.ItemType<TheCommunity>(),
+                    ModContent.ItemType<ShatteredCommunity>(),
+                    ModContent.ItemType<WarbanneroftheSun>(),
+                    5075
+                ];
+
+                if (expertAccessoires.Contains(item.type))
+                {
+                    item.expert = true;
+                    item.rare = ItemRarityID.Expert;
+                }
+
+                if (masterAccessories.Contains(item.type))
+                {
+                    item.master = true;
+                    item.rare = ItemRarityID.Master;
+                }
+            }
+
             #endregion
 
             bool hasCatalyst = false;
             #region Catalyst
-            if (InfernalConfig.Instance.CalamityBalanceChanges && ModLoader.TryGetMod("CatalystMod", out Mod catalyst))
+            if (ModLoader.TryGetMod("CatalystMod", out Mod catalyst))
             {
                 hasCatalyst = true;
-                #region Ranger
-                //Desert Scorcher
-                if (item.type == catalyst.Find<ModItem>("DesertScorcher").Type)
-                {
-                    item.shootSpeed = 10;
-                    item.damage = 8;
-                    item.useTime = 40;
-                    item.useAnimation = 40;
-                }
 
-                //Ichorthrower
-                if (item.type == catalyst.Find<ModItem>("Ichorthrower").Type)
+                if (InfernalConfig.Instance.CalamityBalanceChanges)
                 {
-                    item.shootSpeed = (int)3.5;
-                    item.damage = 21;
-                }
+                    #region Ranger
+                    //Desert Scorcher
+                    if (item.type == catalyst.Find<ModItem>("DesertScorcher").Type)
+                    {
+                        item.shootSpeed = 10;
+                        item.damage = 8;
+                        item.useTime = 40;
+                        item.useAnimation = 40;
+                    }
 
-                if (GetItem(catalyst, "BreathofGlacies", item))
-                {
-                    item.damage = 70;
-                }
+                    //Ichorthrower
+                    if (item.type == catalyst.Find<ModItem>("Ichorthrower").Type)
+                    {
+                        item.shootSpeed = (int)3.5;
+                        item.damage = 21;
+                    }
 
-                if (GetItem(catalyst, "StaticInferno", item))
-                {
-                    item.useTime = 26;
-                    item.useAnimation = 26;
-                }
-                #endregion
+                    if (GetItem(catalyst, "BreathofGlacies", item))
+                    {
+                        item.damage = 70;
+                    }
 
-                #region Summoner
-                //Coral Crusher
-                if (item.type == catalyst.Find<ModItem>("CoralCrusher").Type)
-                {
-                    item.useTime = 32;
-                    item.useAnimation = 32;
-                    item.damage = 21;
-                }
+                    if (GetItem(catalyst, "StaticInferno", item))
+                    {
+                        item.useTime = 26;
+                        item.useAnimation = 26;
+                    }
+                    #endregion
 
-                //Congealed Duo-Whip
-                if (item.type == catalyst.Find<ModItem>("CongeledDuoWhip").Type)
-                {
-                    item.useTime = 36;
-                    item.useAnimation = 36;
-                }
+                    #region Summoner
+                    //Coral Crusher
+                    if (item.type == catalyst.Find<ModItem>("CoralCrusher").Type)
+                    {
+                        item.useTime = 32;
+                        item.useAnimation = 32;
+                        item.damage = 21;
+                    }
 
-                if (GetItem(catalyst, "BlossomsBlessing", item))
-                {
-                    item.useTime = 28;
-                    item.useAnimation = 28;
-                }
+                    //Congealed Duo-Whip
+                    if (item.type == catalyst.Find<ModItem>("CongeledDuoWhip").Type)
+                    {
+                        item.useTime = 36;
+                        item.useAnimation = 36;
+                    }
 
-                if (GetItem(catalyst, "AstralpodStaff", item))
-                {
-                    item.damage = 80;
-                }
+                    if (GetItem(catalyst, "BlossomsBlessing", item))
+                    {
+                        item.useTime = 28;
+                        item.useAnimation = 28;
+                    }
 
-                if (GetItem(catalyst, "Catharsis", item))
-                {
-                    item.damage = 850;
-                }
-                #endregion
+                    if (GetItem(catalyst, "AstralpodStaff", item))
+                    {
+                        item.damage = 80;
+                    }
 
-                #region Rogue
-                if (GetItem(catalyst, "InterstellarVolution", item))
-                {
-                    item.damage = 330;
-                }
-                #endregion
+                    if (GetItem(catalyst, "Catharsis", item))
+                    {
+                        item.damage = 850;
+                    }
+                    #endregion
 
-                #region Armor
-                if (GetItem(catalyst, "IntergelacticBreastplate", item))
-                {
-                    item.defense = 20;
-                }
+                    #region Rogue
+                    if (GetItem(catalyst, "InterstellarVolution", item))
+                    {
+                        item.damage = 330;
+                    }
+                    #endregion
 
-                if (GetItem(catalyst, "IntergelacticGreaves", item))
-                {
-                    item.defense = 12;
-                }
+                    #region Armor
+                    if (GetItem(catalyst, "IntergelacticBreastplate", item))
+                    {
+                        item.defense = 20;
+                    }
 
-                if (GetItem(catalyst, "IntergelacticHeadMagic", item))
-                {
-                    item.defense = 14;
-                }
+                    if (GetItem(catalyst, "IntergelacticGreaves", item))
+                    {
+                        item.defense = 12;
+                    }
 
-                if (GetItem(catalyst, "IntergelacticHeadMelee", item))
-                {
-                    item.defense = 44;
-                }
+                    if (GetItem(catalyst, "IntergelacticHeadMagic", item))
+                    {
+                        item.defense = 14;
+                    }
 
-                if (GetItem(catalyst, "IntergelacticHeadRanged", item))
-                {
-                    item.defense = 14;
-                }
+                    if (GetItem(catalyst, "IntergelacticHeadMelee", item))
+                    {
+                        item.defense = 44;
+                    }
 
-                if (GetItem(catalyst, "IntergelacticHeadRogue", item))
-                {
-                    item.defense = 34;
-                }
+                    if (GetItem(catalyst, "IntergelacticHeadRanged", item))
+                    {
+                        item.defense = 14;
+                    }
 
-                if (GetItem(catalyst, "IntergelacticHeadSummon", item))
-                {
-                    item.defense = 6;
+                    if (GetItem(catalyst, "IntergelacticHeadRogue", item))
+                    {
+                        item.defense = 34;
+                    }
+
+                    if (GetItem(catalyst, "IntergelacticHeadSummon", item))
+                    {
+                        item.defense = 6;
+                    }
+                    #endregion
                 }
-                #endregion
             }
             #endregion
 
             bool hasCalHunt = false;
             #region Calamity: Hunt of the Old God
-            if (ModLoader.TryGetMod("CalamityHunt", out Mod calHunt) && InfernalConfig.Instance.CalamityBalanceChanges)
+            if (ModLoader.TryGetMod("CalamityHunt", out Mod calHunt))
             {
                 hasCalHunt = true;
-                #region Melee
-                if (GetItem(calHunt, "Parasanguine", item))
+
+                if (InfernalConfig.Instance.CalamityBalanceChanges)
                 {
-                    item.useTime = 22;
-                    item.useAnimation = 22;
+                    #region Melee
+                    if (GetItem(calHunt, "Parasanguine", item))
+                    {
+                        item.useTime = 22;
+                        item.useAnimation = 22;
+                    }
+
+                    if (GetItem(calHunt, "ScytheOfTheOldGod", item))
+                    {
+                        item.damage = 2700;
+                    }
+                    #endregion
+
+                    #region Ranged
+                    if (GetItem(calHunt, "SludgeShaker", item))
+                    {
+                        item.damage = 2800;
+                    }
+
+                    if (GetItem(calHunt, "Trailblazer", item))
+                    {
+                        item.damage = 1050;
+                    }
+                    #endregion
+
+                    #region Mage
+                    if (GetItem(calHunt, "CrystalGauntlets", item))
+                    {
+                        item.damage = 900;
+                    }
+                    #endregion
+
+                    #region Summoner
+                    if (GetItem(calHunt, "SlimeCane", item))
+                    {
+                        item.damage = 650;
+                    }
+                    #endregion
+
+                    #region Rogue
+                    if (GetItem(calHunt, "FissionFlyer", item))
+                    {
+                        item.damage = 1000;
+                    }
+                    #endregion
                 }
 
-                if (GetItem(calHunt, "ScytheOfTheOldGod", item))
+                if (InfernalConfig.Instance.CalamityExpertAccessories)
                 {
-                    item.damage = 2700;
-                }
-                #endregion
+                    if (GetItem(calHunt, "SplendorJam", item))
+                    {
+                        item.expert = true;
+                    }
 
-                #region Ranged
-                if (GetItem(calHunt, "SludgeShaker", item))
-                {
-                    item.damage = 2800;
+                    if (GetItem(calHunt, "TendrilCursorAttachment", item))
+                    {
+                        item.master = true;
+                    }
                 }
-
-                if (GetItem(calHunt, "Trailblazer", item))
-                {
-                    item.damage = 1050;
-                }
-                #endregion
-
-                #region Mage
-                if (GetItem(calHunt, "CrystalGauntlets", item))
-                {
-                    item.damage = 900;
-                }
-                #endregion
-
-                #region Summoner
-                if (GetItem(calHunt, "SlimeCane", item))
-                {
-                    item.damage = 650;
-                }
-                #endregion
-
-                #region Rogue
-                if (GetItem(calHunt, "FissionFlyer", item))
-                {
-                    item.damage = 1000;
-                }
-                #endregion
             }
             #endregion
 

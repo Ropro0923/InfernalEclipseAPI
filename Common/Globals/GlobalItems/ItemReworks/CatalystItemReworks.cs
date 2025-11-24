@@ -1,16 +1,31 @@
 ﻿using System.Collections.Generic;
+using CatalystMod.Items;
+using CatalystMod.Items.Accessories;
 using Microsoft.Xna.Framework;
 using Terraria.Localization;
 
 namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
 {
     //Provided by Wardrobe Hummus
-    public class SyctheoftheAbandonedGodChange : GlobalItem
+    [JITWhenModsEnabled("CatalystMod")]
+    [ExtendsFromMod("CatalystMod")]
+    public class CatalystItemReworks : GlobalItem
     {
         private const int BaseDamage = 500;
         private const int ReducedDamage = 166;
         private const string CatalystModName = "CatalystMod";
         private const string ScytheInternalName = "ScytheoftheAbandonedGod";
+
+        public override void SetDefaults(Item item)
+        {
+            if (InfernalConfig.Instance.CalamityExpertAccessories)
+            {
+                if (item.type == ModContent.ItemType<InfluxCluster>())
+                {
+                    item.rare = CatalystItem.RarityExpertSuperboss;
+                }
+            }
+        }
 
         public override void UpdateInventory(Item item, Player player)
         {
@@ -70,7 +85,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
             });
         }
 
-        private bool TryGetScytheModItem(out ModItem modItem)
+        private static bool TryGetScytheModItem(out ModItem modItem)
         {
             modItem = null;
             if (!ModLoader.TryGetMod(CatalystModName, out Mod mod))
