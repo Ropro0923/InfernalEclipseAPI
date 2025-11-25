@@ -71,7 +71,7 @@ namespace InfernalEclipseAPI.Core.Players.ThoriumMulticlassNerf
             item.useStyle != ItemUseStyleID.None &&
             !item.accessory &&
             item.ammo == AmmoID.None &&
-            item.pick <= 0 && item.axe <= 0 && item.hammer <= 0 &&
+            item.pick <= 0 && item.axe <= 0 && item.hammer <= 0 && item.damage > 0 &&
             !IsExcluded(item) &&
             !ShouldIgnoreContext();
 
