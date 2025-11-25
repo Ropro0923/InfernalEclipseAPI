@@ -1,8 +1,6 @@
 [h1]诸神黄昏：炼狱蚀光[/h1]
 [h3]基于[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3459129920] 灾厄炼狱模式 [/url]的大型扩展[/h3]
 
-[h2]中文用户如果有讨论/反馈需要，欢迎加入讨论群：709532049[/h2]
-
 请查看我们推荐使用的[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3571911634]炼狱蚀光汉化合集[/url]，此合集完全按照主创推荐整合，并收录了对应的汉化模组
 如果电脑性能受限，可以考虑使用[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3597199137]炼狱蚀光性能合集[/url]，上述合集均可以自行增删非核心的模组
 
