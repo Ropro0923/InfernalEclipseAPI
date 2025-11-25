@@ -1,5 +1,8 @@
-﻿using InfernalEclipseAPI.Core.Systems;
+﻿using System.Collections.Generic;
+using CalamityMod;
+using InfernalEclipseAPI.Core.Systems;
 using Microsoft.Xna.Framework;
+using Terraria.Localization;
 
 namespace InfernalEclipseAPI.Content.Items.Consumables
 {
@@ -38,6 +41,19 @@ namespace InfernalEclipseAPI.Content.Items.Consumables
                 player.AddBuff(InfernalCrossmod.NoxusBoss.Mod.Find<ModBuff>("StarstrikinglySatiated").Type, 36000);
             }
             return true;
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            tooltips.Add(new TooltipLine(Mod, "DedItem", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Contributor"))
+            {
+                OverrideColor = new Microsoft.Xna.Framework.Color(50, 205, 50)
+            });
+
+            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Pudding")));
+            //dedTo.OverrideColor = new Color(196, 35, 44);
+            dedTo.OverrideColor = new Color(50, 205, 50);
+            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
         }
     }
 }

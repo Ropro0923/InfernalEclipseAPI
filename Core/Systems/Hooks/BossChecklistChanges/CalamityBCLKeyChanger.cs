@@ -7,10 +7,10 @@ namespace InfernalEclipseAPI.Core.Systems.Hooks.BossChecklistChanges
     {
         public override void Load()
         {
-            TryAdjustGreatSandSharkValue();
+            AdjustEntries();
         }
 
-        private void TryAdjustGreatSandSharkValue()
+        private void AdjustEntries()
         {
             try
             {
@@ -54,6 +54,16 @@ namespace InfernalEclipseAPI.Core.Systems.Hooks.BossChecklistChanges
                 else
                 {
                     Mod.Logger.Warn("GreatSandShark key not found in BossChecklistProgressionValues.");
+                }
+
+                if (dict.ContainsKey("BossRush"))
+                {
+                    dict["BossRush"] = 28.1f;
+                    Mod.Logger.Info("Set Calamity BossRus BossChecklist progression value to 28.1f.");
+                }
+                else
+                {
+                    Mod.Logger.Warn("BossRus key not found in BossChecklistProgressionValues.");
                 }
             }
             catch (Exception ex)

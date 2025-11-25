@@ -69,6 +69,27 @@ ItemTooltip: {
 		Only works if the portal at the Lost Gateway alter has been activated
 		'''
 	SandstonePortalDeviceInfoMP: Summons the Bereft Vassal after the portal at the Lost Gateway has been activated <- currently unsued in API
+	DedTo: - Dedicated to {0} -
+
+	Dedicated: {
+		Akira: Akira
+		WH: WardrobeHummus
+		Advantaje: Advantaje
+		Tyr: Tyr
+		Soltan: Soltan
+		bryce: bryce27
+		eviil81: evil81
+		rose: rosé
+		Jill: JillyFish
+		Eduarrdo: Eduarrdo
+		Mae: ma3allim
+		Yob: Yob
+		Pudding: Pudd1ng
+		Ropro: Ropro0923
+		cheese: cheesenuggets
+		Puzzles: Mr. Puzzles
+		cat: StarlightCat
+	}
 
 	MergedCraftingTreeTooltip: {
 		Gilded: Effects of the Gilded Blade Wings

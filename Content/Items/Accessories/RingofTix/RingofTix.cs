@@ -9,6 +9,7 @@ using CalamityMod.Tiles.Furniture.CraftingStations;
 using InfernalEclipseAPI.Content.Items.Lore.InfernalEclipse;
 using InfernalEclipseAPI.Core.Players;
 using Terraria.Localization;
+using Microsoft.Xna.Framework;
 
 namespace InfernalEclipseAPI.Content.Items.Accessories.RingofTix
 {
@@ -64,6 +65,12 @@ namespace InfernalEclipseAPI.Content.Items.Accessories.RingofTix
             if (ModLoader.TryGetMod("SOTS", out _))
                 tooltips.Add(new TooltipLine(Mod, "SOTSTip",
                     Language.GetTextValue("Mods.InfernalEclipseAPI.Items.RingofTix.SOTSTooltip")));
+
+            Color color = CalamityUtils.ColorSwap(Color.OrangeRed, Color.DarkRed, 2f);
+
+            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Soltan")));
+            dedTo.OverrideColor = color;
+            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
         }
 
         public override void AddRecipes()

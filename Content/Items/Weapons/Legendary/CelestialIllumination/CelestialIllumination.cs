@@ -162,6 +162,11 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
             ContributorItem.OverrideColor = new Color(50, 205, 50);
             tooltips.Add(line);
             tooltips.Add(ContributorItem);
+
+            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Ropro")));
+            //dedTo.OverrideColor = new Color(196, 35, 44);
+            dedTo.OverrideColor = new Color(50, 205, 50);
+            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
         }
         private string GetProgressionTooltip()
         {

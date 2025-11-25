@@ -72,11 +72,11 @@ namespace InfernalEclipseAPI.Core.Players
                 {
                     Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.WelcomeMessage.RagWarning"), 255, 0, 0);
                 }
-                else if (ragnarok != null)
+                else if (ragnarok != null && !InfernalConfig.Instance.AutomatedConfigSetup)
                 {
                     Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.WelcomeMessage.RagnarokBalance"), 255, 255, 0);
 
-                    if (rework != null)
+                    if (rework != null && !InfernalConfig.Instance.AutomatedConfigSetup)
                     {
                         Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.WelcomeMessage.RagnarokRework"), 255, 255, 0);
                     }

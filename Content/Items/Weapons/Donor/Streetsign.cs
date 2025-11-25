@@ -1,9 +1,11 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Reflection;
 using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
+using Terraria.Localization;
 
 namespace InfernalEclipseAPI.Content.Items.Weapons.Donor
 {
@@ -87,6 +89,13 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Donor
                 player.itemRotation + MathHelper.ToRadians(-135f * state.useDirection));
 
             base.UseStyle(player, heldItemFrame);
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.rose")));
+            dedTo.OverrideColor = new Color(196, 35, 44);
+            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
         }
     }
 
