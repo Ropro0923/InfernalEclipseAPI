@@ -502,11 +502,12 @@ Lore: {
 		I had searched the world for how to start it, so I could destroy Asgard,
 		but in the end, I had found nothing.
 		The tales of serpents and fire were far from the truth,
-		but now Ragnarok lies in ruin just like the kingdom itself.
+		but now Ragnarok lies in ruin just like Asgard itself.
 
-		You are now seen as the hero for this land and may you find peace in the new age you have created.
+		You are now seen as the hero for this land, 
+		and may you find peace in the new age you have created.
 		However, beware, for with every end comes a new beginning...
-		[c/7C0A02: Do not push your luck further, Terrarian.]
+		[c/7C0A02:Do not push your luck further, Terrarian.]
 		'''
 	Primordials:
 		'''
@@ -656,7 +657,7 @@ Items: {
 		LoreMjolnir.DisplayName: Mjolnir
 		LorePrimordials.DisplayName: The Primordials
 		LoreThunderBird.DisplayName: The Grand Thunder Bird
-		LoreRagnarok.DisplayName: Lore Ragnarok
+		LoreRagnarok.DisplayName: Ragnarok
 	}
 
 	CatastrophicFabricationsMusicBox: {

@@ -338,6 +338,16 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             recipe.AddTile(TileID.MythrilAnvil);
                         }
 
+                        if (recipe.HasResult(ModContent.ItemType<TheSponge>()) || recipe.HasResult(ModContent.ItemType<TheAmalgam>()))
+                        {
+                            recipe.AddIngredient(thorium.Find<ModItem>("DeathEssence").Type, 3);
+                        }
+
+                        if (recipe.HasResult(ModContent.ItemType<ChaliceOfTheBloodGod>()) || recipe.HasResult(ModContent.ItemType<AsgardianAegis>()))
+                        {
+                            recipe.AddIngredient(thorium.Find<ModItem>("InfernoEssence").Type, 3);
+                        }
+
                         if (!ModLoader.TryGetMod("WHummusMultiModBalancing", out _))
                         {
                             if (recipe.HasResult(thorium.Find<ModItem>("Nocturnal")) || recipe.HasResult(thorium.Find<ModItem>("Sanguine")))

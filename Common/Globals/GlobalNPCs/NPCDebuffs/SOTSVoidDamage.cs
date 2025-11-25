@@ -9,6 +9,7 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs.NPCDebuffs
     public class VoidDamageProjectile : GlobalProjectile
     {
         public bool canDoVoidDamage = false;
+        public bool strongVoidDamge = false;
         public override bool InstancePerEntity => true;
 
         public override void OnHitPlayer(Projectile projectile, Player target, Player.HurtInfo info)
@@ -16,7 +17,7 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs.NPCDebuffs
             if (projectile.type == ModContent.ProjectileType<SupremeCataclysmFist>() || projectile.type == ModContent.ProjectileType<SupremeCatastropheSlash>() || projectile.type == ModContent.ProjectileType<SupremeCataclysmFistOld>() || projectile.type == ModContent.ProjectileType<CatastropheSlash>()
                 || canDoVoidDamage)
             {
-                int damage = 1 + projectile.damage / 6;
+                int damage = 1 + projectile.damage / (strongVoidDamge ? 3 : 6);
                 VoidPlayer.VoidDamage(Mod, target, damage);
             }
         }
@@ -27,13 +28,14 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs.NPCDebuffs
     public class VoidDamageNPC : GlobalNPC
     {
         public bool canDoVoidDamage = false;
+        public bool strongVoidDamge = false;
         public override bool InstancePerEntity => true;
 
         public override void OnHitPlayer(NPC npc, Player target, Player.HurtInfo info)
         {
             if (canDoVoidDamage)
             {
-                int damage = 1 + npc.damage / 6;
+                int damage = 1 + npc.damage / (strongVoidDamge ? 3 : 6);
                 VoidPlayer.VoidDamage(Mod, target, damage);
             }
         }
