@@ -112,7 +112,14 @@ namespace InfernalEclipseAPI.Common.ProgressionRework
 
                 //Shadow of Calamitas
                 if (recipe.HasResult(ModContent.ItemType<EyeofDesolation>()))
+                {
                     recipe.AddIngredient(ModContent.ItemType<UnholyCore>(), 10);
+
+                    if (hasRagnarok)
+                    {
+                        recipe.RemoveIngredient(ragnarok.Find<ModItem>("VoidseerPearl").Type);
+                    }
+                }
 
                 //Clamitas, Supreme Clam
 
@@ -160,7 +167,6 @@ namespace InfernalEclipseAPI.Common.ProgressionRework
                             recipe.AddIngredient<GalacticaSingularity>(4);
                             recipe.AddIngredient<AscendantSpiritEssence>(3);
                             recipe.AddIngredient<AshesofCalamity>(10);
-                            
                         }
                     }
                 }
@@ -221,9 +227,9 @@ namespace InfernalEclipseAPI.Common.ProgressionRework
                 {
                     if (recipe.HasResult(InfernalCrossmod.YouBoss.Mod.Find<ModItem>("CursedMirror")))
                     {
-                        recipe.AddIngredient<DarkPlasma>(3);
+                        recipe.AddIngredient<ArmoredShell>(3);
                         recipe.AddIngredient<TwistingNether>(3);
-                        recipe.AddIngredient<RuinousSoul>(3);
+                        recipe.AddIngredient<DarkPlasma>(3);
                     }
                 }
             }

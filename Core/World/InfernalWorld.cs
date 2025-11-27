@@ -2,6 +2,8 @@
 using System.IO;
 using CalamityMod.UI;
 using InfernalEclipseAPI.Core.Systems;
+using InfernumMode.Content.Subworlds;
+using InfernumMode.Core.GlobalInstances.Systems;
 
 namespace InfernalEclipseAPI.Core.World
 {
@@ -30,6 +32,26 @@ namespace InfernalEclipseAPI.Core.World
             yharonSmasher=false;
             namelessDeveloperDiagloguePlayed = false;
             craftedWorkshop = false;
+        }
+
+        public override void PreUpdateWorld()
+        {
+            if (SubworldLibrary.SubworldSystem.AnyActive())
+            {
+                if (InfernalCrossmod.SOTS.Loaded) 
+                {
+                    foreach (Projectile projectile in Main.projectile)
+                    {
+                        if (projectile.type == InfernalCrossmod.SOTS.Mod.Find<ModProjectile>("VoidAnomaly").Type)
+                            projectile.active = false;
+                    }
+                    foreach (NPC npc in Main.npc)
+                    {
+                        if (npc.type == InfernalCrossmod.SOTS.Mod.Find<ModNPC>("Archaeologist").Type)
+                            npc.active = false;
+                    }
+                }
+            }
         }
 
         public override void OnWorldLoad()

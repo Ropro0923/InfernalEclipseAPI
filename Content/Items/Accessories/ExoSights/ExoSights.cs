@@ -9,6 +9,7 @@ using Terraria.Localization;
 using SOTS.Items.CritBonus;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using InfernalEclipseAPI.Core.Systems;
 using CalamityMod;
 
 namespace InfernalEclipseAPI.Content.Items.Accessories.ExoSights
@@ -106,7 +107,12 @@ namespace InfernalEclipseAPI.Content.Items.Accessories.ExoSights
         {
             if (ModLoader.TryGetMod("ThoriumMod", out _))
             {
-                tooltips.Add(new(Mod, "ItemInfo", Language.GetTextValue("Mods.InfernalEclipseAPI.Items.ExoSights.ThoriumTooltip")));
+                if (InfernalCrossmod.SOTSBardHealer.Loaded)
+                {
+                    tooltips.Add(new(Mod, "ItemInfo", Language.GetTextValue("Mods.InfernalEclipseAPI.Items.ExoSights.SOTSBardHealerTooltip")));
+                }
+                else
+                    tooltips.Add(new(Mod, "ItemInfo", Language.GetTextValue("Mods.InfernalEclipseAPI.Items.ExoSights.ThoriumTooltip")));
             }
             else
             {

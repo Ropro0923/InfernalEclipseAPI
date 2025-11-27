@@ -4,7 +4,11 @@ using Microsoft.Xna.Framework;
 using SOTS;
 using CalamityMod.Events;
 
+<<<<<<<< HEAD:Core/Systems/Hooks/ILBossChanges/PreventExcavatorDespawnLogicDuringBossRush.cs
 namespace InfernalEclipseAPI.Core.Systems.Hooks.ILBossChanges
+========
+namespace InfernalEclipseAPI.Core.Systems.BossChanges.ILBossChanges
+>>>>>>>> master:Core/Systems/BossChanges/ILBossChanges/PreventExcavatorDespawnLogicDuringBossRush.cs
 {
     [JITWhenModsEnabled(InfernalCrossmod.SOTS.Name)]
     [ExtendsFromMod(InfernalCrossmod.SOTS.Name)]

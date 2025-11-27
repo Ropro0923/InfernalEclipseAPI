@@ -3,7 +3,7 @@ using CalamityMod;
 using CalamityMod.Items.Weapons.Magic;
 using Terraria.Localization;
 
-namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks.ThrowableScythes
+namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
 {
     public class AtlantisDoGBuffAlways : GlobalItem
     {

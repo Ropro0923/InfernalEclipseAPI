@@ -7,6 +7,7 @@ using CalamityMod;
 using InfernalEclipseAPI.Core.World;
 using CalamityMod.Buffs.DamageOverTime;
 using InfernalEclipseAPI.Core.DamageClasses.LegendaryClass;
+using InfernalEclipseAPI.Core.Utils;
 
 namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIllumination
 {
@@ -32,7 +33,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
             Projectile.ignoreWater = true;
             Projectile.DamageType = ModContent.GetInstance<LegendaryMagic>();
             Projectile.friendly = true;
-            Projectile.damage = ModContent.GetInstance<InfernalDownedBossSystem>().DownedSentinels() ? 400 : 300;
+            Projectile.damage = InfernalUtilities.DownedSentinels() ? 400 : 300;
             Projectile.hostile = false;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = Cooldown;

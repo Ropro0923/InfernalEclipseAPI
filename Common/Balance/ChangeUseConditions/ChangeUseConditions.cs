@@ -29,7 +29,6 @@ namespace InfernalEclipseAPI.Common.Balance.ChangeUseConditions
         private static int DischargeID;
         private static int SmasherID;
         private static int lsStaffID;
-        private static int fractalID;
         private static int renewID;
         private static int starBirthID;
         private static int lostOasisID;
@@ -63,16 +62,6 @@ namespace InfernalEclipseAPI.Common.Balance.ChangeUseConditions
             }
 
             CanUseItemEvent += ModifyDungeonCurseUseConditions;
-
-            if (ModLoader.TryGetMod("YouBoss", out Mod you))
-            {
-                if (you.TryFind("FirstFractal", out ModItem firstFractal))
-                {
-                    fractalID = firstFractal.Type;
-                }
-            }
-
-            CanUseItemEvent += ModifyFirstFractalUseConditions;
 
             if (InfernalConfig.Instance.PreventBossCheese)
             {
@@ -221,19 +210,6 @@ namespace InfernalEclipseAPI.Common.Balance.ChangeUseConditions
                         SoundEngine.PlaySound(InfernumMode.Assets.Sounds.InfernumSoundRegistry.ModeToggleLaugh);
                     }
                     return false;
-                }
-                return true;
-            }
-            return true;
-        }
-
-        private bool ModifyFirstFractalUseConditions(Item item, Player player)
-        {
-            if (item.type == fractalID)
-            {
-                if (player.mount.Active)
-                {
-                    player.mount.Dismount(player);
                 }
                 return true;
             }

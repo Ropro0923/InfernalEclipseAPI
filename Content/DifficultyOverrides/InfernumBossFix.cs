@@ -42,7 +42,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
         {
             get
             {
-                return () => CanUseCustomAIs && GetMechsDowned() == 0 && CalamityConfig.Instance.EarlyHardmodeProgressionRework && !BossRushEvent.BossRushActive;
+                return () => CanUseCustomAIs && GetMechsDowned() == 0 && CalamityServerConfig.Instance.EarlyHardmodeProgressionRework && !BossRushEvent.BossRushActive;
             }
         }
 
@@ -50,7 +50,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
         {
             get
             {
-                return () => CanUseCustomAIs && GetMechsDowned() == 1 && CalamityConfig.Instance.EarlyHardmodeProgressionRework && !BossRushEvent.BossRushActive;
+                return () => CanUseCustomAIs && GetMechsDowned() == 1 && CalamityServerConfig.Instance.EarlyHardmodeProgressionRework && !BossRushEvent.BossRushActive;
             }
         }
 

@@ -20,19 +20,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 player.AddBuff(ModContent.BuffType<BrokenOath>(), anti.switchToHealerPenaltyTimer);
 
             // Using a non-healer combat item refreshes the window even if no hit connects
-            if (!healerUse && IsCombatWeapon(item))
+            if (!healerUse && ThoriumMulticlassPlayerNerfs.IsCombatWeapon(item))
                 anti.switchToHealerPenaltyTimer = ThoriumMulticlassPlayerNerfs.PenaltyDuration;
 
             return base.UseItem(item, player);
         }
-
-        // === Helpers ===
-        private static bool IsCombatWeapon(Item item)
-            => item.damage > 0
-               && item.useStyle != ItemUseStyleID.None
-               && !item.accessory
-               && item.ammo == AmmoID.None
-               && item.pick <= 0 && item.axe <= 0 && item.hammer <= 0;
 
         private static bool IsHealerWeaponOrTool(Item item)
         {

@@ -85,9 +85,22 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     recipe.AddIngredient(ModContent.ItemType<DepthCells>(), 3);
                 }
 
+                if (recipe.HasResult(ModContent.ItemType<Roxcalibur>()))
+                {
+                    recipe.DisableDecraft();
+                }
+
                 if (ModLoader.TryGetMod("CalamityAmmo", out Mod calAmmo))
                 {
                     if (recipe.HasResult(calAmmo.Find<ModItem>("HardTack")))
+                    {
+                        recipe.DisableDecraft();
+                    }
+                }
+
+                if (ModLoader.HasMod("NoxusBoss"))
+                {
+                    if (recipe.HasResult<GravityNormalizerPotion>())
                     {
                         recipe.DisableDecraft();
                     }
@@ -558,7 +571,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                                 }
                             }
 
-                            if (CalamityConfig.Instance.EarlyHardmodeProgressionRework) 
+                            if (CalamityServerConfig.Instance.EarlyHardmodeProgressionRework) 
                             { 
                                 ModItem[] preMechIngredients =
                                 {
@@ -779,6 +792,16 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         if (recipe.HasResult<AuricQuantumCoolingCell>())
                         {
                             recipe.AddIngredient(sots.Find<ModItem>("DissolvingAurora"));
+                        }
+
+                        if (recipe.HasResult(sots.Find<ModItem>("PhaseBar")) && recipe.HasIngredient(sots.Find<ModItem>("DissolvingBrilliance")))
+                        {
+                            recipe.DisableRecipe();
+                        }
+
+                        if (recipe.HasResult(sots.Find<ModItem>("VoidmageIncubator")))
+                        {
+                            recipe.AddIngredient(sots.Find<ModItem>("PhaseBar"), 3);
                         }
 
                         if (recipe.HasResult(ItemID.TrueNightsEdge))

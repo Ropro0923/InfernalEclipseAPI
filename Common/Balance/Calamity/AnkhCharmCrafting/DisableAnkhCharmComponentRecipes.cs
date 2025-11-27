@@ -18,7 +18,7 @@
 
         public override void PostAddRecipes()
         {
-            if (ModContent.GetInstance<InfernalConfig>().CalamityBalanceChanges)
+            if (InfernalConfig.Instance.CalamityRecipeTweaks)
             {
                 for (int index1 = 0; index1 < Recipe.numRecipes; ++index1)
                 {
@@ -27,7 +27,8 @@
                     {
                         Item obj;
                         if (recipe.TryGetResult(disabledRecipes[index2], out obj))
-                            recipe.DisableRecipe();
+                            if (!recipe.Mod.Name.Contains("Fargowiltas"))
+                                recipe.DisableRecipe();
                     }
                 }
             }

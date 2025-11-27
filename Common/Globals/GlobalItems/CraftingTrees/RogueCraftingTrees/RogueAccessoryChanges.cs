@@ -18,15 +18,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.RogueCraftingTrees
             }
         }
 
-        private Mod SSM
-        {
-            get
-            {
-                ModLoader.TryGetMod("ssm", out Mod ssm);
-                return ssm;
-            }
-        }
-
         private Mod sots
         {
             get

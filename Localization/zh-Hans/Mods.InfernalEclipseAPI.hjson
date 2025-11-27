@@ -48,6 +48,7 @@ ItemTooltip: {
 	SFlight: 长按右键获得快速无限飞行能力
 	StarlitForgeExtra: 更令人称奇的是，它甚至可以复制某些物品
 	BladecrestNerf: 一股邪恶的力量正在侵蚀它的部分威能……
+	EclipseFang: "[炼狱蚀光]: 武器增强永久生效"
 	ScytheThrow:
 		'''
 		右键投掷镰刀，它会以弧线轨迹返回
@@ -69,6 +70,13 @@ ItemTooltip: {
 		在激活通往失落竞技场的传送门后才可使用
 		'''
 	SandstonePortalDeviceInfoMP: 在激活通往失落竞技场的门户后，召唤无邦封臣 <- currently unsued in API
+	GoldenBatRework:
+		'''
+		增加30%来自敌人的金币
+		你随时间持续产生钱币
+		"你没有疯……你真是疯了!"
+		复仇模式专属
+		'''
 	// DedTo: - Dedicated to {0} -
 
 	Dedicated: {
@@ -617,10 +625,18 @@ Items: {
 	ExoSights: {
 		DisplayName: 星流视域
 		Tooltip: ""
+		SOTSBardHealerTooltip:
+			'''
+			暴击率提高25%
+			暴击额外多造成40点伤害，释放伤害性火花，并有概率引爆敌人，造成100%额外伤害
+			暴击汲取生命，恢复虚空值，回复法力，并返还灵感值
+			吸血效果有0.5秒冷却时间
+			免疫流血与中毒效果，并给予你夜视能力
+			'''
 		ThoriumTooltip:
 			'''
 			暴击率提高25%
-			暴击额外多造成40点伤害，释放毁灭性火花，并有概率引爆敌人，造成100%额外伤害
+			暴击额外多造成40点伤害，释放伤害性火花，并有概率引爆敌人，造成100%额外伤害
 			暴击汲取生命，恢复虚空值并回复法力
 			吸血效果有0.5秒冷却时间
 			免疫流血与中毒效果，并给予你夜视能力
@@ -1099,7 +1115,7 @@ Items: {
 		SOTSTooltip: 在被收藏后右键点击会反转当前选中的宝石，会禁用宝石的效果并开启反转后的效果
 		G0: 采矿时会将方块连接在一起，一次最多可破坏50个方块
 		G1: 击杀敌人时会获得30秒的随机增益
-		G2: 自然虚空值时会获得钱币
+		G2: 自然恢复虚空值时会获得钱币
 		G3: 敌怪有14.3%几率掉落双倍战利品
 		G4:
 			'''
@@ -1327,7 +1343,7 @@ Configs: {
 		CalamityBalanceChanges: {
 			Tooltip:
 				'''
-				对部分数值过低或过高的灾厄物品进行调整  
+				对部分数值过低或过高的灾厄及其附属的物品进行调整  
 				同时修改部分跨模组的合成配方以保持平衡
 				'''
 			Label: 灾厄平衡修改
@@ -1406,11 +1422,7 @@ Configs: {
 
 		AdditonalVanillaBossAdjustments: {
 			Label: 额外原版Boss调整
-			Tooltip:
-				'''
-				小幅度调整了部分原版Boss的数值，让它们变得更有挑战性
-				部分调整会在开启Fargo's Souls永恒模式或受虐模式的情况下被自动禁用
-				'''
+			Tooltip: 小幅度调整了部分原版Boss的数值，让它们变得更有挑战性
 		}
 
 		MergeCraftingTrees: {
@@ -1492,6 +1504,12 @@ Configs: {
 			Tooltip: 将独眼巨鹿在Boss Checklist中的顺序调整到骷髅王之前，以匹配灾厄&炼狱的进程
 		}
 
+		DontEnableThis: {
+			Label: 不要启用这个
+			Tooltip: 请勿启用此选项，它可能会造成误解，并导致游戏玩法失衡甚至出现问题
+		}
+	}
+
 		CalamityExpertAccessories: {
 			// Label: Calamity Expert Accessories
 			// Tooltip: ""
@@ -1503,72 +1521,72 @@ Configs: {
 
 		AlwaysOff: {
 			Label: 保持关闭
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		AlwaysOn: {
 			Label: 保持开启
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Expert: {
 			Label: 专家
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Master: {
 			Label: 大师
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Legendary: {
 			Label: 传奇
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Revengence: {
 			Label: 复仇
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		MasterRevengence: {
 			Label: 大师复仇
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		LegendaryRevengence: {
 			Label: 传奇复仇
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Death: {
 			Label: 死亡
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		MasterDeath: {
 			Label: 大师死亡
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		LegendaryDeath: {
 			Label: 传奇死亡
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		Infernum: {
 			Label: 炼狱
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		MasterInfernum: {
 			Label: 大师炼狱
-			// Tooltip: ""
+			Tooltip: ""
 		}
 
 		LegendaryInfernum: {
 			Label: 传奇炼狱
-			// Tooltip: ""
+			Tooltip: ""
 		}
 	}
 }

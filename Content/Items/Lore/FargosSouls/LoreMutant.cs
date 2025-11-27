@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
-using Terraria.ID;
 using Terraria.Localization;
-using Terraria.ModLoader;
-using Terraria;
 using CalamityMod.Items.LoreItems;
 using Microsoft.Xna.Framework.Graphics;
 using Luminance.Core.Graphics;
@@ -18,6 +15,7 @@ namespace InfernalEclipseAPI.Content.Items.Lore.FargosSouls
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
+            if (!InfernalConfig.Instance.DontEnableThis) return false;
             if (!ModLoader.TryGetMod("FargowiltasSouls", out _)) return false;
             bool hasCSE = ModLoader.TryGetMod("ssm", out Mod cse) && cse.Version > Version.Parse("1.1.4.2");
             return !hasCSE;

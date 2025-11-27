@@ -82,6 +82,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.NucleogenesisTree
                             recipe.AddIngredient(clamity.Find<ModItem>("CyanPearl"));
                         }
 
+                        if (thorium != null && recipe.HasIngredient(ItemID.PygmyNecklace))
+                        {
+                            recipe.RemoveIngredient(ItemID.PygmyNecklace);
+                            if (!recipe.HasIngredient(thorium.Find<ModItem>("NecroticSkull"))) recipe.AddIngredient(thorium.Find<ModItem>("NecroticSkull"));
+                        }
+
                         recipe.AddIngredient<LifeAlloy>(2);
                     }
                 }
@@ -92,12 +98,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.NucleogenesisTree
                     //{
                     //    recipe.AddIngredient(thorium.Find<ModItem>("ScryingGlass"));
                     //}
-
-                    if (recipe.HasResult(sots.Find<ModItem>("FortressGenerator")) && recipe.HasIngredient(ItemID.PygmyNecklace))
-                    {
-                        recipe.RemoveIngredient(ItemID.PygmyNecklace);
-                        if (!recipe.HasIngredient(thorium.Find<ModItem>("NecroticSkull"))) recipe.AddIngredient(thorium.Find<ModItem>("NecroticSkull"));
-                    }
 
                     if (recipe.HasResult(ModContent.ItemType<StatisBlessing>()))
                     {

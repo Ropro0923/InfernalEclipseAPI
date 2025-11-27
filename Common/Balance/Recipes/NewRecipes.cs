@@ -109,6 +109,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         newRecipe.AddIngredient<BloodOrb>(60);
 
                     newRecipe.AddTile(TileID.AlchemyTable);
+                    newRecipe.AddCondition(Condition.DownedSkeletron);
                     newRecipe.Register();
                 }
 
@@ -127,6 +128,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     thorComboBloodOrb.AddIngredient<BloodOrb>(90);
 
                     thorComboBloodOrb.AddTile(TileID.AlchemyTable);
+                    thorComboBloodOrb.AddCondition(Condition.DownedSkeletron);
                     thorComboBloodOrb.Register();
                 }
             }
@@ -141,6 +143,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             .AddIngredient(ItemID.BottledWater)
                             .AddIngredient<BloodOrb>(10)
                             .AddTile(TileID.AlchemyTable)
+                            .AddCondition(Condition.DownedSkeletron)
                             .Register();
                     }
 
@@ -152,6 +155,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             .AddIngredient<BloodOrb>(10)
                             .AddIngredient(manaberry.Type)
                             .AddTile(TileID.AlchemyTable)
+                            .AddCondition(Condition.DownedSkeletron)
                             .Register();
                     }
                 }
@@ -217,6 +221,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             newRecipe.AddIngredient(ItemID.SoulofNight);
                         }
                         newRecipe.AddTile(TileID.AlchemyTable);
+                        newRecipe.AddCondition(Condition.DownedSkeletron);
                         newRecipe.Register();
                     }
                 }

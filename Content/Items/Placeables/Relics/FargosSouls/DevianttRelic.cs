@@ -10,6 +10,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Relics.FargosSouls
     [ExtendsFromMod(InfernalCrossmod.FargosSouls.Name)]
     public class DevianttRelic : BaseRelicItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => InfernalConfig.Instance.DontEnableThis;
         public override string DisplayNameToUse => "Infernal Deviantt Relic";
 
         public override int TileID => ModContent.TileType<DevianttRelicTile>();

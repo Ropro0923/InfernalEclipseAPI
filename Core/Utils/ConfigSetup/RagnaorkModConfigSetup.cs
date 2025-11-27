@@ -24,6 +24,8 @@ namespace InfernalEclipseAPI.Core.Utils.ConfigSetup
 
         private static JObject DesiredBossProgression() => new JObject
         {
+            ["EyeOfDesolation"] = false,
+            ["DeathWhistle"] = false,
             ["RuneOfKos"] = false
         };
 

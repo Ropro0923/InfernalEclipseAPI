@@ -8,6 +8,7 @@ namespace InfernalEclipseAPI.Content.Tiles.Relics.FargosSouls
     [ExtendsFromMod(InfernalCrossmod.FargosSouls.Name)]
     public class DevianttRelicTile : BaseInfernumBossRelic
     {
+        public override bool IsLoadingEnabled(Mod mod) => InfernalConfig.Instance.DontEnableThis;
         public override int DropItemID => ModContent.ItemType<DevianttRelic>();
 
         public override string RelicTextureName => "InfernalEclipseAPI/Content/Tiles/Relics/FargosSouls/DevianttRelicTile";

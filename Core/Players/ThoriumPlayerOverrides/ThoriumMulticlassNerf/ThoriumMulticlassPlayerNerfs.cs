@@ -15,7 +15,7 @@ namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides.ThoriumMulticla
         public int switchToHealerPenaltyTimer;
 
         //BARD MULTICLASS NERF
-        public const int WindowTicks = 60 * 5; // 5 seconds @ 60 FPS
+        public const int WindowTicks = 60 * 5; // 5 seconds
         internal int lastBardUseTick = int.MinValue / 2;
 
         public override void ResetEffects()
@@ -41,9 +41,11 @@ namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides.ThoriumMulticla
         private static bool IsHealerWeaponOrTool(Item item) =>
             IsHealerDamage(item) || IsHealerToolOrHybrid(item);
 
-        private bool HasAllGemTech(Player p)
+        private static bool HasAllGemTech()
         {
-            var cal = p.GetModPlayer<CalamityPlayer>();
+            Player player = Main.LocalPlayer;
+
+            var cal = player.GetModPlayer<CalamityPlayer>();
             return cal.GemTechSet &&
                    cal.GemTechState.IsYellowGemActive &&
                    cal.GemTechState.IsGreenGemActive &&
@@ -61,17 +63,18 @@ namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides.ThoriumMulticla
             proj.CountsAsClass<LegendaryMelee>() || proj.CountsAsClass<LegendaryRanged>() ||
             proj.CountsAsClass<MythicMelee>() || proj.CountsAsClass<MythicMagic>();
 
-        private bool ShouldIgnoreContext() => HasAllGemTech(Player) || DD2Event.Ongoing;
+        private static bool ShouldIgnoreContext() => HasAllGemTech() || DD2Event.Ongoing;
 
-        private bool IsCombatWeapon(Item item) =>
+        public static bool IsCombatWeapon(Item item) =>
             item is not null &&
             item.type != ItemID.None &&
             item.useStyle != ItemUseStyleID.None &&
             !item.accessory &&
             item.ammo == AmmoID.None &&
-            item.pick <= 0 && item.axe <= 0 && item.hammer <= 0 &&
+            item.pick <= 0 && item.axe <= 0 && item.hammer <= 0 && item.damage > 0 &&
             !IsExcluded(item) &&
             !ShouldIgnoreContext();
+
         public bool InWindow
         {
             get
@@ -101,6 +104,7 @@ namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides.ThoriumMulticla
                 modifiers.FinalDamage *= 0.5f;
             }
 
+            /*
             if (IsCombatWeapon(item) && !IsHealerWeaponOrTool(item))
             {
                 // Any non-healer weapon hit starts/refreshes the "recently non-healer" window
@@ -112,7 +116,11 @@ namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides.ThoriumMulticla
             {
                 Player.AddBuff(ModContent.BuffType<BrokenOath>(), switchToHealerPenaltyTimer);
             }
+            */
         }
+
+        public int[] HealerPenaltyTimerProjectiles;
+        public int[] IgnoreForPenatly;
 
         // === Projectile hits ===
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
@@ -137,16 +145,22 @@ namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides.ThoriumMulticla
             if (!healerAttack && IsHealerWeaponOrTool(Player.HeldItem))
                 healerAttack = true;
 
-            if (!healerAttack)
+            if (!healerAttack && (proj.DamageType == DamageClass.Summon 
+                                //|| HealerPenaltyTimerProjectiles.Contains(proj.type)
+                                )
+                                //&& !IgnoreForPenatly.Contains(proj.type)
+                                )
             {
                 // Non-healer projectile -> start/refresh window (since not excluded)
                 switchToHealerPenaltyTimer = PenaltyDuration;
                 return;
             }
 
+            /*
             // Healer projectile during active window -> apply debuff
             if (switchToHealerPenaltyTimer > 0)
                 Player.AddBuff(ModContent.BuffType<BrokenOath>(), switchToHealerPenaltyTimer);
+            */
         }
 
         public override void PostUpdateMiscEffects()

@@ -2,7 +2,6 @@
 using InfernalEclipseAPI.Content.NPCs.LittleCat;
 using InfernalEclipseAPI.Core.DamageClasses.LegendaryClass;
 using InfernalEclipseAPI.Core.DamageClasses.MythicClass;
-using InfernalEclipseAPI.Core.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -10,6 +9,7 @@ using SOTS.Void;
 using System.Collections.Generic;
 using Terraria.Audio;
 using Terraria.Localization;
+using ThoriumMod.Scenes;
 using static InfernalEclipseAPI.Core.Systems.InfernalCrossmod;
 
 namespace InfernalEclipseAPI.Core.Systems
@@ -41,6 +41,11 @@ namespace InfernalEclipseAPI.Core.Systems
             BossChecklistSetup();
             AddInfernumCards();
             ColoredDamageTypesSupport();
+
+            if (InfernalCrossmod.Thorium.Loaded)
+            {
+                AddThoriumMiniBoss.AddMiniBosses();
+            }
         }
         private void MusicDisplaySetup()
         {
@@ -81,8 +86,6 @@ namespace InfernalEclipseAPI.Core.Systems
             ModLoader.TryGetMod("CalamityMod", out CalamityMod);
             if (!ModLoader.TryGetMod("BossChecklist", out mod1) || mod1.Version < new Version(1, 6))
                 return;
-            ChecklistAddPseudoMiniboss(Mod, "Dreadnautilus", 7.9f, (() => InfernalDownedBossSystem.downedDreadNautilus), 618);
-            //ChecklistAddPseudoMiniboss(CalamityMod, "???", 22.75f, () => DownedBossSystem.downedPrimordialWyrm, ModContent.NPCType<PrimordialWyrmHead>());
 
             mod1.Call(new object[3]
             {
@@ -92,23 +95,6 @@ namespace InfernalEclipseAPI.Core.Systems
                 {
                     ModContent.ItemType<CatastrophicFabricationsMusicBox>()
                 }
-            });
-        }
-
-        public void ChecklistAddPseudoMiniboss(Mod mod, string internalName, float weight, Func<bool> downed, int bossType)
-        {
-            Mod mod1;
-            if (!ModLoader.TryGetMod("BossChecklist", out mod1))
-                return;
-            mod1.Call(new object[7]
-            {
-                "LogBoss",
-                mod,
-                internalName,
-                weight,
-                downed,
-                bossType,
-                SpawnDictionaryBuilderSystem.GetDictionary(internalName, mod)
             });
         }
 
@@ -123,7 +109,7 @@ namespace InfernalEclipseAPI.Core.Systems
                 MakeCard(SOTS.Find<ModNPC>("Polaris").Type, (horz, anim) => Color.Lerp(Color.Aquamarine, Color.Red, anim), "Polaris", SoundID.NPCHit4, new SoundStyle("InfernumMode/Assets/Sounds/Custom/ExoMechs/ThanatosTransition"));
                 MakeCard(SOTS.Find<ModNPC>("NewPolaris").Type, (horz, anim) => Color.Lerp(Color.Aquamarine, Color.Red, anim), "NewPolaris", SoundID.NPCHit4, new SoundStyle("InfernumMode/Assets/Sounds/Custom/ExoMechs/ThanatosTransition"));
             }
-            if (Fargos != null)
+            if (Fargos != null && InfernalConfig.Instance.DontEnableThis)
             {
                 MakeCard(Fargos.Find<ModNPC>("TrojanSquirrel").Type, (horz, anim) => Color.Lerp(Color.Brown, Color.SaddleBrown, anim), "TrojanSquirrel", SoundID.NPCHit4, SoundID.Item14);
                 MakeCard(Fargos.Find<ModNPC>("CursedCoffin").Type, (horz, anim) => Color.Lerp(Color.SandyBrown, Color.Yellow, anim), "CursedCoffin", SoundID.MenuTick, SoundID.Roar);
@@ -142,7 +128,7 @@ namespace InfernalEclipseAPI.Core.Systems
                 MakeCard(Fargos.Find<ModNPC>("AbomBoss").Type, (horz, anim) => Color.Lerp(Color.Purple, Color.Orange, anim), "AbomBoss", SoundID.MenuTick, InfernumMode.Assets.Sounds.InfernumSoundRegistry.ModeToggleLaugh);
                 MakeCard(Fargos.Find<ModNPC>("MutantBoss").Type, (horz, anim) => Color.Lerp(Color.LightBlue, Color.Cyan, anim), "Mutant", SoundID.DD2_BetsyFireballShot, SoundID.ScaryScream);
             }
-            if (Starlight != null)
+            if (Starlight != null && InfernalConfig.Instance.DontEnableThis)
             {
                 if (Starlight.Version <= Version.Parse("1.1.4.2"))
                 {
@@ -407,72 +393,16 @@ namespace InfernalEclipseAPI.Core.Systems
         }
     }
 
-    public class SpawnDictionaryBuilderSystem : ModSystem
+    [JITWhenModsEnabled(InfernalCrossmod.Thorium.Name)]
+    [ExtendsFromMod(InfernalCrossmod.Thorium.Name)]
+    public static class AddThoriumMiniBoss
     {
-        public static Dictionary<string, object> GetDictionary(string InternalName, Mod mod)
+        public static void AddMiniBosses()
         {
-            List<int> intList1 = new List<int>();
-            Dictionary<string, object> dictionary = new Dictionary<string, object>();
-            List<int> intList2 = new List<int>();
-            bool flag = false;
-
-            if (mod.Name == "InfernalEclipseAPI")
+            if (InfernalCrossmod.SOTS.Loaded)
             {
-                if (InternalName != null)
-                {
-                    if (InternalName == "Dreadnautilus")
-                    {
-                        Action<SpriteBatch, Rectangle, Color> action = (sb, rect, color) =>
-                        {
-                            Texture2D texture2D = ModContent.Request<Texture2D>("InfernalEclipseAPI/Assets/Textures/BossChecklist/Dreadnautilus", (AssetRequestMode)2).Value;
-                            Vector2 vector2;
-                            // ISSUE: explicit constructor call
-                            vector2 = new Vector2(
-                                rect.X + rect.Width / 2f - texture2D.Width / 2f,
-                                rect.Y + rect.Height / 2f - texture2D.Height / 2f
-                            );
-                            sb.Draw(texture2D, vector2, color);
-                        };
-                        dictionary.Add("customPortrait", action);
-                        dictionary.Add("displayName", Language.GetText("NPCName.BloodNautilus"));
-                        dictionary.Add("overrideHeadTextures", "InfernalEclipseAPI/Assets/Textures/BossChecklist/DreadnautilusIcon");
-                    }
-                }
+                EventSceneBase<MiniBossScene>.Instance.NPCs.Add(InfernalCrossmod.SOTS.Mod.Find<ModNPC>("PutridPinky1").Type);
             }
-            if (mod.Name == "CalamityMod")
-            {
-                if (InternalName != null)
-                {
-                    if (InternalName == "PrimordialWyrmHead")
-                    {
-                        Action<SpriteBatch, Rectangle, Color> action = (sb, rect, color) =>
-                        {
-                            Texture2D texture2D = ModContent.Request<Texture2D>("InfernalEclipseAPI/Assets/Textures/BossChecklist/AbyssBottom", (AssetRequestMode)2).Value;
-                            Vector2 vector2;
-                            vector2 = new Vector2(
-                                rect.X + rect.Width / 2f - texture2D.Width / 2f,
-                                rect.Y + rect.Height / 2f - texture2D.Height / 2f
-                            );
-                            sb.Draw(texture2D, vector2, color);
-                        };
-                        dictionary.Add("customPortrait", action);
-                        dictionary.Add("displayName", "???");
-                    }
-                }
-            }
-
-            if (intList2.Count > 0)
-            {
-                if (intList2.Count == 1)
-                    dictionary.Add("spawnItems", intList2[0]);
-                else
-                    dictionary.Add("spawnItems", intList2);
-            }
-            dictionary.Add("collectibles", intList1);
-            if (!flag)
-                dictionary.Add("spawnInfo", Language.GetText("Mods.InfernalEclipseAPI.SpawnInfo." + InternalName));
-
-            return dictionary;
         }
     }
 

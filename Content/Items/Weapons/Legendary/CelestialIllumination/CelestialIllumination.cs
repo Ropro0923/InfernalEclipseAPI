@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using CalamityMod;
 using CalamityMod.Items;
 using InfernalEclipseAPI.Core.DamageClasses.LegendaryClass;
+using InfernalEclipseAPI.Core.Utils;
 using InfernalEclipseAPI.Core.World;
 using InfernumMode.Content.Rarities.InfernumRarities;
 using Microsoft.Xna.Framework;
@@ -62,7 +63,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
                     Projectile.NewProjectile(source, player.Center + (Main.MouseWorld - player.Center).SafeNormalize(Vector2.Zero) * 20f, velocity.RotatedByRandom(MathHelper.ToRadians(10f)), ModContent.ProjectileType<CelestialIlluminationStar>(), 400, 2f, player.whoAmI);
                     Projectile.NewProjectile(source, player.Center + (Main.MouseWorld - player.Center).SafeNormalize(Vector2.Zero) * 20f, velocity.RotatedByRandom(MathHelper.ToRadians(10f)), ModContent.ProjectileType<CelestialIlluminationStar>(), 400, 2f, player.whoAmI);
                 }
-                else if (ModContent.GetInstance<InfernalDownedBossSystem>().DownedSentinels())
+                else if (InfernalUtilities.DownedSentinels())
                 {
                     Projectile.NewProjectile(source, player.Center + (Main.MouseWorld - player.Center).SafeNormalize(Vector2.Zero) * 20f, velocity.RotatedByRandom(MathHelper.ToRadians(12.5f)), ModContent.ProjectileType<CelestialIlluminationStar>(), 500, 2f, player.whoAmI);
                     Projectile.NewProjectile(source, player.Center + (Main.MouseWorld - player.Center).SafeNormalize(Vector2.Zero) * 20f, velocity.RotatedByRandom(MathHelper.ToRadians(12.5f)), ModContent.ProjectileType<CelestialIlluminationStar>(), 500, 2f, player.whoAmI);
@@ -107,7 +108,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
         {
             if (CalamityConditions.DownedDevourerOfGods.IsMet())
                 damage += 2.00f;
-            else if (ModContent.GetInstance<InfernalDownedBossSystem>().DownedSentinels())
+            else if (InfernalUtilities.DownedSentinels())
                 damage += 1.25f;
             else if (CalamityConditions.DownedProvidence.IsMet())
                 damage += 1.15f;
@@ -120,7 +121,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
         {
             if (CalamityConditions.DownedDevourerOfGods.IsMet())
                 crit += 10;
-            else if (ModContent.GetInstance<InfernalDownedBossSystem>().DownedSentinels())
+            else if (InfernalUtilities.DownedSentinels())
                 crit += 10;
             else if (CalamityConditions.DownedProvidence.IsMet())
                 crit += 10;
@@ -133,7 +134,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
         {
             if (CalamityConditions.DownedDevourerOfGods.IsMet())
                 knockback += 3f;
-            else if (ModContent.GetInstance<InfernalDownedBossSystem>().DownedSentinels())
+            else if (InfernalUtilities.DownedSentinels())
                 knockback += 2.75f;
             else if (CalamityConditions.DownedProvidence.IsMet())
                 knockback += 2.5f;
@@ -168,11 +169,11 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
             dedTo.OverrideColor = new Color(50, 205, 50);
             CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
         }
-        private string GetProgressionTooltip()
+        private static string GetProgressionTooltip()
         {
             if (CalamityConditions.DownedDevourerOfGods.IsMet())
                 return Language.GetTextValue("Mods.InfernalEclipseAPI.Items.CelestialIllumination.Progression.Full");
-            else if (ModContent.GetInstance<InfernalDownedBossSystem>().DownedSentinels())
+            else if (InfernalUtilities.DownedSentinels())
                 return Language.GetTextValue("Mods.InfernalEclipseAPI.Items.CelestialIllumination.Progression.Sentinels");
             else if (CalamityConditions.DownedProvidence.IsMet())
                 return Language.GetTextValue("Mods.InfernalEclipseAPI.Items.CelestialIllumination.Progression.Providence");
@@ -182,7 +183,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
                 return Language.GetTextValue("Mods.InfernalEclipseAPI.Items.CelestialIllumination.Progression.MoonLord");
             return Language.GetTextValue("Mods.InfernalEclipseAPI.Items.CelestialIllumination.Progression.Deus");
         }
-        private string GetContributorItemTooltip()
+        private static string GetContributorItemTooltip()
         {
             return Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Contributor");
         }

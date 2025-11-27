@@ -5,15 +5,17 @@ using SOTS.NPCs.Boss;
 using SOTS.NPCs.Boss.Advisor;
 using CalamityMod;
 using CalamityMod.UI;
+using InfernalEclipseAPI.Core.Systems;
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {
+    [JITWhenModsEnabled(InfernalCrossmod.SOTS.Name)]
     [ExtendsFromMod("SOTS")]
     public class SOTSBossStatScaling : GlobalNPC
     {
         public override bool AppliesToEntity(NPC npc, bool lateInstatiation)
         {
-            return npc.boss && ((ModType)npc.ModNPC)?.Mod.Name == "SOTS";
+            return (npc.boss || npc.type == ModContent.NPCType<PutridPinky1>() || npc.type == ModContent.NPCType<PutridHook>()) && npc.ModNPC?.Mod.Name == "SOTS";
         }
 
         public override void SetDefaults(NPC entity)
@@ -63,7 +65,20 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 {
                     npc.lifeMax += (int)(((double).15) * npc.lifeMax);
                 }
-                else npc.lifeMax += (int)(((double).35) * npc.lifeMax);
+                else if (npc.type == ModContent.NPCType<PutridPinky1>())
+                {
+                    npc.lifeMax += 3 * npc.lifeMax;
+                }
+                else if (npc.type == ModContent.NPCType<PutridHook>())
+                {
+                    npc.lifeMax -= (int)(npc.lifeMax * 0.3);
+                }
+                else if (npc.ModNPC.Name.Contains("SubspaceSerpent"))
+                {
+                    npc.lifeMax += (int)(0.25f * npc.lifeMax);
+                }
+                else
+                    npc.lifeMax += (int)(((double).35) * npc.lifeMax);
             }
         }
 
@@ -74,6 +89,10 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 if (npc.type == ModContent.NPCType<PutridPinkyPhase2>())
                 {
                     modifiers.SourceDamage *= 1.20f;
+                }
+                else if (npc.type == ModContent.NPCType<PutridPinky1>())
+                {
+                    modifiers.SourceDamage *= 2.5f;
                 }
                 else modifiers.SourceDamage *= 1.35f;
 
@@ -95,7 +114,13 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 }
                 else 
                 */
-                npc.position += npc.velocity * 0.35f;
+                if (npc.type == ModContent.NPCType<PutridPinky1>())
+                    return;
+
+                if (npc.type == ModContent.NPCType<SubspaceSerpentHead>())
+                    npc.position += npc.velocity * 0.25f;
+                else
+                    npc.position += npc.velocity * 0.35f;
             }
         }
 

@@ -32,7 +32,7 @@ namespace InfernalEclipseAPI.Common.Balance
                     default:
                         if (tile == ModContent.TileType<ExodiumOre>()) { return NPC.downedMoonlord; }
 
-                        if (tile == ModContent.TileType<OnyxExcavatorTile>()) { return DownedBossSystem.downedLeviathan; }
+                        //if (tile == ModContent.TileType<OnyxExcavatorTile>()) { return DownedBossSystem.downedLeviathan; }
 
                         if (tile == TileID.AlchemyTable) { return NPC.downedBoss3; }
 
