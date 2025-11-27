@@ -1,13 +1,8 @@
-﻿using System.Collections.Generic;
-using CalamityMod;
-using CalamityMod.Buffs.StatBuffs;
-using CalamityMod.NPCs.Perforator;
+﻿using CalamityMod.NPCs.Perforator;
 using CalamityMod.NPCs.ProfanedGuardians;
 using CalamityMod.NPCs.SlimeGod;
 using InfernalEclipseAPI.Core.Systems;
-using Microsoft.Xna.Framework;
 using ThoriumMod.Buffs;
-using ThoriumMod.Scenes;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs
 {
@@ -50,57 +45,5 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
                 npc.buffImmune[stunned] = true;
             }
         }
-<<<<<<<< HEAD:Common/Globals/GlobalNPCs/ThoriumBossImmunites.cs
-========
-
-        private static readonly HashSet<string> ThoriumBossNames = new()
-{
-            "TheGrandThunderBird",
-            "QueenJellyfish",
-            "Viscount",
-            "GraniteEnergyStorm",
-            "BuriedChampion",
-            "StarScouter",
-            "BoreanStrider",
-            "FallenBeholder",
-            "Lich",
-            "LichHeadless",
-            "ForgottenOne",
-            "ForgottenOneCracked",
-            "ForgottenOneReleased",
-            "DreamEater",
-            "Omnicide",
-            "SlagFury",
-            "Aquaius",
-            "PatchWerk",
-            "CorpseBloom",
-            "Illusionist",
-        };
-
-        public override void PostAI(NPC npc)
-        {
-            if (!npc.active || !npc.boss || npc.ModNPC == null)
-                return;
-
-            if (npc.ModNPC.Mod.Name == "ThoriumMod" && ThoriumBossNames.Contains(npc.ModNPC.Name))
-            {
-                if (CalamityServerConfig.Instance.BossZen)
-                {
-                    for (int i = 0; i < Main.maxPlayers; i++)
-                    {
-                        Player player = Main.player[i];
-                        if (!player.active || player.dead)
-                            continue;
-
-                        if (Vector2.Distance(player.Center, npc.Center) < 6400f)
-                        {
-                            // give at least 1 second to confirm it’s being applied
-                            player.AddBuff(ModContent.BuffType<BossEffects>(), 60, true, false);
-                        }
-                    }
-                }
-            }
-        }
->>>>>>>> master:Common/Globals/GlobalNPCs/ThoriumGlobalNPC.cs
     }
 }

@@ -53,7 +53,7 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalNPCs
 
         public static void ApplyBossEffects(NPC npc)
         {
-            if (CalamityConfig.Instance.BossZen)
+            if (CalamityServerConfig.Instance.BossZen)
             {
                 for (int i = 0; i < Main.maxPlayers; i++)
                 {
