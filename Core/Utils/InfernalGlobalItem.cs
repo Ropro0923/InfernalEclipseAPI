@@ -23,7 +23,7 @@ namespace InfernalEclipseAPI.Core.Utils
         public override int ChoosePrefix(Item item, UnifiedRandom rand)
         {
             if (!item.CountsAsClass<HealerDamage>() && !item.CountsAsClass<HealerTool>() && !item.CountsAsClass<HealerToolDamageHybrid>() && !item.CountsAsClass<BardDamage>()) return -1;
-            if (!CalamityConfig.Instance.RemoveReforgeRNG || Main.gameMenu || storedPrefix == -1) return -1;
+            if (!CalamityServerConfig.Instance.RemoveReforgeRNG || Main.gameMenu || storedPrefix == -1) return -1;
 
             return ThoriumItemUtils.GetReworkedReforge(item, rand, storedPrefix);
         }

@@ -7,9 +7,11 @@ namespace InfernalEclipseAPI.Common.Balance.Calamity
     {
         //idk honestly i was on something when i wrote this code
         //i also do not care to clean it either; calamity fixes this soon anyway
+
+        /*
         public override void ModifyItemLoot(Item item, ItemLoot loot)
         {
-            if (!CalamityConfig.Instance.EarlyHardmodeProgressionRework) { return; }
+            if (!CalamityServerConfig.Instance.EarlyHardmodeProgressionRework) { return; }
 
             if (item.type == ItemID.CorruptFishingCrate || item.type == ItemID.CorruptFishingCrateHard || item.type == ItemID.DungeonFishingCrateHard || item.type == ItemID.FloatingIslandFishingCrateHard || item.type == ItemID.FrozenCrateHard || item.type == ItemID.GoldenCrateHard || item.type == ItemID.HallowedFishingCrateHard || item.type == ItemID.IronCrateHard || item.type == ItemID.JungleFishingCrateHard || item.type == ItemID.LavaCrateHard || item.type == ItemID.OasisCrateHard || item.type == ItemID.OceanCrateHard || item.type == ItemID.WoodenCrateHard)
             {
@@ -110,5 +112,6 @@ namespace InfernalEclipseAPI.Common.Balance.Calamity
                 return NPC.downedMechBoss3 && NPC.downedMechBoss1;
             }), 391, 17, 5, 16);
         }
+        */
     }
 }

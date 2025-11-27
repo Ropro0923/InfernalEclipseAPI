@@ -82,7 +82,7 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
 
             if (npc.ModNPC.Mod.Name == "ThoriumMod" && ThoriumBossNames.Contains(npc.ModNPC.Name))
             {
-                if (CalamityConfig.Instance.BossZen)
+                if (CalamityServerConfig.Instance.BossZen)
                 {
                     for (int i = 0; i < Main.maxPlayers; i++)
                     {

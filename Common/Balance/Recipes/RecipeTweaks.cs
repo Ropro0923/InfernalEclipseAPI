@@ -555,7 +555,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                                 }
                             }
 
-                            if (CalamityConfig.Instance.EarlyHardmodeProgressionRework) 
+                            if (CalamityServerConfig.Instance.EarlyHardmodeProgressionRework) 
                             { 
                                 ModItem[] preMechIngredients =
                                 {

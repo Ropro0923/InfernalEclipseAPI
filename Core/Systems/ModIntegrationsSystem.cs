@@ -86,8 +86,11 @@ namespace InfernalEclipseAPI.Core.Systems
             ModLoader.TryGetMod("CalamityMod", out CalamityMod);
             if (!ModLoader.TryGetMod("BossChecklist", out mod1) || mod1.Version < new Version(1, 6))
                 return;
+
+            /*
             ChecklistAddPseudoMiniboss(Mod, "Dreadnautilus", 7.9f, (() => InfernalDownedBossSystem.downedDreadNautilus), 618);
             //ChecklistAddPseudoMiniboss(CalamityMod, "???", 22.75f, () => DownedBossSystem.downedPrimordialWyrm, ModContent.NPCType<PrimordialWyrmHead>());
+            */
 
             mod1.Call(new object[3]
             {
