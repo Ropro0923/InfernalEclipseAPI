@@ -57,19 +57,6 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
                 InfernalWorld.yharonDischarge = false;
                 InfernalWorld.yharonSmasher = false;
             }
-
-            if (npc.type == NPCID.BloodNautilus)
-            {
-                InfernalDownedBossSystem.downedDreadNautilus = true;
-
-                if (Main.netMode == NetmodeID.Server)
-                {
-                    // Sync to all clients
-                    ModPacket packet = ModContent.GetInstance<InfernalEclipseAPI>().GetPacket();
-                    packet.Write((byte)InfernalEclipseMessageType.SyncDownedBosses);
-                    packet.Send();
-                }
-            }
         }
 
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)

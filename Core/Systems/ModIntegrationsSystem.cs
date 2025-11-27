@@ -2,12 +2,8 @@
 using InfernalEclipseAPI.Content.NPCs.LittleCat;
 using InfernalEclipseAPI.Core.DamageClasses.LegendaryClass;
 using InfernalEclipseAPI.Core.DamageClasses.MythicClass;
-using InfernalEclipseAPI.Core.World;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
 using System.Collections.Generic;
-using Terraria;
 using Terraria.Audio;
 using Terraria.Localization;
 using ThoriumMod.Scenes;
@@ -87,11 +83,6 @@ namespace InfernalEclipseAPI.Core.Systems
             if (!ModLoader.TryGetMod("BossChecklist", out mod1) || mod1.Version < new Version(1, 6))
                 return;
 
-            /*
-            ChecklistAddPseudoMiniboss(Mod, "Dreadnautilus", 7.9f, (() => InfernalDownedBossSystem.downedDreadNautilus), 618);
-            //ChecklistAddPseudoMiniboss(CalamityMod, "???", 22.75f, () => DownedBossSystem.downedPrimordialWyrm, ModContent.NPCType<PrimordialWyrmHead>());
-            */
-
             mod1.Call(new object[3]
             {
                 "AddToBossCollection",
@@ -100,23 +91,6 @@ namespace InfernalEclipseAPI.Core.Systems
                 {
                     ModContent.ItemType<CatastrophicFabricationsMusicBox>()
                 }
-            });
-        }
-
-        public void ChecklistAddPseudoMiniboss(Mod mod, string internalName, float weight, Func<bool> downed, int bossType)
-        {
-            Mod mod1;
-            if (!ModLoader.TryGetMod("BossChecklist", out mod1))
-                return;
-            mod1.Call(new object[7]
-            {
-                "LogBoss",
-                mod,
-                internalName,
-                weight,
-                downed,
-                bossType,
-                SpawnDictionaryBuilderSystem.GetDictionary(internalName, mod)
             });
         }
 
@@ -388,16 +362,6 @@ namespace InfernalEclipseAPI.Core.Systems
         {
             if (ModLoader.TryGetMod("ColoredDamageTypes", out Mod coloredDamageTypes))
             {
-                //Color mergedThrowerColor = new Color(255, 100, 100);
-
-                //Vector3 hslVector = Main.rgbToHsl(mergedThrowerColor);
-                //hslVector.Y = MathHelper.Lerp(hslVector.Y, 1f, 0.6f);
-                //Color mergedThrowerCritColor = Main.hslToRgb(hslVector);
-
-                //coloredDamageTypes.Call("AddDamageType", MergedThrowerRogue.Instance, mergedThrowerColor, mergedThrowerColor, mergedThrowerCritColor);
-
-                //coloredDamageTypes.Call("AddDamageType", MeleeWhip.Instance, new Color(170, 0, 0), new Color(170, 0, 0), new Color(255, 10, 50));
-
                 Color legendaryColor = new Color(255, 215, 0); // Gold
                 Vector3 hslVector = Main.rgbToHsl(legendaryColor);
                 hslVector.Y = MathHelper.Lerp(hslVector.Y, 1f, 0.6f);
@@ -417,76 +381,6 @@ namespace InfernalEclipseAPI.Core.Systems
                 coloredDamageTypes.Call("AddDamageType", MythicRanged.Instance, mythicColor, mythicColor, mythicCritColor);
                 coloredDamageTypes.Call("AddDamageType", MythicSummon.Instance, mythicColor, mythicColor, mythicCritColor);
             }
-        }
-    }
-
-    public class SpawnDictionaryBuilderSystem : ModSystem
-    {
-        public static Dictionary<string, object> GetDictionary(string InternalName, Mod mod)
-        {
-            List<int> intList1 = new List<int>();
-            Dictionary<string, object> dictionary = new Dictionary<string, object>();
-            List<int> intList2 = new List<int>();
-            bool flag = false;
-
-            if (mod.Name == "InfernalEclipseAPI")
-            {
-                if (InternalName != null)
-                {
-                    if (InternalName == "Dreadnautilus")
-                    {
-                        Action<SpriteBatch, Rectangle, Color> action = (sb, rect, color) =>
-                        {
-                            Texture2D texture2D = ModContent.Request<Texture2D>("InfernalEclipseAPI/Assets/Textures/BossChecklist/Dreadnautilus", (AssetRequestMode)2).Value;
-                            Vector2 vector2;
-                            // ISSUE: explicit constructor call
-                            vector2 = new Vector2(
-                                rect.X + rect.Width / 2f - texture2D.Width / 2f,
-                                rect.Y + rect.Height / 2f - texture2D.Height / 2f
-                            );
-                            sb.Draw(texture2D, vector2, color);
-                        };
-                        dictionary.Add("customPortrait", action);
-                        dictionary.Add("displayName", Language.GetText("NPCName.BloodNautilus"));
-                        dictionary.Add("overrideHeadTextures", "InfernalEclipseAPI/Assets/Textures/BossChecklist/DreadnautilusIcon");
-                    }
-                }
-            }
-            if (mod.Name == "CalamityMod")
-            {
-                if (InternalName != null)
-                {
-                    if (InternalName == "PrimordialWyrmHead")
-                    {
-                        Action<SpriteBatch, Rectangle, Color> action = (sb, rect, color) =>
-                        {
-                            Texture2D texture2D = ModContent.Request<Texture2D>("InfernalEclipseAPI/Assets/Textures/BossChecklist/AbyssBottom", (AssetRequestMode)2).Value;
-                            Vector2 vector2;
-                            // ISSUE: explicit constructor call
-                            vector2 = new Vector2(
-                                rect.X + rect.Width / 2f - texture2D.Width / 2f,
-                                rect.Y + rect.Height / 2f - texture2D.Height / 2f
-                            );
-                            sb.Draw(texture2D, vector2, color);
-                        };
-                        dictionary.Add("customPortrait", action);
-                        dictionary.Add("displayName", "???");
-                    }
-                }
-            }
-
-            if (intList2.Count > 0)
-            {
-                if (intList2.Count == 1)
-                    dictionary.Add("spawnItems", intList2[0]);
-                else
-                    dictionary.Add("spawnItems", intList2);
-            }
-            dictionary.Add("collectibles", intList1);
-            if (!flag)
-                dictionary.Add("spawnInfo", Language.GetText("Mods.InfernalEclipseAPI.SpawnInfo." + InternalName));
-
-            return dictionary;
         }
     }
 

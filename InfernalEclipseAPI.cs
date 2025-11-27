@@ -232,19 +232,6 @@ namespace InfernalEclipseAPI
 
             switch (msgType)
             {
-                case InfernalEclipseMessageType.SyncDownedBosses:
-                    bool downed = reader.ReadBoolean();
-                    InfernalDownedBossSystem.downedDreadNautilus = downed;
-
-                    if (Main.netMode == NetmodeID.Server)
-                    {
-                        ModPacket packet = GetPacket();
-                        packet.Write((byte)InfernalEclipseMessageType.SyncDownedBosses);
-                        packet.Write(downed);
-                        packet.Send(-1, whoAmI); // sync to all clients except sender
-                    }
-                    break;
-
                 case InfernalEclipseMessageType.TriggerScytheCharge:
                     byte index = reader.ReadByte();
                     if (index < byte.MaxValue)

@@ -36,9 +36,6 @@ namespace InfernalEclipseAPI.Core.World
 
         public override void PreUpdateWorld()
         {
-            if (SubworldLibrary.SubworldSystem.IsActive<LostColosseum>())
-                WorldSaveSystem.InfernumModeEnabled = true;
-
             if (SubworldLibrary.SubworldSystem.AnyActive())
             {
                 if (InfernalCrossmod.SOTS.Loaded) 
