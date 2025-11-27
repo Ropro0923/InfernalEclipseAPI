@@ -4737,12 +4737,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                 if (GetItem(sots, "MinersSword", item))
                 {
-                    item.scale *= 1.5f;
+                    item.scale *= 1.25f;
                 }
 
                 if (GetItem(sots, "AncientSteelSword", item))
                 {
-                    item.scale *= 1.5f;
+                    item.scale *= 1.25f;
                 }
 
                 if (GetItem(sots, "AncientSteelHalberd", item))
@@ -4753,7 +4753,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                 if (GetItem(sots, "PlatinumScythe", item))
                 {
-                    item.scale *= 1.5f;
+                    item.scale *= 1.25f;
                 }
 
                 if (GetItem(sots, "ShatterBlade", item))

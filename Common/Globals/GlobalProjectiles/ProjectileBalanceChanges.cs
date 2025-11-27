@@ -4,6 +4,8 @@ using Terraria.GameContent;
 using Microsoft.Xna.Framework;
 using CalamityMod;
 using InfernalEclipseAPI.Core.DamageClasses;
+using Terraria;
+using ThoriumMod;
 
 namespace InfernalEclipseAPI.Common.Projectiles
 {
@@ -462,7 +464,79 @@ namespace InfernalEclipseAPI.Common.Projectiles
             }
         }
 
-        private bool GetProj(Projectile entity, Mod mod, string item)
+        public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (ModLoader.TryGetMod("SOTS", out Mod sots) && InfernalConfig.Instance.SOTSBalanceChanges && ModLoader.TryGetMod("CalamityMod", out Mod calamity))
+            {
+                //Blazing Club
+                if (projectile.type == sots.Find<ModProjectile>("BlazingMine").Type || projectile.type == sots.Find<ModProjectile>("BlazingSpike").Type)
+                {
+                    target.AddBuff(BuffID.OnFire, 120);
+                }
+
+                //Thundershock Shortbow
+                if (projectile.type == sots.Find<ModProjectile>("ArcLightning").Type)
+                {
+                    target.AddBuff(BuffID.Electrified, 180);
+                }
+
+                //Ancient Steel Lantern
+                if (projectile.type == sots.Find<ModProjectile>("AncientSteelLantern").Type)
+                {
+                    target.AddBuff(BuffID.OnFire, 120);
+                }
+
+                //Permafrost Spirit Staff
+                if (projectile.type == sots.Find<ModProjectile>("FrostSpear").Type)
+                {
+                    target.AddBuff(BuffID.Frostburn, 180);
+                }
+
+                //Earthen Spirit Staff
+                if (projectile.type == sots.Find<ModProjectile>("EarthenSpirit").Type)
+                {
+                    target.AddBuff(calamity.Find<ModBuff>("Crumbling")?.Type ?? -1, 60);
+                }
+
+                //Otherworldly Spirit Staff
+                if (projectile.type == sots.Find<ModProjectile>("OtherworldLightning").Type)
+                {
+                    target.AddBuff(BuffID.Electrified, 120);
+                }
+
+                //IrradiatedCrusher
+                if (projectile.type == sots.Find<ModProjectile>("IrradiatedChainReactor").Type || projectile.type == sots.Find<ModProjectile>("IrradiatedCrush").Type)
+                {
+                    target.AddBuff(calamity.Find<ModBuff>("Irradiated")?.Type ?? -1, 180);
+                }
+
+                //Tidal Spirit Staff
+                if (projectile.type == sots.Find<ModProjectile>("RippleWaveSummon").Type)
+                {
+                    target.AddBuff(calamity.Find<ModBuff>("CrushDepth")?.Type ?? -1, 60);
+                }
+
+                //Inferno Spirit Staff
+                if (projectile.type == sots.Find<ModProjectile>("InfernoLaser").Type)
+                {
+                    target.AddBuff(BuffID.OnFire3, 60);
+                }
+
+                //Evil Spirit Staff
+                if (projectile.type == sots.Find<ModProjectile>("EvilSpear").Type)
+                {
+                    target.AddBuff(calamity.Find<ModBuff>("BrainRot")?.Type ?? -1, 60);
+                }
+
+                //Voidspace Aura Staff
+                if (projectile.type == sots.Find<ModProjectile>("VoidspaceCell").Type)
+                {
+                    target.AddBuff(BuffID.CursedInferno, 120);
+                }
+            }
+        }
+
+            private bool GetProj(Projectile entity, Mod mod, string item)
         {
             mod.TryFind(item, out ModProjectile projectile);
             if (projectile == null)
