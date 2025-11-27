@@ -1508,7 +1508,6 @@ Configs: {
 			Label: 不要启用这个
 			Tooltip: 请勿启用此选项，它可能会造成误解，并导致游戏玩法失衡甚至出现问题
 		}
-	}
 
 		CalamityExpertAccessories: {
 			// Label: Calamity Expert Accessories

@@ -23,7 +23,7 @@ namespace InfernalEclipseAPI.Core.Utils
 
         public override int ChoosePrefix(Item item, UnifiedRandom rand)
         {
-            if (!CalamityConfig.Instance.RemoveReforgeRNG || Main.gameMenu || storedPrefix == -1) return -1;
+            if (!CalamityServerConfig.Instance.RemoveReforgeRNG || Main.gameMenu || storedPrefix == -1) return -1;
 
             int prefix;
 
