@@ -297,6 +297,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 {
                     item.damage = 28;
                 }
+
+                if (item.type == ModContent.ItemType<VividClarity>())
+                {
+                    item.damage = 144;
+                }
                 #endregion
 
                 #region Summoner
@@ -339,6 +344,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 if (item.type == ModContent.ItemType<FishboneBoomerang>())
                 {
                     item.damage = 35;
+                }
+
+                if (item.type == ModContent.ItemType<Turbulance>())
+                {
+                    item.damage = 24;
                 }
                 #endregion
             }
@@ -1441,14 +1451,14 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                     if (GetItem(thorium, "EclipseFang", item))
                     {
-                        item.damage = 250;
+                        item.damage = 175;
 
-                        item.scale *= 1.5f;
+                        item.scale *= 1.15f;
                     }
 
                     if (GetItem(thorium, "TerrariumSaber", item))
                     {
-                        item.damage = 180;
+                        item.damage = 140;
                         item.crit = 0;
                     }
 
@@ -2516,7 +2526,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                     if (GetItem(thorium, "PrometheanStaff", item))
                     {
-                        item.damage = 900;
+                        item.damage = 700;
                     }
                     #endregion
                     #endregion
@@ -3673,6 +3683,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     #endregion
 
                     #region Hardmode
+                    if (UnsafeGetItem(thorium, "Organ", item))
+                    {
+                        item.damage = 40;
+                    }
+
                     //Dragon's Wail
                     if (GetItem(thorium, "DragonsWail", item))
                     {
@@ -3687,7 +3702,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                     if (GetItem(thorium, "Trombone", item))
                     {
-                        item.damage = 44;
+                        item.damage = 35;
                     }
 
                     if (GetItem(thorium, "CobaltGong", item))
@@ -3785,13 +3800,13 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                     if (GetItem(thorium, "AdamantiteKlaxon", item))
                     {
-                        item.damage = 164;
+                        item.damage = 144;
                         TrySetInspirationCost(item, 1);
                     }
 
                     if (GetItem(thorium, "TitaniumCimbasso", item))
                     {
-                        item.damage = 54;
+                        item.damage = 60;
                     }
 
                     if (GetItem(thorium, "Zunpet", item))
@@ -3899,7 +3914,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                     if (GetItem(thorium, "HauntingBassDrum", item))
                     {
-                        item.damage = 404;
+                        item.damage = 204;
                     }
 
                     if (GetItem(thorium, "JingleBells", item))
@@ -3926,7 +3941,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                     if (GetItem(thorium, "TerrariumAutoharp", item))
                     {
-                        item.damage = 62;
+                        item.damage = 42;
                     }
 
                     if (GetItem(thorium, "SonicAmplifier", item))
@@ -4384,7 +4399,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                 if (GetItem(calBardHeal, "SpookyMonth", item))
                 {
-                    item.damage = 165;
+                    item.damage = 155;
                 }
 
                 if (GetItem(calBardHeal, "DoomsdayCatharsis", item))

@@ -5,7 +5,7 @@ using RagnarokMod.Items.RevItems;
 using RagnarokMod.Utils;
 using Terraria.Localization;
 
-namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
+namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Accessories
 {
     [JITWhenModsEnabled(InfernalCrossmod.RagnarokMod.Name)]
     [ExtendsFromMod(InfernalCrossmod.RagnarokMod.Name)]

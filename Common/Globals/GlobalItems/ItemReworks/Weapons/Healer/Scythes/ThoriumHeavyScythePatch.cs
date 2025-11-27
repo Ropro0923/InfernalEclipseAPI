@@ -6,7 +6,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using ThoriumMod;
 
-namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
+namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Healer.Scythes
 {
     [JITWhenModsEnabled(InfernalCrossmod.ThoriumRework.Name)]
     [ExtendsFromMod(InfernalCrossmod.ThoriumRework.Name)]
@@ -37,7 +37,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
 
             // --- Delay firing slightly ---
             int delayFrames = 20;
-            int sparkDamage = (int)(damage - (damage / 3f));
+            int sparkDamage = (int)(damage - damage / 3f);
             float sparkKnockback = knockback;
             int sparkOwner = player.whoAmI;
 
@@ -82,8 +82,8 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
         private class DelayedAction
         {
             public int Frames;
-            public System.Action Action;
-            public DelayedAction(int frames, System.Action action)
+            public Action Action;
+            public DelayedAction(int frames, Action action)
             {
                 Frames = frames;
                 Action = action;
@@ -109,7 +109,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
             }
         }
 
-        public void ScheduleDelayedProjectile(int frames, System.Action action)
+        public void ScheduleDelayedProjectile(int frames, Action action)
         {
             queuedProjectiles.Enqueue(new DelayedAction(frames, action));
         }

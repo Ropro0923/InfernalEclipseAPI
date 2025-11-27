@@ -3,7 +3,7 @@ using InfernalEclipseAPI.Content.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
 
-namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
+namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Healer.Scythes
 {
     [ExtendsFromMod("ThoriumMod")]
     public class BountifulHarvestRework : GlobalItem

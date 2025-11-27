@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
+namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Healer
 {
     //WH
     public class PurgatoriumNerf : GlobalItem

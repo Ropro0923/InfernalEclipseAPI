@@ -9,7 +9,7 @@ using CalamityMod.NPCs.SupremeCalamitas;
 using ThoriumMod.Items.Donate;
 using ThoriumMod.Utilities;
 
-namespace InfernalEclipseAPI.Common.GlobalItems
+namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Accessories
 {
     [ExtendsFromMod("ThoriumMod")]
     public class PlasmaGenBlocker : GlobalItem

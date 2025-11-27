@@ -1,4 +1,4 @@
-﻿namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
+﻿namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Accessories
 {
     //WHummus
     public class ChampionWingChanges : GlobalItem

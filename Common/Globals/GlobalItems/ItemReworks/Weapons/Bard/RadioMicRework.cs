@@ -2,7 +2,7 @@
 using Terraria.DataStructures;
 using InfernalEclipseAPI.Content.Projectiles;
 
-namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
+namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Bard
 {
     //Wardrobe Hummus
     [ExtendsFromMod("ThoriumMod")]

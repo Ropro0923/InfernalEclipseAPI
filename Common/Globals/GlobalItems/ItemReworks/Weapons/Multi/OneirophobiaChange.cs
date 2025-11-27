@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using System.Reflection;
 using Terraria.Localization;
 
-namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
+namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Multi
 {
     //Provided by Wardrobe Hummus
     public class OneirophobiaChange : GlobalItem

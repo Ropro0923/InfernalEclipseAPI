@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 
-namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks.ThrowableScythes
+namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Healer.Scythes.ThrowableScythes
 {
     [ExtendsFromMod("ThoriumMod")]
     public class ThrowableScythes : GlobalItem

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using ThoriumMod.Items.Thorium;
 using ThoriumMod.Projectiles;
 
-namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
+namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Multi
 {
     [ExtendsFromMod("ThoriumMod")]
     public class ElectrifiedThorsHammer : GlobalItem

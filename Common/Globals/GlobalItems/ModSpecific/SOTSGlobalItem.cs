@@ -3,7 +3,7 @@ using SOTS;
 using SOTS.Items.Earth;
 using ThoriumMod.Items.BossMini;
 
-namespace InfernalEclipseAPI.Common.Globals.GlobalItems
+namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
 {
     [JITWhenModsEnabled("SOTS")]
     [ExtendsFromMod("SOTS")]

@@ -2,7 +2,7 @@
 using InfernalEclipseAPI.Content.Projectiles;
 using Microsoft.Xna.Framework;
 
-namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
+namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Bard
 {
     [ExtendsFromMod("RagnarokMod")]
     public class LamentationRework : GlobalItem

@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using InfernalEclipseAPI.Content.Projectiles;
 
-namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
+namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Bard
 {
     [ExtendsFromMod("ThoriumMod")]
     public class CalamityBellRework : GlobalItem

@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using ThoriumMod.Projectiles.Scythe;
 
-namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks.ThrowableScythes
+namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Healer.Scythes.ThrowableScythes
 {
     [ExtendsFromMod("ThoriumMod")]
     public class ThrownScytheProjectile : GlobalProjectile
@@ -96,7 +96,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks.ThrowableScythes
                 if (projectile.ai[1] - projectile.ai[2] > projectile.timeLeft)
                     projectile.timeLeft++;
 
-                float attackTime = (++projectile.ai[2]) / projectile.ai[1];
+                float attackTime = ++projectile.ai[2] / projectile.ai[1];
 
                 float v = projectile.velocity.Length();
 
@@ -174,7 +174,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks.ThrowableScythes
 
             for (int i = 0; i < num2; i++)
             {
-                float num4 = (float)i * ((float)Math.PI * 2f / (float)num2);
+                float num4 = i * ((float)Math.PI * 2f / num2);
                 float rotation = projectile.rotation;
                 Vector2 val = dustCenter;
                 if (projectile.spriteDirection < 0)
@@ -182,11 +182,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks.ThrowableScythes
                     val.X = 0f - val.X;
                 }
 
-                val = Utils.RotatedBy(val, (double)(rotation + num4), default);
+                val = val.RotatedBy((double)(rotation + num4), default);
                 Vector2 val2 = projectile.Center + new Vector2(0f, projectile.gfxOffY) + val;
                 for (int j = 0; j < num; j++)
                 {
-                    Dust val3 = Dust.NewDustPerfect(val2, num3, (Vector2?)Vector2.Zero, 0, default(Color), 1f);
+                    Dust val3 = Dust.NewDustPerfect(val2, num3, (Vector2?)Vector2.Zero, 0, default, 1f);
                     val3.noGravity = true;
                     val3.noLight = true;
                     ModifyDust(projectile, val3, val2, i);

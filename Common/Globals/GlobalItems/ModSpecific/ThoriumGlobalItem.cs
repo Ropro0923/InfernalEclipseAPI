@@ -9,7 +9,7 @@ using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Items.ThrownItems;
 using static Terraria.ModLoader.ModContent;
 
-namespace InfernalEclipseAPI.Common.GlobalItems
+namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
 {
     [JITWhenModsEnabled(InfernalCrossmod.Thorium.Name)]
     [ExtendsFromMod("ThoriumMod")]

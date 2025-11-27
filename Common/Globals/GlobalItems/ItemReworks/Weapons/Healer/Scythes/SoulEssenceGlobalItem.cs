@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Reflection;
 
-namespace InfernalEclipseAPI.Common.GlobalItems
+namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Healer.Scythes
 {
     [ExtendsFromMod("ThoriumMod")]
     public class SoulEssenceGlobalItem : GlobalItem
@@ -12,7 +12,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
         // Reflection helpers
         private static FieldInfo scytheSoulChargeFieldOnScytheBase;
         private static PropertyInfo scytheSoulChargePropOnScytheBase;
-        private static System.Type thoriumScytheBaseType;
+        private static Type thoriumScytheBaseType;
 
         public override void SetStaticDefaults()
         {
@@ -45,7 +45,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     Mod.Logger.Info("[SoulEssenceGlobalItem] Could not find a Thorium ModItem-derived type declaring 'scytheSoulCharge'. Will fallback to instance reflection.");
                 }
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 Mod.Logger.Warn($"[SoulEssenceGlobalItem] Reflection search failed: {ex}");
                 thoriumScytheBaseType = null;
@@ -78,7 +78,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     scytheSoulChargeFieldOnScytheBase.SetValue(item.ModItem, 1);
                     return;
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
                     Mod.Logger.Warn($"[SoulEssenceGlobalItem] Failed to set field on base type: {ex}");
                 }
@@ -90,7 +90,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     scytheSoulChargePropOnScytheBase.SetValue(item.ModItem, 1);
                     return;
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
                     Mod.Logger.Warn($"[SoulEssenceGlobalItem] Failed to set property on base type: {ex}");
                 }
