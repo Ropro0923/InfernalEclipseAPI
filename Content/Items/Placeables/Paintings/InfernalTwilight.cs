@@ -123,12 +123,14 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
 
             //Supporters
             "Lylittle",
-            "PoMin",
             "Sharktank6",
+            "CuddlySnake",
+            "Na69754",
 
             //Donors
             "bryce27",
             "evil81",
+            "Goldsockz2",
             "rosé",
 
             //Special Thanks
