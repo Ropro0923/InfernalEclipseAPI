@@ -4780,12 +4780,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
                 }
 
-                if (GetItem(sots, "Shattershine", item))
-                {
-                    item.damage = 28;
-                }
-
-
                 if (GetItem(sots, "VesperaNanDao", item))
                 {
                     item.damage = 21;
@@ -5496,6 +5490,41 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.useTime = 28;
                     item.useAnimation = 28;
                     item.damage = 112;
+                }
+            }
+            #endregion
+
+            #region Infernum
+            if (ModLoader.TryGetMod("InfernumMode", out Mod infernum) && InfernalConfig.Instance.CalamityBalanceChanges)
+            {
+                if (UnsafeGetItem(infernum, "AridBattlecry", item))
+                {
+                    item.damage = 163;
+                }
+
+                if (UnsafeGetItem(infernum, "WanderersShell", item))
+                {
+                    item.damage = 160;
+                }
+
+                if (UnsafeGetItem(infernum, "Dreamtastic", item))
+                {
+                    item.damage = 842;
+                }
+
+                if (UnsafeGetItem(infernum, "EyeOfMadness", item))
+                {
+                    item.damage = 388;
+                }
+
+                if (UnsafeGetItem(infernum, "IllusionersReverie", item))
+                {
+                    item.damage = 460;
+                }
+
+                if (UnsafeGetItem(infernum, "StormMaidensRetribution", item))
+                {
+                    item.damage = 5056;
                 }
             }
             #endregion
