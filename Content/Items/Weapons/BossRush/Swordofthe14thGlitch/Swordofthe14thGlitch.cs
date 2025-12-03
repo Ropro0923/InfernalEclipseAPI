@@ -9,6 +9,8 @@ using Terraria.DataStructures;
 using InfernalEclipseAPI.Content.Items.Weapons.Melee.SwordoftheFirst;
 using InfernalEclipseAPI.Content.Items.Weapons.Melee.SwordoftheCorrupted;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace InfernalEclipseAPI.Content.Items.Weapons.BossRush.Swordofthe14thGlitch
 {
@@ -108,6 +110,15 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.BossRush.Swordofthe14thGlitch
                 proj.netUpdate = true;
             }
             return false;
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Color color = CalamityUtils.ColorSwap(Color.OrangeRed, Color.DarkRed, 2f);
+
+            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Akira")));
+            dedTo.OverrideColor = color;
+            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
         }
 
         public override void AddRecipes()

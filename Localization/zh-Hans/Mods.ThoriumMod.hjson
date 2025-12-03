@@ -1,0 +1,430 @@
+Items: {
+	CapeoftheSurvivor: {
+		DisplayName: 生存者披风
+		Tooltip:
+			'''
+			“这款披风的结构旨在引导你度过艰难的日子”
+			你随时间快速地获取至多15%伤害减免
+			受击时会短暂地将此加成变为-10%伤害减免
+			当此加成高于0%时，你会获得至多2点生命恢复
+			'''
+	}
+
+	/*
+	ScryingGlass: {
+	DisplayName: Scrying Glass
+	Tooltip: Pressing the '{$Keybinds.AccessoryAbility.DisplayName}' key will toggle an increased range of view
+	}
+	*/
+	
+	SoulofPlight: {
+		DisplayName: 恶意之魂
+		Tooltip: “可恶生物的精华”
+	}
+
+	SoulofPlightinaBottle: {
+		DisplayName: 瓶中恶意之魂
+		Tooltip: ""
+	}
+
+	KeyofPlight: {
+		DisplayName: 恶意钥匙
+		Tooltip: “充满许多灵魂的精华”
+	}
+
+	HereticBreaker: {
+		DisplayName: 异教毁灭者
+		Tooltip: 吸取3生命值
+	}
+
+	NinjaEmblem: {
+		DisplayName: 英雄徽章
+		/* Tooltip:
+			'''
+			5% increased damage
+			2% increased critical strike chance
+			5% increased attack speed
+			''' */
+	}
+
+	CrystalHoney: {
+		// DisplayName: Crystal Honey
+		/* Tooltip:
+			'''
+			Maximum life increased by 20
+			5% increased radiant damage
+			5% increased radiant critical strike chance
+			''' */
+	}
+
+	DarkGlaze: {
+		// DisplayName: Dark Glaze
+		/* Tooltip:
+			'''
+			'Devilishly sweet'
+			Empowers certain radiant attacks with dark energy
+			Maximum life increased by 20
+			10% increased radiant damage
+			5% increased radiant critical strike chance
+			''' */
+	}
+
+	DemonTongue: {
+		// DisplayName: Demon Tongue
+		/* Tooltip:
+			'''
+			Empowers certain radiant attacks with dark energy
+			10% increased radiant damage
+			Halves radiant life costs but not its life transferring effect
+			''' */
+	}
+
+	ArchDemonCurse: {
+		// DisplayName: Archdemon's Curse
+		/* Tooltip:
+			'''
+			Empowers certain radiant attacks with dark energy
+			Maximum life increased by 20
+			10% increased radiant casting speed
+			12% increased radiant damage
+			5% increased radiant critical strike chance
+			''' */
+	}
+
+	FlightMail: {
+		// DisplayName: Flight Mail
+		/* Tooltip:
+			'''
+			'The sky is your playing field'
+			5% increased throwing damage
+			''' */
+	}
+
+	BronzeHelmet: {
+		// DisplayName: Bronze Helmet
+		/* Tooltip:
+			'''
+			6% increased throwing critical strike chance
+			10% increased throwing weapon velocity
+			''' */
+	}
+
+	BronzeBreastplate: {
+		// DisplayName: Bronze Breastplate
+		// Tooltip: 10% increased throwing damage
+	}
+
+	PlagueDoctorsMask: {
+		// DisplayName: Plague Doctor's Mask
+		/* Tooltip:
+			'''
+			'What nasty concoction could you be brewing?'
+			5% increased throwing damage
+			33% chance to not consume throwing items
+			Increases your maximum technique points by 1
+			''' */
+	}
+
+	PlagueDoctorsGarb: {
+		// DisplayName: Plague Doctor's Garb
+		/* Tooltip:
+			'''
+			'What nasty concoction could you be brewing?'
+			15% increased throwing damage
+			10% increased throwing weapon velocity
+			''' */
+	}
+
+	PlagueDoctorsLeggings: {
+		// DisplayName: Plague Doctor's Leggings
+		/* Tooltip:
+			'''
+			'What nasty concoction could you be brewing?'
+			10% increased throwing damage
+			10% increased throwing weapon critical strike chance
+			''' */
+	}
+
+	FungusHat: {
+		// DisplayName: Fungus Cap
+		/* Tooltip:
+			'''
+			5% increased throwing damage
+			33% chance to not consume throwing items
+			Increases your maximum technique points by 1
+			''' */
+	}
+
+	FungusGuard: {
+		// DisplayName: Fungus Guard
+		/* Tooltip:
+			'''
+			10% increased throwing damage
+			5% increased throwing weapon speed
+			''' */
+	}
+
+	ShadeMasterMask: {
+		// DisplayName: Shade Master's Mask
+		/* Tooltip:
+			'''
+			'Live in the shadows and strike with precision'
+			10% increased throwing damage
+			33% chance to not consume throwing items
+			Increases your maximum technique points by 2
+			''' */
+	}
+
+	ShadeMasterTreads: {
+		// DisplayName: Shade Master's Treads
+		/* Tooltip:
+			'''
+			'Live in the shadows and strike with precision'
+			10% increased throwing damage
+			20% increased throwing weapon critical strike chance
+			15% increased movement speed
+			''' */
+	}
+
+	WhiteDwarfMask: {
+		// DisplayName: White Dwarf Mask
+		/* Tooltip:
+			'''
+			10% increased throwing damage
+			33% chance to not consume throwing items
+			Increases your maximum technique points by 2
+			''' */
+	}
+
+	WhiteDwarfGuard: {
+		// DisplayName: White Dwarf Guard
+		/* Tooltip:
+			'''
+			10% increased throwing damage
+			15% increased throwing weapon speed
+			30% increased throwing weapon velocity
+			''' */
+	}
+
+	WhiteDwarfGreaves: {
+		// DisplayName: White Dwarf Greaves
+		/* Tooltip:
+			'''
+			10% increased throwing damage
+			20% increased throwing weapon critical strike chance
+			20% increased movement speed
+			''' */
+	}
+
+	IridescentHelmet: {
+		// DisplayName: Iridescent Helmet
+		// Tooltip: 5% increased radiant damage
+	}
+
+	IridescentMail: {
+		// DisplayName: Iridescent Mail
+		/* Tooltip:
+			'''
+			10% increased radiant damage
+			2% increased radiant critical strike chance
+			Healing Spells will heal an additional 1 life
+			''' */
+	}
+
+	IridescentGreaves: {
+		// DisplayName: Iridescent Greaves
+		/* Tooltip:
+			'''
+			5% increased radiant damage
+			8% increased movement speed
+			Healing Spells will heal an additional 1 life
+			''' */
+	}
+
+	BloomingTabard: {
+		// DisplayName: Blooming Tabard
+		/* Tooltip:
+			'''
+			10% decreased non-radiant damage
+			5% increased radiant damage
+			Moderately increased mana regeneration
+			Healing Spells will heal an additional 2 life
+			''' */
+	}
+
+	BioTechGarment: {
+		// DisplayName: Biotech Garment
+		/* Tooltip:
+			'''
+			25% decreased non-radiant damage
+			25% increased radiant damage
+			Increased mana regeneration
+			10% decreased mana cost
+			Healing spells will heal an additional 3 life
+			''' */
+	}
+
+	WarlockHood: {
+		// DisplayName: Warlock Hood
+		/* Tooltip:
+			'''
+			Corrupts your radiant powers
+			10% decreased non-radiant damage
+			10% increased radiant damage
+			7% increased radiant critical strike chance
+			Maximum mana increased by 20
+			Healing spells will heal an additional 1 life
+			''' */
+	}
+
+	WarlockGarb: {
+		// DisplayName: Warlock Garb
+		/* Tooltip:
+			'''
+			15% decreased non-radiant damage
+			15% increased radiant damage
+			7% increased radiant critical strike chance
+			Healing spells will heal an additional 2 life
+			''' */
+	}
+
+	WarlockLeggings: {
+		// DisplayName: Warlock Leggings
+		/* Tooltip:
+			'''
+			12% decreased non-radiant damage
+			12% increased radiant damage
+			15% decreased mana cost
+			Healing spells will heal an additional 1 life
+			''' */
+	}
+
+	FallenPaladinFaceguard: {
+		// DisplayName: Fallen Paladin's Faceguard
+		/* Tooltip:
+			'''
+			10% decreased non-radiant damage
+			10% increased radiant damage
+			3% increased radiant critical strike chance
+			Life regeneration rate increased
+			''' */
+	}
+
+	FallenPaladinCuirass: {
+		// DisplayName: Fallen Paladin's Cuirass
+		/* Tooltip:
+			'''
+			20% decreased non-radiant damage
+			20% increased radiant damage
+			8% increased radiant critical strike chance
+			15% increased damage reduction
+			Healing spells will heal an additional 2 life
+			''' */
+	}
+
+	FallenPaladinGreaves: {
+		// DisplayName: Fallen Paladin's Greaves
+		/* Tooltip:
+			'''
+			15% decreased non-radiant damage
+			15% increased radiant damage
+			4% increased radiant critical strike chance
+			15% decreased mana cost
+			20% increased movement speed
+			Healing spells will heal an additional 1 life
+			''' */
+	}
+
+	WhisperingHood: {
+		// DisplayName: Whispering Hood
+		/* Tooltip:
+			'''
+			Corrupts your radiant powers
+			20% decreased non-radiant damage
+			20% increased radiant damage
+			10% increased radiant critical strike chance
+			Maximum mana increased by 40
+			Healing spells will heal an additional 1 life
+			''' */
+	}
+
+	WhisperingTabard: {
+		// DisplayName: Whispering Tabard
+		/* Tooltip:
+			'''
+			25% decreased non-radiant damage
+			25% increased radiant damage
+			8% increased radiant critical strike chance
+			Healing spells will heal an additional 2 life
+			''' */
+	}
+
+	WhisperingLeggings: {
+		// DisplayName: Whispering Leggings
+		/* Tooltip:
+			'''
+			15% decreased non-radiant damage
+			15% increased radiant damage
+			15% decreased mana cost
+			Healing spells will heal an additional 1 life
+			''' */
+	}
+
+	TerrariumHelmet: {
+		DisplayName: 元素之灵头盔
+		Tooltip:
+			'''
+			“一切都会在你的力量面前倒下……”
+			最大生命值增加{0}，生命再生增加{1}
+			增加{2}%伤害
+			黑暗中的视野提升
+			'''
+		SetBonus:
+			'''
+			当你在战斗中时泰拉瑞亚的能量会追寻并保护你
+			按下'{$Keybinds.ArmorAbility.DisplayName}'键可以切换职业专注
+			'''
+
+		Focus: {
+			Generic: {
+				Name: 没有专注
+				Description: 增加{0}%伤害
+			}
+
+			Melee: {
+				Name: 近战专注
+				Description: 增加{0}%伤害减免
+			}
+
+			Ranged: {
+				Name: 远程专注
+				Description: 增加{0}%射速
+			}
+
+			Magic: {
+				Name: 魔法专注
+				Description: 最大魔力值增加{0}
+			}
+
+			Summon: {
+				Name: 召唤专注
+				Description: 最大仆从数量增加{0}，非召唤伤害降低{1}%
+			}
+
+			Throwing: {
+				Name: 投掷专注
+				Description: 最大技巧值增加{0}，给予110最大潜伏值
+			}
+
+			Healer: {
+				Name: 光辉专注
+				Description: 治疗法术会额外治疗{0}生命值
+			}
+
+			Bard: {
+				Name: 音波专注
+				Description: 咒音增幅持续时间延长{0}秒
+			}
+		}
+	}
+}

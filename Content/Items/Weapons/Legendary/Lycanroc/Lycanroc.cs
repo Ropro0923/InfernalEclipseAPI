@@ -108,7 +108,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc
             if (NPC.downedAncientCultist)
             {
                 int superCrit = Main.rand.Next(1, 20);
-                if (superCrit == 20 || (NPC.downedMoonlord && superCrit >= 15))
+                if (superCrit == 20 || NPC.downedMoonlord && superCrit >= 15)
                 {
                     cgp.supercritHits = -1;
                 }
@@ -173,6 +173,12 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc
             TooltipLine line = new(Mod, "Progression", GetProgressionTooltip());
             line.OverrideColor = lerpedColor;
             tooltips.Add(line);
+
+            Color color = CalamityUtils.ColorSwap(Color.OrangeRed, Color.DarkRed, 2f);
+
+            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Yob")));
+            dedTo.OverrideColor = color;
+            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
         }
 
         private string GetProgressionTooltip()

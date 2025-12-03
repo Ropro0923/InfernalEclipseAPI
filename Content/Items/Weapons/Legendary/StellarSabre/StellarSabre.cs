@@ -4,6 +4,7 @@ using InfernumMode.Content.Rarities.InfernumRarities;
 using CalamityMod.Items.Materials;
 using Terraria.Localization;
 using InfernalEclipseAPI.Core.DamageClasses.LegendaryClass;
+using CalamityMod;
 
 namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
 {
@@ -11,7 +12,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
     {
         public override void SetDefaults()
         {
-            Item.damage = 30;
+            Item.damage = 17;
             Item.DamageType = LegendaryMelee.Instance;
             Item.width = 40;
             Item.height = 40;
@@ -32,15 +33,17 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             if (NPC.downedMoonlord)
-                damage += 2.00f;
+                damage += 5.00f;
             else if (NPC.downedAncientCultist)
-                damage += 1.25f;
+                damage += 3.00f;
             else if (NPC.downedGolemBoss)
-                damage += 1.15f;
+                damage += 2.50f;
             else if (NPC.downedPlantBoss)
-                damage += 0.75f;
+                damage += 1.75f;
             else if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-                damage += 0.25f;
+                damage += 1.00f;
+            else if (Main.hardMode)
+                damage += 0.15f;
         }
 
         public override void ModifyWeaponKnockback(Player player, ref StatModifier knockback)
@@ -115,6 +118,10 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
             TooltipLine line5 = new(Mod, "DedicatedItem", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Playtester"));
             line5.OverrideColor = lerpedColor;
             tooltips.Add(line5);
+
+            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Jill")));
+            dedTo.OverrideColor = lerpedColor;
+            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
         }
 
         private string GetProgressionTooltip()

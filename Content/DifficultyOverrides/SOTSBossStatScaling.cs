@@ -20,7 +20,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
 
         public override void SetDefaults(NPC entity)
         {
-            if (entity.ModNPC.Name.Contains("Excavator"))
+            if (entity.ModNPC.Name.Contains("Excavator") && InfernumActive.InfernumActive)
             {
                 entity.defense += 5;
             }
@@ -51,7 +51,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 {
                     string name = npc.ModNPC?.Name ?? "";
                     if (name.Contains("Excavator"))
-                        npc.lifeMax *= 105;
+                        npc.lifeMax *= 50;
 
                     npc.lifeMax += (int)(((double).25 * (double)npc.lifeMax));
                 }
@@ -112,6 +112,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 {
                     npc.position += npc.velocity * 0.3f;
                 }
+                else 
                 */
                 if (npc.type == ModContent.NPCType<PutridPinky1>())
                     return;
