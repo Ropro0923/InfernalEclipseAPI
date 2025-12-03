@@ -151,10 +151,6 @@ namespace InfernalEclipseAPI
 
         [DefaultValue(true)]
         [ReloadRequired]
-        public bool CalamityExpertAccessories { get; set; }
-
-        [DefaultValue(true)]
-        [ReloadRequired]
         public bool MoveDeerclopsChecklistEntry { get; set; }
 
         [DefaultValue(false)]

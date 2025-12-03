@@ -1,28 +1,12 @@
-﻿using System.Linq;
-using InfernalEclipseAPI.Common.GlobalNPCs.NPCDebuffs;
-using InfernalEclipseAPI.Core.Systems;
-using YouBoss.Content.NPCs.Bosses.TerraBlade;
-using YouBoss.Content.NPCs.Bosses.TerraBlade.Projectiles;
-using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
+﻿using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {
-    [JITWhenModsEnabled(InfernalCrossmod.YouBoss.Name)]
-    [ExtendsFromMod(InfernalCrossmod.YouBoss.Name)]
     public class YouBossStatScaling : GlobalNPC
     {
         public override bool AppliesToEntity(NPC npc, bool lateInstatiation)
         {
-            return npc.type == ModContent.NPCType<TerraBladeBoss>();
-        }
-
-        public override void SetDefaults(NPC entity)
-        {
-            InfernalCrossmod.Calamity.Mod.Call("SetDefenseDamageNPC", entity, true);
-            if (InfernalCrossmod.SOTS.Loaded)
-            {
-                entity.GetGlobalNPC<VoidDamageNPC>().canDoVoidDamage = true;
-            }
+            return npc.boss && ((ModType)npc.ModNPC)?.Mod.Name == "YouBoss";
         }
 
         public override void ApplyDifficultyAndPlayerScaling(NPC npc, int numPlayers, float balance, float bossAdjustment)
@@ -43,7 +27,11 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             num2 = flag ? 1 : 0;
             if ((num1 & num2) != 0)
             {
-                npc.lifeMax *= 2;
+                ModNPC modNPC14 = npc.ModNPC;
+                if ((modNPC14 != null ? (((ModType)modNPC14).Name.Contains("TerraBladeBoss") ? 1 : 0) : 0) != 0)
+                {
+                    npc.lifeMax *= 2;
+                }
             }
 
             if (InfernumActive.InfernumActive)
@@ -56,44 +44,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
         {
             if (InfernumActive.InfernumActive)
             {   
-                modifiers.SourceDamage *= 1.8f;
-            }
-        }
-    }
-
-    [JITWhenModsEnabled(InfernalCrossmod.YouBoss.Name)]
-    [ExtendsFromMod(InfernalCrossmod.YouBoss.Name)]
-    public class YouBossProjectileScaling : GlobalProjectile
-    {
-        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
-        {
-            int[] types =
-            [
-                ModContent.ProjectileType<AcceleratingTerraBeam>(),
-                    ModContent.ProjectileType<ArcingLightBeam>(),
-                    ModContent.ProjectileType<ArcingNightBeam>(),
-                    ModContent.ProjectileType<ArcingTerraBeam>(),
-                    ModContent.ProjectileType<TelegraphedTerraBeam>(),
-                    ModContent.ProjectileType<TerraBladeSplit>(),
-                    ModContent.ProjectileType<TerraGroundShock>(),
-                ];
-
-            return types.Contains(entity.type);
-        }
-
-        public override void SetDefaults(Projectile entity)
-        {
-            if (InfernalCrossmod.SOTS.Loaded)
-            {
-                entity.GetGlobalProjectile<VoidDamageProjectile>().canDoVoidDamage = true;
-            }
-        }
-
-        public override void ModifyHitPlayer(Projectile projectile, Player target, ref Player.HurtModifiers modifiers)
-        {
-            if (projectile.damage > 0 && InfernumActive.InfernumActive)
-            {
-                modifiers.SourceDamage *= 1.5f;
+                modifiers.SourceDamage *= 2.35f;
             }
         }
     }

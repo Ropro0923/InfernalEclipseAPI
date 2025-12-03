@@ -86,7 +86,6 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
 
             //Major Contributors
             "StarlightCat",
-            "MajOfMyth",
             "Ropro0923",
             "cheesenuggets",
             "Prime",
@@ -95,11 +94,9 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Nobody",
             "Peter Fung",
             "Pudd1ng",
-            "Eduarrdo",
 
             //Partners
             "brome",
-            "WitherTaco",
             "Verveine",
 
             //Other

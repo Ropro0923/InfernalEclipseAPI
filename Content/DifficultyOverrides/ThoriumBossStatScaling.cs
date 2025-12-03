@@ -1,32 +1,23 @@
 ﻿using InfernumSaveSystem = InfernumMode.Core.GlobalInstances.Systems.WorldSaveSystem;
 using System.Reflection;
 using Terraria.DataStructures;
-using ThoriumMod.NPCs.BossBoreanStrider;
-using ThoriumMod.NPCs.BossThePrimordials;
-using ThoriumMod.Projectiles.Boss;
-using System.Linq;
-using InfernalEclipseAPI.Core.Systems;
-using ThoriumRework.Projectiles;
-using InfernalEclipseAPI.Common.GlobalNPCs.NPCDebuffs;
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {
-    [JITWhenModsEnabled("ThoriumMod")]
-    [ExtendsFromMod("ThoriumMod")]
     public class ThoriumBossStatScaling : GlobalNPC
     {
-        private static bool GetCalDifficulty(string diff)
+        private bool GetCalDifficulty(string diff)
         {
             return ModLoader.TryGetMod("CalamityMod", out Mod calamity) &&
                    calamity.Call("GetDifficultyActive", diff) is bool b && b;
         }
 
-        private static bool IsInfernumActive()
+        private bool IsInfernumActive()
         {
             return InfernumSaveSystem.InfernumModeEnabled;
         }
 
-        private static bool GetFargoDifficullty(string diff)
+        private bool GetFargoDifficullty(string diff)
         {
             if (!ModLoader.TryGetMod("FargowiltasSouls", out Mod fargoSouls))
             {
@@ -35,53 +26,16 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
 
             return fargoSouls.Call(diff) is bool active && active;
         }
-        private static bool IsWorldLegendary()
+        private bool IsWorldLegendary()
         {
             FieldInfo findInfo = typeof(Main).GetField("_currentGameModeInfo", BindingFlags.Static | BindingFlags.NonPublic);
             GameModeData data = (GameModeData)findInfo.GetValue(null);
             return (Main.getGoodWorld && data.IsMasterMode);
         }
 
-        public static readonly int[] thorBossMinionTypes =
-        [
-            ModContent.NPCType<ThoriumMod.NPCs.BossThePrimordials.AquaiusBubble>(),
-            ModContent.NPCType<ThoriumMod.NPCs.BossThePrimordials.ImpendingDread>(),
-            ModContent.NPCType<UnstableAnger>(),
-            ModContent.NPCType<InnerDespair>(),
-            ModContent.NPCType<LucidBubble>(),
-        ];
-
-        public static bool IsReworkNPC(NPC npc)
-        {
-            if (!InfernalCrossmod.ThoriumRework.Loaded) return false;
-
-            return ThoriumReworkEntities.IsReworkedThoriumMinion(npc);
-        }
-
         public override bool AppliesToEntity(NPC npc, bool lateInstantiation)
         {
-            return (npc.boss || thorBossMinionTypes.Contains(npc.type) || IsReworkNPC(npc)) && (npc.ModNPC?.Mod?.Name == "ThoriumMod" || npc.ModNPC?.Mod?.Name == "ThoriumRework");
-        }
-
-        public override void SetDefaults(NPC entity)
-        {
-            if (IsInfernumActive()) 
-            {
-                if (entity.type == ModContent.NPCType<BoreanStrider>())
-                {
-                    entity.defense += 10;
-                }
-                if (entity.type == ModContent.NPCType<BoreanStriderPopped>())
-                {
-                    entity.defense += 5;
-                }
-            }
-
-            if (InfernalCrossmod.SOTS.Loaded && entity.type == ModContent.NPCType<DreamEater>())
-            {
-                entity.GetGlobalNPC<VoidDamageNPC>().canDoVoidDamage = true;
-                entity.GetGlobalNPC<VoidDamageNPC>().strongVoidDamge = true;
-            }
+            return npc.boss && npc.ModNPC?.Mod?.Name == "ThoriumMod";
         }
 
         public override void ApplyDifficultyAndPlayerScaling(NPC npc, int numPlayers, float balance, float bossAdjustment)
@@ -129,7 +83,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 {
                     npc.lifeMax += (int)npc.lifeMax;
                 }
-                if (npc.ModNPC?.Name?.Contains("StarScouter") == true || npc.type == ModContent.NPCType<BoreanStrider>() || npc.type == ModContent.NPCType<BoreanStriderPopped>())
+                if (npc.ModNPC?.Name?.Contains("StarScouter") == true)
                 {
                     npc.lifeMax += (int)(0.75 * npc.lifeMax);
                 }
@@ -147,7 +101,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                     {
                         npc.lifeMax += (int)(0.75 * npc.lifeMax);
                     }
-                    if (npc.ModNPC?.Name?.Contains("StarScouter") == true || npc.type == ModContent.NPCType<BoreanStrider>() || npc.type == ModContent.NPCType<BoreanStriderPopped>())
+                    if (npc.ModNPC?.Name?.Contains("StarScouter") == true)
                     {
                         npc.lifeMax += (int)(0.5 * npc.lifeMax);
                     }
@@ -160,7 +114,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                     {
                         npc.lifeMax += (int)(0.5 * npc.lifeMax);
                     }
-                    if (npc.ModNPC?.Name?.Contains("StarScouter") == true || npc.type == ModContent.NPCType<BoreanStrider>() || npc.type == ModContent.NPCType<BoreanStriderPopped>())
+                    if (npc.ModNPC?.Name?.Contains("StarScouter") == true)
                     {
                         npc.lifeMax += (int)(0.375 * npc.lifeMax);
                     }
@@ -173,7 +127,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                     {
                         npc.lifeMax += (int)(0.25 * npc.lifeMax);
                     }
-                    if (npc.ModNPC?.Name?.Contains("StarScouter") == true || npc.type == ModContent.NPCType<BoreanStrider>() || npc.type == ModContent.NPCType<BoreanStriderPopped>())
+                    if (npc.ModNPC?.Name?.Contains("StarScouter") == true)
                     {
                         npc.lifeMax += (int)(0.1875 * npc.lifeMax);
                     }
@@ -189,7 +143,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             float damageMod = 0;
 
             if (name.Contains("SlagFury") || name.Contains("Aquaius") || name.Contains("Omnicide") || name.Contains("DreamEater"))
-                damageMod += 0.6f;
+                damageMod += 0.35f;
 
             if (IsWorldLegendary())
             {
@@ -241,146 +195,6 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                     npc.position += npc.velocity * 0.05f;
                 }
             }
-        }
-    }
-
-    [JITWhenModsEnabled("ThoriumRework")]
-    [ExtendsFromMod("ThoriumRework")]
-    public static class ThoriumReworkEntities
-    {
-        public static bool IsReworkedThoriumMinion(NPC npc)
-        {
-            return false;
-
-            int[] reworkType =
-            [
-            ];
-
-            if (reworkType.Contains(npc.type))
-                return true;
-
-            return false;
-        }
-
-        public static bool IsReworkedThoriumProjectile(Projectile projectile)
-        {
-            int[] reworkType =
-            [
-                ModContent.ProjectileType<ThoriumRework.Projectiles.ImpendingDread>(),
-                ModContent.ProjectileType<ImpendingDreadF>(),
-                ModContent.ProjectileType<ThoriumRework.Projectiles.LucidRay>(),
-                ModContent.ProjectileType<LucidNuke>(),
-                ModContent.ProjectileType<ThoriumRework.Projectiles.AquaiusBubble>(),
-                ModContent.ProjectileType<AquaiusPunchAttack>(),
-                ModContent.ProjectileType<DeathRain>(),
-                ModContent.ProjectileType<InfernalRay>()
-            ];
-
-            if (reworkType.Contains(projectile.type))
-                return true;
-
-            return false;
-        }
-    }
-
-
-    [JITWhenModsEnabled("ThoriumMod")]
-    [ExtendsFromMod("ThoriumMod")]
-    public class ThoriumBossProjStatScaling : GlobalProjectile
-    {
-        public static bool IsReworkNPC(Projectile projectile)
-        {
-            if (!InfernalCrossmod.ThoriumRework.Loaded) return false;
-
-            return ThoriumReworkEntities.IsReworkedThoriumProjectile(projectile);
-        }
-
-        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
-        {
-            int[] types =
-            [
-                ModContent.ProjectileType<AquaSplash>(),
-                ModContent.ProjectileType<AquaTyphoon>(),
-                ModContent.ProjectileType<LucidFury>(),
-                ModContent.ProjectileType<LucidMiasma>(),
-                ModContent.ProjectileType<LucidPulse>(),
-                ModContent.ProjectileType<LucidTyphoon>(),
-                ModContent.ProjectileType<FlameFury>(),
-                ModContent.ProjectileType<FlameLash>(),
-                ModContent.ProjectileType<FlameNova>(),
-                ModContent.ProjectileType<FlamePulsePro>(),
-                ModContent.ProjectileType<AquaBomb2>(),
-                ModContent.ProjectileType<LucidBomb2>(),
-                ModContent.ProjectileType<ThoriumMod.Projectiles.Boss.LucidRay>(),
-                ModContent.ProjectileType<DeathRaySpawn3>(),
-                ModContent.ProjectileType<DeathCircle2>(),
-                ModContent.ProjectileType<DeathRay>()
-            ];
-
-            return types.Contains(entity.type) || IsReworkNPC(entity);
-        }
-
-        private static bool GetCalDifficulty(string diff)
-        {
-            return ModLoader.TryGetMod("CalamityMod", out Mod calamity) &&
-                   calamity.Call("GetDifficultyActive", diff) is bool b && b;
-        }
-
-        private static bool IsInfernumActive()
-        {
-            return InfernumSaveSystem.InfernumModeEnabled;
-        }
-
-        private static bool GetFargoDifficullty(string diff)
-        {
-            if (!ModLoader.TryGetMod("FargowiltasSouls", out Mod fargoSouls))
-            {
-                return false;
-            }
-
-            return fargoSouls.Call(diff) is bool active && active;
-        }
-        private static bool IsWorldLegendary()
-        {
-            FieldInfo findInfo = typeof(Main).GetField("_currentGameModeInfo", BindingFlags.Static | BindingFlags.NonPublic);
-            GameModeData data = (GameModeData)findInfo.GetValue(null);
-            return (Main.getGoodWorld && data.IsMasterMode);
-        }
-
-        public override void SetDefaults(Projectile entity)
-        {
-            if (InfernalCrossmod.SOTS.Loaded && entity.ModProjectile.Name.Contains("Lucid"))
-            {
-                entity.GetGlobalProjectile<VoidDamageProjectile>().canDoVoidDamage = true;
-                entity.GetGlobalProjectile<VoidDamageProjectile>().strongVoidDamge = true;
-            }
-        }
-
-        public override void ModifyHitPlayer(Projectile projectile, Player target, ref Player.HurtModifiers modifiers)
-        {
-            float damageMod = 0;
-
-            if (IsWorldLegendary())
-            {
-                damageMod += 1.35f;
-            }
-            if (IsInfernumActive() || GetFargoDifficullty("MasochistMode"))
-            {
-                damageMod += 2.2f;
-            }
-            else
-            {
-                if (GetFargoDifficullty("EternityMode"))
-                {
-                    damageMod += 1.675f;
-                }
-                else if (GetCalDifficulty("death"))
-                {
-                    damageMod += 1.5f;
-                }
-            }
-
-            modifiers.SourceDamage *= damageMod;
         }
     }
 }

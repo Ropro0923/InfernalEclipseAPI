@@ -1,7 +1,7 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using InfernalEclipseAPI.Core.Players;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
-using InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides;
 
 namespace InfernalEclipseAPI.Core
 {

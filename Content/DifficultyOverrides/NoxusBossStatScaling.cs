@@ -34,14 +34,22 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 ModNPC modNpc1 = npc.ModNPC;
                 if ((modNpc1 != null ? (((ModType)modNpc1).Name.Contains("MarsBody") ? 1 : 0) : 0) != 0)
                 {
-                    npc.lifeMax += (int)(npc.lifeMax * 0.25f);
+                    npc.lifeMax *= 2;
                 }
                 else
                 {
-                    ModNPC modNpc3 = npc.ModNPC;
-                    if ((modNpc3 != null ? (((ModType)modNpc3).Name.Contains("NamelessDeityBoss") ? 1 : 0) : 0) != 0)
+                    ModNPC modNpc2 = npc.ModNPC;
+                    if ((modNpc2 != null ? (((ModType)modNpc2).Name.Contains("AvatarRift") ? 1 : 0) : 0) != 0)
                     {
-                        npc.lifeMax += (int)(npc.lifeMax * 0.25f);
+                        npc.lifeMax *= 1;
+                    }
+                    else
+                    {
+                        ModNPC modNpc3 = npc.ModNPC;
+                        if ((modNpc3 != null ? (((ModType)modNpc3).Name.Contains("NamelessDeityBoss") ? 1 : 0) : 0) != 0)
+                        {
+                            npc.lifeMax *= 1;
+                        }
                     }
                 }
             }

@@ -1,14 +1,10 @@
-﻿using System.Collections.Generic;
-using CalamityMod.Items;
+﻿using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
 using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using InfernumMode;
 using Terraria.Audio;
-using Terraria.Localization;
-using Microsoft.Xna.Framework;
-using CalamityMod;
 
 namespace InfernalEclipseAPI.Content.Items.Weapons.BossRush.NovaBomb
 {
@@ -64,15 +60,6 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.BossRush.NovaBomb
                 if (p.active && p.owner == player.whoAmI && p.type == bhType)
                     p.Kill();
             }
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
-        {
-            Color color = CalamityUtils.ColorSwap(Color.OrangeRed, Color.DarkRed, 2f);
-
-            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Yob")));
-            dedTo.OverrideColor = color;
-            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
         }
 
         public override void AddRecipes()
