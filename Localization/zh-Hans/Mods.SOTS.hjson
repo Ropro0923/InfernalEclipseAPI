@@ -41,4 +41,14 @@ Items: {
 		Increases critical strike damage by 5%
 		Enemies have a 10% chance to drop double the loot, or 20% when killed by critical strike
 		''' */
+	/* RockCandy.Tooltip:
+		'''
+		Increases pickaxe power by 4
+		Increases mining speed, melee speed, and movement speed by 5%
+		''' */
+	/* HydrokineticAntennae.Tooltip:
+		'''
+		Use hydrokinesis to extend the effective range of melee weapons and other low-reach items, such as whips
+		Decreases true melee damage by 15%
+		''' */
 }

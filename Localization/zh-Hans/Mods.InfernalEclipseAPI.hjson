@@ -1511,7 +1511,7 @@ Configs: {
 
 		CalamityExpertAccessories: {
 			// Label: Calamity Expert Accessories
-			// Tooltip: ""
+			// Tooltip: Toggles certain drops from Calamity bosses being expert rarity.
 		}
 	}
 

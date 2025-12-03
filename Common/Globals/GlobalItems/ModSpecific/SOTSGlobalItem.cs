@@ -1,7 +1,9 @@
-﻿using InfernalEclipseAPI.Core.Systems;
+﻿using CalamityMod;
+using InfernalEclipseAPI.Core.Systems;
 using SOTS;
+using SOTS.Items.ChestItems;
 using SOTS.Items.Earth;
-using ThoriumMod.Items.BossMini;
+using SOTS.Items.Tide;
 
 namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
 {
@@ -11,9 +13,22 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
     {
         public override void UpdateAccessory(Item item, Player player, bool hidevisual)
         {
+            SOTSPlayer sotsPlayer = SOTSPlayer.ModPlayer(player);
+
             if (item.type == ModContent.ItemType<HarvestersScythe>())
             {
-                SOTSPlayer.ModPlayer(player).CritBonusMultiplier -= 0.15f;
+                sotsPlayer.CritBonusMultiplier -= 0.15f;
+            }
+
+            if (item.type == ModContent.ItemType<RockCandy>())
+            {
+                sotsPlayer.bonusPickaxePower -= 1;
+            }
+
+            if (item.type == ModContent.ItemType<HydrokineticAntennae>())
+            {
+                sotsPlayer.StatShareMeleeAndSummon = false;
+                player.GetDamage<TrueMeleeDamageClass>() -= 0.15f;
             }
 
             if (InfernalCrossmod.SOTSBardHealer.Loaded)

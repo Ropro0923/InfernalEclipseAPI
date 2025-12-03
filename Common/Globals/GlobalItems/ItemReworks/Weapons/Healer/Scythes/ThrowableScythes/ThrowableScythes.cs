@@ -117,7 +117,7 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Heal
                         position,
                         throwVel,
                         type,
-                        damage - damage / 10,
+                        damage + damage / 5,
                         knockback,
                         player.whoAmI,
                         (Main.rand.Next(2, 5) + 1) * 0.1f, // ai[0]

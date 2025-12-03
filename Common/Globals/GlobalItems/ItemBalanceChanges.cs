@@ -16,6 +16,8 @@ using InfernalEclipseAPI.Core.Systems;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Weapons.Typeless;
 using System.Linq;
+using InfernumMode.Content.Items.Weapons.Magic;
+using InfernumMode.Content.Items.Weapons.Rogue;
 
 namespace InfernalEclipseAPI.Common.GlobalItems
 {
@@ -428,6 +430,41 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 }
             }
 
+            #endregion
+
+            #region Infernum
+            if (InfernalConfig.Instance.CalamityBalanceChanges)
+            {
+                if (item.type == ModContent.ItemType<AridBattlecry>())
+                {
+                    item.damage = 163;
+                }
+
+                if (item.type == ModContent.ItemType<WanderersShell>())
+                {
+                    item.damage = 160;
+                }
+
+                if (item.type == ModContent.ItemType<Dreamtastic>())
+                {
+                    item.damage = 842;
+                }
+
+                if (item.type == ModContent.ItemType<EyeOfMadness>())
+                {
+                    item.damage = 388;
+                }
+
+                if (item.type == ModContent.ItemType<IllusionersReverie>())
+                {
+                    item.damage = 460;
+                }
+
+                if (item.type == ModContent.ItemType<StormMaidensRetribution>())
+                {
+                    item.damage = 5056;
+                }
+            }
             #endregion
 
             bool hasCatalyst = false;
@@ -875,7 +912,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
             {
                 if (GetItem(thorium, "EnchantedPickaxe", item))
                 {
-                    item.pick = 59;
+                    item.pick = 60;
                 }
 
                 if (GetItem(thorium, "ValadiumPickaxe", item) || GetItem(thorium, "LodeStonePickaxe", item))
@@ -4656,13 +4693,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.useAnimation = 40;
                 }
 
-                if (GetItem(ragnarok, "DrumStick", item))
-                {
-                    item.useTime = 12;
-                    item.useAnimation = 12;
-                    item.damage = 220;
-                }
-
                 if (GetItem(ragnarok, "Steampipes", item))
                 {
                     item.shootSpeed = 20;
@@ -4673,7 +4703,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 {
                     item.useTime = 12;
                     item.useAnimation = 12;
-                    item.damage = 220;
+                    item.damage = 110;
                 }
 
                 //Profaned Bell
@@ -5490,41 +5520,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.useTime = 28;
                     item.useAnimation = 28;
                     item.damage = 112;
-                }
-            }
-            #endregion
-
-            #region Infernum
-            if (ModLoader.TryGetMod("InfernumMode", out Mod infernum) && InfernalConfig.Instance.CalamityBalanceChanges)
-            {
-                if (UnsafeGetItem(infernum, "AridBattlecry", item))
-                {
-                    item.damage = 163;
-                }
-
-                if (UnsafeGetItem(infernum, "WanderersShell", item))
-                {
-                    item.damage = 160;
-                }
-
-                if (UnsafeGetItem(infernum, "Dreamtastic", item))
-                {
-                    item.damage = 842;
-                }
-
-                if (UnsafeGetItem(infernum, "EyeOfMadness", item))
-                {
-                    item.damage = 388;
-                }
-
-                if (UnsafeGetItem(infernum, "IllusionersReverie", item))
-                {
-                    item.damage = 460;
-                }
-
-                if (UnsafeGetItem(infernum, "StormMaidensRetribution", item))
-                {
-                    item.damage = 5056;
                 }
             }
             #endregion

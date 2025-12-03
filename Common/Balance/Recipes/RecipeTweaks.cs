@@ -68,7 +68,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                 {
                     if (recipe.HasResult(ItemID.DemonConch))
                     {
-                        recipe.DisableDecraft();
+                        recipe.DecraftConditions.Add(Condition.DownedEowOrBoc);
                     }
                 }
 
@@ -87,20 +87,12 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
 
                 if (recipe.HasResult(ModContent.ItemType<Roxcalibur>()))
                 {
-                    recipe.DisableDecraft();
+                    recipe.DecraftConditions.Add(Condition.Hardmode);
                 }
 
                 if (ModLoader.TryGetMod("CalamityAmmo", out Mod calAmmo))
                 {
                     if (recipe.HasResult(calAmmo.Find<ModItem>("HardTack")))
-                    {
-                        recipe.DisableDecraft();
-                    }
-                }
-
-                if (ModLoader.HasMod("NoxusBoss"))
-                {
-                    if (recipe.HasResult<GravityNormalizerPotion>())
                     {
                         recipe.DisableDecraft();
                     }
@@ -776,7 +768,10 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             }
                         }
 
-                        //if (recipe.HasResult(sots.Find<ModItem>("")))
+                        if (recipe.HasResult(sots.Find<ModItem>("NightmarePotion")))
+                        {
+                            recipe.DecraftConditions.Add(Condition.Hardmode);
+                        }
 
                         // Tesseract
                         if (recipe.HasResult(sots.Find<ModItem>("Tesseract")))

@@ -17,6 +17,13 @@ Items: {
 	}
 	*/
 	
+	/* ShootingStarHat.SetBonus:
+		'''
+		Symphonic empowerments last 6 seconds longer
+		Each unique empowerment you have increases your symphonic damage by 2.5%
+		Each unique empowerment you have increases your inspiration regeneration by 2%
+		''' */
+
 	SoulofPlight: {
 		DisplayName: 恶意之魂
 		Tooltip: “可恶生物的精华”
@@ -30,6 +37,15 @@ Items: {
 	KeyofPlight: {
 		DisplayName: 恶意钥匙
 		Tooltip: “充满许多灵魂的精华”
+	}
+
+	BlackMIDI: {
+		// DisplayName: Black MIDI
+		/* Tooltip:
+			'''
+			Rapidly releases an ocean of noise towards your cursor
+			Yellow noise heals the user for 0.5% of the damage dealt
+			''' */
 	}
 
 	HereticBreaker: {
