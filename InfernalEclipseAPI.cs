@@ -24,12 +24,12 @@ using System.Reflection;
 using InfernalEclipseAPI.Content.Projectiles;
 using InfernalEclipseAPI.Core.World;
 using CalamityMod.NPCs.Polterghast;
-using InfernalEclipseAPI.Core.Players.ThoriumMulticlassNerf;
 using InfernalEclipseAPI.Core;
 using InfernalEclipseAPI.Core.Systems;
 using InfernalEclipseAPI.Core.Utils.ConfigSetup;
 using Microsoft.Xna.Framework.Graphics;
 using System.Linq;
+using InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides.ThoriumMulticlassNerf;
 
 namespace InfernalEclipseAPI
 {
@@ -132,7 +132,7 @@ namespace InfernalEclipseAPI
         {
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamity))
             {
-                BossRushInjection(calamity);
+                //BossRushInjection(calamity);
             }
 
             if (InfernalConfig.Instance.ForceMenu)
@@ -284,6 +284,7 @@ namespace InfernalEclipseAPI
             //}
         }
 
+        /*
         public static void BossRushInjection(Mod calamity)
         {
             List<(int, int, Action<int>, int, bool, float, int[], int[])> brEntries = (List<(int, int, Action<int>, int, bool, float, int[], int[])>)calamity.Call("GetBossRushEntries");
@@ -849,5 +850,6 @@ namespace InfernalEclipseAPI
                 HostileProjectileKillCounter = 3;
             });
         }
+        */
     }
 }

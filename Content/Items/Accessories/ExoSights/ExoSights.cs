@@ -10,6 +10,7 @@ using SOTS.Items.CritBonus;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using InfernalEclipseAPI.Core.Systems;
+using CalamityMod;
 
 namespace InfernalEclipseAPI.Content.Items.Accessories.ExoSights
 {
@@ -124,6 +125,10 @@ namespace InfernalEclipseAPI.Content.Items.Accessories.ExoSights
             {
                 OverrideColor = new Microsoft.Xna.Framework.Color(50, 205, 50)
             });
+
+            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.cheese")));
+            dedTo.OverrideColor = new Microsoft.Xna.Framework.Color(50, 205, 50);
+            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
         }
 
         public override void AddRecipes()

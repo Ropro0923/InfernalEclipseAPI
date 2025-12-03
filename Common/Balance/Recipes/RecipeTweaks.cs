@@ -13,17 +13,17 @@ using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.PermanentBoosters;
 using CalamityMod.Items.Weapons.Summon;
-using InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre;
 using InfernalEclipseAPI.Content.Items.Accessories.ChromaticMassInABottle;
 using InfernalEclipseAPI.Content.Items.Weapons.BossRush.NovaBomb;
 using InfernalEclipseAPI.Content.Items.Weapons.BossRush.Swordofthe14thGlitch;
 using CalamityMod.Items.DraedonMisc;
 using CalamityMod.Items.Placeables;
-using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
 using InfernalEclipseAPI.Content.Items.Weapons.Magic.ChaosBlaster;
 using InfernalEclipseAPI.Content.Items.Weapons.Nameless.NebulaGigabeam;
+using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
+using InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre;
+using InfernalEclipseAPI.Core.Systems;
 using CalamityMod.Items.Potions;
-using System.Security.Policy;
 
 namespace InfernalEclipseAPI.Common.Balance.Recipes
 {
@@ -93,6 +93,14 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                 if (ModLoader.TryGetMod("CalamityAmmo", out Mod calAmmo))
                 {
                     if (recipe.HasResult(calAmmo.Find<ModItem>("HardTack")))
+                    {
+                        recipe.DisableDecraft();
+                    }
+                }
+
+                if (ModLoader.HasMod("NoxusBoss"))
+                {
+                    if (recipe.HasResult<GravityNormalizerPotion>())
                     {
                         recipe.DisableDecraft();
                     }
@@ -329,20 +337,28 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
 
                     if (InfernalConfig.Instance.ThoriumBalanceChangess)
                     {
-                        if (recipe.HasResult(ItemID.JungleHat))
-                            recipe.AddIngredient<SulphuricScale>(3);
-
-                        if (recipe.HasResult(ItemID.JungleShirt))
-                            recipe.AddIngredient<SulphuricScale>(5);
-
-                        if (recipe.HasResult(ItemID.JunglePants))
-                            recipe.AddIngredient<SulphuricScale>(4);
+                        if (recipe.HasResult(ItemID.JungleHat) || recipe.HasResult(ItemID.JungleShirt) || recipe.HasResult(ItemID.JunglePants) || recipe.HasResult(thorium.Find<ModItem>("BountifulHarvest")) || recipe.HasResult(thorium.Find<ModItem>("MagickStaff")))
+                        {
+                            recipe.RemoveTile(TileID.Anvils);
+                            recipe.RemoveTile(TileID.WorkBenches);
+                            recipe.AddTile(thorium.Find<ModTile>("ArcaneArmorFabricator"));
+                        }
 
                         if (recipe.HasResult(thorium.Find<ModItem>("NecroticSkull")))
                         {
                             recipe.AddIngredient(ItemID.SoulofFright, 3);
                             recipe.RemoveTile(TileID.DemonAltar);
                             recipe.AddTile(TileID.MythrilAnvil);
+                        }
+
+                        if (recipe.HasResult(ModContent.ItemType<TheSponge>()) || recipe.HasResult(ModContent.ItemType<TheAmalgam>()))
+                        {
+                            recipe.AddIngredient(thorium.Find<ModItem>("DeathEssence").Type, 3);
+                        }
+
+                        if (recipe.HasResult(ModContent.ItemType<ChaliceOfTheBloodGod>()) || recipe.HasResult(ModContent.ItemType<AsgardianAegis>()))
+                        {
+                            recipe.AddIngredient(thorium.Find<ModItem>("InfernoEssence").Type, 3);
                         }
 
                         if (!ModLoader.TryGetMod("WHummusMultiModBalancing", out _))
@@ -621,12 +637,6 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                                 }
                             }
 
-                            if (recipe.HasResult(thorium.Find<ModItem>("IridescentHelmet")) || recipe.HasResult(thorium.Find<ModItem>("IridescentMail")) || recipe.HasResult(thorium.Find<ModItem>("IridescentGreaves")))
-                            {
-                                recipe.RemoveTile(16);
-                                recipe.AddTile(thorium.Find<ModTile>("ArcaneArmorFabricator"));
-                            }
-
                             if (recipe.HasResult(thorium.Find<ModItem>("CrystalArrow")))
                             {
                                 recipe.ReplaceResult(thorium.Find<ModItem>("CrystalArrow"), 75);
@@ -766,6 +776,13 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             }
                         }
 
+                        // Tesseract
+                        if (recipe.HasResult(sots.Find<ModItem>("Tesseract")))
+                        {
+                            recipe.RemoveIngredient(ModContent.ItemType<AuricBar>());
+                            recipe.AddIngredient<ShadowspecBar>(5);
+                        }
+
                         if (recipe.HasResult(sots.Find<ModItem>("PurpleJellyfishStaff")))
                         {
                             recipe.RemoveTile(TileID.MythrilAnvil);
@@ -897,6 +914,17 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             if(recipe.HasResult(fishGun.Find<ModItem>("TrueMutantNightfish")))
                                 recipe.AddIngredient(sots.Find<ModItem>("SoulOfPlight"), 20);
                         }
+                    }
+                }
+
+                if (InfernalCrossmod.BlueMoon.Loaded)
+                {
+                    Mod blueMoon = InfernalCrossmod.BlueMoon.Mod;
+
+                    if (recipe.HasResult(blueMoon.Find<ModItem>("MoonsRing")))
+                    {
+                        recipe.RemoveTile(TileID.Anvils);
+                        recipe.AddTile(TileID.TinkerersWorkbench);
                     }
                 }
             }
