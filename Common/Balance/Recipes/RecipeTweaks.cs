@@ -776,6 +776,8 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             }
                         }
 
+                        //if (recipe.HasResult(sots.Find<ModItem>("")))
+
                         // Tesseract
                         if (recipe.HasResult(sots.Find<ModItem>("Tesseract")))
                         {

@@ -766,6 +766,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
             #region Clamity
             if (ModLoader.TryGetMod("Clamity", out Mod clam) && InfernalConfig.Instance.CalamityBalanceChanges)
             {
+                /*
                 if (UnsafeGetItem(clam, "MoonstoneKnives", item))
                 {
                     item.damage = 8;
@@ -848,14 +849,15 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.damage = 900;
                 }
 
-                if (UnsafeGetItem(clam, "WitheredBoneBow", item))
-                {
-                    item.damage = 70;
-                }
-
                 if (UnsafeGetItem(clam, "WulfrumLeechDagger", item))
                 {
                     item.value = 0;
+                }
+                */
+
+                if (UnsafeGetItem(clam, "WitheredBoneBow", item))
+                {
+                    item.damage = 70;
                 }
             }
             #endregion
