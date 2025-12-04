@@ -179,7 +179,5 @@ namespace InfernalEclipseAPI
         Infernum,
         MasterInfernum,
         LegendaryInfernum,
-        //Primordial,
-        //LegendaryPrimordial
     }
 }
