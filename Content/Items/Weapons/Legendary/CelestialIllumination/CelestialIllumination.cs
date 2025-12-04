@@ -19,6 +19,11 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
     // I also wanted to make a cool visual where you have stars orbiting around the player when you charge it up, and once you reach max charge, they converge and shoot the beam, but I couldn't D:
     public class CelestialIllumination : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return false;
+        }
+
         public override void SetDefaults()
         {
             Item.width = 34;
