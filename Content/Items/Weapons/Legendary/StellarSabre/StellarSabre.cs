@@ -5,6 +5,7 @@ using CalamityMod.Items.Materials;
 using Terraria.Localization;
 using InfernalEclipseAPI.Core.DamageClasses.LegendaryClass;
 using CalamityMod;
+using Microsoft.Xna.Framework.Input;
 
 namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
 {
@@ -123,13 +124,18 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
             line.OverrideColor = lerpedColor;
             tooltips.Add(line);
 
-            TooltipLine line5 = new(Mod, "DedicatedItem", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Playtester"));
-            line5.OverrideColor = lerpedColor;
-            tooltips.Add(line5);
-
-            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Jill")));
-            dedTo.OverrideColor = lerpedColor;
-            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
+            if (Main.keyState.IsKeyDown(Keys.LeftShift))
+            {
+                TooltipLine line5 = new(Mod, "DedicatedItem", $"{Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Jill"))}\n{Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Playtester")}");
+                line5.OverrideColor = lerpedColor;
+                tooltips.Add(line5);
+            }
+            else
+            {
+                TooltipLine line5 = new(Mod, "DedicatedItem", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Playtester"));
+                line5.OverrideColor = lerpedColor;
+                tooltips.Add(line5);
+            }
         }
 
         private string GetProgressionTooltip()
