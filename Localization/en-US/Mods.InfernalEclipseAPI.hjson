@@ -49,11 +49,7 @@ ItemTooltip: {
 	StarlitForgeExtra: Even more curiously, it can even duplicate some items
 	BladecrestNerf: An evil force is sapping part of its power...
 	EclipseFang: "[IEoR]: Weapon empowerment always active."
-	ScytheThrow:
-		'''
-		Right Click to throw the Scythe, which will curve on it's way back
-		Thrown Scythes will deal 10% reduced damage
-		'''
+	ScytheThrow: Right Click to throw the scythe, which will curve on it's way back
 	PhoenixStaff:
 		'''
 		Right click to spew a stream of flames that inflict 'Holy Glare'
@@ -606,20 +602,25 @@ Items: {
 				'''
 			Golem:
 				'''
-				With the defeat of Plantera, stars now split on hit
+				With the defeat of Plantera, stars now split on hit.
 				Defeat the construct of the Lizhard Temple to gain more power...
 				'''
 			Cultist:
 				'''
 				With the defeat of Golem, stars home in on enemies
+				Stars will now split after some time
 				Defeat the leader of the ancient cult to gain more power...
 				'''
 			MoonLord:
 				'''
-				With the defeat of the Lunatic Cultist, stars explode on impact
+				With the defeat of the Lunatic Cultist, stars explode after some time
 				Defeat the Eldritch corpse to gain more power...
 				'''
-			Full: The Stellar Sabre is fully awaked, and its maximum power is unleashed!
+			Full:
+				'''
+				The Stellar Sabre is fully awakend, and all abilities have been further buffed
+				The weapon's maximum power is unleashed!
+				'''
 		}
 
 		Lore: "'Even after everything, there was still one person Xander refused to attack...'"

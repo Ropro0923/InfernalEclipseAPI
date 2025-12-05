@@ -59,7 +59,7 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
                 hurtInfo.Damage = 400;
         }
 
-        private bool IsWorldLegendary()
+        private static bool IsWorldLegendary()
         {
             FieldInfo findInfo = typeof(Main).GetField("_currentGameModeInfo", BindingFlags.Static | BindingFlags.NonPublic);
             GameModeData data = (GameModeData)findInfo.GetValue(null);

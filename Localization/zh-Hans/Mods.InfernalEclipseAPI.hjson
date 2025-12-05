@@ -77,26 +77,26 @@ ItemTooltip: {
 		"你没有疯……你真是疯了!"
 		复仇模式专属
 		'''
-	// DedTo: - Dedicated to {0} -
+	DedTo: -献给{0}-
 
 	Dedicated: {
-		// Akira: Akira
-		// WH: WardrobeHummus
-		// Advantaje: Advantaje
-		// Tyr: Tyr
-		// Soltan: Soltan
-		// bryce: bryce27
-		// eviil81: evil81
-		// rose: rosé
-		// Jill: JillyFish
-		// Eduarrdo: Eduarrdo
-		// Mae: ma3allim
-		// Yob: Yob
-		// Pudding: Pudd1ng
-		// Ropro: Ropro0923
-		// cheese: cheesenuggets
-		// Puzzles: Mr. Puzzles
-		// cat: StarlightCat
+		Akira: Akira
+		WH: WardrobeHummus
+		Advantaje: Advantaje
+		Tyr: Tyr
+		Soltan: Soltan
+		bryce: bryce27
+		eviil81: evil81
+		rose: rosé
+		Jill: JillyFish
+		Eduarrdo: Eduarrdo
+		Mae: ma3allim
+		Yob: Yob
+		Pudding: Pudd1ng
+		Ropro: Ropro0923
+		cheese: cheesenuggets
+		Puzzles: Mr. Puzzles
+		cat: StarlightCat
 	}
 
 	MergedCraftingTreeTooltip: {
@@ -288,11 +288,11 @@ ItemTooltip: {
 			受伤时会产生钱币，并且在死亡时不会丢失钱币
 			开采方块时有概率掉落奖励资源，如钱币和泥沙
 			'''
-		/* AlchemistCharm:
+		AlchemistCharm:
 			'''
-			Increases healing and mana received from potions by 100
-			Increases buff duration by 67%
-			''' */
+			增加100点从药水治疗的生命值和恢复的魔力值
+			增加67%buff持续时间
+			'''
 	}
 
 	AmmoConversion.Mycelium: 发射真菌弹幕
@@ -492,46 +492,46 @@ Lore: {
 		或许正是那些洞穴中潜藏的虚空能量吸引了它？
 		无论如何，这一切仍超出我的理解范围。
 		'''
-	/* Mjolnir:
+	Mjolnir:
 		'''
-		Thor, one of the many gods that had managed to evade my crusade,
-		yet he wiill never forget what I had done to him and family.
-		Asgard was merely a land of sinners, so I mererly did what they had done to so many others.
-		Thor had escaped me and I belived he still ruled over Asgard to this day,
-		but with his hammer in your hands, perhaps it is no more.
-		''' */
-	/* Ragnarok:
+		索尔——那些曾侥幸逃过我圣战的诸神之一，
+		但他永远不会忘记我对他与他的家园所做的一切。
+		阿斯加德不过是罪人聚居之地，而我只是在以其人之道还治其人之身——正如他们曾加诸无数生灵的那般。
+		索尔从我手中逃脱，而我一直以为他至今仍统治着阿斯加德，
+		然而，如今他的锤落在你手中——或许，他的时代已经终结。
 		'''
-		How curious.
-		Ragnarok, the fabled end of days, was a being rather than an event.
-		I had searched the world for how to start it, so I could destroy Asgard,
-		but in the end, I had found nothing.
-		The tales of serpents and fire were far from the truth,
-		but now Ragnarok lies in ruin just like Asgard itself.
+	Ragnarok:
+		'''
+		真是有趣。
+		世人所传颂的终焉之时——诸神黄昏——竟非一场灾厄，而是一个实体。
+		我曾遍寻世间，只为找到引发它的方法，好将阿斯加德化为灰烬，
+		但最终，我却一无所获。
+		那些关于巨蛇与火焰的传说，与真相相去甚远。
+		而如今，诸神的黄昏也已如阿斯加德般化为废墟。
 
-		You are now seen as the hero for this land, 
-		and may you find peace in the new age you have created.
-		However, beware, for with every end comes a new beginning...
-		[c/7C0A02:Do not push your luck further, Terrarian.]
-		''' */
-	/* Primordials:
+		如今，人们将你视为这片土地的英雄，
+		愿你能在你所开创的新时代中获得安宁。
+		然而须警惕——每一个终结之中，都孕育着新的开端……
+		[c/7C0A02:不要试图逾越天命，泰拉人。]
 		'''
-		Before the world was formed, there were only the Primordials.
-		Each of them represents an aspect of this world, and protect the world from Ragnarok.
-		During my war, I had wanted to slay them thinking they were merely sinners like the other gods,
-		however no matter what I did I could not get there attention.
-		Was I not worthy of their attention despite all I had done to the world?
-		Don't tell me they think I'm a spec in this worlds history compared to you...
-		''' */
-	/* ThunderBird:
+	Primordials:
 		'''
-		These birds were once great and fearsome adversaries, fine foes worth the hunt.
-		Thier feathers could can channel the sun's dormant energy into potent lightning, hense the name.
-		However, these great battles were fleeting; and soon by generation selection,
-		they had lost most of thier potent strength.
-		The one you bested is not but a mellowed runt in comparision to what I had once seen,
-		yet forevermore the title of the Grand Thunder Bird lives on.
-		''' */
+		在世界成形之前，唯有始源存在。
+		祂们各自象征着这世界的一个侧面，并守护着世界免于诸神黄昏。
+		在我的战役中，我曾想将他们一并斩杀，将之视为与其他诸神一样的罪者。
+		然而无论我做了什么，都无法引起他们的注意。
+		难道在我对这世界所做的一切之后，仍不足以让他们正眼相待？
+		莫非在这世界的历史中，我竟连与你相比都不值一提……？
+		'''
+	ThunderBird:
+		'''
+		这些鸟类曾是强大而令人畏惧的对手，堪称值得猎杀的劲敌。
+		它们的羽毛能够引导太阳沉眠的能量，并凝为炽烈雷光，因此得名。
+		然而那些壮烈的狩猎终究短暂。
+		世代更替，它们逐渐失去了昔日的强横之力。
+		你所击败的，不过是远不及我当年所见之姿的孱弱后裔，
+		但“惊雷王鹰”的名号——将永远流传。
+		'''
 }
 
 LegendaryTooltip.Base: 随着你击败强敌，此武器的力量可能不断增强。
@@ -667,10 +667,10 @@ Items: {
 		LoreDeviantt.DisplayName: 戴薇安
 		LoreMutant.DisplayName: 突变体
 		SoltanBullyingSlip.DisplayName: 迪伦的反索坦芯片便笺
-		// LoreMjolnir.DisplayName: Mjolnir
-		// LorePrimordials.DisplayName: The Primordials
-		// LoreThunderBird.DisplayName: The Grand Thunder Bird
-		// LoreRagnarok.DisplayName: Ragnarok
+		LoreMjolnir.DisplayName: 雷神之锤
+		LorePrimordials.DisplayName: 始源诸神
+		LoreThunderBird.DisplayName: 惊雷王鹰
+		LoreRagnarok.DisplayName: 诸神黄昏
 	}
 
 	CatastrophicFabricationsMusicBox: {
@@ -1245,14 +1245,14 @@ Items: {
 	}
 
 	Streetsign: {
-		// DisplayName: Streetsign
-		/* Tooltip:
+		DisplayName: 警示路牌
+		Tooltip:
 			'''
-			While holding this weapon, you have a improbability bar
-			The bar charges by dealing or taking damage
-			When the bar is full, you gain increased weapon stats and movement speed 
-			[c/7C0A02: YOU DO NOT KILL CLOWN!!! CLOWN KILLS YOU!!!]
-			''' */
+			持有此武器时，你会获得不可思议条
+			造成伤害或承受伤害会为其充能
+			当不可思议条完全充满时，你的武器属性和移动速度都会提升
+			[c/7C0A02: 你杀不死小丑！！！是小丑杀死你！！！]
+			'''
 	}
 }
 
@@ -1510,8 +1510,8 @@ Configs: {
 		}
 
 		CalamityExpertAccessories: {
-			// Label: Calamity Expert Accessories
-			// Tooltip: ""
+			Label: 灾厄专家饰品
+			Tooltip: 切换灾厄模组Boss的部分掉落物是否为专家模式专属
 		}
 	}
 

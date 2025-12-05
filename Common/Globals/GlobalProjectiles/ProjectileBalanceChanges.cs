@@ -6,6 +6,8 @@ using CalamityMod;
 using InfernalEclipseAPI.Core.DamageClasses;
 using Terraria;
 using ThoriumMod;
+using CalamityMod.Buffs.StatDebuffs;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace InfernalEclipseAPI.Common.Projectiles
 {
@@ -466,111 +468,89 @@ namespace InfernalEclipseAPI.Common.Projectiles
 
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (!InfernalConfig.Instance.SOTSBalanceChanges)
-                return;
-
-            if (!ModLoader.TryGetMod("SOTS", out Mod sots))
-                return;
-
-            if (!ModLoader.TryGetMod("CalamityMod", out Mod calamity))
-                return;
-
-            // Convenience: local TryFind to reduce clutter
-            bool SOTSProj(string name, out int type)
+            if (ModLoader.TryGetMod("SOTS", out Mod sots) && InfernalConfig.Instance.SOTSBalanceChanges)
             {
-                type = -1;
-                if (sots.TryFind(name, out ModProjectile proj))
+                bool SOTSProj(string name, out int type)
                 {
-                    type = proj.Type;
-                    return true;
+                    type = -1;
+                    if (sots.TryFind(name, out ModProjectile proj))
+                    {
+                        type = proj.Type;
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
-            }
 
-            bool CalBuff(string name, out int type)
-            {
-                type = -1;
-                if (calamity.TryFind(name, out ModBuff buff))
+                //  Blazing Club
+                if (SOTSProj("BlazingMine", out int blazingMine) &&
+                    projectile.type == blazingMine ||
+                    SOTSProj("BlazingSpike", out int blazingSpike) &&
+                    projectile.type == blazingSpike)
                 {
-                    type = buff.Type;
-                    return true;
+                    target.AddBuff(BuffID.OnFire, 120);
                 }
-                return false;
-            }
 
-            //  Blazing Club
-            if (SOTSProj("BlazingMine", out int blazingMine) &&
-                projectile.type == blazingMine ||
-                SOTSProj("BlazingSpike", out int blazingSpike) &&
-                projectile.type == blazingSpike)
-            {
-                target.AddBuff(BuffID.OnFire, 120);
-            }
+                //  Thundershock Shortbow
+                if (SOTSProj("ArcLightning", out int arcLightning) &&
+                    projectile.type == arcLightning)
+                {
+                    target.AddBuff(BuffID.Electrified, 180);
+                }
 
-            //  Thundershock Shortbow
-            if (SOTSProj("ArcLightning", out int arcLightning) &&
-                projectile.type == arcLightning)
-            {
-                target.AddBuff(BuffID.Electrified, 180);
-            }
+                //  Permafrost Spirit Staff
+                if (SOTSProj("FrostSpear", out int frostSpear) &&
+                    projectile.type == frostSpear)
+                {
+                    target.AddBuff(BuffID.Frostburn, 180);
+                }
 
-            //  Permafrost Spirit Staff
-            if (SOTSProj("FrostSpear", out int frostSpear) &&
-                projectile.type == frostSpear)
-            {
-                target.AddBuff(BuffID.Frostburn, 180);
-            }
+                //  Earthen Spirit Staff
+                if (SOTSProj("EarthenSpirit", out int earthenSpirit) &&
+                    projectile.type == earthenSpirit)
+                {
+                    target.AddBuff(ModContent.BuffType<Crumbling>(), 60);
+                }
 
-            //  Earthen Spirit Staff
-            if (SOTSProj("EarthenSpirit", out int earthenSpirit) &&
-                projectile.type == earthenSpirit &&
-                CalBuff("Crumbling", out int crumbling))
-            {
-                target.AddBuff(crumbling, 60);
-            }
+                //  Otherworldly Spirit Staff
+                if (SOTSProj("ThunderRing", out int otherworldLightning) &&
+                    projectile.type == otherworldLightning)
+                {
+                    target.AddBuff(BuffID.Electrified, 120);
+                }
 
-            //  Otherworldly Spirit Staff
-            if (SOTSProj("ThunderRing", out int otherworldLightning) &&
-                projectile.type == otherworldLightning)
-            {
-                target.AddBuff(BuffID.Electrified, 120);
-            }
+                //  Irradiated Crusher
+                if (SOTSProj("IrradiatedChainReactor", out int chainReactor) &&
+                    projectile.type == chainReactor ||
+                    SOTSProj("IrradiatedCrush", out int irradiatedCrush) &&
+                    projectile.type == irradiatedCrush)
+                {
+                    target.AddBuff(ModContent.BuffType<Irradiated>(), 180);
+                }
 
-            //  Irradiated Crusher
-            if (SOTSProj("IrradiatedChainReactor", out int chainReactor) &&
-                projectile.type == chainReactor ||
-                SOTSProj("IrradiatedCrush", out int irradiatedCrush) &&
-                projectile.type == irradiatedCrush)
-            {
-                if (CalBuff("Irradiated", out int irradiated))
-                    target.AddBuff(irradiated, 180);
-            }
+                //  Tidal Spirit Staff
+                if (SOTSProj("RippleWaveSummon", out int rippleWave) &&
+                    projectile.type == rippleWave)
+                {
+                    target.AddBuff(ModContent.BuffType<CrushDepth>(), 60);
+                }
 
-            //  Tidal Spirit Staff
-            if (SOTSProj("RippleWaveSummon", out int rippleWave) &&
-                projectile.type == rippleWave &&
-                CalBuff("CrushDepth", out int crushDepth))
-            {
-                target.AddBuff(crushDepth, 60);
-            }
+                //  Inferno Spirit Staff
+                if (SOTSProj("InfernoLaser", out int infernoLaser) &&
+                    projectile.type == infernoLaser)
+                {
+                    target.AddBuff(BuffID.OnFire3, 60);
+                }
 
-            //  Inferno Spirit Staff
-            if (SOTSProj("InfernoLaser", out int infernoLaser) &&
-                projectile.type == infernoLaser)
-            {
-                target.AddBuff(BuffID.OnFire3, 60);
-            }
-
-            //  Evil Spirit Staff
-            if (SOTSProj("EvilSpear", out int evilSpear) &&
-                projectile.type == evilSpear &&
-                CalBuff("BrainRot", out int brainRot))
-            {
-                target.AddBuff(brainRot, 60);
+                //  Evil Spirit Staff
+                if (SOTSProj("EvilSpear", out int evilSpear) &&
+                    projectile.type == evilSpear)
+                {
+                    target.AddBuff(ModContent.BuffType<BrainRot>(), 60);
+                }
             }
         }
 
-        private bool GetProj(Projectile entity, Mod mod, string item)
+        private static bool GetProj(Projectile entity, Mod mod, string item)
         {
             mod.TryFind(item, out ModProjectile projectile);
             if (projectile == null)

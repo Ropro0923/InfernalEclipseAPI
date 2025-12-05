@@ -1,49 +1,49 @@
 Items: {
 	EmeraldRing: {
-		// DisplayName: Ring of the Mint Moon
-		/* Tooltip:
+		DisplayName: 薄荷月华指环
+		Tooltip:
 			'''
-			Gives the Minty Freshness Buff
-			Increasing damage and movement speed by 7%
-			''' */
+			赋予「薄荷清香」增益
+			提高7%的攻击伤害和移动速度
+			'''
 	}
 
 	AmethystRing: {
-		// DisplayName: Ring of the Cherry Moon
-		/* Tooltip:
+		DisplayName: 樱花月华指环
+		Tooltip:
 			'''
-			Gives the Floral Blessing Buff
-			Granting +2HP/s life regeneration
-			''' */
+			赋予「花之祝福」增益
+			+2HP/s生命回复
+			'''
 	}
 
 	SapphireRing: {
-		// DisplayName: Ring of the Blue Moon
-		/* Tooltip:
+		DisplayName: 蔚蓝月华指环
+		Tooltip:
 			'''
-			Gives the Lunar Empowerment Buff
-			Increasing the luck of the wearer, moreso in hardmode
-			''' */
+			赋予「月亮赋能」增益
+			增加穿戴者的幸运值，困难模式下增加更多幸运
+			'''
 	}
 
 	TopazRing: {
-		// DisplayName: Ring of the Harvest Moon
-		/* Tooltip:
+		DisplayName: 丰收月华指环
+		Tooltip:
 			'''
-			Gives the Bountiful Harvest Buff
-			Increasing the amount of coins dropped by enemies by x1.5, x2 in hardmode
-			''' */
+			赋予「丰收之祝」增益
+			敌怪掉落的钱币x1.5倍，困难模式下为x2倍
+			'''
 	}
 
 	MoonsRing: {
-		// DisplayName: Ring of the Enchanted Moons
-		/* Tooltip:
+		DisplayName: 玄月之华指环
+		Tooltip:
 			'''
-			You are blessed by the power of all enchanted moons
-			Increasing damage and movement speed by 7%
-			Granting +2HP/s life regeneration
-			Increasing the luck of the wearer, moreso in hardmode
-			Increasing the amount of coins dropped by enemies by x1.5, x2 in hardmode
-			''' */
+			附魔之月皆赐福于你
+			提高7%的攻击伤害和移动速度
+			+2HP/s生命回复
+			增加穿戴者的幸运值，困难模式下增加更多幸运
+			敌怪掉落的钱币x1.5倍，困难模式下为x2倍
+			'''
 	}
 }

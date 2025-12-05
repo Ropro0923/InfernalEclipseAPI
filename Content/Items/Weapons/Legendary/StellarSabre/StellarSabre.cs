@@ -5,6 +5,7 @@ using CalamityMod.Items.Materials;
 using Terraria.Localization;
 using InfernalEclipseAPI.Core.DamageClasses.LegendaryClass;
 using CalamityMod;
+using Microsoft.Xna.Framework.Input;
 
 namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
 {
@@ -12,12 +13,12 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
     {
         public override void SetDefaults()
         {
-            Item.damage = 17;
+            Item.damage = 15;
             Item.DamageType = LegendaryMelee.Instance;
             Item.width = 40;
             Item.height = 40;
-            Item.useTime = 12;
-            Item.useAnimation = 12;
+            Item.useTime = 24;
+            Item.useAnimation = 24;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 5f;
             Item.value = Item.sellPrice(gold: 10);
@@ -33,17 +34,17 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             if (NPC.downedMoonlord)
-                damage += 5.00f;
+                damage += 2.8f;
             else if (NPC.downedAncientCultist)
-                damage += 3.00f;
+                damage += 2.35f;
             else if (NPC.downedGolemBoss)
-                damage += 2.50f;
+                damage += 1.35f;
             else if (NPC.downedPlantBoss)
-                damage += 1.75f;
+                damage += 2.75f;
             else if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-                damage += 1.00f;
+                damage += 4.25f;
             else if (Main.hardMode)
-                damage += 0.15f;
+                damage += 2.75f;
         }
 
         public override void ModifyWeaponKnockback(Player player, ref StatModifier knockback)
@@ -66,21 +67,29 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
             // 1. Drop a star from the sky (Starfury-style)
             Vector2 skyPos = player.Center + new Vector2(Main.rand.Next(-200, 201), -600f);
             Vector2 heading = (Main.MouseWorld - skyPos).SafeNormalize(Vector2.UnitY);
+
+            if (NPC.downedMoonlord)
+            {
+                Vector2 skyPosB = player.Center + new Vector2(Main.rand.Next(-200, 201), -600f);
+                Projectile.NewProjectile(source, skyPosB, heading * 16f, type, damage, knockback, player.whoAmI);
+            }
+
             Projectile.NewProjectile(source, skyPos, heading * 16f, type, damage, knockback, player.whoAmI);
 
-            // 2. Shoot a star forward from the player
             Vector2 forward = velocity.SafeNormalize(Vector2.UnitX);
-            Projectile.NewProjectile(source, player.Center, forward * 14f, type, damage, knockback, player.whoAmI);
 
-            // 3. If Wall of Flesh defeated, shoot two stars forward
             if (Main.hardMode)
             {
-                float spread = MathHelper.ToRadians(10);
+                float spread = MathHelper.ToRadians(5);
                 for (int i = -1; i <= 1; i += 2)
                 {
                     Vector2 spreadVel = forward.RotatedBy(i * spread) * 13f;
                     Projectile.NewProjectile(source, player.Center, spreadVel, type, damage/3, knockback, player.whoAmI);
                 }
+            }
+            else
+            {
+                Projectile.NewProjectile(source, player.Center, forward * 14f, type, damage, knockback, player.whoAmI);
             }
 
             return false;
@@ -115,13 +124,18 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre
             line.OverrideColor = lerpedColor;
             tooltips.Add(line);
 
-            TooltipLine line5 = new(Mod, "DedicatedItem", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Playtester"));
-            line5.OverrideColor = lerpedColor;
-            tooltips.Add(line5);
-
-            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Jill")));
-            dedTo.OverrideColor = lerpedColor;
-            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
+            if (Main.keyState.IsKeyDown(Keys.LeftShift))
+            {
+                TooltipLine line5 = new(Mod, "DedicatedItem", $"{Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Jill"))}\n{Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Playtester")}");
+                line5.OverrideColor = lerpedColor;
+                tooltips.Add(line5);
+            }
+            else
+            {
+                TooltipLine line5 = new(Mod, "DedicatedItem", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Playtester"));
+                line5.OverrideColor = lerpedColor;
+                tooltips.Add(line5);
+            }
         }
 
         private string GetProgressionTooltip()

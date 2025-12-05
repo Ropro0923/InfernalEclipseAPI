@@ -16,14 +16,14 @@ Items: {
 	Tooltip: Pressing the '{$Keybinds.AccessoryAbility.DisplayName}' key will toggle an increased range of view
 	}
 	*/
-
+	
 	ShootingStarHat.SetBonus:
 		'''
 		Symphonic empowerments last 6 seconds longer
 		Each unique empowerment you have increases your symphonic damage by 2.5%
 		Each unique empowerment you have increases your inspiration regeneration by 2%
 		'''
-	
+
 	SoulofPlight: {
 		DisplayName: Soul of Spite
 		Tooltip: "'The essence of damned creatures'"

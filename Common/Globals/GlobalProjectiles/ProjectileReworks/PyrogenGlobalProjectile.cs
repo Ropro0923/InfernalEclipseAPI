@@ -1,7 +1,5 @@
-﻿using Terraria.DataStructures;
-using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityMod.Buffs.DamageOverTime;
 using InfernalEclipseAPI.Core.Systems;
-using Clamity.Content.Bosses.Pyrogen.Projectiles;
 
 namespace InfernalEclipseAPI.Common.GlobalProjectiles.ProjectileReworks
 {
@@ -11,66 +9,36 @@ namespace InfernalEclipseAPI.Common.GlobalProjectiles.ProjectileReworks
     {
         public override bool InstancePerEntity => true;
 
-        public bool applyDebuff = false;
+        private bool applyDebuff;
 
-        public override void OnSpawn(Projectile projectile, IEntitySource source)
+        private static bool IsClamityProj(Projectile proj, string name)
         {
-            /*
-            if (projectile.type == ModContent.ProjectileType<FireBarrage>() || projectile.type == ModContent.ProjectileType<FireBarrageHoming>())
-            {
-                projectile.damage = 80;
-                applyDebuff = true;
-            }
-
-            if (projectile.type == ModContent.ProjectileType<Fireblast>())
-            {
-                projectile.damage = 130;
-                applyDebuff = true;
-            }
-
-            if (projectile.type == ModContent.ProjectileType<FireBomb>() || projectile.type == ModContent.ProjectileType<Firethrower>())
-            {
-                projectile.damage = 70;
-                applyDebuff = true;
-            }
-
-            if (projectile.type == ModContent.ProjectileType<FireBombExplosion>())
-            {
-                projectile.damage = 100;
-                applyDebuff = true;
-            }
-            */
+            return InfernalCrossmod.Clamity.Mod.Find<ModProjectile>(name)?.Type == proj.type;
         }
 
-        public override void OnHitPlayer(Projectile projectile, Player target, Player.HurtInfo info)
+        public override void ModifyHitPlayer(Projectile projectile, Player target, ref Player.HurtModifiers modifiers)
         {
-            // Helper: check if projectile matches a Clamity projectile internal name
-            bool IsClamityProj(string name)
-            {
-                return InfernalCrossmod.Clamity.Mod.Find<ModProjectile>(name)?.Type == projectile.type;
-            }
+            applyDebuff = false;
+            int intendedDamage;
 
-            int intendedDamage = 0;
-            bool applyDebuff = false;
-
-            if (IsClamityProj("FireBarrage") || IsClamityProj("FireBarrageHoming"))
+            if (IsClamityProj(projectile, "FireBarrage") || IsClamityProj(projectile, "FireBarrageHoming"))
             {
-                intendedDamage = 80;
+                intendedDamage = 160;
                 applyDebuff = true;
             }
-            else if (IsClamityProj("Fireblast"))
+            else if (IsClamityProj(projectile, "Fireblast"))
             {
-                intendedDamage = 130;
+                intendedDamage = 175;
                 applyDebuff = true;
             }
-            else if (IsClamityProj("FireBomb") || IsClamityProj("Firethrower"))
+            else if (IsClamityProj(projectile, "FireBomb") || IsClamityProj(projectile, "Firethrower"))
             {
-                intendedDamage = 70;
+                intendedDamage = 140;
                 applyDebuff = true;
             }
-            else if (IsClamityProj("FireBombExplosion"))
+            else if (IsClamityProj(projectile, "FireBombExplosion"))
             {
-                intendedDamage = 100;
+                intendedDamage = 200;
                 applyDebuff = true;
             }
             else
@@ -78,15 +46,17 @@ namespace InfernalEclipseAPI.Common.GlobalProjectiles.ProjectileReworks
                 return;
             }
 
-            if (info.Damage < intendedDamage)
+            modifiers.ModifyHurtInfo += (ref Player.HurtInfo info) =>
             {
-                target.Hurt(PlayerDeathReason.ByProjectile(target.whoAmI, projectile.whoAmI), intendedDamage, 0);
-            }
+                //pyrogens damage is so broken we have to manually do terraria's damage calculation....
+                info.Damage = (intendedDamage - target.statDefense * (Main.masterMode ? 1f : Main.expertMode ? 0.75f : 0.5f));
+            };
+        }
 
+        public override void OnHitPlayer(Projectile projectile, Player target, Player.HurtInfo info)
+        {
             if (applyDebuff)
-            {
                 target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 180);
-            }
         }
     }
 }

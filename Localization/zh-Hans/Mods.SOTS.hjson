@@ -1,44 +1,54 @@
 VisionAmuletTextList: {
-	// 4: Increases critical strike damage by 5%, and is imporved to 10% in hardmode
-	/* 6:
+	4: 增加5%暴击伤害，进入困难模式时则增加10%暴击伤害
+	6:
 		'''
-		Increases max life by 20
-		Increases damage by 5%, and is improved to 10% in hardmode
-		''' */
+		增加20点最大生命值
+		增加5%伤害，进入困难模式时则增加10%伤害
+		'''
 }
 
 VisionAmuletTextList2: {
-	/* 1:
+	1:
 		'''
 
-		Decreases mana cost by 20%, and is improved to 25% in hardmode
-		''' */
+		降低20%魔力消耗，进入困难模式时则降低25%魔力消耗
+		'''
 	3:
 		'''
 
 		可访问工作台，熔炉，和铁砧制作站
 		增加40点最大魔力值和从药水恢复的魔力值
 		'''
-	/* 4:
+	4:
 		'''
 
-		Increases all damage by 10% of the increases received to any other damage type from other sources
-		''' */
-	/* 5:
+		增加所有伤害，增加量为其他伤害类型造成伤害的10%
 		'''
-
-		Efficacy of enemy defense is reduced by 20%, and is improved to 25% in hardmode
-		''' */
+	5:
+		'''
+		
+		降低20%敌人的防御效果，进入困难模式时则降低25%
+		'''
 }
 
 NPCs.CorpseBloom.DisplayName: 腐尸之花
 
 Items: {
-	// Sharanga.DisplayName: Kodanda
-	// VigorPotion.Tooltip: Grants the ability to dash 25 times
-	/* HarvestersScythe.Tooltip:
+	Sharanga.DisplayName: 考丹达
+	VigorPotion.Tooltip: 获得25次冲刺的能力
+	HarvestersScythe.Tooltip:
 		'''
-		Increases critical strike damage by 5%
-		Enemies have a 10% chance to drop double the loot, or 20% when killed by critical strike
-		''' */
+		增加5%暴击伤害
+		敌人有10%的概率掉落双倍的战利品，或暴击被击杀时有20%的概率掉落
+		'''
+	RockCandy.Tooltip:
+		'''
+		增加4点镐力
+		增加5%挖矿速度，近战攻速和移动速度
+		'''
+	HydrokineticAntennae.Tooltip:
+		'''
+		使用流体动力来延伸近战武器和其它短距离武器的生效范围，例如鞭子
+		降低15%真近战伤害
+		'''
 }

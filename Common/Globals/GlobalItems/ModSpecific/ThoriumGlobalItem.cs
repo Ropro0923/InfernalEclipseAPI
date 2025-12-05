@@ -265,7 +265,7 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                     if (item.type == ItemType<NinjaEmblem>())
                     {
                         player.GetDamage(DamageClass.Generic) -= 0.03f;
-                        player.GetCritChance(DamageClass.Generic) += 1.95f;
+                        player.GetCritChance(DamageClass.Generic) -= 3f;
                     }
                 }
 
