@@ -899,6 +899,28 @@ namespace InfernalEclipseAPI.Common.GlobalItems
             }
             #endregion
 
+            #region Hypnos
+            if (InfernalConfig.Instance.CalamityBalanceChanges && (ModLoader.TryGetMod("HypnosMod", out Mod hypnos)))
+            {
+                if (item.type == hypnos.Find<ModItem>("Neuraze").Type)
+                {
+                    item.damage = 100;
+                    item.useAnimation = 6;
+                    item.useTime = 6;
+                }
+
+                if (item.type == hypnos.Find<ModItem>("Planetarium").Type)
+                {
+                    item.damage = 400;
+                }
+
+                if (item.type == hypnos.Find<ModItem>("AergianTechnistaff").Type)
+                {
+                    item.damage = 87;
+                }
+            }
+            #endregion
+
             if (ModLoader.TryGetMod("NoxusPort", out Mod noxusPort))
             {
                 if (UnsafeGetItem(noxusPort, "EntropicBar", item))
