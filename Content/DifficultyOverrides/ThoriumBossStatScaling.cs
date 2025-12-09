@@ -10,6 +10,8 @@ using ThoriumRework.Projectiles;
 using InfernalEclipseAPI.Common.GlobalNPCs.NPCDebuffs;
 using InfernalEclipseAPI.Content.Buffs;
 using ThoriumMod.Projectiles.Enemy;
+using ThoriumMod.Projectiles;
+using ThoriumMod.NPCs.BossQueenJellyfish;
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {
@@ -53,6 +55,9 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             ModContent.NPCType<LucidBubble>(),
             ModContent.NPCType<BoreanHopper>(),
             ModContent.NPCType<BoreanMyte>(),
+            ModContent.NPCType<DistractingJellyfish>(),
+            ModContent.NPCType<SpittingJellyfish>(),
+            ModContent.NPCType<ZealousJellyfish>()
         ];
 
         public static bool IsReworkNPC(NPC npc)
@@ -137,7 +142,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 {
                     npc.lifeMax += (int)(npc.lifeMax * 3.5f);
                 }
-                if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true)
+                if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true || npc.ModNPC.Name.Contains("QueenJellyfish"))
                 {
                     npc.lifeMax += (int)npc.lifeMax;
                 }
@@ -159,7 +164,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                     {
                         npc.lifeMax += (int)(npc.lifeMax * 3.25f);
                     }
-                    if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true)
+                    if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true || npc.ModNPC.Name.Contains("QueenJellyfish"))
                     {
                         npc.lifeMax += (int)(0.75 * npc.lifeMax);
                     }
@@ -176,7 +181,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                     {
                         npc.lifeMax += (int)(npc.lifeMax * 3f);
                     }
-                    if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true)
+                    if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true || npc.ModNPC.Name.Contains("QueenJellyfish"))
                     {
                         npc.lifeMax += (int)(0.5 * npc.lifeMax);
                     }
@@ -193,7 +198,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                     {
                         npc.lifeMax += (int)(npc.lifeMax * 2.75f);
                     }
-                    if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true)
+                    if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true || npc.ModNPC.Name.Contains("QueenJellyfish"))
                     {
                         npc.lifeMax += (int)(0.25 * npc.lifeMax);
                     }
@@ -212,7 +217,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             string name = npc.ModNPC?.Name ?? "";
             float damageMod = 0;
 
-            if (name.Contains("SlagFury") || name.Contains("Aquaius") || name.Contains("Omnicide") || name.Contains("DreamEater") || name.Contains("BoreanStrider"))
+            if (name.Contains("SlagFury") || name.Contains("Aquaius") || name.Contains("Omnicide") || name.Contains("DreamEater") || name.Contains("BoreanStrider") || name.Contains("QueenJellyfish"))
                 damageMod += 0.6f;
 
             if (IsWorldLegendary())
@@ -307,9 +312,18 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 ModContent.ProjectileType<AquaiusPunchAttack>(),
                 ModContent.ProjectileType<DeathRain>(),
                 ModContent.ProjectileType<InfernalRay>(),
+
                 ModContent.ProjectileType<IceShard>(),
                 ModContent.ProjectileType<Glacier>(),
-                ModContent.ProjectileType<Glacier2>()
+                ModContent.ProjectileType<Glacier2>(),
+
+                ModContent.ProjectileType<DancingJellyfish>(),
+                ModContent.ProjectileType<ThoriumRework.Projectiles.BubbleBomb>(),
+                ModContent.ProjectileType<HighTide>(),
+                ModContent.ProjectileType<HighTideWave>(),
+                ModContent.ProjectileType<BubbleColumn>(),
+                ModContent.ProjectileType<JammingJellyfish>(),
+                ModContent.ProjectileType<JellyfishShock>(),
             ];
 
             foreach (int type in reworkType)
@@ -338,6 +352,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
         {
             int[] types =
             [
+                //Primordials
                 ModContent.ProjectileType<AquaSplash>(),
                 ModContent.ProjectileType<AquaTyphoon>(),
                 ModContent.ProjectileType<LucidFury>(),
@@ -354,9 +369,15 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 ModContent.ProjectileType<DeathRaySpawn3>(),
                 ModContent.ProjectileType<DeathCircle2>(),
                 ModContent.ProjectileType<DeathRay>(),
+
+                //Borean Strider
                 ModContent.ProjectileType<BlizzardFang>(),
                 ModContent.ProjectileType<BlizzardBoom>(),
-                ModContent.ProjectileType<IceAnomaly>()
+                ModContent.ProjectileType<IceAnomaly>(),
+
+                //Queen Jellyfish
+                ModContent.ProjectileType<BubblePulse>(),
+                ModContent.ProjectileType<ThoriumMod.Projectiles.Boss.BubbleBomb>(),
             ];
 
             foreach (int type in types)

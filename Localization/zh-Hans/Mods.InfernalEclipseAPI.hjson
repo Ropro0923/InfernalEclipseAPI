@@ -1800,7 +1800,7 @@ Buffs: {
 
 	LowGround: {
 		// DisplayName: Low Ground
-		// Description: Mods.InfernalEclipseAPI.Buffs.LowGround.Description
+		// Description: Your movement has been significantly hindered!
 	}
 }
 

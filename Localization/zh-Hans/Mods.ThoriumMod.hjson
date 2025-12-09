@@ -10,7 +10,6 @@ Items: {
 			'''
 	}
 
- 	//原英文本地化该内容也被注释掉了，全知水晶球也无其他改动，故不需要汉化
 	/*
 	ScryingGlass: {
 	DisplayName: Scrying Glass
@@ -119,7 +118,7 @@ Items: {
 	}
 
 	BronzeHelmet: {
-		DisplayName:青铜头盔
+		DisplayName: 青铜头盔
 		Tooltip:
 			'''
 			增加6%投掷暴击率
