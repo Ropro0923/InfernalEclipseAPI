@@ -1,11 +1,11 @@
 Items: {
 	OstaraHat: {
-		// DisplayName: Hat of Ostara
-		// Tooltip: 7% increased movement speed
-		/* SetBonus:
+		DisplayName: 奥丝塔拉之帽
+		Tooltip: 提升7%移动速度
+		SetBonus:
 			'''
-			Allows auto-jump and negates fall damage
-			Jumping will fire 5 piercing knives outwards
-			''' */
+			允许自动跳跃并免疫摔落伤害
+			跳跃时会向外发射5把穿透飞刀
+			'''
 	}
 }

@@ -1,13 +1,13 @@
-/* Items.SerpentsTongue.Tooltip:
+Items.SerpentsTongue.Tooltip:
 	'''
-	15% increased radiant damage
-	10% increased critical strike damage
-	Enemies have a 10% chance to drop double the loot
-	20% when killed by critical strikes
-	Empowers certain attacks with dark energy
-	Halves radiant life costs but not its life transferring effect
-	Halves the void cost of void-radiant weapons and healing spells
-	Soul essence from radiant scythes will also recover some void
-	Soul essence from void-radiant scythes recover even more void
-	"SSSSS-SPICEH!"
-	''' */
+	增加15%光辉伤害
+	增加10%暴击伤害
+	敌人有10%的概率掉落双倍的战利品
+	暴击击杀时概率则为20%
+	为一些攻击施加暗能量
+	光辉法术的生命消耗减半，但不包括生命转移效果
+	虚空光辉武器和治疗法术的虚空消耗减半
+	来自光辉镰刀的灵魂精华也会恢复一些虚空值
+	来自虚空光辉镰刀的灵魂精华能够恢复更多的虚空值
+	"嘶嘶嘶-辣啊!"
+	'''
