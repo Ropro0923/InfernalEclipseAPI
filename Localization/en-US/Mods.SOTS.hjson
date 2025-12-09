@@ -52,4 +52,46 @@ Items: {
 		Use hydrokinesis to extend the effective range of melee weapons and other low-reach items, such as whips
 		Decreases true melee damage by 15%
 		'''
+	FrostArtifactHelmet.Tooltip: 15% increased melee and ranged damage
+	FrostArtifactChestplate.Tooltip: 15% increased melee and ranged critical strike chance
+
+	ElementalBreastplate: {
+		DisplayName: Elemental Breastplate
+		Tooltip: TEMP
+		TooltipExt:
+			'''
+			Increases melee and summon damage by 10%
+			Increases life regeneration by 4
+			Press '{0}' to teleport to your cursor, dealing 200% of your defense as damage to all enemies in your path
+			Has a 15 second cooldown, but increases melee speed by 40% during the cooldown
+			'''
+	}
 }
+
+ArmorSetBonus.Earthen:
+	'''
+	Melee strikes have a chance to apply a stacking, permanent shred on enemies, making them take additional damage from all attacks
+	Increases attack speed by 10%
+	'''
+TwilightAssassinsCircletText:
+	'''
+	Increases max sentries by 1
+	Increases minion and melee damage by 7%
+	Increases max void by 50
+	Provides a Holo Eye minion to assist in combat
+	Press '{0}' to make it launch a destabilizing beam that applies 4 levels of destabilized, but only once per enemy
+	Destabilized enemies gain a 5% flat chance to be critically striked
+	Costs 6 void to launch
+	Holo Eye remains active in the inventory when favorited or while worn in vanity slots, but cannot attack
+	'''
+TwilightAssassinsCircletText2:
+	'''
+	Increases max sentries by 1
+	Increases minion and melee damage by 7%
+	Increases max void by 50
+	Provides a Holo Eye minion to assist in combat
+	Press '{0}' to make it launch a destabilizing beam that applies 4 levels of destabilized, but only once per enemy
+	Destabilized enemies gain a 5% flat chance to be critically striked
+	Costs 6 void to launch
+	Holo Eye remains active in the inventory when favorited or while worn in vanity slots, but cannot attack
+	'''
