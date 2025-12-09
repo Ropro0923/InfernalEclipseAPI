@@ -13,6 +13,10 @@ using CalamityMod.NPCs.SupremeCalamitas;
 using InfernalEclipseAPI.Core.DamageClasses;
 using Terraria.ModLoader.IO;
 using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
+using InfernalEclipseAPI.Core.Systems;
+using System.Security.Policy;
+using ThoriumMod.Empowerments;
+using Terraria;
 
 namespace InfernalEclipseAPI.Core.Players
 {
@@ -473,6 +477,22 @@ namespace InfernalEclipseAPI.Core.Players
                     Player.GetDamage(DamageClass.Summon).Base -= summonBase;
                 }
             }
+        }
+
+        public override void PostUpdateBuffs()
+        {
+            if (InfernalCrossmod.SOTS.Loaded)
+            {
+                int idx = Player.FindBuffIndex(ModContent.BuffType<VoidSickness2>());
+                if (idx == -1)
+                    return;
+
+                float time = Player.buffTime[idx];
+
+                ref StatModifier local = ref Player.GetDamage(InfernalCrossmod.SOTS.Mod.Find<DamageClass>("VoidGeneric"));
+                local -= (float)(0.25 * (time / 300f));
+            }
+
         }
 
         public void ConvertSummonMeleeToMelee(Player player, Item item, ref StatModifier damage)

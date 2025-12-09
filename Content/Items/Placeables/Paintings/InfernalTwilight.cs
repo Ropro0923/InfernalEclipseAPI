@@ -113,6 +113,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Pixus",
             "Yelmut",
             "Aizen522",
+            "De1tA5",
             "Suu",
             "fiend",
             "JuJiao",

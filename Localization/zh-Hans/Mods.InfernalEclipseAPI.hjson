@@ -1792,6 +1792,16 @@ Buffs: {
 		DisplayName: 气泡冲击
 		Description: 你将不再受到任何气泡的影响！
 	}
+
+	VoidSickness2: {
+		// DisplayName: Void Sickness
+		// Description: Void damage is being reduced!
+	}
+
+	LowGround: {
+		// DisplayName: Low Ground
+		// Description: Mods.InfernalEclipseAPI.Buffs.LowGround.Description
+	}
 }
 
 SpawnInfo: {

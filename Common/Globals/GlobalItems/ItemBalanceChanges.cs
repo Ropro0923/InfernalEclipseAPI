@@ -915,6 +915,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.pick = 60;
                 }
 
+                if (GetItem(thorium, "DragonsPickAxe", item) || GetItem(thorium, "DragonDrill", item) || GetItem(thorium, "FleshPickAxe", item) || GetItem(thorium, "FleshDrill", item))
+                {
+                    item.pick = 115;
+                }
+
                 if (GetItem(thorium, "ValadiumPickaxe", item) || GetItem(thorium, "LodeStonePickaxe", item))
                 {
                     item.pick = 190;

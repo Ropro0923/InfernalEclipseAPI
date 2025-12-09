@@ -9,9 +9,14 @@
 		<PlatformTarget>AnyCPU</PlatformTarget>
 	</PropertyGroup>
 	<ItemGroup>
+	  <AdditionalFiles Remove="Content\InfernumBehaviorOverrides\**" />
+	  <Compile Remove="Content\InfernumBehaviorOverrides\**" />
+	  <EmbeddedResource Remove="Content\InfernumBehaviorOverrides\**" />
+	  <None Remove="Content\InfernumBehaviorOverrides\**" />
+	</ItemGroup>
+	<ItemGroup>
 		<Folder Include="Assets\Sounds\Custom\TerraBlade\" />
 		<Folder Include="Assets\Textures\BossChecklist\" />
-		<Folder Include="Content\InfernumBehaviorOverrides\BossAIs\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="MonoMod" Version="22.7.31.1" />

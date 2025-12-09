@@ -1802,6 +1802,16 @@ Buffs: {
 		DisplayName: Bubble Shock
 		Description: You can't be affected by any more bubbles!
 	}
+
+	VoidSickness2: {
+		DisplayName: Void Sickness
+		Description: Void damage is being reduced!
+	}
+
+	LowGround: {
+		DisplayName: Low Ground
+		Description: Your movement has been significantly hindered!
+	}
 }
 
 SpawnInfo: {
