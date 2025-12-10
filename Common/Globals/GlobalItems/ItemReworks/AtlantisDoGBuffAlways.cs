@@ -30,7 +30,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
             return 1f;
         }
 
-        public void FullTooltipOveride(List<TooltipLine> tooltips, string stealthTooltip)
+        private static void FullTooltipOveride(List<TooltipLine> tooltips, string stealthTooltip)
         {
             for (int index = 0; index < tooltips.Count; ++index)
             {

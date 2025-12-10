@@ -13,6 +13,10 @@ using CalamityMod.NPCs.SupremeCalamitas;
 using InfernalEclipseAPI.Core.DamageClasses;
 using Terraria.ModLoader.IO;
 using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
+using InfernalEclipseAPI.Core.Systems;
+using System.Security.Policy;
+using ThoriumMod.Empowerments;
+using Terraria;
 
 namespace InfernalEclipseAPI.Core.Players
 {
@@ -155,6 +159,14 @@ namespace InfernalEclipseAPI.Core.Players
             workshopHasBeenOwned = tag.Get<bool>("workshopHasBeenOwned");
         }
 
+        public override bool CanUseItem(Item item)
+        {
+            if (Player.HasBuff(InfernalCrossmod.Thorium.Mod.Find<ModBuff>("Bubbled").Type))
+                return false;
+
+            return base.CanUseItem(item);
+        }
+
         public override void ResetEffects()
         {
             if (!Player.HasBuff(ModContent.BuffType<StarboundHorrification>()))
@@ -215,6 +227,15 @@ namespace InfernalEclipseAPI.Core.Players
                 if (Player.statLife == 0)
                     Player.KillMe(PlayerDeathReason.ByCustomReason($"{Player.name} fell to the jungles curse..."), 0, 0);
                 Player.AddBuff(BuffID.PotionSickness, 60);
+            }
+
+            if (InfernalCrossmod.Thorium.Loaded) 
+            {
+                if (Player.IsUnderwater() && NPC.AnyNPCs(InfernalCrossmod.Thorium.Mod.Find<ModNPC>("QueenJellyfish").Type))
+                {
+                    Player.AddBuff(InfernalCrossmod.Thorium.Mod.Find<ModBuff>("Bubbled").Type, 30);
+                    Player.AddBuff(BuffID.Electrified, 30);
+                }
             }
         }
 
@@ -473,6 +494,22 @@ namespace InfernalEclipseAPI.Core.Players
                     Player.GetDamage(DamageClass.Summon).Base -= summonBase;
                 }
             }
+        }
+
+        public override void PostUpdateBuffs()
+        {
+            if (InfernalCrossmod.SOTS.Loaded)
+            {
+                int idx = Player.FindBuffIndex(ModContent.BuffType<VoidSickness2>());
+                if (idx == -1)
+                    return;
+
+                float time = Player.buffTime[idx];
+
+                ref StatModifier local = ref Player.GetDamage(InfernalCrossmod.SOTS.Mod.Find<DamageClass>("VoidGeneric"));
+                local -= (float)(0.25 * (time / 300f));
+            }
+
         }
 
         public void ConvertSummonMeleeToMelee(Player player, Item item, ref StatModifier damage)

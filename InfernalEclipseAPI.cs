@@ -29,6 +29,7 @@ using InfernalEclipseAPI.Core.Systems;
 using InfernalEclipseAPI.Core.Utils.ConfigSetup;
 using Microsoft.Xna.Framework.Graphics;
 using System.Linq;
+using InfernalEclipseAPI.Content.UI;
 using InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides.ThoriumMulticlassNerf;
 
 namespace InfernalEclipseAPI
@@ -84,6 +85,10 @@ namespace InfernalEclipseAPI
                     On_Player.InInteractionRange += On_Player_InInteractionRange;
                 }
             }
+
+            RagnarokDifficulty difficulty = new();
+            DifficultyModeSystem.Difficulties.Add(difficulty);
+            DifficultyModeSystem.CalculateDifficultyData();
 
             AchievementUpdateHandler = typeof(InfernumMode.Core.GlobalInstances.Players.AchievementPlayer).GetMethod("ExtraUpdateHandler", BindingFlags.Static | BindingFlags.NonPublic);
         }
@@ -161,11 +166,11 @@ namespace InfernalEclipseAPI
                 if (InfernalConfig.Instance.MoveDeerclopsChecklistEntry)
                 {
                     #region Get Types
-                    Type? BossChecklist = bossChecklist.GetType(); // BossChecklist Type can be obtained via simply Mod.GetType()
+                    Type BossChecklist = bossChecklist.GetType(); // BossChecklist Type can be obtained via simply Mod.GetType()
                     // As Mod.Code.GetType(string name) is not implemented however, we use Mod.Code.GetTypes() and find the other ones we need
-                    Type[]? TypeList = bossChecklist.Code.GetTypes();
-                    Type? BossTracker = TypeList.Where<Type?>(type => type?.Name == "BossTracker")?.First();
-                    Type? EntryInfo = TypeList.Where<Type?>(type => type?.Name == "EntryInfo")?.First();
+                    Type[] TypeList = bossChecklist.Code.GetTypes();
+                    Type BossTracker = TypeList.Where(type => type?.Name == "BossTracker")?.First();
+                    Type EntryInfo = TypeList.Where(type => type?.Name == "EntryInfo")?.First();
                     #endregion
 
                     #region Get Fields
@@ -173,25 +178,25 @@ namespace InfernalEclipseAPI
                     var BCInstance = BossChecklist?.GetField("instance", LumUtils.UniversalBindingFlags)?.GetValue(null);
                     var trackerInstance = BossChecklist?.GetField("bossTracker", LumUtils.UniversalBindingFlags)?.GetValue(null);
                     // Get the EntryInfo List<> field and object by using the Boss Tracker instance
-                    FieldInfo? SortedEntries_Field = BossTracker?.GetField("SortedEntries", LumUtils.UniversalBindingFlags);
+                    FieldInfo SortedEntries_Field = BossTracker?.GetField("SortedEntries", LumUtils.UniversalBindingFlags);
                     var SortedEntries = SortedEntries_Field?.GetValue(trackerInstance);
                     // Get the field needed to readd the portrait texture after we replace the EntryInfo that contained it
-                    FieldInfo? PortraitTexture_Field = EntryInfo?.GetField("portraitTexture", LumUtils.UniversalBindingFlags);
+                    FieldInfo PortraitTexture_Field = EntryInfo?.GetField("portraitTexture", LumUtils.UniversalBindingFlags);
                     #endregion
 
                     #region Get Methods
                     // As there's no way to normally use a List<> of a non-public type, hack into its List<T> and just get the methods that handle indexing
-                    PropertyInfo? List_EntryInfo_Property = SortedEntries?.GetType().GetProperty("Item", LumUtils.UniversalBindingFlags);
-                    MethodInfo? List_EntryInfo_GetMethod = List_EntryInfo_Property?.GetGetMethod();
-                    MethodInfo? List_EntryInfo_SetMethod = List_EntryInfo_Property?.GetSetMethod();
+                    PropertyInfo List_EntryInfo_Property = SortedEntries?.GetType().GetProperty("Item", LumUtils.UniversalBindingFlags);
+                    MethodInfo List_EntryInfo_GetMethod = List_EntryInfo_Property?.GetGetMethod();
+                    MethodInfo List_EntryInfo_SetMethod = List_EntryInfo_Property?.GetSetMethod();
 
                     // This internal BossChecklist method returns the EntryInfo we need
-                    MethodInfo? FindEntryFromKey_Method = BossTracker?.GetMethod("FindEntryFromKey", LumUtils.UniversalBindingFlags);
+                    MethodInfo FindEntryFromKey_Method = BossTracker?.GetMethod("FindEntryFromKey", LumUtils.UniversalBindingFlags);
 
                     // Very hackily resolve GetMethod ambiguity and obtain the method we require to make a replacement for Deerclops' EntryInfo
-                    MethodInfo[]? MakeVanillaBoss_MethodList = EntryInfo?.GetMethods(LumUtils.UniversalBindingFlags);
-                    MethodInfo? MakeVanillaBoss_Method = MakeVanillaBoss_MethodList?.Where(m => m.Name == "MakeVanillaBoss" && m.GetParameters().Any(p => p.Name == "npcID"))?.First();
-                    void MakeVanillaBoss(ref object? info, string texturePath)
+                    MethodInfo[] MakeVanillaBoss_MethodList = EntryInfo?.GetMethods(LumUtils.UniversalBindingFlags);
+                    MethodInfo MakeVanillaBoss_Method = MakeVanillaBoss_MethodList?.Where(m => m.Name == "MakeVanillaBoss" && m.GetParameters().Any(p => p.Name == "npcID"))?.First();
+                    void MakeVanillaBoss(ref object info, string texturePath)
                     {
                         var obj = MakeVanillaBoss_Method?.Invoke(null, [0, 4.5f, "NPCName.Deerclops", Terraria.ID.NPCID.Deerclops, () => NPC.downedDeerclops]); // Make a replacement EntryInfo
                         if (ModContent.HasAsset(texturePath))

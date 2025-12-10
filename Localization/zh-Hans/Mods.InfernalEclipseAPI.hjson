@@ -21,6 +21,24 @@ UI: {
 	LPrimoridal: 传奇-始源模式
 }
 
+DifficultyUI: {
+	// Name: Ragnarok
+	/* ShortDescription:
+		'''
+		[c/B32E81:An extreme version of Infernum and the intended difficulty of Infernal Eclipse of Ragnarok.]
+		[c/B32E81:This mode does not work with the For the Worthy seed.]
+		''' */
+	/* ExpandedDescription:
+		'''
+		[c/B32E81:Sets the world difficulty to Master & enables Infernum mode.]
+		[c/B32E81:After enabling, Master mode cannot be disabled through the Calamity difficulty slider.]
+		[c/B32E81:Enemies & bosses will now have very high base stats and scale more agressively in multiplayer.]
+		[c/FF0055:Can you master the Infernal Eclipse of Ragnarok?]
+		''' */
+	// InfernumText: The Infernal Eclipse has risen...
+	// InfernumText2: Another unworthy challegner has walked away.
+}
+
 WelcomeMessage: {
 	Welcome: 感谢游玩《诸神黄昏：炼狱蚀光》模组包！
 	TBRNotice: 注意：检测到已启用 Thorium Bosses Reworked，请在兼容性配置中将生命、伤害与速度倍率均设为 1（除非你想要更高难度），该模组会根据当前难度自动调整瑟银 Boss 属性。
@@ -35,6 +53,7 @@ WelcomeMessage: {
 	InfernumForced: 炼狱能量已注入此界……
 	RagnarokBalance: 注意：为确保武器平衡按预期生效，请在 Ragnarok 的模组配置中将“通用武器调整”选项关闭，否则改动会叠加，使武器强度远超预期。
 	RagnarokRework: 注意：检测到你同时启用了 Ragnarok 模组和 Thorium Bosses Reworked。为获得预期的游戏体验，请在 Ragnarok 模组配置中将所有 Boss 选项切换到 瑟银BOSS重置。
+	// GulaVaultMessage: The vault refuses to open. A stronger evil must be defeated first...
 }
 
 ItemTooltip: {
@@ -77,6 +96,16 @@ ItemTooltip: {
 		"你没有疯……你真是疯了!"
 		复仇模式专属
 		'''
+	/* BloodstainedCoin:
+		'''
+		Critical strikes have a 50% chance to deal 10 more damage
+		Receiving damage has a 75% chance to bleed you
+		''' */
+	/* PutridCoin:
+		'''
+		Critical strikes have a 50% chance to deal 10 more damage
+		Receiving damage has a 75% chance to poison you
+		''' */
 	DedTo: -献给{0}-
 
 	Dedicated: {
@@ -1791,6 +1820,16 @@ Buffs: {
 	BubbleShock: {
 		DisplayName: 气泡冲击
 		Description: 你将不再受到任何气泡的影响！
+	}
+
+	VoidSickness2: {
+		// DisplayName: Void Sickness
+		// Description: Void damage is being reduced!
+	}
+
+	LowGround: {
+		// DisplayName: Low Ground
+		// Description: Your movement has been significantly hindered!
 	}
 }
 

@@ -937,6 +937,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.pick = 60;
                 }
 
+                if (GetItem(thorium, "DragonsPickAxe", item) || GetItem(thorium, "DragonDrill", item) || GetItem(thorium, "FleshPickAxe", item) || GetItem(thorium, "FleshDrill", item))
+                {
+                    item.pick = 115;
+                }
+
                 if (GetItem(thorium, "ValadiumPickaxe", item) || GetItem(thorium, "LodeStonePickaxe", item))
                 {
                     item.pick = 190;
@@ -1162,9 +1167,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     //Pollen Pike
                     if (item.type == FindItem(thorium, "PollenPike"))
                     {
+                        item.damage = 35;
                         item.useTime = 6;
                         item.useAnimation = 6;
                         item.shootSpeed = 22;
+                        ItemID.Sets.ItemsThatAllowRepeatedRightClick[item.type] = true;
                     }
 
                     //Whirlpool Saber
@@ -5559,9 +5566,54 @@ namespace InfernalEclipseAPI.Common.GlobalItems
             }
         }
 
+        public override string IsArmorSet(Item head, Item body, Item legs)
+        {
+            if (InfernalCrossmod.Thorium.Loaded)
+            {
+                if (head.type == InfernalCrossmod.Thorium.Mod.Find<ModItem>("FlightMask").Type && body.type == InfernalCrossmod.Thorium.Mod.Find<ModItem>("FlightMail").Type && legs.type == InfernalCrossmod.Thorium.Mod.Find<ModItem>("FlightBoots").Type)
+                {
+                    return "Thorium:FlightSet";
+                }
+            }
+
+            return base.IsArmorSet(head, body, legs);
+        }
+
+        public override void UpdateArmorSet(Player player, string set)
+        {
+            if (set == "Thorium:FlightSet")
+            {
+                player.jumpBoost = false;
+            }
+        }
+
+        public override bool CanUseItem(Item item, Player player)
+        {
+            if (InfernalConfig.Instance.ThoriumBalanceChangess && InfernalCrossmod.Thorium.Loaded)
+            {
+                if (item.type == FindItem(InfernalCrossmod.Thorium.Mod, "PollenPike"))
+                {
+                    if (player.altFunctionUse == 2)
+                    {
+                        item.useTime = 25;
+                        item.useAnimation = 25;
+                        item.shootSpeed = 9;
+                    }
+                    else
+                    {
+                        item.useTime = 6;
+                        item.useAnimation = 6;
+                        item.shootSpeed = 22;
+                    }
+                }
+            }
+
+            return base.CanUseItem(item, player);
+        }
+
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
-            if (item.type == ModContent.ItemType<BladecrestOathsword>() && !NPC.downedBoss2)
+            if (item.type == ModContent.ItemType<BladecrestOathsword>() && !NPC.downedBoss2 && InfernalConfig.Instance.CalamityBalanceChanges)
             {
                 damage *= 0.71f;
             }

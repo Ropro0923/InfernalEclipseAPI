@@ -24,6 +24,7 @@ using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
 using InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre;
 using InfernalEclipseAPI.Core.Systems;
 using CalamityMod.Items.Potions;
+using InfernalEclipseAPI.Content.Items.Materials;
 
 namespace InfernalEclipseAPI.Common.Balance.Recipes
 {
@@ -47,6 +48,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
 
             foreach (var recipe in Main.recipe)
             {
+                #region tPackBuilder Subsititons
                 if (!ModLoader.TryGetMod("PackBuilder", out Mod tPack))
                 {
                     if (recipe.HasResult(ModContent.ItemType<Kevin>()))
@@ -63,16 +65,20 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         }
                     }
                 }
+                #endregion
 
+                #region Vanilla
                 if (InfernalConfig.Instance.BossKillCheckOnOres)
                 {
                     if (recipe.HasResult(ItemID.DemonConch))
-                    {
                         recipe.DecraftConditions.Add(Condition.DownedEowOrBoc);
-                    }
-                }
 
-                //Calamity
+                    if (recipe.HasResult(ItemID.HellstoneBar))
+                        recipe.DecraftConditions.Add(Condition.DownedEowOrBoc);
+                }
+                #endregion
+
+                #region Calamity
                 //If any mods allow the terminus to be crafted, disable it.
                 if (recipe.HasResult(ModContent.ItemType<Terminus>()))
                 {
@@ -90,6 +96,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     recipe.DecraftConditions.Add(Condition.Hardmode);
                 }
 
+                #region Calamity Ranger Expansion
                 if (ModLoader.TryGetMod("CalamityAmmo", out Mod calAmmo))
                 {
                     if (recipe.HasResult(calAmmo.Find<ModItem>("HardTack")))
@@ -97,7 +104,9 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         recipe.DisableDecraft();
                     }
                 }
+                #endregion
 
+                #region Wrath of the Gods
                 if (ModLoader.HasMod("NoxusBoss"))
                 {
                     if (recipe.HasResult<GravityNormalizerPotion>())
@@ -105,6 +114,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         recipe.DisableDecraft();
                     }
                 }
+                #endregion
 
                 if (InfernalConfig.Instance.CalamityRecipeTweaks)
                 {
@@ -142,7 +152,9 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         }
                     }
                 }
+                #endregion
 
+                #region Thorium
                 if (InfernalConfig.Instance.ThoriumBalanceChangess && thorium != null)
                 {
                     if (recipe.HasResult<UnholyCore>())
@@ -165,41 +177,6 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     }
                 }
 
-                if (ModLoader.TryGetMod("ZenithToilet", out Mod toilet))
-                {
-                    if (toilet.TryFind("ZenithToilet", out ModItem zToilet))
-                    {
-                        if (recipe.HasResult(zToilet))
-                        {
-                            recipe.AddIngredient(ModContent.ItemType<Rock>(), 1);
-                            recipe.RemoveTile(TileID.MythrilAnvil);
-                            recipe.AddIngredient<AshesofAnnihilation>(3);
-                            recipe.AddIngredient<MiracleMatter>(3);
-                            recipe.AddIngredient<ShadowspecBar>(3);
-                            recipe.AddTile(ModContent.TileType<DraedonsForge>());
-                        }
-                    }
-
-                    if (toilet.TryFind("TrueZenithToilet", out ModItem trueToilet))
-                    {
-                        if (recipe.HasResult(trueToilet))
-                        {
-                            recipe.RemoveTile(TileID.MythrilAnvil);
-                            recipe.AddTile(ModContent.TileType<DraedonsForge>());
-                            recipe.AddIngredient(ModContent.ItemType<StellarSabre>(), 1);
-                            recipe.AddIngredient(ModContent.ItemType<Lycanroc>());
-                            recipe.AddIngredient(ModContent.ItemType<Swordofthe14thGlitch>(), 1);
-                            recipe.AddIngredient(ModContent.ItemType<NovaBomb>(), 1);
-                            recipe.AddIngredient(ModContent.ItemType<Kevin>(), 1);
-                            recipe.AddIngredient(ModContent.ItemType<ChaosBlaster>());
-                            recipe.AddIngredient(ModContent.ItemType<NebulaGigabeam>());
-                            recipe.AddIngredient(ModContent.ItemType<ChromaticMassInABottle>(), 1);
-                            recipe.AddIngredient(ModContent.ItemType<Rock>(), 1);
-                        }
-                    }
-                }
-
-                //Thorium
                 ModItem holySycthe = null;
                 if (thorium != null)
                 {
@@ -218,7 +195,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
 
                     if (InfernalConfig.Instance.MergeCraftingTrees)
                     {
-                        if(recipe.HasResult(ModContent.ItemType<LifeAlloy>()))
+                        if (recipe.HasResult(ModContent.ItemType<LifeAlloy>()))
                         {
                             recipe.AddIngredient(titanBar, 1);
                         }
@@ -563,8 +540,8 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                                 }
                             }
 
-                            if (CalamityServerConfig.Instance.EarlyHardmodeProgressionRework) 
-                            { 
+                            if (CalamityServerConfig.Instance.EarlyHardmodeProgressionRework)
+                            {
                                 ModItem[] preMechIngredients =
                                 {
                                     GetItem(thorium, "BenignBalloon"),
@@ -583,7 +560,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                                     GetItem(thorium, "BloodCell")
                                 };
 
-                                ModItem[] preMechItems = 
+                                ModItem[] preMechItems =
                                 {
                                     GetItem(thorium, "CrystalGeode"),
                                     GetItem(thorium, "UnfathomableFlesh"),
@@ -648,8 +625,45 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         }
                     }
                 }
+                #endregion
 
-                //Ragnarok
+                #region Zenith Toilet
+                if (ModLoader.TryGetMod("ZenithToilet", out Mod toilet))
+                {
+                    if (toilet.TryFind("ZenithToilet", out ModItem zToilet))
+                    {
+                        if (recipe.HasResult(zToilet))
+                        {
+                            recipe.AddIngredient(ModContent.ItemType<Rock>(), 1);
+                            recipe.RemoveTile(TileID.MythrilAnvil);
+                            recipe.AddIngredient<AshesofAnnihilation>(3);
+                            recipe.AddIngredient<MiracleMatter>(3);
+                            recipe.AddIngredient<ShadowspecBar>(3);
+                            recipe.AddTile(ModContent.TileType<DraedonsForge>());
+                        }
+                    }
+
+                    if (toilet.TryFind("TrueZenithToilet", out ModItem trueToilet))
+                    {
+                        if (recipe.HasResult(trueToilet))
+                        {
+                            recipe.RemoveTile(TileID.MythrilAnvil);
+                            recipe.AddTile(ModContent.TileType<DraedonsForge>());
+                            recipe.AddIngredient(ModContent.ItemType<StellarSabre>(), 1);
+                            recipe.AddIngredient(ModContent.ItemType<Lycanroc>());
+                            recipe.AddIngredient(ModContent.ItemType<Swordofthe14thGlitch>(), 1);
+                            recipe.AddIngredient(ModContent.ItemType<NovaBomb>(), 1);
+                            recipe.AddIngredient(ModContent.ItemType<Kevin>(), 1);
+                            recipe.AddIngredient(ModContent.ItemType<ChaosBlaster>());
+                            recipe.AddIngredient(ModContent.ItemType<NebulaGigabeam>());
+                            recipe.AddIngredient(ModContent.ItemType<ChromaticMassInABottle>(), 1);
+                            recipe.AddIngredient(ModContent.ItemType<Rock>(), 1);
+                        }
+                    }
+                }
+                #endregion
+
+                #region Ragnarok
                 if (ModLoader.TryGetMod("RagnarokMod", out Mod ragCal))
                 {
                     ragCal.TryFind("JellySlicer", out ModItem gelSlicer);
@@ -681,8 +695,9 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         recipe.DisableRecipe();
                     }
                 }
+                #endregion
 
-                //Thorium Bosses Reworked
+                #region Thorium Helheim (Thorium Bosses Reworked)
                 if (ModLoader.TryGetMod("ThoriumRework", out Mod thorRework) && InfernalConfig.Instance.ThoriumBalanceChangess)
                 {
                     if (!ModLoader.TryGetMod("WHummusMultiModBalancing", out _))
@@ -710,8 +725,9 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         recipe.DisableRecipe();
                     }
                 }
+                #endregion
 
-                //Unofficial Calamity Bard & Healer
+                #region Calamity Bard Healer
                 if (ModLoader.TryGetMod("CalamityBardHealer", out Mod calBardHeal) && InfernalConfig.Instance.ThoriumBalanceChangess)
                 {
                     if (calBardHeal.TryFind("SongoftheAncients", out ModItem songAncinet))
@@ -741,10 +757,11 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             recipe.RemoveIngredient(holySycthe.Type);
                     }
                 }
+                #endregion
 
+                #region SOTS
                 if (InfernalConfig.Instance.SOTSBalanceChanges)
                 {
-                    //SOTS
                     if (ModLoader.TryGetMod("SOTS", out Mod sots))
                     {
                         // Frigid Pickaxe
@@ -778,6 +795,9 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         {
                             recipe.RemoveIngredient(ModContent.ItemType<AuricBar>());
                             recipe.AddIngredient<ShadowspecBar>(5);
+                            if (InfernalCrossmod.NoxusBoss.Loaded)
+                                recipe.AddIngredient<PrimordialOrchid>(3);
+                            recipe.AddIngredient<Rock>();
                         }
 
                         if (recipe.HasResult(sots.Find<ModItem>("PurpleJellyfishStaff")))
@@ -913,7 +933,9 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         }
                     }
                 }
+                #endregion
 
+                #region Encahnted Moons
                 if (InfernalCrossmod.BlueMoon.Loaded)
                 {
                     Mod blueMoon = InfernalCrossmod.BlueMoon.Mod;
@@ -924,10 +946,11 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         recipe.AddTile(TileID.TinkerersWorkbench);
                     }
                 }
+                #endregion
             }
         }
 
-        private ModItem GetItem(Mod mod, string name)
+        private static ModItem GetItem(Mod mod, string name)
         {
             return mod.Find<ModItem>(name);
         }

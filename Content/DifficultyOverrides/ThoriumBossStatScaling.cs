@@ -8,6 +8,10 @@ using System.Linq;
 using InfernalEclipseAPI.Core.Systems;
 using ThoriumRework.Projectiles;
 using InfernalEclipseAPI.Common.GlobalNPCs.NPCDebuffs;
+using InfernalEclipseAPI.Content.Buffs;
+using ThoriumMod.Projectiles.Enemy;
+using ThoriumMod.Projectiles;
+using ThoriumMod.NPCs.BossQueenJellyfish;
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {
@@ -49,6 +53,11 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             ModContent.NPCType<UnstableAnger>(),
             ModContent.NPCType<InnerDespair>(),
             ModContent.NPCType<LucidBubble>(),
+            ModContent.NPCType<BoreanHopper>(),
+            ModContent.NPCType<BoreanMyte>(),
+            ModContent.NPCType<DistractingJellyfish>(),
+            ModContent.NPCType<SpittingJellyfish>(),
+            ModContent.NPCType<ZealousJellyfish>()
         ];
 
         public static bool IsReworkNPC(NPC npc)
@@ -69,11 +78,15 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             {
                 if (entity.type == ModContent.NPCType<BoreanStrider>())
                 {
-                    entity.defense += 10;
+                    entity.defense += 25;
                 }
                 if (entity.type == ModContent.NPCType<BoreanStriderPopped>())
                 {
-                    entity.defense += 5;
+                    entity.defense += 10;
+                }
+                if (entity.type == ModContent.NPCType<BoreanHopper>())
+                {
+                    entity.defense += 25;
                 }
             }
 
@@ -125,7 +138,11 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             }
             if (IsInfernumActive() || GetFargoDifficullty("MasochistMode"))
             {
-                if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true)
+                if (npc.ModNPC?.Name?.Contains("BoreanStrider") == true)
+                {
+                    npc.lifeMax += (int)(npc.lifeMax * 3.5f);
+                }
+                if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true || npc.ModNPC.Name.Contains("QueenJellyfish"))
                 {
                     npc.lifeMax += (int)npc.lifeMax;
                 }
@@ -143,7 +160,11 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             {
                 if (GetFargoDifficullty("EternityMode"))
                 {
-                    if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true)
+                    if (npc.ModNPC?.Name?.Contains("BoreanStrider") == true)
+                    {
+                        npc.lifeMax += (int)(npc.lifeMax * 3.25f);
+                    }
+                    if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true || npc.ModNPC.Name.Contains("QueenJellyfish"))
                     {
                         npc.lifeMax += (int)(0.75 * npc.lifeMax);
                     }
@@ -156,7 +177,11 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 }
                 else if (GetCalDifficulty("death"))
                 {
-                    if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true)
+                    if (npc.ModNPC?.Name?.Contains("BoreanStrider") == true)
+                    {
+                        npc.lifeMax += (int)(npc.lifeMax * 3f);
+                    }
+                    if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true || npc.ModNPC.Name.Contains("QueenJellyfish"))
                     {
                         npc.lifeMax += (int)(0.5 * npc.lifeMax);
                     }
@@ -169,7 +194,11 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 }
                 else if (GetCalDifficulty("revengeance"))
                 {
-                    if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true)
+                    if (npc.ModNPC?.Name?.Contains("BoreanStrider") == true)
+                    {
+                        npc.lifeMax += (int)(npc.lifeMax * 2.75f);
+                    }
+                    if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true || npc.ModNPC.Name.Contains("QueenJellyfish"))
                     {
                         npc.lifeMax += (int)(0.25 * npc.lifeMax);
                     }
@@ -188,7 +217,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             string name = npc.ModNPC?.Name ?? "";
             float damageMod = 0;
 
-            if (name.Contains("SlagFury") || name.Contains("Aquaius") || name.Contains("Omnicide") || name.Contains("DreamEater"))
+            if (name.Contains("SlagFury") || name.Contains("Aquaius") || name.Contains("Omnicide") || name.Contains("DreamEater") || name.Contains("BoreanStrider") || name.Contains("QueenJellyfish"))
                 damageMod += 0.6f;
 
             if (IsWorldLegendary())
@@ -216,11 +245,20 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
 
         public override void PostAI(NPC npc)
         {
-            //messing with the borean striders speed causes it to phase through the ground.
-            if (npc.ModNPC?.Name?.Contains("BoreanStrider") == true || npc.ModNPC?.Name?.Contains("FallenBeholder") == true)
+            if (npc.ModNPC?.Name?.Contains("BoreanStrider") == true)
             {
+                foreach (Player player in Main.player)
+                {
+                    if (player.active && !player.dead && npc.WithinRange(player.Center, 1000f))
+                    {
+                        player.AddBuff(ModContent.BuffType<LowGround>(), 1);
+                    }
+                }
                 return;
             }
+
+            if (npc.ModNPC?.Name?.Contains("FallenBeholder") == true)
+                return;
 
             if (IsWorldLegendary())
             {
@@ -273,11 +311,26 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 ModContent.ProjectileType<ThoriumRework.Projectiles.AquaiusBubble>(),
                 ModContent.ProjectileType<AquaiusPunchAttack>(),
                 ModContent.ProjectileType<DeathRain>(),
-                ModContent.ProjectileType<InfernalRay>()
+                ModContent.ProjectileType<InfernalRay>(),
+
+                ModContent.ProjectileType<IceShard>(),
+                ModContent.ProjectileType<Glacier>(),
+                ModContent.ProjectileType<Glacier2>(),
+
+                ModContent.ProjectileType<DancingJellyfish>(),
+                ModContent.ProjectileType<ThoriumRework.Projectiles.BubbleBomb>(),
+                ModContent.ProjectileType<HighTide>(),
+                ModContent.ProjectileType<HighTideWave>(),
+                ModContent.ProjectileType<BubbleColumn>(),
+                ModContent.ProjectileType<JammingJellyfish>(),
+                ModContent.ProjectileType<JellyfishShock>(),
             ];
 
-            if (reworkType.Contains(projectile.type))
-                return true;
+            foreach (int type in reworkType)
+            {
+                if (projectile.type == type)
+                    return true;
+            }
 
             return false;
         }
@@ -299,6 +352,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
         {
             int[] types =
             [
+                //Primordials
                 ModContent.ProjectileType<AquaSplash>(),
                 ModContent.ProjectileType<AquaTyphoon>(),
                 ModContent.ProjectileType<LucidFury>(),
@@ -314,10 +368,24 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 ModContent.ProjectileType<ThoriumMod.Projectiles.Boss.LucidRay>(),
                 ModContent.ProjectileType<DeathRaySpawn3>(),
                 ModContent.ProjectileType<DeathCircle2>(),
-                ModContent.ProjectileType<DeathRay>()
+                ModContent.ProjectileType<DeathRay>(),
+
+                //Borean Strider
+                ModContent.ProjectileType<BlizzardFang>(),
+                ModContent.ProjectileType<BlizzardBoom>(),
+                ModContent.ProjectileType<IceAnomaly>(),
+
+                //Queen Jellyfish
+                ModContent.ProjectileType<BubblePulse>(),
+                ModContent.ProjectileType<ThoriumMod.Projectiles.Boss.BubbleBomb>(),
             ];
 
-            return types.Contains(entity.type) || IsReworkNPC(entity);
+            foreach (int type in types)
+            {
+                if (entity.type == type || IsReworkNPC(entity))
+                    return true;
+            }
+            return false;
         }
 
         private static bool GetCalDifficulty(string diff)
@@ -358,26 +426,24 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
 
         public override void ModifyHitPlayer(Projectile projectile, Player target, ref Player.HurtModifiers modifiers)
         {
-            float damageMod = 0;
+            float damageMod = 1f;
 
             if (IsWorldLegendary())
             {
-                damageMod += 1.35f;
+                damageMod *= 1.35f;
             }
+
             if (IsInfernumActive() || GetFargoDifficullty("MasochistMode"))
             {
-                damageMod += 2.2f;
+                damageMod *= 2.2f;
             }
-            else
+            else if (GetFargoDifficullty("EternityMode"))
             {
-                if (GetFargoDifficullty("EternityMode"))
-                {
-                    damageMod += 1.675f;
-                }
-                else if (GetCalDifficulty("death"))
-                {
-                    damageMod += 1.5f;
-                }
+                damageMod *= 1.675f;
+            }
+            else if (GetCalDifficulty("death"))
+            {
+                damageMod *= 1.5f;
             }
 
             modifiers.SourceDamage *= damageMod;

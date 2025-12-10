@@ -21,6 +21,24 @@ UI: {
 	LPrimoridal: Legendary-Primordial Mode
 }
 
+DifficultyUI: {
+	Name: Ragnarok
+	ShortDescription:
+		'''
+		[c/B32E81:An extreme version of Infernum and the intended difficulty of Infernal Eclipse of Ragnarok.]
+		[c/B32E81:This mode does not work with the For the Worthy seed.]
+		'''
+	ExpandedDescription:
+		'''
+		[c/B32E81:Sets the world difficulty to Master & enables Infernum mode.]
+		[c/B32E81:After enabling, Master mode cannot be disabled through the Calamity difficulty slider.]
+		[c/B32E81:Enemies & bosses will now have very high base stats and scale more agressively in multiplayer.]
+		[c/FF0055:Can you master the Infernal Eclipse of Ragnarok?]
+		'''
+	InfernumText: The Infernal Eclipse has risen...
+	InfernumText2: Another unworthy challegner has walked away.
+}
+
 WelcomeMessage: {
 	Welcome: Welcome to the Infernal Eclipse of Ragnarok Mod Pack!
 	TBRNotice: NOTICE: It is detected that you have Thorium Bosses Reworked enabled! Make sure the Health, Damage, & Speed multipliers are set to 1 in the compatibility config (unless you want a harder experience) as this mod automatically adjusts the Thorium bosses depending on the current difficulty.
@@ -35,6 +53,7 @@ WelcomeMessage: {
 	InfernumForced: Infernal energy has been infused into this world...
 	RagnarokBalance: NOTICE: For the Balancing of weapons to be as intended, set the Ragnarok mod config of 'Generic Weapon Tweaks' to OFF, as otherwise the changes will stack and weapons will be far stronger than intended.
 	RagnarokRework: NOTICE: It is detected that you have both the Ragnarok mod and Thorium Bosses Reworked enabled. For the intended experience, turn all the boss toggles in the Ragnarok Boss Config to Thorium Bosses Reworked.
+	GulaVaultMessage: The vault refuses to open. A stronger evil must be defeated first...
 }
 
 ItemTooltip: {
@@ -72,6 +91,16 @@ ItemTooltip: {
 		You constantly generate coins over time
 		'You're not greedy... you're batshit insane!'
 		Revengeance drop
+		'''
+	BloodstainedCoin:
+		'''
+		Critical strikes have a 50% chance to deal 10 more damage
+		Receiving damage has a 75% chance to bleed you
+		'''
+	PutridCoin:
+		'''
+		Critical strikes have a 50% chance to deal 10 more damage
+		Receiving damage has a 75% chance to poison you
 		'''
 	DedTo: - Dedicated to {0} -
 
@@ -1801,6 +1830,16 @@ Buffs: {
 	BubbleShock: {
 		DisplayName: Bubble Shock
 		Description: You can't be affected by any more bubbles!
+	}
+
+	VoidSickness2: {
+		DisplayName: Void Sickness
+		Description: Void damage is being reduced!
+	}
+
+	LowGround: {
+		DisplayName: Low Ground
+		Description: Your movement has been significantly hindered!
 	}
 }
 
