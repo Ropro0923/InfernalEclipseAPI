@@ -71,7 +71,7 @@ namespace InfernalEclipseAPI.Core.World
                 if (tile == null)
                     continue;
 
-                if (tile.TileType != GemStructureWorldgenHelper.GemChest)
+                if (tile.TileType != GemStructureWorldgenHelper.RuinedChest)
                     continue;
 
                 for (int slot = 0; slot < chest.item.Length; slot++)
