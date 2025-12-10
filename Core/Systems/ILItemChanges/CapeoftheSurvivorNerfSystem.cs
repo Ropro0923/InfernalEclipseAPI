@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
+using ThoriumMod;
+using ThoriumMod.Tiles;
 
 namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
 {
@@ -27,6 +29,20 @@ namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
         {
             _consumableDodgeIL?.Dispose();
             _postUpdateEquipsIL?.Dispose();
+        }
+
+        public override void PostSetupContent()
+        {
+            if (InfernalCrossmod.SOTS.Loaded)
+            {
+                SOTSMineralariumHooks.ParseNewOre(ModContent.TileType<SmoothCoal>(), 1240, 0.275);
+                SOTSMineralariumHooks.ParseNewOre(ModContent.TileType<ThoriumOre>(), 1500, 0.4);
+                SOTSMineralariumHooks.ParseNewOre(ModContent.TileType<LifeQuartz>(), 1550, 0.45);
+                SOTSMineralariumHooks.ParseNewOre(ModContent.TileType<Aquaite>(), 2000, 0.5, () => NPC.downedBoss2);
+                SOTSMineralariumHooks.ParseNewOre(ModContent.TileType<LodeStone>(), 2750, 0.55, () => ThoriumWorld.downedFallenBeholder);
+                SOTSMineralariumHooks.ParseNewOre(ModContent.TileType<ValadiumChunk>(), 2750, 0.55, () => ThoriumWorld.downedFallenBeholder);
+                SOTSMineralariumHooks.ParseNewOre(ModContent.TileType<IllumiteChunk>(), 4100, 1.25, () => NPC.downedPlantBoss);
+            }
         }
 
         private static void PatchConsumableDodge(ILContext il)

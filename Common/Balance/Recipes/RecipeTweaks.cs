@@ -70,6 +70,9 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     {
                         recipe.DisableDecraft();
                     }
+
+                    if (recipe.HasResult(ItemID.HellstoneBar))
+                        recipe.DecraftConditions.Add(Condition.DownedEowOrBoc);
                 }
 
                 //Calamity

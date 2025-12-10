@@ -5,6 +5,8 @@ using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 using CalamityMod.Events;
 using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
+using CatalystMod.Tiles.Ores;
+using CatalystMod;
 
 namespace InfernalEclipseAPI.Core.Systems.BossChanges.ILBossChanges
 {
@@ -44,6 +46,12 @@ namespace InfernalEclipseAPI.Core.Systems.BossChanges.ILBossChanges
         public override void Unload()
         {
             astrageldonHook?.Dispose();
+        }
+
+        public override void PostSetupContent()
+        {
+            if (InfernalCrossmod.SOTS.Loaded)
+                SOTSMineralariumHooks.ParseNewOre(ModContent.TileType<MetanovaOre>(), 11100, 1.5, () => WorldDefeats.downedAstrageldon);
         }
 
         private void ApplyAstrageldonScaling(ILContext il)

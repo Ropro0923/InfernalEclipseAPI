@@ -42,6 +42,11 @@ namespace InfernalEclipseAPI.Core.World
                     }
                 }
             }
+
+            if (InfernalCrossmod.SOTS.Loaded)
+            {
+                SOTSWorldGenModifications.EmeraldGemChestNoHellstone();
+            }
         }
     }
 
@@ -52,6 +57,38 @@ namespace InfernalEclipseAPI.Core.World
         public static void RunSOTSWorldGenMods(List<GenPass> tasks)
         {
             AddMutantModBarier(tasks);
+        }
+
+        public static void EmeraldGemChestNoHellstone()
+        {
+            for (int i = 0; i < Main.maxChests; i++)
+            {
+                Chest chest = Main.chest[i];
+                if (chest == null)
+                    continue;
+
+                Tile tile = Main.tile[chest.x, chest.y];
+                if (tile == null)
+                    continue;
+
+                if (tile.TileType != GemStructureWorldgenHelper.RuinedChest)
+                    continue;
+
+                for (int slot = 0; slot < chest.item.Length; slot++)
+                {
+                    Item item = chest.item[slot];
+
+                    if (item == null || item.type != ItemID.HellstoneBar)
+                        continue;
+
+                    int replacement = WorldGen.crimson
+                        ? ItemID.CrimtaneBar
+                        : ItemID.DemoniteBar;
+
+                    item.SetDefaults(replacement);
+                    item.stack = 6;
+                }
+            }
         }
 
         private static void AddMutantModBarier(List<GenPass> tasks)

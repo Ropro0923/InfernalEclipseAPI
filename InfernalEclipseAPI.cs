@@ -30,6 +30,7 @@ using InfernalEclipseAPI.Core.Systems;
 using InfernalEclipseAPI.Core.Utils.ConfigSetup;
 using Microsoft.Xna.Framework.Graphics;
 using System.Linq;
+using InfernalEclipseAPI.Content.UI;
 
 namespace InfernalEclipseAPI
 {
@@ -84,6 +85,10 @@ namespace InfernalEclipseAPI
                     On_Player.InInteractionRange += On_Player_InInteractionRange;
                 }
             }
+
+            RagnarokDifficulty difficulty = new();
+            DifficultyModeSystem.Difficulties.Add(difficulty);
+            DifficultyModeSystem.CalculateDifficultyData();
 
             AchievementUpdateHandler = typeof(InfernumMode.Core.GlobalInstances.Players.AchievementPlayer).GetMethod("ExtraUpdateHandler", BindingFlags.Static | BindingFlags.NonPublic);
         }

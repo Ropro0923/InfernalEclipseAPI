@@ -87,6 +87,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             //Major Contributors
             "StarlightCat",
             "Ropro0923",
+            "Pixus",
             "cheesenuggets",
             "Prime",
             "Mr. Puzzles",
@@ -107,7 +108,6 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "konte1m",
             "LeEr206",
             "Pil",
-            "Pixus",
             "Yelmut",
             "Aizen522",
             "Suu",
