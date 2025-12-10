@@ -51,46 +51,48 @@ Items: {
 		使用流体动力来延伸近战武器和其它短距离武器的生效范围，例如鞭子
 		降低15%真近战伤害
 		'''
-	// FrostArtifactHelmet.Tooltip: 15% increased melee and ranged damage
-	// FrostArtifactChestplate.Tooltip: 15% increased melee and ranged critical strike chance
+	FrostArtifactHelmet.Tooltip: 增加15%近战和远程伤害
+	FrostArtifactChestplate.Tooltip: 增加15%近战和远程暴击率
 
 	ElementalBreastplate: {
-		// DisplayName: Elemental Breastplate
-		// Tooltip: TEMP
-		/* TooltipExt:
+		DisplayName: 元素胸甲
+		Tooltip: TEMP
+		TooltipExt:
 			'''
-			Increases melee and summon damage by 10%
-			Increases life regeneration by 4
-			Press '{0}' to teleport to your cursor, dealing 200% of your defense as damage to all enemies in your path
-			Has a 15 second cooldown, but increases melee speed by 40% during the cooldown
-			''' */
+			增加10%近战和召唤伤害
+			增加4点生命恢复速度
+			按下'{0}'键传送至鼠标处，对你路径上的所有敌人造成你防御值的200%点伤害
+			有15秒冷却时间，但在冷却期间会增加40%近战攻速
+			'''
 	}
 }
 
-/* ArmorSetBonus.Earthen:
+ArmorSetBonus.Earthen:
 	'''
-	Melee strikes have a chance to apply a stacking, permanent shred on enemies, making them take additional damage from all attacks
-	Increases attack speed by 10%
-	''' */
-/* TwilightAssassinsCircletText:
+	近战攻击有概率对敌人施加一种可叠加的永久损伤，使敌人在所有攻击中受到额外的伤害
+	增加10%攻击速度
 	'''
-	Increases max sentries by 1
-	Increases minion and melee damage by 7%
-	Increases max void by 50
-	Provides a Holo Eye minion to assist in combat
-	Press '{0}' to make it launch a destabilizing beam that applies 4 levels of destabilized, but only once per enemy
-	Destabilized enemies gain a 5% flat chance to be critically striked
-	Costs 6 void to launch
-	Holo Eye remains active in the inventory when favorited or while worn in vanity slots, but cannot attack
-	''' */
-/* TwilightAssassinsCircletText2:
+TwilightAssassinsCircletText:
 	'''
-	Increases max sentries by 1
-	Increases minion and melee damage by 7%
-	Increases max void by 50
-	Provides a Holo Eye minion to assist in combat
-	Press '{0}' to make it launch a destabilizing beam that applies 4 levels of destabilized, but only once per enemy
-	Destabilized enemies gain a 5% flat chance to be critically striked
-	Costs 6 void to launch
-	Holo Eye remains active in the inventory when favorited or while worn in vanity slots, but cannot attack
-	''' */
+	+1哨兵栏
+	增加7%召唤和近战伤害
+	增加50点最大虚空值
+	获得一只全息之眼协助战斗
+	按下'{0}'键会使其射出一道会施加4级不稳定化的不稳定光束，但每个敌人只会被施加一次
+	有5%的概率对不稳定化的敌人造成暴击
+	这是在正常攻击之后计算的，能使某些攻击双倍暴击
+	发射会消耗6点虚空值
+	全息之眼在被收藏或穿戴至装饰栏中时仍会在物品栏中被激活，但不会攻击
+	'''
+TwilightAssassinsCircletText2:
+	'''
+	+1哨兵栏
+	增加7%召唤和近战伤害
+	增加50点最大虚空值
+	获得一只全息之眼协助战斗
+	按下'{0}'键会使其射出一道会施加4级不稳定化的不稳定光束，但每个敌人只会被施加一次
+	有5%的概率对不稳定化的敌人造成暴击
+	这是在正常攻击之后计算的，能使某些攻击双倍暴击
+	发射会消耗6点虚空值
+	全息之眼在被收藏或穿戴至装饰栏中时仍会在物品栏中被激活，但不会攻击
+	'''
