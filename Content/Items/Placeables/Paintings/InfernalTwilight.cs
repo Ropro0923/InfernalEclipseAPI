@@ -127,6 +127,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Sharktank6",
             "CuddlySnake",
             "Na69754",
+            "Louhii",
 
             //Donors
             "bryce27",
