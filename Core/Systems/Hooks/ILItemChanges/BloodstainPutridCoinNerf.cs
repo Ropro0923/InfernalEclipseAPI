@@ -3,6 +3,7 @@ using System.Reflection;
 using MonoMod.RuntimeDetour;
 using SOTS;
 using SOTS.Items.CritBonus;
+using SOTS.Items.Gems;
 using Terraria.Localization;
 
 namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
@@ -69,7 +70,7 @@ namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
 
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return entity.type == ModContent.ItemType<PutridCoin>() || entity.type == ModContent.ItemType<BloodstainedCoin>();
+            return entity.type == ModContent.ItemType<PutridCoin>() || entity.type == ModContent.ItemType<BloodstainedCoin>() || entity.type == ModContent.ItemType<DiamondRing>() || entity.type == ModContent.ItemType<ChallengerRing>();
         }
         private static void FullTooltipOveride(List<TooltipLine> tooltips, string stealthTooltip)
         {
@@ -99,6 +100,22 @@ namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
             if (item.type == ModContent.ItemType<BloodstainedCoin>())
             {
                 FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.BloodstainedCoin"));
+            }
+            if (item.type == ModContent.ItemType<DiamondRing>())
+            {
+                int previousDefense = SOTSPlayer.ModPlayer(Main.LocalPlayer).previousDefense;
+                FullTooltipOveride(tooltips, $"{Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DiamondRingText") + Language.GetTextValue("Mods.SOTS.DiamondRingText2", Convert.ToString(previousDefense), Convert.ToString((int)(previousDefense * 0.66)))}");
+            }
+            if (item.type == ModContent.ItemType<ChallengerRing>())
+            {
+                foreach (TooltipLine tooltip in tooltips)
+                {
+                    if (tooltip.Text.Contains("Increase damage based on defense, then decreases defense by a third of the damage buff")) // im sorry localizers there was no other way...
+                    {
+                        int previousDefense = SOTSPlayer.ModPlayer(Main.LocalPlayer).previousDefense;
+                        tooltip.Text = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DiamondRingText") + Language.GetTextValue("Mods.SOTS.DiamondRingText2", Convert.ToString(previousDefense), Convert.ToString((int)(previousDefense * 0.66)));
+                    }
+                }
             }
         }
     }

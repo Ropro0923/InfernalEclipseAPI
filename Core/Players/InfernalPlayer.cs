@@ -233,8 +233,8 @@ namespace InfernalEclipseAPI.Core.Players
             {
                 if (Player.IsUnderwater() && NPC.AnyNPCs(InfernalCrossmod.Thorium.Mod.Find<ModNPC>("QueenJellyfish").Type))
                 {
-                    Player.AddBuff(InfernalCrossmod.Thorium.Mod.Find<ModBuff>("Bubbled").Type, 30);
-                    Player.AddBuff(BuffID.Electrified, 30);
+                    Player.AddBuff(InfernalCrossmod.Thorium.Mod.Find<ModBuff>("Bubbled").Type, 60);
+                    Player.AddBuff(BuffID.Electrified, 60);
                 }
             }
         }

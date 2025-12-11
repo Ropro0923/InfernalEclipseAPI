@@ -68,7 +68,7 @@ ItemTooltip: {
 	StarlitForgeExtra: 更令人称奇的是，它甚至可以复制某些物品
 	BladecrestNerf: 一股邪恶的力量正在侵蚀它的部分威能……
 	EclipseFang: "[炼狱蚀光]: 武器增强永久生效"
-	ScytheThrow:右键投掷镰刀，它会以弧线轨迹返回
+	ScytheThrow: 右键投掷镰刀，它会以弧线轨迹返回
 	PhoenixStaff:
 		'''
 		右键喷射火焰流，对敌怪造成神圣之怒减益
@@ -102,6 +102,7 @@ ItemTooltip: {
 		暴击有50%的概率造成10点额外伤害
 		受伤时有75%的概率对你造成中毒debuff
 		'''
+	// DiamondRingText: Increase damage based on defense, then decreases defense by two-thirds of the damage buff
 	DedTo: -献给{0}-
 
 	Dedicated: {
@@ -647,7 +648,6 @@ Items: {
 				星火军刀已完全苏醒，所有能力都被大幅强化
 				武器的最大威能解禁！
 				'''
-			
 		}
 
 		Lore: “即便历经这一切，仍有一人——赞达尔，始终不愿攻击……”
@@ -1217,7 +1217,6 @@ Items: {
 			增加20%最大飞行时间
 			“于火焰与火花之后，若你凝视得足够深远，便能洞悉你的过去和未来”
 			'''
-		#暗影焰减益貌似没法生效
 	}
 
 	InfernalTerraBladeRelic: {
@@ -1772,7 +1771,6 @@ InfernumIntegration: {
 		脑域失序  
 		XP-00 修普诺斯
 		'''
-	#Paradise Parasite ——> Star From A Perfect World 小标题改了，可以考虑不换
 	AvatarOfEmptiness:
 		'''
 		圣境孽生

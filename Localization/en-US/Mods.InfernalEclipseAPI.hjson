@@ -102,6 +102,7 @@ ItemTooltip: {
 		Critical strikes have a 50% chance to deal 10 more damage
 		Receiving damage has a 75% chance to poison you
 		'''
+	DiamondRingText: Increase damage based on defense, then decreases defense by two-thirds of the damage buff
 	DedTo: - Dedicated to {0} -
 
 	Dedicated: {
@@ -1158,7 +1159,7 @@ Items: {
 			'''
 		G5:
 			'''
-			Increase damage based on defense, then decreases defense by a third of the damage buff
+			Increase damage based on defense, then decreases defense by two-thirds of the damage buff
 			Increases damage by {0}%
 			Decreases defense by {1}
 			'''

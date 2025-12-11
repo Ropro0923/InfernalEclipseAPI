@@ -108,14 +108,17 @@ Items: {
 			'''
 	}
 
-	FlightMail: {
-		DisplayName: 飞羽胸甲
-		Tooltip:
-			'''
-			“天空是你的飞行场地”
-			增加5%投掷伤害
-			'''
-	}
+	/* FlightMask.Tooltip:
+		'''
+		2% increased throwing damage
+		5% increased throwing critical strike chance
+		'The sky is your playing field'
+		''' */
+	FlightMail.Tooltip:
+		'''
+		“天空是你的飞行场地”
+		增加5%投掷伤害
+		'''
 
 	BronzeHelmet: {
 		DisplayName: 青铜头盔
