@@ -496,6 +496,7 @@ namespace InfernalEclipseAPI.Core.Players
             }
         }
 
+        private bool oceanBufferModified = false;
         public override void PostUpdateBuffs()
         {
             if (InfernalCrossmod.SOTS.Loaded)
@@ -510,6 +511,28 @@ namespace InfernalEclipseAPI.Core.Players
                 local -= (float)(0.25 * (time / 300f));
             }
 
+            if (InfernalCrossmod.Thorium.Loaded && InfernalConfig.Instance.ThoriumBalanceChangess && !InfernalCrossmod.Hummus.Loaded)
+            {
+                if (ModContent.TryFind<ModBuff>("ThoriumMod", "OceansBufferExhaust", out var buff))
+                {
+                    for (int i = 0; i < Player.buffType.Length; i++)
+                    {
+                        if (Player.buffType[i] == buff.Type && Player.buffTime[i] > 0)
+                        {
+                            if (!oceanBufferModified)
+                            {
+                                Player.buffTime[i] = (int)(Player.buffTime[i] * 2.5f);
+                                oceanBufferModified = true;
+                            }
+                            break; // stop looping once we found the buff
+                        }
+                    }
+                }
+                else
+                {
+                    oceanBufferModified = false; // reset if buff is gone
+                }
+            }
         }
 
         public void ConvertSummonMeleeToMelee(Player player, Item item, ref StatModifier damage)

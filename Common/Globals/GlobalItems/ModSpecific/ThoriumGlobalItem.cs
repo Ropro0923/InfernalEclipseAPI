@@ -3,6 +3,7 @@ using InfernalEclipseAPI.Core.Systems;
 using ThoriumMod;
 using ThoriumMod.Items.ArcaneArmor;
 using ThoriumMod.Items.BossForgottenOne;
+using ThoriumMod.Items.BossThePrimordials.Aqua;
 using ThoriumMod.Items.Bronze;
 using ThoriumMod.Items.Cultist;
 using ThoriumMod.Items.HealerItems;
@@ -172,6 +173,12 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                 if (item.type == ItemType<WhiteDwarfGreaves>())
                 {
                     player.GetDamage(DamageClass.Throwing) -= 0.05f;
+                }
+
+                if (item.type == ItemType<TideTurnerGreaves>())
+                {
+                    player.GetAttackSpeed(DamageClass.Melee) -= 0.2f;
+                    player.GetAttackSpeed(DamageClass.Throwing) -= 0.2f;
                 }
 
                 if (item.type == ItemType<IridescentHelmet>())
