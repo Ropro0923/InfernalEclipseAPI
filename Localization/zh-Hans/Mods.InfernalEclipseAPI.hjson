@@ -102,7 +102,7 @@ ItemTooltip: {
 		暴击有50%的概率造成10点额外伤害
 		受伤时有75%的概率对你造成中毒debuff
 		'''
-	// DiamondRingText: Increase damage based on defense, then decreases defense by two-thirds of the damage buff
+	DiamondRingText: 根据防御增加伤害，然后会降低伤害增益的三分之二防御值
 	DedTo: -献给{0}-
 
 	Dedicated: {
