@@ -39,20 +39,6 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
 
             if (InfernalConfig.Instance.ThoriumBalanceChangess)
             {
-
-                if (item.type == ItemType<FlightMask>())
-                {
-                    item.defense = 3;
-                }
-                if (item.type == ItemType<FlightMail>())
-                {
-                    item.defense = 5;
-                }
-                if (item.type == ItemType<FlightBoots>())
-                {
-                    item.defense = 4;
-                }
-
                 if (item.type == ItemType<ShadeMasterMask>())
                 {
                     item.defense = 10;
@@ -128,9 +114,15 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                     player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) -= 7f;
                 }
 
+                if (item.type == ItemType<FlightMask>())
+                {
+                    player.GetDamage(DamageClass.Throwing) -= 0.03f;
+                    player.GetCritChance(DamageClass.Throwing) -= 1f;
+                }
+
                 if (item.type == ItemType<FlightMail>())
                 {
-                    player.GetDamage(DamageClass.Throwing) -= 0.05f;
+                    player.GetDamage(DamageClass.Throwing) -= 0.07f;
                 }
 
                 if (item.type == ItemType<BronzeHelmet>())
