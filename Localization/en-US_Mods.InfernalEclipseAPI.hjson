@@ -1280,7 +1280,7 @@ Configs: {
 
 		Headers: {
 			BossRushChanges: Boss Rush Toggles
-			BalanceChanges: Mod Balance Changes
+			BalanceChanges: Balance Changes
 			Miscellaneous: Miscellaneous
 			MultiplayerAdjustments: Multiplayer Adjustments
 			Main: Main

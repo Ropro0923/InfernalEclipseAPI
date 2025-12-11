@@ -86,6 +86,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
 
             //Major Contributors
             "StarlightCat",
+            "MajOfMyth",
             "Ropro0923",
             "Pixus",
             "cheesenuggets",
@@ -95,9 +96,11 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Nobody",
             "Peter Fung",
             "Pudd1ng",
+            "Eduarrdo",
 
             //Partners
             "brome",
+            "WitherTaco",
             "Verveine",
 
             //Other
@@ -110,6 +113,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Pil",
             "Yelmut",
             "Aizen522",
+            "De1tA5",
             "Suu",
             "fiend",
             "JuJiao",
@@ -120,12 +124,15 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
 
             //Supporters
             "Lylittle",
-            "PoMin",
             "Sharktank6",
+            "CuddlySnake",
+            "Na69754",
+            "Louhii",
 
             //Donors
             "bryce27",
             "evil81",
+            "Goldsockz2",
             "rosé",
 
             //Special Thanks

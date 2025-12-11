@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using SOTS.Items.CritBonus;
 using Terraria.Localization;
@@ -8,6 +9,26 @@ namespace InfernalEclipseAPI.Content.Items.Accessories.ExoSights
     [ExtendsFromMod("SOTS")]
     public class ExoSightIngredientTooltips : GlobalItem
     {
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+        {
+            int[] bonusCritDamageItems =
+            {
+                ModContent.ItemType<PutridCoin>(),
+                ModContent.ItemType<BloodstainedCoin>(),
+                ModContent.ItemType<PolishedCoin>(),
+                ModContent.ItemType<FocusCrystal>(),
+                ModContent.ItemType<FocusReticle>(),
+                ModContent.ItemType<ExoSights>(),
+            };
+
+            if (bonusCritDamageItems.Contains(equippedItem.type) && bonusCritDamageItems.Contains(incomingItem.type) && InfernalConfig.Instance.SOTSBalanceChanges)
+            {
+                return false;
+            }
+
+            return base.CanAccessoryBeEquippedWith(equippedItem, incomingItem, player);
+        }
+
         public void AddTooltip(List<TooltipLine> tooltips, string stealthTooltip, bool InfernalRedActive = false, bool NoSOTSPinkActive = false)
         {
             Color InfernalRed = Color.Lerp(
