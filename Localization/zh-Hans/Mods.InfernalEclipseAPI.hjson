@@ -22,21 +22,21 @@ UI: {
 }
 
 DifficultyUI: {
-	// Name: Ragnarok
-	/* ShortDescription:
+	Name: 诸神黄昏
+	ShortDescription:
 		'''
-		[c/B32E81:An extreme version of Infernum and the intended difficulty of Infernal Eclipse of Ragnarok.]
-		[c/B32E81:This mode does not work with the For the Worthy seed.]
-		''' */
-	/* ExpandedDescription:
+		[c/B32E81:炼狱模式的极端版本以及作为诸神黄昏：炼狱蚀光的预期难度。]
+		[c/B32E81:该模式无法在For the Worthy种子中运行。]
 		'''
-		[c/B32E81:Sets the world difficulty to Master & enables Infernum mode.]
-		[c/B32E81:After enabling, Master mode cannot be disabled through the Calamity difficulty slider.]
-		[c/B32E81:Enemies & bosses will now have very high base stats and scale more agressively in multiplayer.]
-		[c/FF0055:Can you master the Infernal Eclipse of Ragnarok?]
-		''' */
-	// InfernumText: The Infernal Eclipse has risen...
-	// InfernumText2: Another unworthy challegner has walked away.
+	ExpandedDescription:
+		'''
+		[c/B32E81:将世界难度设置为大师并启用炼狱模式。]
+		[c/B32E81:启用后无法通过灾厄难度滑块禁用大师模式。]
+		[c/B32E81:敌怪和Boss现在将拥有非常高的基础属性，并在多人游戏中的增幅更加危险。]
+		[c/FF0055:你能征服《诸神黄昏：炼狱蚀光》吗？]
+		'''
+	InfernumText: 炼狱蚀日已然升起……
+	InfernumText2: 另一个配不上的挑战者已经离开。
 }
 
 WelcomeMessage: {
@@ -53,7 +53,7 @@ WelcomeMessage: {
 	InfernumForced: 炼狱能量已注入此界……
 	RagnarokBalance: 注意：为确保武器平衡按预期生效，请在 Ragnarok 的模组配置中将“通用武器调整”选项关闭，否则改动会叠加，使武器强度远超预期。
 	RagnarokRework: 注意：检测到你同时启用了 Ragnarok 模组和 Thorium Bosses Reworked。为获得预期的游戏体验，请在 Ragnarok 模组配置中将所有 Boss 选项切换到 瑟银BOSS重置。
-	// GulaVaultMessage: The vault refuses to open. A stronger evil must be defeated first...
+	GulaVaultMessage: 暴食保险库拒绝被打开。你必须先打败一个更为强大的邪恶生物……
 }
 
 ItemTooltip: {
@@ -68,11 +68,7 @@ ItemTooltip: {
 	StarlitForgeExtra: 更令人称奇的是，它甚至可以复制某些物品
 	BladecrestNerf: 一股邪恶的力量正在侵蚀它的部分威能……
 	EclipseFang: "[炼狱蚀光]: 武器增强永久生效"
-	ScytheThrow:
-		'''
-		右键投掷镰刀，它会以弧线轨迹返回
-		投掷镰刀的伤害降低10%
-		'''
+	ScytheThrow:右键投掷镰刀，它会以弧线轨迹返回
 	PhoenixStaff:
 		'''
 		右键喷射火焰流，对敌怪造成神圣之怒减益
@@ -96,16 +92,16 @@ ItemTooltip: {
 		"你没有疯……你真是疯了!"
 		复仇模式专属
 		'''
-	/* BloodstainedCoin:
+	BloodstainedCoin:
 		'''
-		Critical strikes have a 50% chance to deal 10 more damage
-		Receiving damage has a 75% chance to bleed you
-		''' */
-	/* PutridCoin:
+		暴击有50%的概率造成10点额外伤害
+		受伤时有75%的概率对你造成流血debuff
 		'''
-		Critical strikes have a 50% chance to deal 10 more damage
-		Receiving damage has a 75% chance to poison you
-		''' */
+	PutridCoin:
+		'''
+		暴击有50%的概率造成10点额外伤害
+		受伤时有75%的概率对你造成中毒debuff
+		'''
 	DedTo: -献给{0}-
 
 	Dedicated: {
@@ -152,7 +148,7 @@ ItemTooltip: {
 		SerpentsTongue:
 			'''
 			增加15%光辉伤害
-			暴击多造成20%伤害
+			暴击多造成10%伤害
 			敌人有10%的概率掉落双倍战利品
 			如果敌人被暴击伤害杀死，则概率为20%
 			用暗能量增幅一些光辉攻击
@@ -627,7 +623,7 @@ Items: {
 				'''
 			Plantera:
 				'''
-				击败嘉登的机械装置后，它现在会附加破晓减益
+				击败嘉登的机械装置后，它现在会附加幻星感染减益
 				击败丛林守护者以获得更多力量……
 				'''
 			Golem:
@@ -638,14 +634,20 @@ Items: {
 			Cultist:
 				'''
 				击败石巨人后，星辰会自动追踪敌人
+				星辰现在将会分裂
 				击败古代邪教领袖以获得更多力量……
 				'''
 			MoonLord:
 				'''
-				击败拜月教邪教徒后，星辰在命中时爆炸
+				击败拜月教邪教徒后，星辰会在一段时间后爆炸
 				击败古神的邪异残躯以获得更多力量……
 				'''
-			Full: 星火军刀已苏醒，最大威能解禁！
+			Full:
+				'''
+				星火军刀已完全苏醒，所有能力都被大幅强化
+				武器的最大威能解禁！
+				'''
+			
 		}
 
 		Lore: “即便历经这一切，仍有一人——赞达尔，始终不愿攻击……”
@@ -690,7 +692,7 @@ Items: {
 		LorePutrid.DisplayName: 腐蚀之粉
 		LoreSerpent.DisplayName: 亚空骇蟒
 		LoreProvi.DisplayName: 星河
-		LoreMirror.DisplayName: 镜像
+		LoreMirror.DisplayName: 诅咒镜像
 		LoreDylan.DisplayName: 迪伦
 		LoreAbominationn.DisplayName: 憎恶
 		LoreDeviantt.DisplayName: 戴薇安
@@ -1139,7 +1141,7 @@ Items: {
 	}
 
 	RingofTix: {
-		DisplayName: 提克斯秘戒
+		DisplayName: 提克斯灼燃秘戒
 		Tooltip: ""
 		SOTSTooltip: 在被收藏后右键点击会反转当前选中的宝石，会禁用宝石的效果并开启反转后的效果
 		G0: 采矿时会将方块连接在一起，一次最多可破坏50个方块
@@ -1200,6 +1202,8 @@ Items: {
 		NormalTooltip:
 			'''
 			增加18%伤害
+			增加5%箭矢伤害
+			增加10%移动速度
 			+3.5HP/s生命再生和2格最大仆从栏位
 			增加仆从击退
 			+4所有伤害
@@ -1209,7 +1213,11 @@ Items: {
 			在白天时+2 HP/s生命再生
 			在夜晚时增加20点防御
 			在日食时+1HP/s生命再生和10点防御
+			箭矢暴击会用暗影焰短暂灼烧敌怪
+			增加20%最大飞行时间
+			“于火焰与火花之后，若你凝视得足够深远，便能洞悉你的过去和未来”
 			'''
+		#暗影焰减益貌似没法生效
 	}
 
 	InfernalTerraBladeRelic: {
@@ -1764,6 +1772,7 @@ InfernumIntegration: {
 		脑域失序  
 		XP-00 修普诺斯
 		'''
+	#Paradise Parasite ——> Star From A Perfect World 小标题改了，可以考虑不换
 	AvatarOfEmptiness:
 		'''
 		圣境孽生
@@ -1823,13 +1832,13 @@ Buffs: {
 	}
 
 	VoidSickness2: {
-		// DisplayName: Void Sickness
-		// Description: Void damage is being reduced!
+		DisplayName: 虚空病
+		Description: 虚空伤害正在减少！
 	}
 
 	LowGround: {
-		// DisplayName: Low Ground
-		// Description: Your movement has been significantly hindered!
+		DisplayName: 低地
+		Description: 你的移动速度大幅下降！
 	}
 }
 
