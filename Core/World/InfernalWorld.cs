@@ -19,6 +19,7 @@ namespace InfernalEclipseAPI.Core.World
         public static bool yharonSmasher = false;
         public static bool namelessDeveloperDiagloguePlayed = false;
         public static bool craftedWorkshop = false;
+        public static bool RagnarokModeEnabled;
 
         public static void ResetFlags()
         {
@@ -64,6 +65,8 @@ namespace InfernalEclipseAPI.Core.World
                 if (!BossHealthBarManager.BossExclusionList.Contains(advisorType))
                     BossHealthBarManager.BossExclusionList.Add(advisorType);
             }
+
+            RagnarokModeEnabled = false;
         }
 
         public override void OnWorldUnload()
@@ -83,6 +86,7 @@ namespace InfernalEclipseAPI.Core.World
             tag["yharonSmasher"] = yharonSmasher;
             tag["namelessDeveloperDiagloguePlayed"] = namelessDeveloperDiagloguePlayed;
             tag["craftedWorkshop"] = craftedWorkshop;
+            tag["RagnarokModeEnabled"] = RagnarokModeEnabled;
         }
 
         public override void LoadWorldData(TagCompound tag)
@@ -97,6 +101,11 @@ namespace InfernalEclipseAPI.Core.World
             GetData(ref yharonSmasher, "yharonSmasher", tag);
             GetData(ref namelessDeveloperDiagloguePlayed, "namelessDeveloperDiagloguePlayed", tag);
             GetData(ref craftedWorkshop, "craftedWorkshop", tag);
+
+            if (tag.TryGet("RagnarokModeEnabled", out bool value))
+                RagnarokModeEnabled = value;
+            else
+                RagnarokModeEnabled = false;
         }
 
         public static void GetData(ref bool baseVar, string path, TagCompound tag)

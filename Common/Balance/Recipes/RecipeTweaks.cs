@@ -24,6 +24,7 @@ using InfernalEclipseAPI.Content.Items.Weapons.Magic.ChaosBlaster;
 using InfernalEclipseAPI.Content.Items.Weapons.Nameless.NebulaGigabeam;
 using CalamityMod.Items.Potions;
 using System.Security.Policy;
+using ThoriumMod.Items.MeleeItems;
 
 namespace InfernalEclipseAPI.Common.Balance.Recipes
 {
@@ -73,6 +74,26 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
 
                     if (recipe.HasResult(ItemID.HellstoneBar))
                         recipe.DecraftConditions.Add(Condition.DownedEowOrBoc);
+
+                    if (recipe.HasResult(ItemID.InactiveStoneBlock) || recipe.HasResult(ItemID.ActiveStoneBlock))
+                        recipe.DecraftConditions.Add(Condition.DownedSkeletron);
+
+                    int[] phaseblades =
+                    {
+                        ItemID.BluePhaseblade,
+                        ItemID.GreenPhaseblade,
+                        ItemID.OrangePhaseblade,
+                        ItemID.PurplePhaseblade,
+                        ItemID.RedPhaseblade,
+                        ItemID.WhitePhaseblade,
+                        ItemID.YellowPhaseblade
+                    };
+
+                    foreach (int phaseblade in phaseblades)
+                    {
+                        if (recipe.HasResult(phaseblade))
+                            recipe.DecraftConditions.Add(Condition.DownedEowOrBoc);
+                    }
                 }
 
                 //Calamity
@@ -768,6 +789,9 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                                 }
                             }
                         }
+
+                        if (recipe.HasResult(sots.Find<ModItem>("DigitalDisplay")))
+                            recipe.DisableDecraft();
 
                         if (recipe.HasResult(sots.Find<ModItem>("PurpleJellyfishStaff")))
                         {

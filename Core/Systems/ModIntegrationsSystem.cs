@@ -390,9 +390,32 @@ namespace InfernalEclipseAPI.Core.Systems
     {
         public static void AddMiniBosses()
         {
+            void newMiniBoss(int npc)
+            {
+                EventSceneBase<MiniBossScene>.Instance.NPCs.Add(npc);
+            }
+
             if (InfernalCrossmod.SOTS.Loaded)
             {
+                int findSOTSNPC(string name)
+                {
+                    return InfernalCrossmod.SOTS.Mod.Find<ModNPC>(name).Type;
+                }
+
                 EventSceneBase<MiniBossScene>.Instance.NPCs.Add(InfernalCrossmod.SOTS.Mod.Find<ModNPC>("PutridPinky1").Type);
+                newMiniBoss(findSOTSNPC("ChaosConstruct"));
+                newMiniBoss(findSOTSNPC("EarthenConstruct"));
+                newMiniBoss(findSOTSNPC("EarthenSpirit"));
+                newMiniBoss(findSOTSNPC("EvilConstruct"));
+                newMiniBoss(findSOTSNPC("EvilSpirit"));
+                newMiniBoss(findSOTSNPC("InfernoConstruct"));
+                newMiniBoss(findSOTSNPC("InfernoSpirit"));
+                newMiniBoss(findSOTSNPC("NatureConstruct"));
+                newMiniBoss(findSOTSNPC("NatureSpirit"));
+                newMiniBoss(findSOTSNPC("PermafrostConstruct"));
+                newMiniBoss(findSOTSNPC("PermafrostSpirit"));
+                newMiniBoss(findSOTSNPC("TidalConstruct"));
+                newMiniBoss(findSOTSNPC("TidalSpirit"));
             }
         }
     }

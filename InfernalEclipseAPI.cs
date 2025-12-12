@@ -31,6 +31,8 @@ using InfernalEclipseAPI.Core.Utils.ConfigSetup;
 using Microsoft.Xna.Framework.Graphics;
 using System.Linq;
 using InfernalEclipseAPI.Content.UI;
+using Terraria.Chat;
+using Terraria.Localization;
 
 namespace InfernalEclipseAPI
 {
@@ -38,7 +40,8 @@ namespace InfernalEclipseAPI
     {
         SyncDownedBosses = 1,
         TriggerScytheCharge = 2,
-        ThoriumEmpowerment = 3
+        ThoriumEmpowerment = 3,
+        ToggleRagnarok = 4
     }
     public class InfernalEclipseAPI : Mod
 	{
@@ -273,6 +276,23 @@ namespace InfernalEclipseAPI
                                     }
                                     break;
                                 }
+                        }
+                        break;
+                    }
+
+                case InfernalEclipseMessageType.ToggleRagnarok:
+                    {
+                        Player player = reader.ReadByte() > -1 && reader.ReadByte() < Main.maxPlayers && Main.player[reader.ReadByte()].active && !Main.player[reader.ReadByte()].dead && !Main.player[reader.ReadByte()].ghost ? Main.player[reader.ReadByte()] : null;
+
+                        if (Main.netMode == NetmodeID.Server)
+                        {
+                            bool changed = false;
+                            if (Main.GameMode != GameModeID.Master)
+                                changed = true;
+                            Main.GameMode = GameModeID.Master;
+                            if (changed)
+                                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.InfernalEclipseAPI.DifficultyUI.MasterToggle")), new Color(175, 75, 255));
+                            NetMessage.SendData(MessageID.WorldData);
                         }
                         break;
                     }

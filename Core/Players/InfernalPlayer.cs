@@ -131,6 +131,8 @@ namespace InfernalEclipseAPI.Core.Players
         public int CloverCharmCooldown;
         public bool workshopHasBeenOwned;
         public bool batPoop;
+        public bool bloodstainedCoin;
+        public bool putridCoin;
 
         public override void Initialize()
         {
@@ -169,7 +171,7 @@ namespace InfernalEclipseAPI.Core.Players
                 batCoinTimer++;
                 if (batCoinTimer == 60 * 5)
                 {
-                    int poopCoin = Player.QuickSpawnItem(Player.GetSource_Misc("IEoR_PoopCoin"), ItemID.GoldCoin, Main.rand.Next(1, 6));
+                    Player.QuickSpawnItem(Player.GetSource_Misc("IEoR_PoopCoin"), ItemID.GoldCoin, Main.rand.Next(1, 6));
                     batCoinTimer = 0;
                 }
             }
@@ -197,6 +199,8 @@ namespace InfernalEclipseAPI.Core.Players
             soltanBullying = false;
             HarvestMoonBuff = false;
             batPoop = false;
+            bloodstainedCoin = false;
+            putridCoin = false;
         }
 
         public override void PreUpdate()
@@ -309,28 +313,10 @@ namespace InfernalEclipseAPI.Core.Players
                 ref StatModifier summon = ref Player.GetDamage(DamageClass.Summon);
                 summon -= (float)(0.1 * Player.slotsMinions);
             }
-
-            if (batPoop)
-            {
-
-            }
         }
 
         public override void PostUpdateEquips()
         {
-            /*
-            //Why why why why SOTS
-            bool nearRealAlchemyTable = IsNearTile(TileID.AlchemyTable, AdjRadius);
-
-            if (!nearRealAlchemyTable)
-            {
-                if (Player.adjTile[TileID.AlchemyTable]) // 355
-                    Player.adjTile[TileID.AlchemyTable] = false;
-
-                if (Player.alchemyTable)
-                    Player.alchemyTable = false;
-            }
-            */
         }
 
         public void ConvertSummonMeleeToMelee(Player player, Item item, ref StatModifier damage)
@@ -388,23 +374,28 @@ namespace InfernalEclipseAPI.Core.Players
             }
         }
 
-        private bool IsNearTile(ushort tileType, int radius)
+        public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
         {
-            int px = (int)(Player.Center.X / 16f);
-            int py = (int)(Player.Center.Y / 16f);
+            TryCoinDebuff();
+        }
 
-            for (int x = px - radius; x <= px + radius; x++)
+        public override void OnHitByProjectile(Projectile proj, Player.HurtInfo hurtInfo)
+        {
+            TryCoinDebuff();
+        }
+
+        private void TryCoinDebuff()
+        {
+            if (bloodstainedCoin || putridCoin)
             {
-                if (x < 0 || x >= Main.maxTilesX) continue;
-                for (int y = py - radius; y <= py + radius; y++)
+                if (Main.rand.Next(4) != 0)
                 {
-                    if (y < 0 || y >= Main.maxTilesY) continue;
-                    Tile t = Main.tile[x, y];
-                    if (t != null && t.HasTile && t.TileType == tileType)
-                        return true;
+                    if (putridCoin)
+                        Player.AddBuff(BuffID.Poisoned, 1020, false);
+                    if (bloodstainedCoin)
+                        Player.AddBuff(BuffID.Bleeding, 1020, false);
                 }
             }
-            return false;
         }
     }
 
