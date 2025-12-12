@@ -37,6 +37,7 @@ DifficultyUI: {
 		'''
 	InfernumText: 炼狱蚀日已然升起……
 	InfernumText2: 另一个配不上的挑战者已经离开。
+	// MasterToggle: Master mode is now enabled!
 }
 
 WelcomeMessage: {

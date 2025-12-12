@@ -25,8 +25,6 @@ using InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre;
 using InfernalEclipseAPI.Core.Systems;
 using CalamityMod.Items.Potions;
 using InfernalEclipseAPI.Content.Items.Materials;
-using System.Security.Policy;
-using ThoriumMod.Items.MeleeItems;
 
 namespace InfernalEclipseAPI.Common.Balance.Recipes
 {

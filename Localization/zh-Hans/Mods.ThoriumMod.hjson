@@ -396,6 +396,16 @@ Items: {
 			'''
 	}
 
+	TideTurnerGreaves: {
+		// DisplayName: Tide Turner's Depth-Walkers
+		/* Tooltip:
+			'''
+			10% increased melee & throwing damage
+			20% increased melee knockback & throwing velocity
+			30% increased movement speed
+			''' */
+	}
+
 	TerrariumHelmet: {
 		DisplayName: 元素之灵头盔
 		Tooltip:
