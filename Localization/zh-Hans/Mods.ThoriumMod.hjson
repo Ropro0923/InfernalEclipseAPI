@@ -397,13 +397,13 @@ Items: {
 	}
 
 	TideTurnerGreaves: {
-		// DisplayName: Tide Turner's Depth-Walkers
-		/* Tooltip:
+		DisplayName: 洪流逆潮者足具
+		Tooltip:
 			'''
-			10% increased melee & throwing damage
-			20% increased melee knockback & throwing velocity
-			30% increased movement speed
-			''' */
+			增加10%近战和投掷伤害
+			增加20%近战击退和投掷弹幕速度
+			增加30%移动速度
+			'''
 	}
 
 	TerrariumHelmet: {
