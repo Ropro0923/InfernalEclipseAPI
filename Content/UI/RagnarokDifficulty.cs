@@ -1,11 +1,14 @@
 ﻿using CalamityMod.Systems;
 using CalamityMod.World;
+using InfernalEclipseAPI.Core.Netcode;
+using InfernalEclipseAPI.Core.World;
 using InfernumMode.Core.GlobalInstances.Systems;
 using InfernumMode.Core.Netcode;
 using InfernumMode.Core.Netcode.Packets;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using Terraria.Chat;
 using Terraria.Localization;
 using static CalamityMod.Systems.DifficultyModeSystem;
 
@@ -15,16 +18,46 @@ namespace InfernalEclipseAPI.Content.UI
     {
         public override bool Enabled
         {
-            get => WorldSaveSystem.InfernumModeEnabled && Main.masterMode;
+            get => InfernalWorld.RagnarokModeEnabled && WorldSaveSystem.InfernumModeEnabled;
             set
             {
+                if (Enabled == value)
+                    return;
+
                 if (value)
                 {
+                    InfernalWorld.RagnarokModeEnabled = true;
+
+                    WorldSaveSystem.InfernumModeEnabled = true;
                     CalamityWorld.revenge = true;
-                    Main.GameMode = GameModeID.Master;
+
+                    if (Main.netMode == NetmodeID.SinglePlayer)
+                    {
+                        if (Main.GameMode != GameModeID.Master)
+                        {
+                            Main.GameMode = GameModeID.Master;
+
+                            Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.DifficultyUI.MasterToggle"), new Color(175, 75, 255));
+                        }
+                    }
+                    else
+                    {
+                        var netMessage = InfernalEclipseAPI.Instance.GetPacket();
+                        netMessage.Write((byte)InfernalEclipseMessageType.ToggleRagnarok);
+                        netMessage.Write((byte)Main.LocalPlayer.whoAmI);
+                        netMessage.Send();
+                    }
                 }
+                else
+                {
+                    InfernalWorld.RagnarokModeEnabled = false;
+                }
+
                 if (Main.netMode != NetmodeID.SinglePlayer)
+                {
+                    PacketManager.SendPacket<RagnarokModeActivityPacket>();
                     PacketManager.SendPacket<InfernumModeActivityPacket>();
+                }
             }
         }
 
@@ -51,7 +84,7 @@ namespace InfernalEclipseAPI.Content.UI
             DeactivationTextKey = "Mods.InfernalEclipseAPI.DifficultyUI.InfernumText2";
 
             ActivationSound = new("InfernalEclipseAPI/Assets/Sounds/NamelessDeityRageFail");
-            ChatTextColor = Color.Lerp(Color.White, new Color(255, 80, 0), (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 2.0) * 0.5 + 0.5));
+            ChatTextColor = new Color(196, 62, 0);
         }
 
         public override int FavoredDifficultyAtTier(int tier)

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+using InfernalEclipseAPI.Core.Players;
 using MonoMod.RuntimeDetour;
 using SOTS;
 using SOTS.Items.CritBonus;
@@ -27,7 +28,7 @@ namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
             bloodstainHook = new Hook(bloodOrig, BloodstainUpdateAccessory);
 
             Type putridCoin = sots.Code.GetType("SOTS.Items.CritBonus.PutridCoin");
-            MethodInfo putridOrig = bloodstainCoin.GetMethod("UpdateAccessory", BindingFlags.Public | BindingFlags.Instance);
+            MethodInfo putridOrig = putridCoin.GetMethod("UpdateAccessory", BindingFlags.Public | BindingFlags.Instance);
             putridHook = new Hook(putridOrig, PutridUpdateAccessory);
         }
 
@@ -43,19 +44,21 @@ namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
         private static void BloodstainUpdateAccessory(Action<ModItem, Player, bool> orig, ModItem self, Player player, bool hideVisual)
         {
             SOTSPlayer sotsPlayer = SOTSPlayer.ModPlayer(player);
+            InfernalPlayer infernalPlayer = player.GetModPlayer<InfernalPlayer>();
+
+            infernalPlayer.bloodstainedCoin = true;
             if (Terraria.Utils.NextBool(Main.rand, 2))
                 sotsPlayer.CritBonusDamage += 10;
-            if (Main.rand.NextFloat() < 0.75f && sotsPlayer.onhit != 1)
-                player.AddBuff(BuffID.Bleeding, 1020, false);
         }
 
         private static void PutridUpdateAccessory(Action<ModItem, Player, bool> orig, ModItem self, Player player, bool hideVisual)
         {
             SOTSPlayer sotsPlayer = SOTSPlayer.ModPlayer(player);
+            InfernalPlayer infernalPlayer = player.GetModPlayer<InfernalPlayer>();
+
+            infernalPlayer.putridCoin = true;
             if (Terraria.Utils.NextBool(Main.rand, 2))
                 sotsPlayer.CritBonusDamage += 10;
-            if (Main.rand.NextFloat() < 0.75f && sotsPlayer.onhit != 1)
-                player.AddBuff(BuffID.Poisoned, 1020, false);
         }
     }
 

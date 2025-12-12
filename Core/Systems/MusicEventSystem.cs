@@ -4,7 +4,7 @@ using System.Threading;
 using CalamityMod;
 using CalamityMod.Events;
 using Terraria.ModLoader.IO;
-using InfernalEclipseAPI.Common;
+using InfernalEclipseAPI.Core.Netcode;
 
 namespace InfernalEclipseAPI.Core.Systems
 {

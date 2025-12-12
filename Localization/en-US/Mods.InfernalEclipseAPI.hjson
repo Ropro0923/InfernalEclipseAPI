@@ -37,6 +37,7 @@ DifficultyUI: {
 		'''
 	InfernumText: The Infernal Eclipse has risen...
 	InfernumText2: Another unworthy challegner has walked away.
+	MasterToggle: Master mode is now enabled!
 }
 
 WelcomeMessage: {

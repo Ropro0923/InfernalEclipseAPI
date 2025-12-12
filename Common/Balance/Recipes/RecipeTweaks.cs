@@ -25,6 +25,8 @@ using InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre;
 using InfernalEclipseAPI.Core.Systems;
 using CalamityMod.Items.Potions;
 using InfernalEclipseAPI.Content.Items.Materials;
+using System.Security.Policy;
+using ThoriumMod.Items.MeleeItems;
 
 namespace InfernalEclipseAPI.Common.Balance.Recipes
 {
@@ -75,6 +77,26 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
 
                     if (recipe.HasResult(ItemID.HellstoneBar))
                         recipe.DecraftConditions.Add(Condition.DownedEowOrBoc);
+
+                    if (recipe.HasResult(ItemID.InactiveStoneBlock) || recipe.HasResult(ItemID.ActiveStoneBlock))
+                        recipe.DecraftConditions.Add(Condition.DownedSkeletron);
+
+                    int[] phaseblades =
+                    {
+                        ItemID.BluePhaseblade,
+                        ItemID.GreenPhaseblade,
+                        ItemID.OrangePhaseblade,
+                        ItemID.PurplePhaseblade,
+                        ItemID.RedPhaseblade,
+                        ItemID.WhitePhaseblade,
+                        ItemID.YellowPhaseblade
+                    };
+
+                    foreach (int phaseblade in phaseblades)
+                    {
+                        if (recipe.HasResult(phaseblade))
+                            recipe.DecraftConditions.Add(Condition.DownedEowOrBoc);
+                    }
                 }
                 #endregion
 
@@ -785,6 +807,9 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             }
                         }
 
+                        if (recipe.HasResult(sots.Find<ModItem>("DigitalDisplay")))
+                            recipe.DisableDecraft();
+                            
                         if (recipe.HasResult(sots.Find<ModItem>("NightmarePotion")))
                         {
                             recipe.DecraftConditions.Add(Condition.Hardmode);

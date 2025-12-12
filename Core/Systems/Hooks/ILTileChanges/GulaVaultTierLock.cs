@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using CalamityMod;
 using Terraria.Localization;
 
-namespace InfernalEclipseAPI.Core.Systems.Hooks
+namespace InfernalEclipseAPI.Core.Systems.Hooks.ILTileChanges
 {
     [JITWhenModsEnabled(InfernalCrossmod.SOTS.Name)]
     [ExtendsFromMod(InfernalCrossmod.SOTS.Name)]
