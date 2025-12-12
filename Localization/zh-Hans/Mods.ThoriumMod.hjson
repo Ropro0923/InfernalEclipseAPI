@@ -64,7 +64,7 @@ Items: {
 	}
 
 	CrystalHoney: {
-		DisplayName: Crystal Honey
+		DisplayName: 蜂蜜水晶
 		Tooltip:
 			'''
 			“蜂蜜的奇怪特性不容易被提取”
@@ -87,7 +87,7 @@ Items: {
 	}
 
 	DemonTongue: {
-		DisplayName: Demon Tongue
+		DisplayName: 恶魔之舌
 		Tooltip:
 			'''
 			用暗能量增幅一些光辉攻击
@@ -108,12 +108,12 @@ Items: {
 			'''
 	}
 
-	/* FlightMask.Tooltip:
+	FlightMask.Tooltip:
 		'''
-		2% increased throwing damage
-		5% increased throwing critical strike chance
-		'The sky is your playing field'
-		''' */
+		增加2%投掷伤害
+		增加5%投掷暴击率
+		“天空是你的飞行场地”
+		'''
 	FlightMail.Tooltip:
 		'''
 		“天空是你的飞行场地”
