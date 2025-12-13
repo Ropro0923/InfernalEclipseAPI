@@ -43,7 +43,8 @@ namespace InfernalEclipseAPI
         SyncDownedBosses = 1,
         TriggerScytheCharge = 2,
         ThoriumEmpowerment = 3,
-        ToggleRagnarok = 4
+        ToggleRagnarok = 4,
+        SyncRagnarokState = 5
     }
     public class InfernalEclipseAPI : Mod
 	{
@@ -308,6 +309,16 @@ namespace InfernalEclipseAPI
                             if (changed)
                                 ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.InfernalEclipseAPI.DifficultyUI.MasterToggle")), new Color(175, 75, 255));
 
+                            NetMessage.SendData(MessageID.WorldData);
+                        }
+                        break;
+                    }
+
+                case InfernalEclipseMessageType.SyncRagnarokState:
+                    {
+                        if (Main.netMode == NetmodeID.Server)
+                        {
+                            InfernalWorld.RagnarokModeEnabled = reader.ReadBoolean();
                             NetMessage.SendData(MessageID.WorldData);
                         }
                         break;

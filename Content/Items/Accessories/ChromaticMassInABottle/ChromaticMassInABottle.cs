@@ -7,13 +7,15 @@ using CalamityMod;
 
 namespace InfernalEclipseAPI.Content.Items.Accessories.ChromaticMassInABottle
 {
-    internal class ChromaticMassInABottle : ModItem
+    public class ChromaticMassInABottle : ModItem
     {
         public override void SetStaticDefaults()
         {
             Main.RegisterItemAnimation(Type, new DrawAnimationVertical(6, 5));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
+
         public override void SetDefaults()
         {
             Item.width = 16;

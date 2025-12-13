@@ -8,7 +8,6 @@ using InfernumMode.Core.Netcode.Packets;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using Terraria.Chat;
 using Terraria.GameContent.Creative;
 using Terraria.Localization;
 using static CalamityMod.Systems.DifficultyModeSystem;
@@ -20,16 +19,13 @@ namespace InfernalEclipseAPI.Content.UI
     {
         public override bool Enabled
         {
-            get => InfernalWorld.RagnarokModeEnabled && WorldSaveSystem.InfernumModeEnabled;
+            get => InfernalWorld.RagnarokModeEnabled;
             set
             {
-                if (Enabled == value)
-                    return;
+                InfernalWorld.RagnarokModeEnabled = value;
 
                 if (value)
                 {
-                    InfernalWorld.RagnarokModeEnabled = true;
-
                     WorldSaveSystem.InfernumModeEnabled = true;
                     CalamityWorld.revenge = true;
 
@@ -56,15 +52,17 @@ namespace InfernalEclipseAPI.Content.UI
                         netMessage.Send();
                     }
                 }
-                else
-                {
-                    InfernalWorld.RagnarokModeEnabled = false;
-                }
 
                 if (Main.netMode != NetmodeID.SinglePlayer)
                 {
-                    PacketManager.SendPacket<RagnarokModeActivityPacket>();
+                    var netMessage = InfernalEclipseAPI.Instance.GetPacket();
+                    netMessage.Write((byte)InfernalEclipseMessageType.SyncRagnarokState);
+                    netMessage.Write(InfernalWorld.RagnarokModeEnabled);
+                    netMessage.Send();
+
                     PacketManager.SendPacket<InfernumModeActivityPacket>();
+
+                    NetMessage.SendData(MessageID.WorldData); //extra safety
                 }
             }
         }

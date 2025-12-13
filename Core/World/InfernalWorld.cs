@@ -33,10 +33,14 @@ namespace InfernalEclipseAPI.Core.World
             yharonSmasher=false;
             namelessDeveloperDiagloguePlayed = false;
             craftedWorkshop = false;
+            RagnarokModeEnabled = false;
         }
 
         public override void PreUpdateWorld()
         {
+            if (RagnarokModeEnabled)
+                WorldSaveSystem.InfernumModeEnabled = true;
+
             if (SubworldLibrary.SubworldSystem.AnyActive())
             {
                 if (InfernalCrossmod.SOTS.Loaded) 
@@ -65,8 +69,6 @@ namespace InfernalEclipseAPI.Core.World
                 if (!BossHealthBarManager.BossExclusionList.Contains(advisorType))
                     BossHealthBarManager.BossExclusionList.Add(advisorType);
             }
-
-            RagnarokModeEnabled = false;
         }
 
         public override void OnWorldUnload()
@@ -125,6 +127,7 @@ namespace InfernalEclipseAPI.Core.World
             writer.Write(yharonSmasher);
             writer.Write(namelessDeveloperDiagloguePlayed);
             writer.Write(craftedWorkshop);
+            writer.Write(RagnarokModeEnabled);
         }
 
         public override void NetReceive(BinaryReader reader)
@@ -139,6 +142,7 @@ namespace InfernalEclipseAPI.Core.World
             yharonDischarge = reader.ReadBoolean();
             namelessDeveloperDiagloguePlayed = reader.ReadBoolean();
             craftedWorkshop = reader.ReadBoolean();
+            RagnarokModeEnabled = reader.ReadBoolean();
         }
     }
 }

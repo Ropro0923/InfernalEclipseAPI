@@ -598,7 +598,8 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                                     GetItem(thorium, "Omniwrench"),
                                     GetItem(thorium, "StellarSystem"),
                                     GetItem(thorium, "Violin"),
-                                    GetItem(thorium, "WindChimes")
+                                    GetItem(thorium, "WindChimes"),
+                                    GetItem(thorium, "LeechingSheath")
                                 };
 
                                 if (recipe.HasIngredient(ItemID.DynastyWood) && recipe.HasTile(TileID.MythrilAnvil))

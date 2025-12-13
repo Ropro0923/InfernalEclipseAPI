@@ -21,6 +21,7 @@ namespace InfernalEclipseAPI.Content.Items.Accessories.ExoSights
         {
             // Register vertical animation: 10 frames, 5 ticks per frame (adjust as desired)
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 10));
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()
