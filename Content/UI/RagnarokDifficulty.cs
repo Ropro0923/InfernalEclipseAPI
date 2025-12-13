@@ -9,8 +9,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.Chat;
+using Terraria.GameContent.Creative;
 using Terraria.Localization;
 using static CalamityMod.Systems.DifficultyModeSystem;
+using static Terraria.GameContent.Creative.CreativePowers;
 
 namespace InfernalEclipseAPI.Content.UI
 {
@@ -33,7 +35,13 @@ namespace InfernalEclipseAPI.Content.UI
 
                     if (Main.netMode == NetmodeID.SinglePlayer)
                     {
-                        if (Main.GameMode != GameModeID.Master)
+                        if (Main.GameModeInfo.IsJourneyMode)
+                        {
+                            float journeyDiff = 1f;
+                            var slider = CreativePowerManager.Instance.GetPower<DifficultySliderPower>();
+                            typeof(DifficultySliderPower).GetMethod("SetValueKeyboardForced", LumUtils.UniversalBindingFlags).Invoke(slider, [journeyDiff]);
+                        }
+                        else if (Main.GameMode != GameModeID.Master)
                         {
                             Main.GameMode = GameModeID.Master;
 
