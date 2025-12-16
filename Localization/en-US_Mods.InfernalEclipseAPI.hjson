@@ -107,6 +107,13 @@ ItemTooltip: {
 		Critical strikes have a 50% chance to deal 10 more damage
 		Receiving damage has a 75% chance to poison you
 		'''
+	SubspaceLocket:
+		'''
+		Summons a Subspace Servant to assist in combat
+		Uses the item in your last inventory slot for you
+		Decreases damage by 50% multiplicatively
+		Increases max void by 50, but reduces healing received from potions by 40
+		'''
 
 	MergedCraftingTreeTooltip: {
 		Gilded: Effects of the Gilded Blade Wings

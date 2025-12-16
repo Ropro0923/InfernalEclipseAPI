@@ -3869,7 +3869,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
             }
             #endregion
 
-            #region Unofficial Calamity Bard & Healler
+            #region Unofficial Calamity Bard & Healer
             if (ModLoader.TryGetMod("CalamityBardHealer", out Mod calBardHeal) && (ModContent.GetInstance<InfernalConfig>().ThoriumBalanceChangess || ModContent.GetInstance<InfernalConfig>().CalamityBalanceChanges))
             {
                 if (UnsafeGetItem(calBardHeal, "InfestedCastanet", item))
@@ -3999,6 +3999,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 if (GetItem(calBardHeal, "DeathAdder", item))
                 {
                     item.damage = 180;
+                }
+
+                if (GetItem(calBardHeal, "IrradiatedKusarigama", item))
+                {
+                    item.damage = 289;
                 }
 
                 //Purgatorium Pandemonium
