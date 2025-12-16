@@ -105,26 +105,26 @@ ItemTooltip: {
 		'''
 	/* SubspaceLocket:
 		'''
-		Uses the item in your last inventory slot for you
 		Summons a Subspace Servant to assist in combat
+		Uses the item in your last inventory slot for you
 		Decreases damage by 50% multiplicatively
 		Increases max void by 50, but reduces healing received from potions by 40
 		''' */
 	DiamondRingText: 根据防御增加伤害，然后会降低伤害增益的三分之二防御值
-
 	DedTo: -献给{0}-
-		Akira: Akira
+
 	Dedicated: {
+		// Akira: Akira
 		WH: WardrobeHummus
-		Tyr: Tyr
 		Advantaje: Advantaje
-		bryce: bryce27
+		Tyr: Tyr
 		Soltan: Soltan
+		bryce: bryce27
 		eviil81: evil81
 		rose: rosé
 		Jill: JillyFish
-		Mae: ma3allim
 		Eduarrdo: Eduarrdo
+		Mae: ma3allim
 		Yob: Yob
 		Pudding: Pudd1ng
 		Ropro: Ropro0923

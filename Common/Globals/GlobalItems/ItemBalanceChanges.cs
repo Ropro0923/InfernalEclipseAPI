@@ -929,6 +929,14 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 }
             }
 
+            if (ModLoader.TryGetMod("CalValEX", out Mod calVal))
+            {
+                if (UnsafeGetItem(calVal, "ScryllianWings", item))
+                {
+                    ArmorIDs.Wing.Sets.Stats[item.wingSlot] = new Terraria.DataStructures.WingStats(25);
+                }
+            }
+
             #region Thorium
             if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
             {

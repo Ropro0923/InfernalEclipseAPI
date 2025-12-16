@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using Terraria.Localization;
 using SOTS.Buffs.MinionBuffs;
 using SOTS.FakePlayer;
+using Terraria;
 
 
 
@@ -50,6 +51,7 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                 {
                     ref StatModifier local = ref player.GetDamage(DamageClass.Generic);
                     local *= 0.675f;
+                    player.GetDamage<TrueMeleeDamageClass>() -= 0.15f;
                 }
 
                 if (InfernalCrossmod.SOTSBardHealer.Loaded)
@@ -203,10 +205,17 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
 
         public override void PostUpdate()
         {
-            if (FakeModPlayer.ModPlayer(Player).servantActive == true || Player.HasBuff<TesseractBuff>())
+            if (FakeModPlayer.ModPlayer(Player).servantActive == true)
             {
                 Player.Calamity().rogueStealthMax = 0;
                 Player.Calamity().wearingRogueArmor = false;
+            }
+
+            if (Player.HasBuff<TesseractBuff>())
+            {
+                Player.Calamity().rogueStealthMax = 0;
+                Player.Calamity().wearingRogueArmor = false;
+                Player.GetDamage<TrueMeleeDamageClass>() -= 0.15f;
             }
         }
     }
