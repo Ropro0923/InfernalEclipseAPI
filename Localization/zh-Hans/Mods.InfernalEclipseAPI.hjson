@@ -103,18 +103,18 @@ ItemTooltip: {
 		受伤时有75%的概率对你造成中毒debuff
 		暴击有50%的概率造成10点额外伤害
 		'''
-	/* SubspaceLocket:
+	SubspaceLocket:
 		'''
-		Summons a Subspace Servant to assist in combat
-		Uses the item in your last inventory slot for you
-		Decreases damage by 50% multiplicatively
-		Increases max void by 50, but reduces healing received from potions by 40
-		''' */
+		召唤一只亚空之仆协助战斗
+		亚空之仆会为你使用最后一格物品栏的物品
+		会成倍降低50%伤害
+		增加50点最大虚空值，但会降低40点从药水治疗的生命值
+		'''
 	DiamondRingText: 根据防御增加伤害，然后会降低伤害增益的三分之二防御值
 	DedTo: -献给{0}-
 
 	Dedicated: {
-		// Akira: Akira
+		Akira: Akira
 		WH: WardrobeHummus
 		Advantaje: Advantaje
 		Tyr: Tyr

@@ -35,7 +35,7 @@ NPCs.CorpseBloom.DisplayName: 腐尸之花
 
 Items: {
 	Sharanga.DisplayName: 考丹达
-	// Dreamcatcher.DisplayName: Dream Talisman
+	Dreamcatcher.DisplayName: 梦境护符
 	VigorPotion.Tooltip: 获得25次冲刺的能力
 	HarvestersScythe.Tooltip:
 		'''
