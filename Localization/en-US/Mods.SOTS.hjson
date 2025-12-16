@@ -36,6 +36,7 @@ NPCs.CorpseBloom.DisplayName: Rotbloom
 
 Items: {
 	Sharanga.DisplayName: Kodanda
+	Dreamcatcher.DisplayName: Dream Talisman
 	VigorPotion.Tooltip: Grants the ability to dash 25 times
 	HarvestersScythe.Tooltip:
 		'''

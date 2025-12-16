@@ -1,23 +1,20 @@
 ﻿using CalamityMod;
-using CalamityMod.Items.Weapons.Melee;
 using InfernalEclipseAPI.Core.Systems;
 using SOTS;
 using SOTS.Items.AbandonedVillage;
 using SOTS.Items.ChestItems;
 using SOTS.Items.Earth;
 using SOTS.Items.Tide;
-using ThoriumMod.Items.ArcaneArmor;
-using ThoriumMod.Items.BossForgottenOne;
-using ThoriumMod.Items.Cultist;
-using ThoriumMod.Items.HealerItems;
-using ThoriumMod.Items.ThrownItems;
-using ThoriumMod;
 using SOTS.Items.Permafrost;
-using SOTS.Items.Planetarium;
 using SOTS.Items.Chaos;
 using SOTS.Items.Celestial;
 using static Terraria.ModLoader.ModContent;
 using SOTS.Items.Planetarium.FromChests;
+using InfernalEclipseAPI.Core.Utils;
+using System.Collections.Generic;
+using Terraria.Localization;
+using SOTS.Buffs.MinionBuffs;
+using SOTS.FakePlayer;
 
 
 
@@ -49,7 +46,11 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                     player.GetDamage<TrueMeleeDamageClass>() -= 0.15f;
                 }
 
-
+                if (item.type == ModContent.ItemType<SubspaceLocket>())
+                {
+                    ref StatModifier local = ref player.GetDamage(DamageClass.Generic);
+                    local *= 0.675f;
+                }
 
                 if (InfernalCrossmod.SOTSBardHealer.Loaded)
                 {
@@ -66,26 +67,6 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
 
         public override void SetDefaults(Item item)
         {
-            if (InfernalConfig.Instance.ChanageWeaponClasses)
-            {
-                if (item.type == ItemID.TheAxe)
-                {
-                    item.DamageType = ThoriumDamageBase<BardDamage>.Instance;
-                }
-
-                if (item.type == ItemType<AncientFlame>())
-                {
-                    item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
-                    item.damage = 32;
-                }
-
-                if (item.type == ItemType<TheBurningSky>())
-                {
-                    item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
-                    item.mana = 35;
-                }
-            }
-
             if (InfernalConfig.Instance.SOTSBalanceChanges)
             {
                 if (item.type == ItemType<FrostArtifactHelmet>())
@@ -183,8 +164,21 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                 }
             }
         }
+
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            if (InfernalConfig.Instance.SOTSBalanceChanges)
+            {
+                if (item.type == ModContent.ItemType<SubspaceLocket>())
+                {
+                    InfernalUtilities.FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.SubspaceLocket"));
+                }
+            }
+        }
     }
 
+    [JITWhenModsEnabled("SOTS")]
+    [ExtendsFromMod("SOTS")]
     public class SOTSModPlayer : ModPlayer
     {
         public override void PostUpdateEquips()
@@ -204,6 +198,15 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
             if (wearingEarthen)
             {
                 Player.GetAttackSpeed(DamageClass.Generic) -= 0.10f;
+            }
+        }
+
+        public override void PostUpdate()
+        {
+            if (FakeModPlayer.ModPlayer(Player).servantActive == true || Player.HasBuff<TesseractBuff>())
+            {
+                Player.Calamity().rogueStealthMax = 0;
+                Player.Calamity().wearingRogueArmor = false;
             }
         }
     }

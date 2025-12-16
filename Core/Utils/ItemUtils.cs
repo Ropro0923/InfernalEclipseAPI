@@ -1,8 +1,36 @@
-﻿using Terraria.Utilities;
+﻿using System.Linq;
+using InfernalEclipseAPI.Core.Systems;
+using InfernumMode.Content.Items.Weapons.Rogue;
+using SOTS.FakePlayer;
+using Terraria.Utilities;
 using ThoriumMod;
 
 namespace InfernalEclipseAPI.Core.Utils
 {
+    [JITWhenModsEnabled("SOTS")]
+    [ExtendsFromMod("SOTS")]
+    public static partial class SOTSItemUtils
+    {
+        public static void InitializeFakePlayerBlacklist()
+        {
+            var list = (FakePlayerHelper.FakePlayerItemBlacklist ?? Array.Empty<int>()).ToList();
+
+            list.Add(ModContent.ItemType<StormMaidensRetribution>());
+
+            if (InfernalCrossmod.Thorium.Loaded)
+            {
+                Mod thorium = InfernalCrossmod.Thorium.Mod;
+
+                list.Add(thorium.Find<ModItem>("TerrariansLastKnife").Type);
+                list.Add(thorium.Find<ModItem>("BlackMIDI").Type);
+                list.Add(thorium.Find<ModItem>("NorthernLight").Type);
+                list.Add(thorium.Find<ModItem>("QuasarsFlare").Type);
+            }
+
+            FakePlayerHelper.FakePlayerItemBlacklist = list.ToArray();
+        }
+    }
+    
     [ExtendsFromMod("ThoriumMod")]
     public static partial class ThoriumItemUtils
     {

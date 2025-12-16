@@ -100,24 +100,31 @@ ItemTooltip: {
 		'''
 	PutridCoin:
 		'''
-		暴击有50%的概率造成10点额外伤害
 		受伤时有75%的概率对你造成中毒debuff
+		暴击有50%的概率造成10点额外伤害
 		'''
+	/* SubspaceLocket:
+		'''
+		Uses the item in your last inventory slot for you
+		Summons a Subspace Servant to assist in combat
+		Decreases damage by 50% multiplicatively
+		Increases max void by 50, but reduces healing received from potions by 40
+		''' */
 	DiamondRingText: 根据防御增加伤害，然后会降低伤害增益的三分之二防御值
-	DedTo: -献给{0}-
 
-	Dedicated: {
+	DedTo: -献给{0}-
 		Akira: Akira
+	Dedicated: {
 		WH: WardrobeHummus
-		Advantaje: Advantaje
 		Tyr: Tyr
-		Soltan: Soltan
+		Advantaje: Advantaje
 		bryce: bryce27
+		Soltan: Soltan
 		eviil81: evil81
 		rose: rosé
 		Jill: JillyFish
-		Eduarrdo: Eduarrdo
 		Mae: ma3allim
+		Eduarrdo: Eduarrdo
 		Yob: Yob
 		Pudding: Pudd1ng
 		Ropro: Ropro0923

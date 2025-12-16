@@ -33,6 +33,7 @@ using InfernalEclipseAPI.Content.UI;
 using InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides.ThoriumMulticlassNerf;
 using Terraria.Chat;
 using Terraria.Localization;
+using InfernalEclipseAPI.Core.Utils;
 using Terraria.GameContent.Creative;
 using static Terraria.GameContent.Creative.CreativePowers;
 
@@ -79,8 +80,8 @@ namespace InfernalEclipseAPI
                 }
             }
 
-                // Cache the WhiteFlare projectile type from Thorium
-                if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
+            // Cache the WhiteFlare projectile type from Thorium
+            if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
             {
                 if (thorium.TryFind<ModProjectile>("WhiteFlare", out var whiteFlare))
                     WhiteFlareType = whiteFlare.Type;
@@ -90,6 +91,11 @@ namespace InfernalEclipseAPI
                     On_Player.IsTileTypeInInteractionRange += On_Player_IsTileTypeInInteractionRange;
                     On_Player.InInteractionRange += On_Player_InInteractionRange;
                 }
+            }
+
+            if (InfernalCrossmod.SOTS.Loaded)
+            {
+                SOTSItemUtils.InitializeFakePlayerBlacklist();
             }
 
             RagnarokDifficulty difficulty = new();
