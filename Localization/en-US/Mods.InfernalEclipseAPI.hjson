@@ -1309,7 +1309,7 @@ Items: {
 			'''
 			{0}{1} improvements to all stats
 			Instantly activates rage mode & inflicts potion sickness
-			'愤怒的味道……和布丁的味道'
+			'品尝我的怒火……和布丁！'
 			'''
 		VoidTooltip: Heals 100 void
 		Stellar: Stellar
