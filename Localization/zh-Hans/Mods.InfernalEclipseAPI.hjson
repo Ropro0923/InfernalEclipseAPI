@@ -1291,6 +1291,20 @@ Items: {
 			[c/7C0A02: 你杀不死小丑！！！是小丑杀死你！！！]
 			'''
 	}
+
+	AngryPudding: {
+		// DisplayName: Angry Pudding
+		// Tooltip: ""
+		/* DynamicTooltip:
+			'''
+			{0}{1} improvements to all stats
+			Instantly activates rage mode & inflicts potion sickness
+			'愤怒的味道……和布丁的味道'
+			''' */
+		// VoidTooltip: Heals 100 void
+		// Stellar: Stellar
+		// Major: Major
+	}
 }
 
 Projectiles: {
