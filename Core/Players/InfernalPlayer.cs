@@ -14,6 +14,7 @@ using InfernalEclipseAPI.Core.DamageClasses;
 using Terraria.ModLoader.IO;
 using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
 using InfernalEclipseAPI.Core.Systems;
+using CalamityMod.NPCs.AstrumDeus;
 
 namespace InfernalEclipseAPI.Core.Players
 {
@@ -617,6 +618,11 @@ namespace InfernalEclipseAPI.Core.Players
                 }
             }
 
+            if (tixThumbRing && proj.arrow && hit.Crit)
+                target.AddBuff(BuffID.ShadowFlame, 60, false);
+
+            //NPC DAMAGE RESISTANCE: KEEP AT END OF THIS METHOD
+
             if ((proj.type == ModContent.ProjectileType<CelestusProj>() || proj.type == ModContent.ProjectileType<CelestusMiniScythe>()) &&
                 (target.type == ModContent.NPCType<SepulcherHead>() || target.type == ModContent.NPCType<SepulcherBody>() || target.type == ModContent.NPCType<SepulcherTail>()) &&
                 InfernalConfig.Instance.PreventBossCheese)
@@ -624,8 +630,18 @@ namespace InfernalEclipseAPI.Core.Players
                 hit.Damage -= (int)(hit.Damage * 0.2);
             }
 
-            if (tixThumbRing && proj.arrow && hit.Crit)
-                target.AddBuff(BuffID.ShadowFlame, 60, false);
+            if ((target.type == ModContent.NPCType<AstrumDeusHead>() || target.type == ModContent.NPCType<AstrumDeusBody>() || target.type == ModContent.NPCType<AstrumDeusTail>()) && !NPC.downedAncientCultist)
+            {
+                hit.Damage -= (int)(hit.Damage * 0.8);
+            }
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if ((target.type == ModContent.NPCType<AstrumDeusHead>() || target.type == ModContent.NPCType<AstrumDeusBody>() || target.type == ModContent.NPCType<AstrumDeusTail>()) && !NPC.downedAncientCultist)
+            {
+                hit.Damage -= (int)(hit.Damage * 0.8);
+            }
         }
 
         public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
