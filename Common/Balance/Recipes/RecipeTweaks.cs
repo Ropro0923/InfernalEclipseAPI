@@ -350,6 +350,14 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             recipe.AddIngredient(thorium.Find<ModItem>("InfernoEssence").Type, 3);
                         }
 
+                        if (InfernalCrossmod.Clamity.Loaded)
+                        {
+                            if (recipe.HasResult(InfernalCrossmod.Clamity.Mod.Find<ModItem>("SkullOfTheBloodGod")))
+                            {
+                                recipe.AddIngredient(thorium.Find<ModItem>("InfernoEssence").Type, 3);
+                            }
+                        }
+ 
                         if (!ModLoader.TryGetMod("WHummusMultiModBalancing", out _))
                         {
                             if (recipe.HasResult(thorium.Find<ModItem>("Nocturnal")) || recipe.HasResult(thorium.Find<ModItem>("Sanguine")))
