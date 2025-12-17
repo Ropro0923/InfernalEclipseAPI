@@ -107,6 +107,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                 if (recipe.HasResult(ModContent.ItemType<OnyxExcavatorKey>()))
                 {
                     recipe.AddIngredient(ModContent.ItemType<DepthCells>(), 3);
+                    recipe.DisableDecraft();
                 }
 
                 if (recipe.HasResult(ModContent.ItemType<Roxcalibur>()))
@@ -797,6 +798,11 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         {
                             recipe.RemoveTile(TileID.MythrilAnvil);
                             recipe.AddTile(TileID.Anvils);
+                        }
+
+                        if (recipe.HasResult(sots.Find<ModItem>("EyeOfChaos")))
+                        {
+                            recipe.AddIngredient(sots.Find<ModItem>("PhaseBar"), 3);
                         }
 
                         if (recipe.HasResult<AuricQuantumCoolingCell>())

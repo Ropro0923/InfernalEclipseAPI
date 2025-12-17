@@ -13,6 +13,8 @@ using CalamityMod.Projectiles.Rogue;
 using CalamityMod.NPCs.SupremeCalamitas;
 using InfernalEclipseAPI.Core.DamageClasses;
 using Terraria.ModLoader.IO;
+using CalamityMod.Items.Weapons.DraedonsArsenal;
+using System.Security.Policy;
 
 namespace InfernalEclipseAPI.Core.Players
 {
@@ -133,6 +135,11 @@ namespace InfernalEclipseAPI.Core.Players
         public bool batPoop;
         public bool bloodstainedCoin;
         public bool putridCoin;
+        public bool eyeOfChaos;
+        public bool snakeEyes;
+        public bool chaosBadge;
+        public bool focusReticle;
+        public bool exoSights;
 
         public override void Initialize()
         {
@@ -201,6 +208,11 @@ namespace InfernalEclipseAPI.Core.Players
             batPoop = false;
             bloodstainedCoin = false;
             putridCoin = false;
+            eyeOfChaos = false;
+            snakeEyes = false;
+            chaosBadge = false;
+            focusReticle = false;
+            exoSights = false;
         }
 
         public override void PreUpdate()
@@ -317,6 +329,26 @@ namespace InfernalEclipseAPI.Core.Players
 
         public override void PostUpdateEquips()
         {
+            if (exoSights ||focusReticle)
+            {
+                Player.GetCritChance(DamageClass.Generic) += 15f;
+            }
+            else if (eyeOfChaos)
+            {
+                Player.GetCritChance(DamageClass.Generic) += 12f;
+            }
+            else
+            {
+                if (snakeEyes)
+                {
+                    Player.GetCritChance(DamageClass.Generic) += 3f;
+                }
+
+                if (chaosBadge)
+                {
+                    Player.GetCritChance(DamageClass.Generic) += 5f;
+                }
+            }
         }
 
         public void ConvertSummonMeleeToMelee(Player player, Item item, ref StatModifier damage)
