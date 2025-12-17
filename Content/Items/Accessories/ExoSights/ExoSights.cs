@@ -10,6 +10,7 @@ using SOTS.Items.CritBonus;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using InfernalEclipseAPI.Core.Systems;
+using InfernalEclipseAPI.Core.Players;
 using CalamityMod;
 
 namespace InfernalEclipseAPI.Content.Items.Accessories.ExoSights
@@ -90,7 +91,8 @@ namespace InfernalEclipseAPI.Content.Items.Accessories.ExoSights
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             SOTSPlayer sotsPlayer = SOTSPlayer.ModPlayer(player);
-            player.GetCritChance(DamageClass.Generic) += 25f;
+            //player.GetCritChance(DamageClass.Generic) += 25f;
+            player.GetModPlayer<InfernalPlayer>().exoSights = true;
             sotsPlayer.CritBonusDamage += 40;
             player.buffImmune[30] = true;
             player.buffImmune[20] = true;

@@ -14,9 +14,6 @@ using InfernalEclipseAPI.Core.DamageClasses;
 using Terraria.ModLoader.IO;
 using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
 using InfernalEclipseAPI.Core.Systems;
-using System.Security.Policy;
-using ThoriumMod.Empowerments;
-using Terraria;
 
 namespace InfernalEclipseAPI.Core.Players
 {
@@ -142,6 +139,11 @@ namespace InfernalEclipseAPI.Core.Players
         public bool tixThumbRing;
         public bool bloodstainedCoin;
         public bool putridCoin;
+        public bool eyeOfChaos;
+        public bool snakeEyes;
+        public bool chaosBadge;
+        public bool focusReticle;
+        public bool exoSights;
 
         public override void Initialize()
         {
@@ -221,6 +223,11 @@ namespace InfernalEclipseAPI.Core.Players
             batPoop = false;
             bloodstainedCoin = false;
             putridCoin = false;
+            eyeOfChaos = false;
+            snakeEyes = false;
+            chaosBadge = false;
+            focusReticle = false;
+            exoSights = false;
         }
 
         public override void PreUpdate()
@@ -346,6 +353,27 @@ namespace InfernalEclipseAPI.Core.Players
 
         public override void PostUpdateEquips()
         {
+            if (exoSights || focusReticle)
+            {
+                Player.GetCritChance(DamageClass.Generic) += 15f;
+            }
+            else if (eyeOfChaos)
+            {
+                Player.GetCritChance(DamageClass.Generic) += 12f;
+            }
+            else
+            {
+                if (snakeEyes)
+                {
+                    Player.GetCritChance(DamageClass.Generic) += 3f;
+                }
+
+                if (chaosBadge)
+                {
+                    Player.GetCritChance(DamageClass.Generic) += 5f;
+                }
+            }
+
             if (LazyCrafterAmulet)
             {
                 Player.adjTile[TileID.WorkBenches] = true;
@@ -355,32 +383,32 @@ namespace InfernalEclipseAPI.Core.Players
                 Player.adjTile[TileID.Tables] = true;
             }
 
-            var meleeDamage = Player.GetDamage(DamageClass.Melee);
-            float meleeAdd = (meleeDamage.Additive - 1f) * 0.1f;
-            float meleeFlat = meleeDamage.Flat * 0.1f;
-            float meleeMult = ((meleeDamage.Multiplicative - 1f) * 0.1f) + 1f;
-            float meleeBase = meleeDamage.Base * 0.1f;
-
-            var rangedDamage = Player.GetDamage(DamageClass.Ranged);
-            float rangedAdd = (rangedDamage.Additive - 1f) * 0.1f;
-            float rangedFlat = rangedDamage.Flat * 0.1f;
-            float rangedMult = ((rangedDamage.Multiplicative - 1f) * 0.1f) + 1f;
-            float rangedBase = rangedDamage.Base * 0.1f;
-
-            var magicDamage = Player.GetDamage(DamageClass.Magic);
-            float magicAdd = (magicDamage.Additive - 1f) * 0.1f;
-            float magicFlat = magicDamage.Flat * 0.1f;
-            float magicMult = ((magicDamage.Multiplicative - 1f) * 0.1f) + 1f;
-            float magicBase = magicDamage.Base * 0.1f;
-
-            var summonDamage = Player.GetDamage(DamageClass.Summon);
-            float summonAdd = (summonDamage.Additive - 1f) * 0.1f;
-            float summonFlat = summonDamage.Flat * 0.1f;
-            float summonMult = ((summonDamage.Multiplicative - 1f) * 0.1f) + 1f;
-            float summonBase = summonDamage.Base * 0.1f;
-
             if (statShareAll)
             {
+                var meleeDamage = Player.GetDamage(DamageClass.Melee);
+                float meleeAdd = (meleeDamage.Additive - 1f) * 0.1f;
+                float meleeFlat = meleeDamage.Flat * 0.1f;
+                float meleeMult = ((meleeDamage.Multiplicative - 1f) * 0.1f) + 1f;
+                float meleeBase = meleeDamage.Base * 0.1f;
+
+                var rangedDamage = Player.GetDamage(DamageClass.Ranged);
+                float rangedAdd = (rangedDamage.Additive - 1f) * 0.1f;
+                float rangedFlat = rangedDamage.Flat * 0.1f;
+                float rangedMult = ((rangedDamage.Multiplicative - 1f) * 0.1f) + 1f;
+                float rangedBase = rangedDamage.Base * 0.1f;
+
+                var magicDamage = Player.GetDamage(DamageClass.Magic);
+                float magicAdd = (magicDamage.Additive - 1f) * 0.1f;
+                float magicFlat = magicDamage.Flat * 0.1f;
+                float magicMult = ((magicDamage.Multiplicative - 1f) * 0.1f) + 1f;
+                float magicBase = magicDamage.Base * 0.1f;
+
+                var summonDamage = Player.GetDamage(DamageClass.Summon);
+                float summonAdd = (summonDamage.Additive - 1f) * 0.1f;
+                float summonFlat = summonDamage.Flat * 0.1f;
+                float summonMult = ((summonDamage.Multiplicative - 1f) * 0.1f) + 1f;
+                float summonBase = summonDamage.Base * 0.1f;
+
                 if (meleeAdd > 0f)
                 {
                     ref var generic = ref Player.GetDamage(DamageClass.Generic);

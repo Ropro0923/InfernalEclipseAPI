@@ -110,6 +110,33 @@ ItemTooltip: {
 		Decreases damage by 50% multiplicatively
 		Increases max void by 50, but reduces healing received from potions by 40
 		'''
+	EyeOfChaos: Increases critical strike chance by 12%, does not stack with downgrades
+	SnakeEyes: Increases critical strike chance by 3%
+	ChaosBadge: Increases critical strike chance by 5%
+	FocusReticle:
+		'''
+		Increases critical strike chance by 15%, does not stack with downgrades
+		Critical strikes deal 40 more damage
+		Immunity to bleeding and poisoned debuffs
+		'''
+	Starbelt:
+		'''
+		Critical strikes recover mana
+		Increases max mana by 40
+		Increases magic critical strike chance by 5%
+		'''
+	GlowSpores:
+		'''
+		Increases mana received from potions by 40
+		Increases magic critical strike chance by 2%
+		'''
+	SwallowedPenny:
+		'''
+		Increases critical strike chance by 2%
+		Generate coins when hurt
+		'Gulp!'
+		'''
+	SpiritGlove: Increases void regeneration speed by 5% and melee critical strike chance by 4%
 	DiamondRingText: Increase damage based on defense, then decreases defense by two-thirds of the damage buff
 	DedTo: - Dedicated to {0} -
 
@@ -669,7 +696,7 @@ Items: {
 		Tooltip: ""
 		SOTSBardHealerTooltip:
 			'''
-			Increases critical strike chance by 25%
+			Increases critical strike chance by 15%, does not stack with downgrades
 			Critical strikes deal 40 more damage, release a burst of damaging sparks, and may detonate enemies for 100% damage
 			Critical strikes steal life, regenerate void, recover mana and return inspiration
 			Life steal has a 0.5 second cooldown
@@ -677,7 +704,7 @@ Items: {
 			'''
 		ThoriumTooltip:
 			'''
-			Increases critical strike chance by 25%
+			Increases critical strike chance by 15%, does not stack with downgrades
 			Critical strikes deal 40 more damage, release a burst of damaging sparks, and may detonate enemies for 100% damage
 			Critical strikes steal life, regenerate void, and recover mana
 			Life steal has a 0.5 second cooldown
@@ -685,7 +712,7 @@ Items: {
 			'''
 		DefaultTooltip:
 			'''
-			Increases critical strike chance by 25%
+			Increases critical strike chance by 15%, does not stack with downgrades
 			Critical strikes deal 40 more damage and may detonate enemies for 100% damage
 			Critical strikes steal life, regenerate void, and recover mana
 			Immunity to bleeding and poisoned debuffs, & grants night vision

@@ -16,6 +16,12 @@ using Terraria.Localization;
 using SOTS.Buffs.MinionBuffs;
 using SOTS.FakePlayer;
 using Terraria;
+using SOTS.Items.CritBonus;
+using SOTS.Items.Earth.Glowmoth;
+using SOTS.Items.Pyramid;
+using SOTS.Items;
+using Terraria.ModLoader;
+using InfernalEclipseAPI.Core.Players;
 
 
 
@@ -27,6 +33,7 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
     {
         public override void UpdateAccessory(Item item, Player player, bool hidevisual)
         {
+            InfernalPlayer modPlayer = player.GetModPlayer<InfernalPlayer>();
             SOTSPlayer sotsPlayer = SOTSPlayer.ModPlayer(player);
 
             if (InfernalConfig.Instance.SOTSBalanceChanges)
@@ -51,7 +58,50 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                 {
                     ref StatModifier local = ref player.GetDamage(DamageClass.Generic);
                     local *= 0.675f;
-                    player.GetDamage<TrueMeleeDamageClass>() -= 0.15f;
+                }
+
+                if (item.type == ModContent.ItemType<EyeOfChaos>())
+                {
+                    player.GetCritChance(DamageClass.Generic) -= 18f;
+                    modPlayer.eyeOfChaos = true;
+                }
+
+                if (item.type == ModContent.ItemType<SnakeEyes>())
+                {
+                    player.GetCritChance(DamageClass.Generic) -= 7f;
+                    modPlayer.snakeEyes = true;
+                }
+
+                if (item.type == ModContent.ItemType<ChaosBadge>())
+                {
+                    player.GetCritChance(DamageClass.Generic) -= 9f;
+                    modPlayer.chaosBadge = true;
+                }
+
+                if (item.type == ModContent.ItemType<FocusReticle>())
+                {
+                    player.GetCritChance(DamageClass.Generic) -= 20f;
+                    modPlayer.focusReticle = true;
+                }
+
+                if (item.type == ModContent.ItemType<Starbelt>())
+                {
+                    player.GetCritChance(DamageClass.Magic) -= 5f;
+                }
+
+                if (item.type == ModContent.ItemType<GlowSpores>())
+                {
+                    player.GetCritChance(DamageClass.Magic) -= 3f;
+                }
+
+                if (item.type == ModContent.ItemType<SpiritGlove>())
+                {
+                    player.GetCritChance(DamageClass.Melee) -= 4f;
+                }
+
+                if (item.type == ModContent.ItemType<SwallowedPenny>())
+                {
+                    player.GetCritChance(DamageClass.Generic) -= 2f;
                 }
 
                 if (InfernalCrossmod.SOTSBardHealer.Loaded)
@@ -174,6 +224,46 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                 if (item.type == ModContent.ItemType<SubspaceLocket>())
                 {
                     InfernalUtilities.FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.SubspaceLocket"));
+                }
+
+                if (item.type == ModContent.ItemType<EyeOfChaos>())
+                {
+                    InfernalUtilities.FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.EyeOfChaos"));
+                }
+
+                if (item.type == ModContent.ItemType<SnakeEyes>())
+                {
+                    InfernalUtilities.FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.SnakeEyes"));
+                }
+
+                if (item.type == ModContent.ItemType<ChaosBadge>())
+                {
+                    InfernalUtilities.FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.ChaosBadge"));
+                }
+
+                if (item.type == ModContent.ItemType<FocusReticle>())
+                {
+                    InfernalUtilities.FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.FocusReticle"));
+                }
+
+                if (item.type == ModContent.ItemType<Starbelt>())
+                {
+                    InfernalUtilities.FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Starbelt"));
+                }
+
+                if (item.type == ModContent.ItemType<GlowSpores>())
+                {
+                    InfernalUtilities.FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.GlowSpores"));
+                }
+
+                if (item.type == ModContent.ItemType<SpiritGlove>())
+                {
+                    InfernalUtilities.FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.SpiritGlove"));
+                }
+
+                if (item.type == ModContent.ItemType<SwallowedPenny>())
+                {
+                    InfernalUtilities.FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.SwallowedPenny"));
                 }
             }
         }
