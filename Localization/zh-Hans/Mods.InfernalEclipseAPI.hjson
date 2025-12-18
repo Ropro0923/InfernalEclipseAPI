@@ -103,39 +103,40 @@ ItemTooltip: {
 		受伤时有75%的概率对你造成中毒debuff
 		暴击有50%的概率造成10点额外伤害
 		'''
+	SubspaceLocket:
 		'''
 		召唤一只亚空之仆协助战斗
 		亚空之仆会为你使用最后一格物品栏的物品
 		会成倍降低50%伤害
 		增加50点最大虚空值，但会降低40点从药水治疗的生命值
 		'''
-	// EyeOfChaos: Increases critical strike chance by 12%, does not stack with downgrades
-	// SnakeEyes: Increases critical strike chance by 3%
-	// ChaosBadge: Increases critical strike chance by 5%
-	/* FocusReticle:
+	EyeOfChaos: 增加12%暴击率，无法与下位饰品叠加
+	SnakeEyes: 增加3%暴击率
+	ChaosBadge: 增加5%暴击率
+	FocusReticle:
 		'''
-		Increases critical strike chance by 15%, does not stack with downgrades
-		Critical strikes deal 40 more damage
-		Immunity to bleeding and poisoned debuffs
-		''' */
-	/* Starbelt:
-		Critical strikes recover mana
+		增加15%暴击率，无法与下位饰品叠加
+		暴击会造成40点额外伤害
+		对流血和中毒debuff免疫
 		'''
-		Increases max mana by 40
-		Increases magic critical strike chance by 5%
-		''' */
-	/* GlowSpores:
+	Starbelt:
 		'''
-		Increases mana received from potions by 40
-		Increases magic critical strike chance by 2%
-		''' */
-	/* SwallowedPenny:
+		暴击时会恢复魔力值
+		增加40点最大魔力值
+		增加5%魔法暴击率
 		'''
-		Increases critical strike chance by 2%
-		Generate coins when hurt
-		'Gulp!'
-		''' */
-	// SpiritGlove: Increases void regeneration speed by 5% and melee critical strike chance by 4%
+	GlowSpores:
+		'''
+		增加40点从药水恢复的魔力值
+		增加2%魔法暴击率
+		'''
+	SwallowedPenny:
+		'''
+		增加2%暴击率
+		受伤时会产生钱币
+		'咕噜!'
+		'''
+	SpiritGlove: 增加5%虚空恢复速度和4%近战暴击率
 	DiamondRingText: 根据防御增加伤害，然后会降低伤害增益的三分之二防御值
 	DedTo: -献给{0}-
 
@@ -692,7 +693,7 @@ Items: {
 		Tooltip: ""
 		SOTSBardHealerTooltip:
 			'''
-			暴击率提高25%
+			暴击率提高15%，无法与下位饰品叠加
 			暴击额外多造成40点伤害，释放伤害性火花，并有概率引爆敌人，造成100%额外伤害
 			暴击汲取生命，恢复虚空值，回复法力，并返还灵感值
 			吸血效果有0.5秒冷却时间
@@ -700,7 +701,7 @@ Items: {
 			'''
 		ThoriumTooltip:
 			'''
-			暴击率提高25%
+			暴击率提高15%，无法与下位饰品叠加
 			暴击额外多造成40点伤害，释放伤害性火花，并有概率引爆敌人，造成100%额外伤害
 			暴击汲取生命，恢复虚空值并回复法力
 			吸血效果有0.5秒冷却时间
@@ -708,7 +709,7 @@ Items: {
 			'''
 		DefaultTooltip:
 			'''
-			暴击率提高25%
+			暴击率提高15%，无法与下位饰品叠加
 			暴击额外多造成40点伤害，并有概率引爆敌人，造成100%额外伤害
 			暴击汲取生命，恢复虚空值并回复法力
 			免疫流血与中毒效果，并给予你夜视能力
