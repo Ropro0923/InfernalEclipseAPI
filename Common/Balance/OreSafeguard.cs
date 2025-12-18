@@ -1,6 +1,4 @@
-﻿using CalamityMod;
-using CalamityMod.Tiles.Ores;
-using CalamityMod.Tiles.DraedonStructures;
+﻿using CalamityMod.Tiles.Ores;
 
 namespace InfernalEclipseAPI.Common.Balance
 {
@@ -32,14 +30,23 @@ namespace InfernalEclipseAPI.Common.Balance
                     default:
                         if (tile == ModContent.TileType<ExodiumOre>()) { return NPC.downedMoonlord; }
 
-                        //if (tile == ModContent.TileType<OnyxExcavatorTile>()) { return DownedBossSystem.downedLeviathan; }
-
                         if (tile == TileID.AlchemyTable) { return NPC.downedBoss3; }
 
                         return base.CanKillTile(i, j, tile, ref blockDamaged);
                 }
             }
             return base.CanKillTile(i, j, tile, ref blockDamaged);
+        }
+
+        public override void RightClick(int i, int j, int type)
+        {
+            if (InfernalConfig.Instance.BossKillCheckOnOres)
+            {
+                if (type == TileID.BewitchingTable)
+                    return;
+            }
+
+            base.RightClick(i, j, type);
         }
     }
 }

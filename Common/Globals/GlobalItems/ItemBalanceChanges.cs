@@ -929,6 +929,14 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 }
             }
 
+            if (ModLoader.TryGetMod("CalValEX", out Mod calVal))
+            {
+                if (UnsafeGetItem(calVal, "ScryllianWings", item))
+                {
+                    ArmorIDs.Wing.Sets.Stats[item.wingSlot] = new Terraria.DataStructures.WingStats(25);
+                }
+            }
+
             #region Thorium
             if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
             {
@@ -1233,6 +1241,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                         item.useAnimation = 35;
                     }
 
+                    if (UnsafeGetItem(thorium, "EssenceofFlame", item))
+                    {
+                        item.damage = 300;
+                    }
+
                     //Durasteel Blade
                     if (item.type == FindItem(thorium, "DurasteelBlade"))
                     {
@@ -1333,10 +1346,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                         item.scale *= 1.5f;
                     }
 
-                    if (GetItem(thorium, "Executioner", item))
-                    {
-                        item.scale *= 1.25f;
-                    }
                     if (GetItem(thorium, "Executioner", item))
                     {
                         item.scale *= 1.25f;
@@ -3583,6 +3592,13 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                         item.damage = 75;
                     }
                     #endregion
+
+                    #region Tools
+                    if (UnsafeGetItem(thorium, "Syringe", item))
+                    {
+                        item.shootSpeed = 12;
+                    }
+                    #endregion
                     #endregion
 
                     #region Bard
@@ -3982,7 +3998,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                     if (GetItem(thorium, "HauntingBassDrum", item))
                     {
-                        item.damage = 204;
+                        item.damage = 174;
                     }
 
                     if (GetItem(thorium, "JingleBells", item))
@@ -4123,6 +4139,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                         item.defense = 4;
                     }
 
+                    //Blacksmith's Barrier
+                    if (UnsafeGetItem(thorium, "BlacksmithsBarrier", item))
+                    {
+                        item.defense = 4;
+                    }
+
                     //Champion's Wings
                     if (item.type == thorium.Find<ModItem>("ChampionWing").Type)
                     {
@@ -4162,11 +4184,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     }
                     #endregion
 
-                    if (UnsafeGetItem(thorium, "BlacksmithsBarrier", item))
-                    {
-                        item.defense = 4;
-                    }
-
                     #region Ammo
                     if (UnsafeGetItem(thorium, "IcyArrow", item))
                     {
@@ -4177,7 +4194,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
             }
             #endregion
 
-            #region Unofficial Calamity Bard & Healler
+            #region Unofficial Calamity Bard & Healer
             if (ModLoader.TryGetMod("CalamityBardHealer", out Mod calBardHeal) && (ModContent.GetInstance<InfernalConfig>().ThoriumBalanceChangess || ModContent.GetInstance<InfernalConfig>().CalamityBalanceChanges))
             {
                 if (UnsafeGetItem(calBardHeal, "InfestedCastanet", item))
@@ -4193,6 +4210,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 if (UnsafeGetItem(calBardHeal, "TheWindmill", item))
                 {
                     item.damage = 20;
+                }
+
+                if (UnsafeGetItem(calBardHeal, "SlagFurysIntent", item))
+                {
+                    item.damage = 24;
                 }
 
                 #region Healer
@@ -4307,6 +4329,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 if (GetItem(calBardHeal, "DeathAdder", item))
                 {
                     item.damage = 180;
+                }
+
+                if (GetItem(calBardHeal, "IrradiatedKusarigama", item))
+                {
+                    item.damage = 289;
                 }
 
                 //Purgatorium Pandemonium
@@ -4610,6 +4637,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.damage = 320;
                 }
 
+                if (UnsafeGetItem(ragnarok, "DragonForce", item))
+                {
+                    item.damage = 145;
+                }
+
                 #region Healer
                 //Prisma
                 if (item.type == ragnarok.Find<ModItem>("Prisma").Type)
@@ -4708,7 +4740,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                 if (GetItem(ragnarok, "ExecutionerMark05", item))
                 {
-                    item.damage = 270;
+                    item.damage = 180;
                 }
 
                 #endregion
@@ -4778,7 +4810,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                 if (UnsafeGetItem(ragnarok, "Lamentation", item))
                 {
-                    item.damage = 1150;
+                    item.damage = 1300;
                     item.shootSpeed = 24;
                     item.useTime = 50;
                     item.useAnimation = 50;

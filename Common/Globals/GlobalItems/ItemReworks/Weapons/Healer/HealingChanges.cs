@@ -6,11 +6,11 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Heal
     public class HealingChanges : GlobalItem
     {
         // Heal overrides by mod and item name
-        private static readonly Dictionary<string, Dictionary<string, int>> healOverridesByMod = new()
+        internal static readonly Dictionary<string, Dictionary<string, int>> healOverridesByMod = new()
         {
             ["CalamityBardHealer"] = new Dictionary<string, int>
             {
-                ["PurgatoriumPandemonium"] = 6,
+                ["PurgatoriumPandemonium"] = 3,
                 // Add more CalamityBardHealer items here
             },
             ["ThoriumMod"] = new Dictionary<string, int>
@@ -28,7 +28,7 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Heal
             },
             ["ThoriumRework"] = new Dictionary<string, int>
             {
-                ["RedCresent"] = 4
+                ["RedCresent"] = 3
             }
         };
 

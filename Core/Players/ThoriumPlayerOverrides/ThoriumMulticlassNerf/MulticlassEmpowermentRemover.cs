@@ -12,7 +12,7 @@ namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides.ThoriumMulticla
     {
         public override bool? UseItem(Item item, Player player)
         {
-            if (item == null || item.IsAir)
+            if (item == null || item.IsAir || !InfernalConfig.Instance.NerfThoriumMulticlass)
                 return base.UseItem(item, player);
 
             var mp = player.GetModPlayer<ThoriumMulticlassPlayerNerfs>();
@@ -42,6 +42,9 @@ namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides.ThoriumMulticla
 
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            if (!InfernalConfig.Instance.NerfThoriumMulticlass)
+                return base.Shoot(item, player, source, position, velocity, type, damage, knockback);
+
             var mp = player.GetModPlayer<ThoriumMulticlassPlayerNerfs>();
 
             if (ThoriumHelpers.IsBardWeapon(item))
@@ -58,6 +61,7 @@ namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides.ThoriumMulticla
                     p.Send();
                 }
             }
+
             return base.Shoot(item, player, source, position, velocity, type, damage, knockback);
         }
     }

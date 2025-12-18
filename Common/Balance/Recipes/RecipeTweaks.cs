@@ -75,6 +75,26 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
 
                     if (recipe.HasResult(ItemID.HellstoneBar))
                         recipe.DecraftConditions.Add(Condition.DownedEowOrBoc);
+
+                    if (recipe.HasResult(ItemID.InactiveStoneBlock) || recipe.HasResult(ItemID.ActiveStoneBlock))
+                        recipe.DecraftConditions.Add(Condition.DownedSkeletron);
+
+                    int[] phaseblades =
+                    {
+                        ItemID.BluePhaseblade,
+                        ItemID.GreenPhaseblade,
+                        ItemID.OrangePhaseblade,
+                        ItemID.PurplePhaseblade,
+                        ItemID.RedPhaseblade,
+                        ItemID.WhitePhaseblade,
+                        ItemID.YellowPhaseblade
+                    };
+
+                    foreach (int phaseblade in phaseblades)
+                    {
+                        if (recipe.HasResult(phaseblade))
+                            recipe.DecraftConditions.Add(Condition.DownedEowOrBoc);
+                    }
                 }
                 #endregion
 
@@ -89,6 +109,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                 if (recipe.HasResult(ModContent.ItemType<OnyxExcavatorKey>()))
                 {
                     recipe.AddIngredient(ModContent.ItemType<DepthCells>(), 3);
+                    recipe.DisableDecraft();
                 }
 
                 if (recipe.HasResult(ModContent.ItemType<Roxcalibur>()))
@@ -330,6 +351,14 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             recipe.AddIngredient(thorium.Find<ModItem>("InfernoEssence").Type, 3);
                         }
 
+                        if (InfernalCrossmod.Clamity.Loaded)
+                        {
+                            if (recipe.HasResult(InfernalCrossmod.Clamity.Mod.Find<ModItem>("SkullOfTheBloodGod")))
+                            {
+                                recipe.AddIngredient(thorium.Find<ModItem>("InfernoEssence").Type, 3);
+                            }
+                        }
+ 
                         if (!ModLoader.TryGetMod("WHummusMultiModBalancing", out _))
                         {
                             if (recipe.HasResult(thorium.Find<ModItem>("Nocturnal")) || recipe.HasResult(thorium.Find<ModItem>("Sanguine")))
@@ -578,7 +607,8 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                                     GetItem(thorium, "Omniwrench"),
                                     GetItem(thorium, "StellarSystem"),
                                     GetItem(thorium, "Violin"),
-                                    GetItem(thorium, "WindChimes")
+                                    GetItem(thorium, "WindChimes"),
+                                    GetItem(thorium, "LeechingSheath")
                                 };
 
                                 if (recipe.HasIngredient(ItemID.DynastyWood) && recipe.HasTile(TileID.MythrilAnvil))
@@ -785,6 +815,9 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             }
                         }
 
+                        if (recipe.HasResult(sots.Find<ModItem>("DigitalDisplay")))
+                            recipe.DisableDecraft();
+                            
                         if (recipe.HasResult(sots.Find<ModItem>("NightmarePotion")))
                         {
                             recipe.DecraftConditions.Add(Condition.Hardmode);
@@ -804,6 +837,11 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         {
                             recipe.RemoveTile(TileID.MythrilAnvil);
                             recipe.AddTile(TileID.Anvils);
+                        }
+
+                        if (recipe.HasResult(sots.Find<ModItem>("EyeOfChaos")))
+                        {
+                            recipe.AddIngredient(sots.Find<ModItem>("PhaseBar"), 3);
                         }
 
                         if (recipe.HasResult<AuricQuantumCoolingCell>())

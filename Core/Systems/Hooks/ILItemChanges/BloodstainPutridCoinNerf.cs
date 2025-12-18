@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+using InfernalEclipseAPI.Core.Players;
 using MonoMod.RuntimeDetour;
 using SOTS;
 using SOTS.Items.CritBonus;
+using SOTS.Items.Gems;
 using Terraria.Localization;
 
 namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
@@ -26,7 +28,7 @@ namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
             bloodstainHook = new Hook(bloodOrig, BloodstainUpdateAccessory);
 
             Type putridCoin = sots.Code.GetType("SOTS.Items.CritBonus.PutridCoin");
-            MethodInfo putridOrig = bloodstainCoin.GetMethod("UpdateAccessory", BindingFlags.Public | BindingFlags.Instance);
+            MethodInfo putridOrig = putridCoin.GetMethod("UpdateAccessory", BindingFlags.Public | BindingFlags.Instance);
             putridHook = new Hook(putridOrig, PutridUpdateAccessory);
         }
 
@@ -42,19 +44,21 @@ namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
         private static void BloodstainUpdateAccessory(Action<ModItem, Player, bool> orig, ModItem self, Player player, bool hideVisual)
         {
             SOTSPlayer sotsPlayer = SOTSPlayer.ModPlayer(player);
+            InfernalPlayer infernalPlayer = player.GetModPlayer<InfernalPlayer>();
+
+            infernalPlayer.bloodstainedCoin = true;
             if (Terraria.Utils.NextBool(Main.rand, 2))
                 sotsPlayer.CritBonusDamage += 10;
-            if (Main.rand.NextFloat() < 0.75f && sotsPlayer.onhit != 1)
-                player.AddBuff(BuffID.Bleeding, 1020, false);
         }
 
         private static void PutridUpdateAccessory(Action<ModItem, Player, bool> orig, ModItem self, Player player, bool hideVisual)
         {
             SOTSPlayer sotsPlayer = SOTSPlayer.ModPlayer(player);
+            InfernalPlayer infernalPlayer = player.GetModPlayer<InfernalPlayer>();
+
+            infernalPlayer.putridCoin = true;
             if (Terraria.Utils.NextBool(Main.rand, 2))
                 sotsPlayer.CritBonusDamage += 10;
-            if (Main.rand.NextFloat() < 0.75f && sotsPlayer.onhit != 1)
-                player.AddBuff(BuffID.Poisoned, 1020, false);
         }
     }
 
@@ -69,7 +73,7 @@ namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
 
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return entity.type == ModContent.ItemType<PutridCoin>() || entity.type == ModContent.ItemType<BloodstainedCoin>();
+            return entity.type == ModContent.ItemType<PutridCoin>() || entity.type == ModContent.ItemType<BloodstainedCoin>() || entity.type == ModContent.ItemType<DiamondRing>() || entity.type == ModContent.ItemType<ChallengerRing>();
         }
         private static void FullTooltipOveride(List<TooltipLine> tooltips, string stealthTooltip)
         {
@@ -99,6 +103,22 @@ namespace InfernalEclipseAPI.Core.Systems.ILItemChanges
             if (item.type == ModContent.ItemType<BloodstainedCoin>())
             {
                 FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.BloodstainedCoin"));
+            }
+            if (item.type == ModContent.ItemType<DiamondRing>())
+            {
+                int previousDefense = SOTSPlayer.ModPlayer(Main.LocalPlayer).previousDefense;
+                FullTooltipOveride(tooltips, $"{Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DiamondRingText") + Language.GetTextValue("Mods.SOTS.DiamondRingText2", Convert.ToString(previousDefense), Convert.ToString((int)(previousDefense * 0.66)))}");
+            }
+            if (item.type == ModContent.ItemType<ChallengerRing>())
+            {
+                foreach (TooltipLine tooltip in tooltips)
+                {
+                    if (tooltip.Text.Contains("Increase damage based on defense, then decreases defense by a third of the damage buff")) // im sorry localizers there was no other way...
+                    {
+                        int previousDefense = SOTSPlayer.ModPlayer(Main.LocalPlayer).previousDefense;
+                        tooltip.Text = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DiamondRingText") + Language.GetTextValue("Mods.SOTS.DiamondRingText2", Convert.ToString(previousDefense), Convert.ToString((int)(previousDefense * 0.66)));
+                    }
+                }
             }
         }
     }

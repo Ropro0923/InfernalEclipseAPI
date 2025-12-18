@@ -64,7 +64,7 @@ Items: {
 	}
 
 	CrystalHoney: {
-		DisplayName: Crystal Honey
+		DisplayName: 蜂蜜水晶
 		Tooltip:
 			'''
 			“蜂蜜的奇怪特性不容易被提取”
@@ -87,7 +87,7 @@ Items: {
 	}
 
 	DemonTongue: {
-		DisplayName: Demon Tongue
+		DisplayName: 恶魔之舌
 		Tooltip:
 			'''
 			用暗能量增幅一些光辉攻击
@@ -108,14 +108,17 @@ Items: {
 			'''
 	}
 
-	FlightMail: {
-		DisplayName: 飞羽胸甲
-		Tooltip:
-			'''
-			“天空是你的飞行场地”
-			增加5%投掷伤害
-			'''
-	}
+	FlightMask.Tooltip:
+		'''
+		增加2%投掷伤害
+		增加5%投掷暴击率
+		“天空是你的飞行场地”
+		'''
+	FlightMail.Tooltip:
+		'''
+		“天空是你的飞行场地”
+		增加5%投掷伤害
+		'''
 
 	BronzeHelmet: {
 		DisplayName: 青铜头盔
@@ -393,14 +396,24 @@ Items: {
 			'''
 	}
 
+	TideTurnerGreaves: {
+		DisplayName: 洪流逆潮者足具
+		Tooltip:
+			'''
+			增加10%近战和投掷伤害
+			增加20%近战击退和投掷弹幕速度
+			增加30%移动速度
+			'''
+	}
+
 	TerrariumHelmet: {
 		DisplayName: 元素之灵头盔
 		Tooltip:
 			'''
-			“一切都会在你的力量面前倒下……”
 			最大生命值增加{0}，生命再生增加{1}
 			增加{2}%伤害
 			黑暗中的视野提升
+			“一切都会在你的力量面前倒下……”
 			'''
 		SetBonus:
 			'''

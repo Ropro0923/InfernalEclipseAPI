@@ -2,6 +2,9 @@
 using Terraria.Localization;
 using InfernalEclipseAPI.Content.Items.Materials;
 using CalamityMod.Items;
+using SOTS;
+using InfernalEclipseAPI.Content.Items.Consumables;
+using InfernalEclipseAPI.Core.Systems;
 
 namespace InfernalEclipseAPI.Common.Balance.Recipes
 {
@@ -169,68 +172,85 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         .AddTile(TileID.Anvils)
                         .Register();
                 }
+            }
 
-                if (ModLoader.TryGetMod("SOTS", out Mod sots))
+            if (InfernalCrossmod.SOTS.Loaded)
+            {
+                Mod sots = InfernalCrossmod.SOTS.Mod;
+
+                /*
+                Recipe.Create(ModContent.ItemType<LiliesOfFinality>())
+                    .AddIngredient(ItemID.ClayPot)
+                    .AddIngredient<PlantyMush>()
+                    .AddIngredient<AscendantSpiritEssence>(3)
+                    .AddIngredient<YharonSoulFragment>(4)
+                    .AddIngredient(ItemID.DarkShard)
+                    .AddIngredient(ItemID.LightShard)
+                    .AddTile<CosmicAnvil>()
+                    .Register();
+                */
+
+                int[] sotsPotions =
                 {
-                    /*
-                        Recipe.Create(ModContent.ItemType<LiliesOfFinality>())
-                            .AddIngredient(ItemID.ClayPot)
-                            .AddIngredient<PlantyMush>()
-                            .AddIngredient<AscendantSpiritEssence>(3)
-                            .AddIngredient<YharonSoulFragment>(4)
-                            .AddIngredient(ItemID.DarkShard)
-                            .AddIngredient(ItemID.LightShard)
-                            .AddTile<CosmicAnvil>()
-                            .Register();
-                    */
+                    GetModItem(sots, "AssassinationPotion"),
+                    GetModItem(sots, "BluefirePotion"),
+                    GetModItem(sots, "BrittlePotion"),
+                    GetModItem(sots, "DoubleVisionPotion"),
+                    GetModItem(sots, "HarmonyPotion"),
+                    GetModItem(sots, "NightmarePotion"),
+                    GetModItem(sots, "RipplePotion"),
+                    GetModItem(sots, "RoughskinPotion"),
+                    GetModItem(sots, "SoulAccessPotion"),
+                    GetModItem(sots, "VibePotion")
+                };
 
-                    int[] sotsPotions =
+                foreach (int potion in sotsPotions)
+                {
+                    Recipe newRecipe = Recipe.Create(potion, 2);
+
+                    if (InfernalConfig.Instance.BloodOrbPotionDuplication)
                     {
-                        GetModItem(sots, "AssassinationPotion"),
-                        GetModItem(sots, "BluefirePotion"),
-                        GetModItem(sots, "BrittlePotion"),
-                        GetModItem(sots, "DoubleVisionPotion"),
-                        GetModItem(sots, "HarmonyPotion"),
-                        GetModItem(sots, "NightmarePotion"),
-                        GetModItem(sots, "RipplePotion"),
-                        GetModItem(sots, "RoughskinPotion"),
-                        GetModItem(sots, "SoulAccessPotion"),
-                        GetModItem(sots, "VibePotion")
-                    };
-
-                    foreach (int potion in sotsPotions)
-                    {
-                        Recipe newRecipe = Recipe.Create(potion, 2);
-
-                        if (InfernalConfig.Instance.BloodOrbPotionDuplication)
-                        {
-                            newRecipe.AddIngredient(potion);
-                        }
-                        else
-                        {
-                            newRecipe.AddIngredient(ItemID.BottledWater);
-                        }
-                        newRecipe.AddIngredient<BloodOrb>(10);
-
-                        if (potion == GetModItem(sots, "HarmonyPotion"))
-                        {
-                            newRecipe.AddIngredient(ItemID.SoulofLight);
-                        }
-                        else if (potion == GetModItem(sots, "NightmarePotion"))
-                        {
-                            newRecipe.AddIngredient(ItemID.SoulofNight);
-                        }
-                        newRecipe.AddTile(TileID.AlchemyTable);
-                        newRecipe.AddCondition(Condition.DownedSkeletron);
-                        newRecipe.Register();
+                        newRecipe.AddIngredient(potion);
                     }
+                    else
+                    {
+                        newRecipe.AddIngredient(ItemID.BottledWater);
+                    }
+                    newRecipe.AddIngredient<BloodOrb>(10);
+
+                    if (potion == GetModItem(sots, "HarmonyPotion"))
+                    {
+                        newRecipe.AddIngredient(ItemID.SoulofLight);
+                    }
+                    else if (potion == GetModItem(sots, "NightmarePotion"))
+                    {
+                        newRecipe.AddIngredient(ItemID.SoulofNight);
+                    }
+                    newRecipe.AddTile(TileID.AlchemyTable);
+                    newRecipe.AddCondition(Condition.DownedSkeletron);
+                    newRecipe.Register();
                 }
+
+                SOTSWormholeRecipes.Initialize();
             }
         }
 
-        private int GetModItem (Mod mod, string item)
+        private static int GetModItem (Mod mod, string item)
         {
             return mod.Find<ModItem>(item).Type;
+        }
+    }
+
+    [JITWhenModsEnabled("SOTS")]
+    [ExtendsFromMod("SOTS")]
+    public static class SOTSWormholeRecipes
+    {
+        public static void Initialize()
+        {
+            if (ModLoader.TryGetMod("CalamityHunt", out Mod calHunt))
+            {
+                ItemHelpers.WormholeRecipes.Add(new ItemHelpers.WormholeRecipe(calHunt.Find<ModItem>("ChromaticMass").Type, ModContent.ItemType<AngryPudding>()));
+            }
         }
     }
 }

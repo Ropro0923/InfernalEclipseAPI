@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using CalamityMod;
 using Terraria.Localization;
 
-namespace InfernalEclipseAPI.Core.Systems.Hooks
+namespace InfernalEclipseAPI.Core.Systems.Hooks.ILTileChanges
 {
     [JITWhenModsEnabled(InfernalCrossmod.SOTS.Name)]
     [ExtendsFromMod(InfernalCrossmod.SOTS.Name)]
@@ -57,7 +57,7 @@ namespace InfernalEclipseAPI.Core.Systems.Hooks
                 {
                     Tile tile = Framing.GetTileSafely(i, j);
 
-                    if (tile.HasTile && tile.TileType == gulaVaultTileType && !DownedBossSystem.downedHiveMind && !DownedBossSystem.downedPerforator && InfernalConfig.Instance.SOTSBalanceChanges)
+                    if (tile.HasTile && tile.TileType == gulaVaultTileType && !NPC.downedBoss2 && InfernalConfig.Instance.SOTSBalanceChanges)
                     {
                         // Gula vault clicked before EoW/BoC: block opening.
                         if (Main.netMode != NetmodeID.Server)

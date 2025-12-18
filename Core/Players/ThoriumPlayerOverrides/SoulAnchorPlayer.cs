@@ -1,8 +1,4 @@
-﻿using System;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Terraria.ID;
+﻿using Microsoft.Xna.Framework;
 using Terraria.Chat;
 using Terraria.Localization;
 using InfernalEclipseAPI.Content.Buffs;
@@ -11,7 +7,7 @@ namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides
 {
     public class SoulAnchorPlayer : ModPlayer
     {
-        public static Mod thorium
+        public static Mod Thorium
         {
             get
             {
@@ -69,8 +65,8 @@ namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides
                 Player.statLife = Math.Min(heal, Player.statLifeMax2);
                 Player.HealEffect(heal);
                 Player.AddBuff(BuffID.PotionSickness, 3600);
-                Player.AddBuff(thorium.Find<ModBuff>("Mortality").Type, 600);
-                Player.AddBuff(thorium.Find<ModBuff>("RevivalExhaustion").Type, 18000); // 5 minute cooldown
+                Player.AddBuff(Thorium.Find<ModBuff>("Mortality").Type, 600);
+                Player.AddBuff(Thorium.Find<ModBuff>("RevivalExhaustion").Type, 18000); // 5 minute cooldown
                 Player.ClearBuff(ModContent.BuffType<AnchoredSoul>());
             }
             else if (!anchorExpiredMessageShown)

@@ -14,6 +14,11 @@ namespace InfernalEclipseAPI.Content.Items.Accessories.ExoSights
 
                 if (!InfernalConfig.Instance.SOTSBalanceChanges) return;
 
+                if (recipe.HasResult<SoulCharm>())
+                {
+                    recipe.AddIngredient(ItemID.Ectoplasm, 5);
+                }
+
                 if (recipe.HasResult<BagOfCharms>())
                 {
                     recipe.AddIngredient<UnholyEssence>(3);

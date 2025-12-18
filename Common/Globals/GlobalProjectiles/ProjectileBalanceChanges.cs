@@ -8,6 +8,9 @@ using Terraria;
 using ThoriumMod;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Projectiles.Melee.Yoyos;
+using Terraria.DataStructures;
+using InfernalEclipseAPI.Core.Systems;
 
 namespace InfernalEclipseAPI.Common.Projectiles
 {
@@ -463,6 +466,14 @@ namespace InfernalEclipseAPI.Common.Projectiles
                 {
                     if (InfernalConfig.Instance.SOTSThrowerToRogue) entity.DamageType = ModContent.GetInstance<VoidRogue>();
                 }
+            }
+        }
+
+        public override void OnSpawn(Projectile projectile, IEntitySource source)
+        {
+            if (projectile.ModProjectile != null && projectile.ModProjectile.Mod.Name == "ThoriumMod" && projectile.ModProjectile.Name == "TideDagger" && InfernalConfig.Instance.ThoriumBalanceChangess && !InfernalCrossmod.Hummus.Loaded)
+            {
+                projectile.damage /= 10;
             }
         }
 

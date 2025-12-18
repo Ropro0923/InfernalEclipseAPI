@@ -107,14 +107,17 @@ Items: {
 			'''
 	}
 
-	FlightMail: {
-		DisplayName: Flight Mail
-		Tooltip:
-			'''
-			'The sky is your playing field'
-			5% increased throwing damage
-			'''
-	}
+	FlightMask.Tooltip:
+		'''
+		2% increased throwing damage
+		5% increased throwing critical strike chance
+		'The sky is your playing field'
+		'''
+	FlightMail.Tooltip:
+		'''
+		3% increased throwing damage
+		'The sky is your playing field'
+		'''
 
 	BronzeHelmet: {
 		DisplayName: Bronze Helmet
@@ -386,14 +389,24 @@ Items: {
 			'''
 	}
 
+	TideTurnerGreaves: {
+		DisplayName: Tide Turner's Depth-Walkers
+		Tooltip:
+			'''
+			10% increased melee & throwing damage
+			20% increased melee knockback & throwing velocity
+			30% increased movement speed
+			'''
+	}
+
 	TerrariumHelmet: {
 		DisplayName: Terrarium Helmet
 		Tooltip:
 			'''
-			'All will fall before your might...'
 			Maximum life increased by {0} & life regen increased by {1}
 			{2}% increased damage
 			Sight in the dark is improved
+			'All will fall before your might...'
 			'''
 		SetBonus:
 			'''

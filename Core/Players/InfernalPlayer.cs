@@ -14,9 +14,7 @@ using InfernalEclipseAPI.Core.DamageClasses;
 using Terraria.ModLoader.IO;
 using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
 using InfernalEclipseAPI.Core.Systems;
-using System.Security.Policy;
-using ThoriumMod.Empowerments;
-using Terraria;
+using CalamityMod.NPCs.AstrumDeus;
 
 namespace InfernalEclipseAPI.Core.Players
 {
@@ -140,6 +138,13 @@ namespace InfernalEclipseAPI.Core.Players
         public bool workshopHasBeenOwned;
         public bool batPoop;
         public bool tixThumbRing;
+        public bool bloodstainedCoin;
+        public bool putridCoin;
+        public bool eyeOfChaos;
+        public bool snakeEyes;
+        public bool chaosBadge;
+        public bool focusReticle;
+        public bool exoSights;
 
         public override void Initialize()
         {
@@ -186,7 +191,7 @@ namespace InfernalEclipseAPI.Core.Players
                 batCoinTimer++;
                 if (batCoinTimer == 60 * 5)
                 {
-                    int poopCoin = Player.QuickSpawnItem(Player.GetSource_Misc("IEoR_PoopCoin"), ItemID.GoldCoin, Main.rand.Next(1, 6));
+                    Player.QuickSpawnItem(Player.GetSource_Misc("IEoR_PoopCoin"), ItemID.GoldCoin, Main.rand.Next(1, 6));
                     batCoinTimer = 0;
                 }
             }
@@ -217,6 +222,13 @@ namespace InfernalEclipseAPI.Core.Players
             statShareAll = false;
             LazyCrafterAmulet = false;
             batPoop = false;
+            bloodstainedCoin = false;
+            putridCoin = false;
+            eyeOfChaos = false;
+            snakeEyes = false;
+            chaosBadge = false;
+            focusReticle = false;
+            exoSights = false;
         }
 
         public override void PreUpdate()
@@ -233,8 +245,8 @@ namespace InfernalEclipseAPI.Core.Players
             {
                 if (Player.IsUnderwater() && NPC.AnyNPCs(InfernalCrossmod.Thorium.Mod.Find<ModNPC>("QueenJellyfish").Type))
                 {
-                    Player.AddBuff(InfernalCrossmod.Thorium.Mod.Find<ModBuff>("Bubbled").Type, 30);
-                    Player.AddBuff(BuffID.Electrified, 30);
+                    Player.AddBuff(InfernalCrossmod.Thorium.Mod.Find<ModBuff>("Bubbled").Type, 60);
+                    Player.AddBuff(BuffID.Electrified, 60);
                 }
             }
         }
@@ -338,15 +350,31 @@ namespace InfernalEclipseAPI.Core.Players
                 ref StatModifier summon = ref Player.GetDamage(DamageClass.Summon);
                 summon -= (float)(0.1 * Player.slotsMinions);
             }
-
-            if (batPoop)
-            {
-
-            }
         }
 
         public override void PostUpdateEquips()
         {
+            if (exoSights || focusReticle)
+            {
+                Player.GetCritChance(DamageClass.Generic) += 15f;
+            }
+            else if (eyeOfChaos)
+            {
+                Player.GetCritChance(DamageClass.Generic) += 12f;
+            }
+            else
+            {
+                if (snakeEyes)
+                {
+                    Player.GetCritChance(DamageClass.Generic) += 3f;
+                }
+
+                if (chaosBadge)
+                {
+                    Player.GetCritChance(DamageClass.Generic) += 5f;
+                }
+            }
+
             if (LazyCrafterAmulet)
             {
                 Player.adjTile[TileID.WorkBenches] = true;
@@ -356,32 +384,32 @@ namespace InfernalEclipseAPI.Core.Players
                 Player.adjTile[TileID.Tables] = true;
             }
 
-            var meleeDamage = Player.GetDamage(DamageClass.Melee);
-            float meleeAdd = (meleeDamage.Additive - 1f) * 0.1f;
-            float meleeFlat = meleeDamage.Flat * 0.1f;
-            float meleeMult = ((meleeDamage.Multiplicative - 1f) * 0.1f) + 1f;
-            float meleeBase = meleeDamage.Base * 0.1f;
-
-            var rangedDamage = Player.GetDamage(DamageClass.Ranged);
-            float rangedAdd = (rangedDamage.Additive - 1f) * 0.1f;
-            float rangedFlat = rangedDamage.Flat * 0.1f;
-            float rangedMult = ((rangedDamage.Multiplicative - 1f) * 0.1f) + 1f;
-            float rangedBase = rangedDamage.Base * 0.1f;
-
-            var magicDamage = Player.GetDamage(DamageClass.Magic);
-            float magicAdd = (magicDamage.Additive - 1f) * 0.1f;
-            float magicFlat = magicDamage.Flat * 0.1f;
-            float magicMult = ((magicDamage.Multiplicative - 1f) * 0.1f) + 1f;
-            float magicBase = magicDamage.Base * 0.1f;
-
-            var summonDamage = Player.GetDamage(DamageClass.Summon);
-            float summonAdd = (summonDamage.Additive - 1f) * 0.1f;
-            float summonFlat = summonDamage.Flat * 0.1f;
-            float summonMult = ((summonDamage.Multiplicative - 1f) * 0.1f) + 1f;
-            float summonBase = summonDamage.Base * 0.1f;
-
             if (statShareAll)
             {
+                var meleeDamage = Player.GetDamage(DamageClass.Melee);
+                float meleeAdd = (meleeDamage.Additive - 1f) * 0.1f;
+                float meleeFlat = meleeDamage.Flat * 0.1f;
+                float meleeMult = ((meleeDamage.Multiplicative - 1f) * 0.1f) + 1f;
+                float meleeBase = meleeDamage.Base * 0.1f;
+
+                var rangedDamage = Player.GetDamage(DamageClass.Ranged);
+                float rangedAdd = (rangedDamage.Additive - 1f) * 0.1f;
+                float rangedFlat = rangedDamage.Flat * 0.1f;
+                float rangedMult = ((rangedDamage.Multiplicative - 1f) * 0.1f) + 1f;
+                float rangedBase = rangedDamage.Base * 0.1f;
+
+                var magicDamage = Player.GetDamage(DamageClass.Magic);
+                float magicAdd = (magicDamage.Additive - 1f) * 0.1f;
+                float magicFlat = magicDamage.Flat * 0.1f;
+                float magicMult = ((magicDamage.Multiplicative - 1f) * 0.1f) + 1f;
+                float magicBase = magicDamage.Base * 0.1f;
+
+                var summonDamage = Player.GetDamage(DamageClass.Summon);
+                float summonAdd = (summonDamage.Additive - 1f) * 0.1f;
+                float summonFlat = summonDamage.Flat * 0.1f;
+                float summonMult = ((summonDamage.Multiplicative - 1f) * 0.1f) + 1f;
+                float summonBase = summonDamage.Base * 0.1f;
+
                 if (meleeAdd > 0f)
                 {
                     ref var generic = ref Player.GetDamage(DamageClass.Generic);
@@ -496,6 +524,7 @@ namespace InfernalEclipseAPI.Core.Players
             }
         }
 
+        private bool oceanBufferModified = false;
         public override void PostUpdateBuffs()
         {
             if (InfernalCrossmod.SOTS.Loaded)
@@ -510,6 +539,28 @@ namespace InfernalEclipseAPI.Core.Players
                 local -= (float)(0.25 * (time / 300f));
             }
 
+            if (InfernalCrossmod.Thorium.Loaded && InfernalConfig.Instance.ThoriumBalanceChangess && !InfernalCrossmod.Hummus.Loaded)
+            {
+                if (ModContent.TryFind<ModBuff>("ThoriumMod", "OceansBufferExhaust", out var buff))
+                {
+                    for (int i = 0; i < Player.buffType.Length; i++)
+                    {
+                        if (Player.buffType[i] == buff.Type && Player.buffTime[i] > 0)
+                        {
+                            if (!oceanBufferModified)
+                            {
+                                Player.buffTime[i] = (int)(Player.buffTime[i] * 2.5f);
+                                oceanBufferModified = true;
+                            }
+                            break; // stop looping once we found the buff
+                        }
+                    }
+                }
+                else
+                {
+                    oceanBufferModified = false; // reset if buff is gone
+                }
+            }
         }
 
         public void ConvertSummonMeleeToMelee(Player player, Item item, ref StatModifier damage)
@@ -567,15 +618,54 @@ namespace InfernalEclipseAPI.Core.Players
                 }
             }
 
-            if ((proj.type == ModContent.ProjectileType<CelestusProj>() || proj.type == ModContent.ProjectileType<CelestusMiniScythe>()) && 
-                (target.type == ModContent.NPCType<SepulcherHead>() || target.type == ModContent.NPCType<SepulcherBody>() || target.type == ModContent.NPCType<SepulcherTail>()) && 
+            if (tixThumbRing && proj.arrow && hit.Crit)
+                target.AddBuff(BuffID.ShadowFlame, 60, false);
+
+            //NPC DAMAGE RESISTANCE: KEEP AT END OF THIS METHOD
+
+            if ((proj.type == ModContent.ProjectileType<CelestusProj>() || proj.type == ModContent.ProjectileType<CelestusMiniScythe>()) &&
+                (target.type == ModContent.NPCType<SepulcherHead>() || target.type == ModContent.NPCType<SepulcherBody>() || target.type == ModContent.NPCType<SepulcherTail>()) &&
                 InfernalConfig.Instance.PreventBossCheese)
             {
                 hit.Damage -= (int)(hit.Damage * 0.2);
             }
 
-            if (tixThumbRing && proj.arrow && hit.Crit)
-                target.AddBuff(BuffID.ShadowFlame, 60, false);
+            if ((target.type == ModContent.NPCType<AstrumDeusHead>() || target.type == ModContent.NPCType<AstrumDeusBody>() || target.type == ModContent.NPCType<AstrumDeusTail>()) && !NPC.downedAncientCultist)
+            {
+                hit.Damage -= (int)(hit.Damage * 0.8);
+            }
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if ((target.type == ModContent.NPCType<AstrumDeusHead>() || target.type == ModContent.NPCType<AstrumDeusBody>() || target.type == ModContent.NPCType<AstrumDeusTail>()) && !NPC.downedAncientCultist)
+            {
+                hit.Damage -= (int)(hit.Damage * 0.8);
+            }
+        }
+
+        public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
+        {
+            TryCoinDebuff();
+        }
+
+        public override void OnHitByProjectile(Projectile proj, Player.HurtInfo hurtInfo)
+        {
+            TryCoinDebuff();
+        }
+
+        private void TryCoinDebuff()
+        {
+            if (bloodstainedCoin || putridCoin)
+            {
+                if (Main.rand.Next(4) != 0)
+                {
+                    if (putridCoin)
+                        Player.AddBuff(BuffID.Poisoned, 1020, false);
+                    if (bloodstainedCoin)
+                        Player.AddBuff(BuffID.Bleeding, 1020, false);
+                }
+            }
         }
     }
 

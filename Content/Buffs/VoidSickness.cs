@@ -16,11 +16,16 @@ namespace InfernalEclipseAPI.Content.Buffs
             Main.buffNoSave[Type] = false;
         }
 
+        public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
+        {
+            base.ModifyBuffText(ref buffName, ref tip, ref rare);
+        }
+
         public override bool ReApply(Player player, int time, int buffIndex)
         {
             player.buffTime[buffIndex] += (5 * 60);
-            if (player.buffTime[buffIndex] > 600)
-                player.buffTime[buffIndex] = 600;
+            if (player.buffTime[buffIndex] > 900)
+                player.buffTime[buffIndex] = 900;
             //return base.ReApply(player, newTime, buffIndex);
             return true;
         }

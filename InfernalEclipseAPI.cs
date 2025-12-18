@@ -31,6 +31,11 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Linq;
 using InfernalEclipseAPI.Content.UI;
 using InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides.ThoriumMulticlassNerf;
+using Terraria.Chat;
+using Terraria.Localization;
+using InfernalEclipseAPI.Core.Utils;
+using Terraria.GameContent.Creative;
+using static Terraria.GameContent.Creative.CreativePowers;
 
 namespace InfernalEclipseAPI
 {
@@ -38,7 +43,9 @@ namespace InfernalEclipseAPI
     {
         SyncDownedBosses = 1,
         TriggerScytheCharge = 2,
-        ThoriumEmpowerment = 3
+        ThoriumEmpowerment = 3,
+        ToggleRagnarok = 4,
+        SyncRagnarokState = 5
     }
     public class InfernalEclipseAPI : Mod
 	{
@@ -73,8 +80,8 @@ namespace InfernalEclipseAPI
                 }
             }
 
-                // Cache the WhiteFlare projectile type from Thorium
-                if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
+            // Cache the WhiteFlare projectile type from Thorium
+            if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
             {
                 if (thorium.TryFind<ModProjectile>("WhiteFlare", out var whiteFlare))
                     WhiteFlareType = whiteFlare.Type;
@@ -84,6 +91,11 @@ namespace InfernalEclipseAPI
                     On_Player.IsTileTypeInInteractionRange += On_Player_IsTileTypeInInteractionRange;
                     On_Player.InInteractionRange += On_Player_InInteractionRange;
                 }
+            }
+
+            if (InfernalCrossmod.SOTS.Loaded)
+            {
+                SOTSItemUtils.InitializeFakePlayerBlacklist();
             }
 
             RagnarokDifficulty difficulty = new();
@@ -140,6 +152,7 @@ namespace InfernalEclipseAPI
                 //BossRushInjection(calamity);
             }
 
+            #region Forced Menu Theme
             if (InfernalConfig.Instance.ForceMenu)
             {
                 try
@@ -159,7 +172,9 @@ namespace InfernalEclipseAPI
                     Console.WriteLine("\n\n\n\n\n\n\n\n\n\n");
                 }
             }
+            #endregion
 
+            #region Deerclops Boss Checklist repositioning
             //THANK GOD for habble on the Fargo Team for coding this
             if (ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist))
             {
@@ -215,6 +230,7 @@ namespace InfernalEclipseAPI
                     }
                 }
             }
+            #endregion
         }
 
         public static void MenuLoader(ModMenu menu)
@@ -273,6 +289,43 @@ namespace InfernalEclipseAPI
                                     }
                                     break;
                                 }
+                        }
+                        break;
+                    }
+
+                case InfernalEclipseMessageType.ToggleRagnarok:
+                    {
+                        Player player = reader.ReadByte() > -1 && reader.ReadByte() < Main.maxPlayers && Main.player[reader.ReadByte()].active && !Main.player[reader.ReadByte()].dead && !Main.player[reader.ReadByte()].ghost ? Main.player[reader.ReadByte()] : null;
+
+                        if (Main.netMode == NetmodeID.Server)
+                        {
+                            bool changed = false;
+                            if (Main.GameModeInfo.IsJourneyMode)
+                            {
+                                float value = 1f;
+                                var slider = CreativePowerManager.Instance.GetPower<DifficultySliderPower>();
+                                typeof(DifficultySliderPower).GetMethod("SetValueKeyboardForced", LumUtils.UniversalBindingFlags).Invoke(slider, [value]);
+                            }
+                            else
+                            {
+                                if (Main.GameMode != GameModeID.Master)
+                                    changed = true;
+                                Main.GameMode = GameModeID.Master;
+                            }
+                            if (changed)
+                                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.InfernalEclipseAPI.DifficultyUI.MasterToggle")), new Color(175, 75, 255));
+
+                            NetMessage.SendData(MessageID.WorldData);
+                        }
+                        break;
+                    }
+
+                case InfernalEclipseMessageType.SyncRagnarokState:
+                    {
+                        if (Main.netMode == NetmodeID.Server)
+                        {
+                            InfernalWorld.RagnarokModeEnabled = reader.ReadBoolean();
+                            NetMessage.SendData(MessageID.WorldData);
                         }
                         break;
                     }

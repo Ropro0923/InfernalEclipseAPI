@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using InfernalEclipseAPI.Core.Systems;
 
-namespace InfernalEclipseAPI.Common
+namespace InfernalEclipseAPI.Core.Netcode
 {
     public class MusicNetcode
     {

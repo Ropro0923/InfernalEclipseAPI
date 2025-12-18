@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Terraria.GameContent;
 using CalamityMod;
+using System.Collections.Generic;
 
 namespace InfernalEclipseAPI.Core.Utils
 {
@@ -164,6 +165,25 @@ namespace InfernalEclipseAPI.Core.Utils
                 }
 
                 return cullOnlyScreen;
+            }
+        }
+
+        public static void FullTooltipOveride(List<TooltipLine> tooltips, string newTooltip)
+        {
+            for (int index = 0; index < tooltips.Count; ++index)
+            {
+                if (tooltips[index].Mod == "Terraria")
+                {
+                    if (tooltips[index].Name == "Tooltip0")
+                    {
+                        TooltipLine tooltip = tooltips[index];
+                        tooltip.Text = $"{newTooltip}";
+                    }
+                    else if (tooltips[index].Name.Contains("Tooltip"))
+                    {
+                        tooltips[index].Hide();
+                    }
+                }
             }
         }
     }
