@@ -1,4 +1,6 @@
-﻿using YouBoss.Content.NPCs.Bosses.TerraBlade;
+﻿using CalamityMod;
+using YouBoss.Content.NPCs.Bosses.TerraBlade;
+using YouBoss.Core;
 using InfernumSaveSystem = InfernumMode.Core.GlobalInstances.Systems.WorldSaveSystem;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs.NPCDebuffs
@@ -19,6 +21,12 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs.NPCDebuffs
                     player.ClearBuff(ModContent.BuffType<GracedWings>());
                 }
             }
+        }
+
+        public override void OnKill(NPC npc)
+        {
+            WorldSaveSystem.HasDefeatedYourself = true;
+            CalamityNetcode.SyncWorld();
         }
     }
 }

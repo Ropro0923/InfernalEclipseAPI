@@ -103,6 +103,7 @@ ItemTooltip: {
 		受伤时有75%的概率对你造成中毒debuff
 		暴击有50%的概率造成10点额外伤害
 		'''
+	SubspaceLocket:
 		'''
 		召唤一只亚空之仆协助战斗
 		亚空之仆会为你使用最后一格物品栏的物品
@@ -119,8 +120,8 @@ ItemTooltip: {
 		Immunity to bleeding and poisoned debuffs
 		''' */
 	/* Starbelt:
-		Critical strikes recover mana
 		'''
+		Critical strikes recover mana
 		Increases max mana by 40
 		Increases magic critical strike chance by 5%
 		''' */

@@ -131,6 +131,15 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                         ((ILoot)(object)itemLoot).DefineConditionalDropSet(DropHelper.RevAndMaster).Add(calHunt.Find<ModItem>("TendrilCursorAttachment").Type, 10, 1, 1, false);
                     }
                 }
+
+                if (InfernalCrossmod.Clamity.Loaded)
+                {
+                    if (item.type == InfernalCrossmod.Clamity.Mod.Find<ModItem>("PyrogenBag").Type)
+                    {
+                        itemLoot.RemoveWhere(flare => flare is CommonDrop commonDrop3 && commonDrop3.itemId == InfernalCrossmod.Clamity.Mod.Find<ModItem>("HellFlare").Type, true);
+                        ((ILoot)(object)itemLoot).Add(InfernalCrossmod.Clamity.Mod.Find<ModItem>("HellFlare").Type);
+                    }
+                }
             }
         }
 

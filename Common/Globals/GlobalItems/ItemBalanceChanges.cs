@@ -892,6 +892,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 }
                 */
 
+                if (UnsafeGetItem(clam, "HellFlare", item))
+                {
+                    item.expert = true;
+                    item.rare = ItemRarityID.Expert;
+                }
+
                 if (UnsafeGetItem(clam, "WitheredBoneBow", item))
                 {
                     item.damage = 70;
