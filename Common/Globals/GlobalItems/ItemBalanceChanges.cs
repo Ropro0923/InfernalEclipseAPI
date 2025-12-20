@@ -5604,27 +5604,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems
             }
         }
 
-        public override string IsArmorSet(Item head, Item body, Item legs)
-        {
-            if (InfernalCrossmod.Thorium.Loaded)
-            {
-                if (head.type == InfernalCrossmod.Thorium.Mod.Find<ModItem>("FlightMask").Type && body.type == InfernalCrossmod.Thorium.Mod.Find<ModItem>("FlightMail").Type && legs.type == InfernalCrossmod.Thorium.Mod.Find<ModItem>("FlightBoots").Type)
-                {
-                    return "Thorium:FlightSet";
-                }
-            }
-
-            return base.IsArmorSet(head, body, legs);
-        }
-
-        public override void UpdateArmorSet(Player player, string set)
-        {
-            if (set == "Thorium:FlightSet")
-            {
-                player.jumpBoost = false;
-            }
-        }
-
         public override bool CanUseItem(Item item, Player player)
         {
             if (InfernalConfig.Instance.ThoriumBalanceChangess && InfernalCrossmod.Thorium.Loaded)

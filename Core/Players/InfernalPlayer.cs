@@ -23,6 +23,7 @@ namespace InfernalEclipseAPI.Core.Players
         public bool LazyCrafterAmulet;
         public bool statShareAll;
         public bool scalingArmorPenetration;
+        public bool flightArmor;
 
         private const int AdjRadius = 4;
 
@@ -229,6 +230,7 @@ namespace InfernalEclipseAPI.Core.Players
             chaosBadge = false;
             focusReticle = false;
             exoSights = false;
+            flightArmor = false;
         }
 
         public override void PreUpdate()
@@ -653,7 +655,6 @@ namespace InfernalEclipseAPI.Core.Players
         {
             TryCoinDebuff();
         }
-
         private void TryCoinDebuff()
         {
             if (bloodstainedCoin || putridCoin)

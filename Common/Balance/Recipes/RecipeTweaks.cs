@@ -70,17 +70,12 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                 #region Vanilla
                 if (InfernalConfig.Instance.BossKillCheckOnOres)
                 {
-                    if (recipe.HasResult(ItemID.DemonConch))
-                        recipe.DecraftConditions.Add(Condition.DownedEowOrBoc);
-
-                    if (recipe.HasResult(ItemID.HellstoneBar))
-                        recipe.DecraftConditions.Add(Condition.DownedEowOrBoc);
-
-                    if (recipe.HasResult(ItemID.InactiveStoneBlock) || recipe.HasResult(ItemID.ActiveStoneBlock))
-                        recipe.DecraftConditions.Add(Condition.DownedSkeletron);
-
-                    int[] phaseblades =
+                    int[] lockUntilWorldEvil =
                     {
+                        ItemID.DemonConch,
+                        ItemID.HellstoneBar,
+                        ItemID.MeteoriteBar,
+                        ItemID.MeteorShot,
                         ItemID.BluePhaseblade,
                         ItemID.GreenPhaseblade,
                         ItemID.OrangePhaseblade,
@@ -90,11 +85,26 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         ItemID.YellowPhaseblade
                     };
 
-                    foreach (int phaseblade in phaseblades)
+                    int[] lockUntilSkeletron =
                     {
-                        if (recipe.HasResult(phaseblade))
+                        ItemID.ActiveStoneBlock,
+                        ItemID.InactiveStoneBlock,
+                        ItemID.AlchemyTable,
+                        ItemID.BewitchingTable,
+                    };
+
+                    foreach (int item in lockUntilWorldEvil)
+                    {
+                        if (recipe.HasResult(item))
                             recipe.DecraftConditions.Add(Condition.DownedEowOrBoc);
                     }
+
+                    foreach (int item in lockUntilSkeletron)
+                    {
+                        if (recipe.HasResult(item))
+                            recipe.DecraftConditions.Add(Condition.DownedSkeletron);
+                    }
+
                 }
                 #endregion
 
