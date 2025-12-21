@@ -892,6 +892,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 }
                 */
 
+                if (UnsafeGetItem(clam, "HellFlare", item))
+                {
+                    item.expert = true;
+                    item.rare = ItemRarityID.Expert;
+                }
+
                 if (UnsafeGetItem(clam, "WitheredBoneBow", item))
                 {
                     item.damage = 70;
@@ -5595,27 +5601,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 {
                     //player.GetModPlayer<GelWingsDashPlayer>().Active = true;
                 }
-            }
-        }
-
-        public override string IsArmorSet(Item head, Item body, Item legs)
-        {
-            if (InfernalCrossmod.Thorium.Loaded)
-            {
-                if (head.type == InfernalCrossmod.Thorium.Mod.Find<ModItem>("FlightMask").Type && body.type == InfernalCrossmod.Thorium.Mod.Find<ModItem>("FlightMail").Type && legs.type == InfernalCrossmod.Thorium.Mod.Find<ModItem>("FlightBoots").Type)
-                {
-                    return "Thorium:FlightSet";
-                }
-            }
-
-            return base.IsArmorSet(head, body, legs);
-        }
-
-        public override void UpdateArmorSet(Player player, string set)
-        {
-            if (set == "Thorium:FlightSet")
-            {
-                player.jumpBoost = false;
             }
         }
 

@@ -129,14 +129,14 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
             Player player = spawnInfo.Player;
             if (InfernalCrossmod.SOTS.Loaded)
             {
-                if (player.ZoneHallow && Main.hardMode && !twoMechsDowned())
+                if (player.ZoneHallow && Main.hardMode && !TwoMechsDowned())
                 {
                     pool.Remove(InfernalCrossmod.SOTS.Mod.Find<ModNPC>("HallowTreasureSlime").Type);
                 }
             }
         }
 
-        public static bool twoMechsDowned()
+        public static bool TwoMechsDowned()
         {
             return (NPC.downedMechBoss1 && NPC.downedMechBoss2) || (NPC.downedMechBoss1 && NPC.downedMechBoss3) || (NPC.downedMechBoss2 && NPC.downedMechBoss3);
         }
