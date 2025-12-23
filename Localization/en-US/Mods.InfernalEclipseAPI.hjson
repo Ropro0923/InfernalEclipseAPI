@@ -119,6 +119,7 @@ ItemTooltip: {
 		Summons a Subspace Servant to assist in combat
 		Uses the item in your last inventory slot for you
 		Decreases damage by 50% multiplicatively
+		Decreases true melee damage by 15%
 		Increases max void by 50, but reduces healing received from potions by 40
 		'''
 	EyeOfChaos: Increases critical strike chance by 12%, does not stack with downgrades

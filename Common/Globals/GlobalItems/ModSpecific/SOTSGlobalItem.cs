@@ -58,6 +58,7 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                 {
                     ref StatModifier local = ref player.GetDamage(DamageClass.Generic);
                     local *= 0.675f;
+                    player.GetDamage<TrueMeleeDamageClass>() -= 0.15f;
                 }
 
                 if (item.type == ModContent.ItemType<EyeOfChaos>())
