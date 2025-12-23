@@ -3,6 +3,9 @@ using Microsoft.Xna.Framework;
 using Terraria.GameContent;
 using CalamityMod;
 using System.Collections.Generic;
+using System.Reflection;
+using Terraria.DataStructures;
+using InfernumMode.Core.GlobalInstances.Systems;
 
 namespace InfernalEclipseAPI.Core.Utils
 {
@@ -186,5 +189,32 @@ namespace InfernalEclipseAPI.Core.Utils
                 }
             }
         }
+
+        #region Get Difficulty States
+        public static bool GetCalDifficulty(string diff)
+        {
+            return ModLoader.TryGetMod("CalamityMod", out Mod calamity) &&
+                   calamity.Call("GetDifficultyActive", diff) is bool b && b;
+        }
+        public static bool IsInfernumActive()
+        {
+            return WorldSaveSystem.InfernumModeEnabled;
+        }
+        public static bool GetFargoDifficullty(string diff)
+        {
+            if (!ModLoader.TryGetMod("FargowiltasSouls", out Mod fargoSouls))
+            {
+                return false;
+            }
+
+            return fargoSouls.Call(diff) is bool active && active;
+        }
+        public static bool IsWorldLegendary()
+        {
+            FieldInfo findInfo = typeof(Main).GetField("_currentGameModeInfo", BindingFlags.Static | BindingFlags.NonPublic);
+            GameModeData data = (GameModeData)findInfo.GetValue(null);
+            return (Main.getGoodWorld && data.IsMasterMode);
+        }
+        #endregion
     }
 }

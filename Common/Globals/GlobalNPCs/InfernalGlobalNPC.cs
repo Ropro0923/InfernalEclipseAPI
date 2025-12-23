@@ -26,7 +26,7 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
         {
             if (InfernalCrossmod.Thorium.Loaded)
             {
-                if (entity.buffImmune[BuffID.Confused])
+                if (entity.buffImmune[BuffID.Confused] && entity.boss)
                 {
                     entity.buffImmune[InfernalCrossmod.Thorium.Mod.Find<ModBuff>("Stunned").Type] = true;
                 }

@@ -15,6 +15,7 @@ using Terraria.ModLoader.IO;
 using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
 using InfernalEclipseAPI.Core.Systems;
 using CalamityMod.NPCs.AstrumDeus;
+using System.Collections.Generic;
 
 namespace InfernalEclipseAPI.Core.Players
 {
@@ -134,7 +135,10 @@ namespace InfernalEclipseAPI.Core.Players
         private int batCoinTimer = 0;
 
         public int resonatorTimer = 0;
+        public int incubatorTextTime = 0;
         public int namelessDialogueCooldown;
+        public int voidMagePrevention;
+
         public int CloverCharmCooldown;
         public bool workshopHasBeenOwned;
         public bool batPoop;
@@ -147,9 +151,12 @@ namespace InfernalEclipseAPI.Core.Players
         public bool focusReticle;
         public bool exoSights;
 
+        public bool singularityCore;
+
         public override void Initialize()
         {
             workshopHasBeenOwned = false;
+            singularityCore = false;
         }
 
         public override void SaveData(TagCompound tag)
@@ -158,11 +165,18 @@ namespace InfernalEclipseAPI.Core.Players
             {
                 tag.Add("workshopHasBeenOwned", true);
             }
+            var boost = new List<string>();
+            boost.AddWithCondition("singularityCore", singularityCore);
+
+            tag["IEORboost"] = boost;
         }
 
         public override void LoadData(TagCompound tag)
         {
             workshopHasBeenOwned = tag.Get<bool>("workshopHasBeenOwned");
+
+            var boost = tag.GetList<string>("IEORboost");
+            singularityCore = boost.Contains("singularityCore");
         }
 
         public override bool CanUseItem(Item item)
@@ -186,6 +200,12 @@ namespace InfernalEclipseAPI.Core.Players
 
             if (CloverCharmCooldown > 0)
                 CloverCharmCooldown--;
+
+            if (incubatorTextTime > 0)
+                incubatorTextTime--;
+
+            if (voidMagePrevention > 0)
+                voidMagePrevention--;
 
             if (batPoop)
             {
@@ -330,6 +350,9 @@ namespace InfernalEclipseAPI.Core.Players
                 previousPos = Player.position;
                 wasUsingItem = Player.itemAnimation > 0;
             }
+
+            if (!NPC.downedBoss3 && InfernalConfig.Instance.BossKillCheckOnOres && Player.HasBuff(BuffID.Bewitched))
+                Player.ClearBuff(BuffID.Bewitched);
         }
 
         public bool soltanBullying = false;

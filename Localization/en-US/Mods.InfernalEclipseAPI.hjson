@@ -57,6 +57,17 @@ WelcomeMessage: {
 	GulaVaultMessage: The vault refuses to open. A stronger evil must be defeated first...
 }
 
+TimeFreezePrevention: {
+	AuricSoul: The beings auric soul prevents the incubator from activating...
+	ExoMech: Draedon's machine prevents the incubator from activating!
+	Terminus: The Terminus' light prevents the incubator's effects!
+	SCal: The witch dispells the incubator's effects!
+	Primoridal: Primordial forces prevent the incubator's effects!
+	HolyFlame: The holy flame protects the world from the incubator's effects!
+	TerraBlade: Your reflection is immune to the incubator's effects!
+	Other: The incubator's effects was prevented!
+}
+
 ItemTooltip: {
 	BasicDamage: basic damage
 	OmniShield: -Omni Shield-
@@ -1341,6 +1352,15 @@ Items: {
 		VoidTooltip: Heals 100 void
 		Stellar: Stellar
 		Major: Major
+	}
+
+	SingularityCore: {
+		DisplayName: Singularity Core
+		Tooltip:
+			'''
+			Permanently increases max void by 100 and void regeneration speed by 10%
+			Can only be used once
+			'''
 	}
 }
 

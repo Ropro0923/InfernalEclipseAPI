@@ -1,4 +1,5 @@
 ﻿using CalamityMod;
+using CalamityMod.Items.Mounts;
 using CatalystMod.NPCs.Boss.Astrageldon;
 using Clamity.Content.Bosses.Clamitas.NPCs;
 using Clamity.Content.Bosses.Pyrogen.NPCs;
@@ -8,9 +9,12 @@ using InfernalEclipseAPI.Content.Items.Materials;
 using InfernalEclipseAPI.Content.Items.Placeables.Relics.CalamityAddons;
 using InfernalEclipseAPI.Content.Items.Placeables.Relics.CalamityAddons.Clamity;
 using InfernalEclipseAPI.Content.Items.Placeables.Relics.CalamityAddons.WoTG;
+using InfernalEclipseAPI.Core.Systems;
+using NoxusBoss.Assets;
 using NoxusBoss.Content.Items;
 using NoxusBoss.Content.NPCs.Bosses.Avatar.SecondPhaseForm;
 using NoxusBoss.Content.NPCs.Bosses.NamelessDeity;
+using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using InfernumSaveSystem = InfernumMode.Core.GlobalInstances.Systems.WorldSaveSystem;
 
@@ -47,6 +51,41 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs.InfernalRelics
     [ExtendsFromMod("NoxusBoss")]
     public class WrathInfernalRelics : GlobalNPC
     {
+        public override bool PreAI(NPC npc)
+        {
+            if (!InfernalConfig.Instance.CalamityBalanceChanges || !npc.active || npc.type != ModContent.NPCType<NamelessDeityBoss>()) return base.PreAI(npc);
+
+            for (int i = 0; i < Main.maxPlayers; i++)
+            {
+                Player player = Main.player[i];
+                if (player.active && !player.dead)
+                {
+                    if (player.mount?.Type == ModContent.MountType<DraedonGamerChairMount>())
+                    {
+                        player.mount.Dismount(player);
+                        SoundEngine.PlaySound(GennedAssets.Sounds.NamelessDeity.Chuckle, player.Center);
+                    }
+                }
+            }
+            if (InfernalCrossmod.Clamity.Loaded)
+            {
+                for (int i = 0; i < Main.maxPlayers; i++)
+                {
+                    Player player = Main.player[i];
+                    if (player.active && !player.dead)
+                    {
+                        if (player.mount?.Type == InfernalCrossmod.Clamity.Mod.Find<ModMount>("PlagueChairMount").Type)
+                        {
+                            player.mount.Dismount(player);
+                            SoundEngine.PlaySound(GennedAssets.Sounds.NamelessDeity.Chuckle, player.Center);
+                        }
+                    }
+                }
+            }
+
+            return base.PreAI(npc);
+        }
+
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
             bool isInfernum() => InfernumSaveSystem.InfernumModeEnabled;

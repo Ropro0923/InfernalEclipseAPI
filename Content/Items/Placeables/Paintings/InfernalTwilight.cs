@@ -122,6 +122,13 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Tencvin",
             "Jillyfish",
 
+            //Donors
+            "bryce27",
+            "Bomberr",
+            "evil81",
+            "Goldsockz2",
+            "rosé",
+
             //Supporters
             "Lylittle",
             "Sharktank6",
@@ -129,11 +136,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Na69754",
             "Louhii",
 
-            //Donors
-            "bryce27",
-            "evil81",
-            "Goldsockz2",
-            "rosé",
+            //Helpers
 
             //Special Thanks
             "N0t_UNowen",
