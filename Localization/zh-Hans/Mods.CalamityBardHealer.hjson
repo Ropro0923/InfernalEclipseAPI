@@ -74,12 +74,12 @@ Items: {
 		随着时间的推移增加66%的伤害强度
 		"当光明和黑暗碰撞时，它们会协调成最终的形状"
 		'''
-	/* SymphonicFabrications.Tooltip:
+	SymphonicFabrications.Tooltip:
 		'''
-		Shoots a barrage of colorful missiles that shreds targets
-		While holding the weapon, two giant Exo speakers hover beside you and aid in combat
-		These attack alongside you by shooting homing sound waves that deal 150% damage
-		Sound waves heal you for 0.5% of the damage dealt and have a 33% chance to heal 1 inspiration
-		"Now you're listening to... Exo-FM!"
-		''' */
+		发射追踪的彩色导弹粉碎目标
+		手持武器时，召唤两个星流扬声器悬停在旁协助你战斗
+		它们会随着你的攻击发射追踪声波协助你作战，造成150%伤害
+		声波会把造成伤害的0.5%转化为对你的治疗，有33%的几率恢复1点灵感值
+		"你现在听到的是... Exo-FM!"
+		'''
 }

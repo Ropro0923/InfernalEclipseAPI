@@ -1,40 +1,40 @@
 Items: {
-	/* CoralCrusher.Tooltip:
+	CoralCrusher.Tooltip:
 		'''
-		4% summon tag damage
+		施加4%召唤标记伤害
 		{$Mods.CatalystMod.Tooltips.WhipTooltip}
-		Hitting an enemy with the tip embeds a coral shard
-		Minion attacks can shatter the coral shard, stopping their movement and triggering 6% summon tag damage 
-		''' */
-	/* ResonantStriker.Tooltip:
+		鞭梢的珊瑚碎片会嵌入击中的敌人
+		召唤物的攻击可以击碎珊瑚碎片，使其停止移动并增加6%召唤标记伤害
 		'''
-		8% summon tag damage
-		{$Mods.CatalystMod.Tooltips.WhipTooltip}
-		Releases homing orbs of electricity on hit
-		Your minions stun non-boss enemies on hit
-		''' */
-	/* BlossomsBlessing.Tooltip:
+	ResonantStriker.Tooltip:
 		'''
-		12% summon tag damage
+		施加8%召唤标记伤害
 		{$Mods.CatalystMod.Tooltips.WhipTooltip}
-		Carries blossoms upon the wind
-		Touch the largest petal to receive a blessing to regeneration, damage, and thorns.
-		'It blooms, it blooms, it withers and droops.'
-		''' */
-	/* UnrelentingTorment.Tooltip:
+		击中敌人时释放出追踪电球
+		召唤物攻击非Boss敌人时会使其晕眩
 		'''
-		10% summon tag damage
-		{$Mods.CatalystMod.Tooltips.WhipTooltip}
-		Releases a cascade of otherworldly claws to tear at foes
-		''' */
-	/* Catharsis.Tooltip:
+	BlossomsBlessing.Tooltip:
 		'''
-		12% summon tag damage
+		施加12%召唤标记伤害
 		{$Mods.CatalystMod.Tooltips.WhipTooltip}
-		Swinging the whip costs health
-		Hitting enemies stores a blood charge. Up to 20 charges may be stored
-		Right Clicking activates the charges, temporarily empowering Catharsis and restoring the health lost
-		[c/c61b40:The purifying light, forsaken and consumed by pain,]
-		[c/c61b40:Returned to this realm as obliterating shadow.]
-		''' */
+		送叶携花
+		触摸最大的花瓣后你会获得祝福，提高生命恢复、攻击力并获得荆棘效果
+		“花而后荣，枯而垂落。”
+		'''
+	UnrelentingTorment.Tooltip:
+		'''
+		施加10%召唤标记伤害
+		{$Mods.CatalystMod.Tooltips.WhipTooltip}
+		释放出一连串异世鬼爪撕裂敌人
+		'''
+	Catharsis.Tooltip:
+		'''
+		施加12%召唤标记伤害
+		{$Mods.CatalystMod.Tooltips.WhipTooltip}
+		挥鞭会消耗你的生命值
+		击中敌人时获得鲜血充能，至多能维持20层充能
+		右键以消耗充能，暂时强化武器，同时恢复失去的生命值
+		[c/c61b40:被痛苦遗弃、吞噬的净化之光，]
+		[c/c61b40:化作毁灭之影，重返这个世界]
+		'''
 }

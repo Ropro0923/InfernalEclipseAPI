@@ -406,11 +406,11 @@ Items: {
 			'''
 	}
 
-	/* MagmaSeersMask.Tooltip:
+	MagmaSeersMask.Tooltip:
 		'''
-		'Command a magma fortified army'
-		50% increased summon damage
-		Increases your max number of minions and sentries by 2
-		Increases minion knockback
-		''' */
+		“指挥一支经熔岩强化的军队”
+		增加50%召唤伤害
+		最大仆从数量和哨兵数量增加2
+		增加仆从击退
+		'''
 }
