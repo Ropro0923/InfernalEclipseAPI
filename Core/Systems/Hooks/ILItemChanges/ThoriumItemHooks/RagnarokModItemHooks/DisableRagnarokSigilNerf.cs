@@ -5,7 +5,7 @@ using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 using ThoriumMod.Utilities;
 
-namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges
+namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges.ThoriumItemHooks.RagnarokModItemHooks
 {
     [ExtendsFromMod("RagnarokMod")]
     public class DisableRagnarokSigilNerf : ModSystem

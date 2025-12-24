@@ -3,7 +3,7 @@ using InfernalEclipseAPI.Content.Buffs;
 using MonoMod.RuntimeDetour;
 using SOTS.Items.Void;
 
-namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges
+namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges.SOTSItemHooks
 {
     [JITWhenModsEnabled(InfernalCrossmod.SOTS.Name)]
     [ExtendsFromMod(InfernalCrossmod.SOTS.Name)]

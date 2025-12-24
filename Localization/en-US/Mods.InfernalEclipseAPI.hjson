@@ -1912,6 +1912,11 @@ Buffs: {
 		DisplayName: Low Ground
 		Description: Your movement has been significantly hindered!
 	}
+
+	DefaultSummonTag: {
+		DisplayName: Default Summon Tag
+		Description: Mods.InfernalEclipseAPI.Buffs.DefaultSummonTag.Description
+	}
 }
 
 SpawnInfo: {

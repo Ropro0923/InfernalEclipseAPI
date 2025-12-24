@@ -16,6 +16,8 @@ using ThoriumMod.Items.BossStarScouter;
 using ThoriumMod;
 using InfernalEclipseAPI.Content.Items.Lore.Thorium;
 using ThoriumMod.NPCs.BossTheGrandThunderBird;
+using ThoriumMod.Items.BossLich;
+using InfernalEclipseAPI.Core.Systems;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs.LootAdjustments
 {
@@ -92,6 +94,15 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs.LootAdjustments
             if (item.type == ModContent.ItemType<StarScouterTreasureBag>() && ModLoader.HasMod("SOTS"))
             {
                 itemLoot.Add(ModLoader.GetMod("SOTS").Find<ModItem>("TwilightShard").Type, 1, 7, 14);
+            }
+
+            if (item.type == ModContent.ItemType<LichTreasureBag>() && InfernalCrossmod.ThoriumRework.Loaded && !InfernalCrossmod.Hummus.Loaded)
+            {
+                var rule = new CommonDropNotScalingWithLuck(InfernalCrossmod.ThoriumRework.Mod.Find<ModItem>("SoulSnatcher").Type, 5, 1, 1)
+                {
+                    chanceNumerator = 2 // 2/5 = 40%
+                };
+                itemLoot.Add(rule);
             }
         }
     }

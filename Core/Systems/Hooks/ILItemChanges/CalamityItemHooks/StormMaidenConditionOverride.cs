@@ -3,7 +3,7 @@ using CalamityHunt.Common.Systems;
 using InfernumMode.Core.GlobalInstances.Systems;
 using MonoMod.RuntimeDetour;
 
-namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges
+namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges.CalamityItemHooks
 {
     [JITWhenModsEnabled("CalamityHunt")]
     [ExtendsFromMod("CalamityHunt")]

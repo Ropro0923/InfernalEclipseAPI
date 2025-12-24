@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader.IO;
 using Microsoft.Xna.Framework;
 
-namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges
+namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges.CalamityItemHooks
 {
     [ExtendsFromMod("CatalystMod")]
     public class AstralCommunicatorAnytime : ModSystem

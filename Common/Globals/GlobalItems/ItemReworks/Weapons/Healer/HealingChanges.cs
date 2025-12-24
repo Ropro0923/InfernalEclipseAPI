@@ -10,8 +10,7 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Heal
         {
             ["CalamityBardHealer"] = new Dictionary<string, int>
             {
-                ["PurgatoriumPandemonium"] = 3,
-                // Add more CalamityBardHealer items here
+                //["PurgatoriumPandemonium"] = 3,
             },
             ["ThoriumMod"] = new Dictionary<string, int>
             {
@@ -28,7 +27,7 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Heal
             },
             ["ThoriumRework"] = new Dictionary<string, int>
             {
-                ["RedCresent"] = 3
+                //["RedCresent"] = 3
             }
         };
 
