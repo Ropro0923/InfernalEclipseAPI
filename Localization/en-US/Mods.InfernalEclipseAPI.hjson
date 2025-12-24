@@ -150,6 +150,7 @@ ItemTooltip: {
 		'''
 	SpiritGlove: Increases void regeneration speed by 5% and melee critical strike chance by 4%
 	DiamondRingText: Increase damage based on defense, then decreases defense by two-thirds of the damage buff
+	EarthDrive: Max boost to melee speed is 10%
 	DedTo: - Dedicated to {0} -
 
 	Dedicated: {

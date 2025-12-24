@@ -25,6 +25,7 @@ namespace InfernalEclipseAPI.Core.Players
         public bool statShareAll;
         public bool scalingArmorPenetration;
         public bool flightArmor;
+        public bool Earthdrive;
 
         private const int AdjRadius = 4;
 
@@ -547,6 +548,21 @@ namespace InfernalEclipseAPI.Core.Players
                     Player.GetDamage(DamageClass.Summon).Base -= summonBase;
                 }
             }
+
+            if (Earthdrive)
+            {
+                float meleeSpeedBonus = Player.GetAttackSpeed(DamageClass.Melee) - 1f;
+                float miningSpeedBonus = 1f - Player.pickSpeed;
+                if (meleeSpeedBonus > 0.0)
+                    Player.pickSpeed -= meleeSpeedBonus;
+                if (miningSpeedBonus > 0.0)
+                {
+                    if (miningSpeedBonus > 0.1f)
+                        miningSpeedBonus = 0.1f;
+                    Player.GetAttackSpeed(DamageClass.Melee) += miningSpeedBonus;
+                }
+            }
+            Earthdrive = false;
         }
 
         private bool oceanBufferModified = false;

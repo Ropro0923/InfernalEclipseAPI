@@ -71,6 +71,9 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                 if (recipe.HasResult(ItemID.Sashimi))
                     recipe.DisableDecraft();
 
+                if (recipe.HasResult(ItemID.TempleKey))
+                    recipe.DisableRecipe();
+
                 if (InfernalConfig.Instance.BossKillCheckOnOres)
                 {
                     int[] lockUntilWorldEvil =

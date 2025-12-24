@@ -58,7 +58,7 @@ namespace InfernalEclipseAPI.Core.Utils
             int prefix = -1;
 
             //ACCESSORIES
-            //TODO FULLY REPLACE CAL ACCESSORY REFORGE TIERS WITH SOTS ONES IF PEOPLE START TO COMPLAIN
+            //TODO: FULLY REPLACE CAL ACCESSORY REFORGE TIERS WITH SOTS ONES IF PEOPLE START TO COMPLAIN
 
             //VOID MELEE & VOID WHIPS
             if (item.CountsAsClass<VoidMelee>())
