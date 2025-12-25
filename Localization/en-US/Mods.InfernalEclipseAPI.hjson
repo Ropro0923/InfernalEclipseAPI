@@ -1481,8 +1481,13 @@ Configs: {
 		}
 
 		InfernumModeForced: {
-			Tooltip: Forces Infernum Mode to be on. Helpful for servers.
-			Label: Force Infernum Mode
+			Tooltip:
+				'''
+				Locks the Calamity difficulty slider, even outside of boss fights
+				Make sure to set the difficulty before enabling this config
+				Helpful for servers where you don't want the difficulty being changed
+				'''
+			Label: Calamity Difficulty Slider Locked
 		}
 
 		SOTSBalanceChanges: {
@@ -1517,7 +1522,7 @@ Configs: {
 
 		PreventBossCheese: {
 			Tooltip: Adds some mechanics to the game that prevent certain ways to easily kill certain bosses.
-			Label: Prevent Boss Cheese
+			Label: Prevent Boss Exploits
 		}
 
 		DisableUnfinisedContent: {

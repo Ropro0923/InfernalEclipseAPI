@@ -36,10 +36,12 @@ namespace InfernalEclipseAPI.Core.Players
                 InfernalWorld.craftedWorkshop = true;
             }
 
+            /*
             if (InfernalConfig.Instance.InfernumModeForced && WorldSaveSystem.InfernumModeEnabled == false)
             {
                 WorldSaveSystem.InfernumModeEnabled = true;
             }
+            */
 
             if (InfernalConfig.Instance.ForceFullXerocDialogue)
             {
@@ -64,7 +66,7 @@ namespace InfernalEclipseAPI.Core.Players
                 Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.WelcomeMessage.SoulsWarning"), 255, 0, 0);
             }
 
-            if (InfernumActive.InfernumActive)
+            if (InfernalWorld.RagnarokModeEnabled)
             {
                 if (InfernalConfig.Instance.DisplayWorldEntryMessages)
                 {
@@ -72,6 +74,7 @@ namespace InfernalEclipseAPI.Core.Players
                     SoundEngine.PlaySound(InfernumMode.Assets.Sounds.InfernumSoundRegistry.ModeToggleLaugh, Player.Center);
                 }
             }
+            /*
             else if (InfernalConfig.Instance.InfernumModeForced)
             {
                 if (InfernalConfig.Instance.DisplayWorldEntryMessages)
@@ -81,6 +84,7 @@ namespace InfernalEclipseAPI.Core.Players
                 }
                 WorldSaveSystem.InfernumModeEnabled = true;
             }
+            */
 
             if (InfernalConfig.Instance.ForceFullXerocDialogue)
             {
