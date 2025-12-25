@@ -7,11 +7,11 @@ using ThoriumMod.Projectiles.Boss;
 using System.Linq;
 using InfernalEclipseAPI.Core.Systems;
 using ThoriumRework.Projectiles;
-using InfernalEclipseAPI.Common.GlobalNPCs.NPCDebuffs;
 using InfernalEclipseAPI.Content.Buffs;
 using ThoriumMod.Projectiles.Enemy;
 using ThoriumMod.Projectiles;
 using ThoriumMod.NPCs.BossQueenJellyfish;
+using InfernalEclipseAPI.Common.Globals.GlobalNPCs;
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {
@@ -92,8 +92,8 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
 
             if (InfernalCrossmod.SOTS.Loaded && entity.type == ModContent.NPCType<DreamEater>())
             {
-                entity.GetGlobalNPC<VoidDamageNPC>().canDoVoidDamage = true;
-                entity.GetGlobalNPC<VoidDamageNPC>().strongVoidDamge = true;
+                entity.GetGlobalNPC<SOTSGlobalNPC>().canDoVoidDamage = true;
+                entity.GetGlobalNPC<SOTSGlobalNPC>().strongVoidDamge = true;
             }
         }
 

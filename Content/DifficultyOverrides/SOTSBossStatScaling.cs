@@ -10,8 +10,8 @@ using System.Linq;
 using SOTS.Projectiles.Earth.Glowmoth;
 using InfernalEclipseAPI.Core.Utils;
 using CalamityMod;
-using InfernalEclipseAPI.Common.GlobalNPCs.NPCDebuffs;
 using System.Security.Policy;
+using InfernalEclipseAPI.Common.Globals.GlobalNPCs;
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {
@@ -45,7 +45,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
 
             if (entity.type == ModContent.NPCType<Glowmoth>() || entity.type == ModContent.NPCType<GlowmothMinion>())
             {
-                entity.GetGlobalNPC<VoidDamageNPC>().canDoVoidDamage = true;
+                entity.GetGlobalNPC<SOTSGlobalNPC>().canDoVoidDamage = true;
             }
         }
 

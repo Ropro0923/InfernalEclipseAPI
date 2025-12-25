@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using InfernalEclipseAPI.Common.GlobalNPCs.NPCDebuffs;
+using InfernalEclipseAPI.Common.Globals.GlobalNPCs;
 using InfernalEclipseAPI.Core.Systems;
 using YouBoss.Content.NPCs.Bosses.TerraBlade;
 using YouBoss.Content.NPCs.Bosses.TerraBlade.Projectiles;
@@ -21,7 +21,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             InfernalCrossmod.Calamity.Mod.Call("SetDefenseDamageNPC", entity, true);
             if (InfernalCrossmod.SOTS.Loaded)
             {
-                entity.GetGlobalNPC<VoidDamageNPC>().canDoVoidDamage = true;
+                entity.GetGlobalNPC<SOTSGlobalNPC>().canDoVoidDamage = true;
             }
         }
 
