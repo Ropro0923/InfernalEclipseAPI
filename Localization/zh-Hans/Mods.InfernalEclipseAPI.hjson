@@ -57,6 +57,17 @@ WelcomeMessage: {
 	GulaVaultMessage: 暴食保险库拒绝被打开。你必须先打败一个更为强大的邪恶生物……
 }
 
+TimeFreezePrevention: {
+	AuricSoul: 蕴含金源魄的生物无视了虚空魔法孵化器的生效……
+	ExoMech: 嘉登的巨械拒斥虚空魔法孵化器的生效！
+	Terminus: 终末神光抹除了虚空魔法孵化器的效果！
+	SCal: 至尊女巫，灾厄禁锢了虚空魔法孵化器的效果！
+	Primoridal: 始源之力屏蔽了虚空魔法孵化器的效果！
+	HolyFlame: 神圣之火保护着世界免受虚空魔法孵化器的影响！
+	TerraBlade: 你的镜像免疫虚空魔法孵化器的效果！
+	Other: 虚空魔法孵化器的效果被阻拦！
+}
+
 ItemTooltip: {
 	BasicDamage: 基本伤害
 	OmniShield: -至高神盾-
@@ -90,7 +101,7 @@ ItemTooltip: {
 		'''
 		增加30%来自敌人的金币
 		你随时间持续产生钱币
-		"你没有疯……你真是疯了!"
+		"你没有疯……你真是疯了！"
 		复仇模式专属
 		'''
 	BloodstainedCoin:
@@ -108,6 +119,7 @@ ItemTooltip: {
 		召唤一只亚空之仆协助战斗
 		亚空之仆会为你使用最后一格物品栏的物品
 		会成倍降低50%伤害
+		减少15%真近战伤害
 		增加50点最大虚空值，但会降低40点从药水治疗的生命值
 		'''
 	EyeOfChaos: 增加12%暴击率，无法与下位饰品叠加
@@ -134,10 +146,11 @@ ItemTooltip: {
 		'''
 		增加2%暴击率
 		受伤时会产生钱币
-		'咕噜!'
+		'咕噜！'
 		'''
 	SpiritGlove: 增加5%虚空恢复速度和4%近战暴击率
 	DiamondRingText: 根据防御增加伤害，然后会降低伤害增益的三分之二防御值
+	EarthDrive: 最多增加10%的近战攻速
 	DedTo: -献给{0}-
 
 	Dedicated: {
@@ -1339,6 +1352,15 @@ Items: {
 		Stellar: 饱如巨星
 		Major: 精美毛绒玩具
 	}
+
+	SingularityCore: {
+		DisplayName: 奇异核心
+		Tooltip:
+			'''
+			永久增加100点最大虚空值和10%虚空恢复速度
+			只能使用一次
+			'''
+	}
 }
 
 Projectiles: {
@@ -1886,6 +1908,11 @@ Buffs: {
 	LowGround: {
 		DisplayName: 低地
 		Description: 你的移动速度大幅下降！
+	}
+
+	DefaultSummonTag: {
+		DisplayName: 默认召唤标记
+		Description: Mods.InfernalEclipseAPI.Buffs.DefaultSummonTag.Description
 	}
 }
 

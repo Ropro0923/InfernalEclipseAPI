@@ -57,6 +57,17 @@ WelcomeMessage: {
 	GulaVaultMessage: The vault refuses to open. A stronger evil must be defeated first...
 }
 
+TimeFreezePrevention: {
+	AuricSoul: The beings auric soul prevents the incubator from activating...
+	ExoMech: Draedon's machine prevents the incubator from activating!
+	Terminus: The Terminus' light prevents the incubator's effects!
+	SCal: The witch dispells the incubator's effects!
+	Primoridal: Primordial forces prevent the incubator's effects!
+	HolyFlame: The holy flame protects the world from the incubator's effects!
+	TerraBlade: Your reflection is immune to the incubator's effects!
+	Other: The incubator's effects was prevented!
+}
+
 ItemTooltip: {
 	BasicDamage: basic damage
 	OmniShield: -Omni Shield-
@@ -108,6 +119,7 @@ ItemTooltip: {
 		Summons a Subspace Servant to assist in combat
 		Uses the item in your last inventory slot for you
 		Decreases damage by 50% multiplicatively
+		Decreases true melee damage by 15%
 		Increases max void by 50, but reduces healing received from potions by 40
 		'''
 	EyeOfChaos: Increases critical strike chance by 12%, does not stack with downgrades
@@ -138,6 +150,7 @@ ItemTooltip: {
 		'''
 	SpiritGlove: Increases void regeneration speed by 5% and melee critical strike chance by 4%
 	DiamondRingText: Increase damage based on defense, then decreases defense by two-thirds of the damage buff
+	EarthDrive: Max boost to melee speed is 10%
 	DedTo: - Dedicated to {0} -
 
 	Dedicated: {
@@ -1342,6 +1355,15 @@ Items: {
 		Stellar: Stellar
 		Major: Major
 	}
+
+	SingularityCore: {
+		DisplayName: Singularity Core
+		Tooltip:
+			'''
+			Permanently increases max void by 100 and void regeneration speed by 10%
+			Can only be used once
+			'''
+	}
 }
 
 Projectiles: {
@@ -1459,8 +1481,13 @@ Configs: {
 		}
 
 		InfernumModeForced: {
-			Tooltip: Forces Infernum Mode to be on. Helpful for servers.
-			Label: Force Infernum Mode
+			Tooltip:
+				'''
+				Locks the Calamity difficulty slider, even outside of boss fights
+				Make sure to set the difficulty before enabling this config
+				Helpful for servers where you don't want the difficulty being changed
+				'''
+			Label: Calamity Difficulty Slider Locked
 		}
 
 		SOTSBalanceChanges: {
@@ -1495,7 +1522,7 @@ Configs: {
 
 		PreventBossCheese: {
 			Tooltip: Adds some mechanics to the game that prevent certain ways to easily kill certain bosses.
-			Label: Prevent Boss Cheese
+			Label: Prevent Boss Exploits
 		}
 
 		DisableUnfinisedContent: {
@@ -1890,6 +1917,11 @@ Buffs: {
 	LowGround: {
 		DisplayName: Low Ground
 		Description: Your movement has been significantly hindered!
+	}
+
+	DefaultSummonTag: {
+		DisplayName: Default Summon Tag
+		Description: Mods.InfernalEclipseAPI.Buffs.DefaultSummonTag.Description
 	}
 }
 

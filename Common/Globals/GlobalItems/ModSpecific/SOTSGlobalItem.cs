@@ -22,6 +22,7 @@ using SOTS.Items.Pyramid;
 using SOTS.Items;
 using Terraria.ModLoader;
 using InfernalEclipseAPI.Core.Players;
+using Microsoft.Xna.Framework;
 
 
 
@@ -48,6 +49,12 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                     sotsPlayer.bonusPickaxePower -= 1;
                 }
 
+                if (item.type == ItemType<EarthDrive>())
+                {
+                    sotsPlayer.Earthdrive = false;
+                    modPlayer.Earthdrive = true;
+                }
+
                 if (item.type == ModContent.ItemType<HydrokineticAntennae>())
                 {
                     sotsPlayer.StatShareMeleeAndSummon = false;
@@ -58,6 +65,7 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                 {
                     ref StatModifier local = ref player.GetDamage(DamageClass.Generic);
                     local *= 0.675f;
+                    player.GetDamage<TrueMeleeDamageClass>() -= 0.15f;
                 }
 
                 if (item.type == ModContent.ItemType<EyeOfChaos>())
@@ -221,6 +229,12 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
         {
             if (InfernalConfig.Instance.SOTSBalanceChanges)
             {
+                Color InfernalRed = Color.Lerp(
+                  Color.White,
+                  new Color(255, 80, 0), // Infernal red/orange
+                  (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 2.0) * 0.5 + 0.5)
+                );
+
                 if (item.type == ModContent.ItemType<SubspaceLocket>())
                 {
                     InfernalUtilities.FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.SubspaceLocket"));
@@ -264,6 +278,11 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                 if (item.type == ModContent.ItemType<SwallowedPenny>())
                 {
                     InfernalUtilities.FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.SwallowedPenny"));
+                }
+
+                if (item.type == ItemType<EarthDrive>())
+                {
+                    InfernalUtilities.AddTooltip(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.EarthDrive"), InfernalRed);
                 }
             }
         }

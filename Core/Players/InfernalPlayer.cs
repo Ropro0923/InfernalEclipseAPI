@@ -15,6 +15,7 @@ using Terraria.ModLoader.IO;
 using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
 using InfernalEclipseAPI.Core.Systems;
 using CalamityMod.NPCs.AstrumDeus;
+using System.Collections.Generic;
 
 namespace InfernalEclipseAPI.Core.Players
 {
@@ -24,6 +25,7 @@ namespace InfernalEclipseAPI.Core.Players
         public bool statShareAll;
         public bool scalingArmorPenetration;
         public bool flightArmor;
+        public bool Earthdrive;
 
         private const int AdjRadius = 4;
 
@@ -34,10 +36,12 @@ namespace InfernalEclipseAPI.Core.Players
                 InfernalWorld.craftedWorkshop = true;
             }
 
+            /*
             if (InfernalConfig.Instance.InfernumModeForced && WorldSaveSystem.InfernumModeEnabled == false)
             {
                 WorldSaveSystem.InfernumModeEnabled = true;
             }
+            */
 
             if (InfernalConfig.Instance.ForceFullXerocDialogue)
             {
@@ -62,7 +66,7 @@ namespace InfernalEclipseAPI.Core.Players
                 Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.WelcomeMessage.SoulsWarning"), 255, 0, 0);
             }
 
-            if (InfernumActive.InfernumActive)
+            if (InfernalWorld.RagnarokModeEnabled)
             {
                 if (InfernalConfig.Instance.DisplayWorldEntryMessages)
                 {
@@ -70,6 +74,7 @@ namespace InfernalEclipseAPI.Core.Players
                     SoundEngine.PlaySound(InfernumMode.Assets.Sounds.InfernumSoundRegistry.ModeToggleLaugh, Player.Center);
                 }
             }
+            /*
             else if (InfernalConfig.Instance.InfernumModeForced)
             {
                 if (InfernalConfig.Instance.DisplayWorldEntryMessages)
@@ -79,6 +84,7 @@ namespace InfernalEclipseAPI.Core.Players
                 }
                 WorldSaveSystem.InfernumModeEnabled = true;
             }
+            */
 
             if (InfernalConfig.Instance.ForceFullXerocDialogue)
             {
@@ -134,7 +140,10 @@ namespace InfernalEclipseAPI.Core.Players
         private int batCoinTimer = 0;
 
         public int resonatorTimer = 0;
+        public int incubatorTextTime = 0;
         public int namelessDialogueCooldown;
+        public int voidMagePrevention;
+
         public int CloverCharmCooldown;
         public bool workshopHasBeenOwned;
         public bool batPoop;
@@ -147,9 +156,12 @@ namespace InfernalEclipseAPI.Core.Players
         public bool focusReticle;
         public bool exoSights;
 
+        public bool singularityCore;
+
         public override void Initialize()
         {
             workshopHasBeenOwned = false;
+            singularityCore = false;
         }
 
         public override void SaveData(TagCompound tag)
@@ -158,11 +170,18 @@ namespace InfernalEclipseAPI.Core.Players
             {
                 tag.Add("workshopHasBeenOwned", true);
             }
+            var boost = new List<string>();
+            boost.AddWithCondition("singularityCore", singularityCore);
+
+            tag["IEORboost"] = boost;
         }
 
         public override void LoadData(TagCompound tag)
         {
             workshopHasBeenOwned = tag.Get<bool>("workshopHasBeenOwned");
+
+            var boost = tag.GetList<string>("IEORboost");
+            singularityCore = boost.Contains("singularityCore");
         }
 
         public override bool CanUseItem(Item item)
@@ -186,6 +205,12 @@ namespace InfernalEclipseAPI.Core.Players
 
             if (CloverCharmCooldown > 0)
                 CloverCharmCooldown--;
+
+            if (incubatorTextTime > 0)
+                incubatorTextTime--;
+
+            if (voidMagePrevention > 0)
+                voidMagePrevention--;
 
             if (batPoop)
             {
@@ -330,6 +355,9 @@ namespace InfernalEclipseAPI.Core.Players
                 previousPos = Player.position;
                 wasUsingItem = Player.itemAnimation > 0;
             }
+
+            if (!NPC.downedBoss3 && InfernalConfig.Instance.BossKillCheckOnOres && Player.HasBuff(BuffID.Bewitched))
+                Player.ClearBuff(BuffID.Bewitched);
         }
 
         public bool soltanBullying = false;
@@ -524,6 +552,21 @@ namespace InfernalEclipseAPI.Core.Players
                     Player.GetDamage(DamageClass.Summon).Base -= summonBase;
                 }
             }
+
+            if (Earthdrive)
+            {
+                float meleeSpeedBonus = Player.GetAttackSpeed(DamageClass.Melee) - 1f;
+                float miningSpeedBonus = 1f - Player.pickSpeed;
+                if (meleeSpeedBonus > 0.0)
+                    Player.pickSpeed -= meleeSpeedBonus;
+                if (miningSpeedBonus > 0.0)
+                {
+                    if (miningSpeedBonus > 0.1f)
+                        miningSpeedBonus = 0.1f;
+                    Player.GetAttackSpeed(DamageClass.Melee) += miningSpeedBonus;
+                }
+            }
+            Earthdrive = false;
         }
 
         private bool oceanBufferModified = false;

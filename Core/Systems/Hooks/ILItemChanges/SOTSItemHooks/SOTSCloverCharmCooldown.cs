@@ -2,7 +2,7 @@
 using InfernalEclipseAPI.Core.Players;
 using MonoMod.RuntimeDetour;
 
-namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges
+namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges.SOTSItemHooks
 {
     [ExtendsFromMod("SOTS")]
     public class SOTSCloverCharmCooldown : ModSystem

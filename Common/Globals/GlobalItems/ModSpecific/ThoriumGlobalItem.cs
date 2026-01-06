@@ -1,13 +1,26 @@
-﻿using CalamityMod.Items.Weapons.Melee;
+﻿using CalamityMod;
+using CalamityMod.Items.Weapons.Melee;
 using InfernalEclipseAPI.Core.Systems;
 using ThoriumMod;
 using ThoriumMod.Items.ArcaneArmor;
+using ThoriumMod.Items.BossFallenBeholder;
 using ThoriumMod.Items.BossForgottenOne;
+using ThoriumMod.Items.BossGraniteEnergyStorm;
 using ThoriumMod.Items.BossThePrimordials.Aqua;
+using ThoriumMod.Items.BossThePrimordials.Slag;
 using ThoriumMod.Items.Bronze;
+using ThoriumMod.Items.Coral;
 using ThoriumMod.Items.Cultist;
+using ThoriumMod.Items.Depths;
+using ThoriumMod.Items.Donate;
+using ThoriumMod.Items.Flesh;
 using ThoriumMod.Items.HealerItems;
+using ThoriumMod.Items.Icy;
+using ThoriumMod.Items.NPCItems;
+using ThoriumMod.Items.Sandstone;
+using ThoriumMod.Items.Thorium;
 using ThoriumMod.Items.ThrownItems;
+using ThoriumMod.Items.Valadium;
 using static Terraria.ModLoader.ModContent;
 
 namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
@@ -18,6 +31,23 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
     {
         public override void SetDefaults(Item item)
         {
+            if (item.type == ItemType<IceLance>() ||
+                item.type == ItemType<fSandStoneSpear>() ||
+                item.type == ItemType<Fork>() ||
+                item.type == ItemType<CoralPolearm>() ||
+                item.type == ItemType<HarpyTalon>() ||
+                item.type == ItemType<PearlPike>() ||
+                item.type == ItemType<Moonlight>() ||
+                item.type == ItemType<EnergyStormPartisan>() ||
+                item.type == ItemType<FleshSkewer>() ||
+                item.type == ItemType<HellishHalberd>() ||
+                item.type == ItemType<ValadiumSpear>() ||
+                item.type == ItemType<BloodGlory>()
+    )
+            {
+                item.DamageType = GetInstance<TrueMeleeDamageClass>();
+            }
+
             if (InfernalConfig.Instance.ChanageWeaponClasses) 
             {
                 if (item.type == ItemID.TheAxe)
@@ -91,7 +121,7 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
         }
         public override void UpdateEquip(Item item, Player player)
         {
-            if (InfernalConfig.Instance.ThoriumBalanceChangess)
+            if (InfernalConfig.Instance.ThoriumBalanceChangess && !InfernalCrossmod.Hummus.Loaded)
             {
                 if (item.type == ItemType<CrystalHoney>())
                 {
@@ -113,6 +143,19 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                 {
                     player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) -= 0.08f;
                     player.GetCritChance(ThoriumDamageBase<HealerDamage>.Instance) -= 7f;
+                }
+
+                if (item.type == ItemType<MagmaSeersMask>() && InfernalCrossmod.ThoriumRework.Loaded)
+                {
+                    player.GetDamage(DamageClass.Summon).Flat -= 30f;
+                    player.maxMinions -= 4;
+                    player.GetAttackSpeed(DamageClass.SummonMeleeSpeed) -= 0.2f;
+                }
+
+                if (item.type == ItemType<PyromancerTabard>() && InfernalCrossmod.ThoriumRework.Loaded)
+                {
+                    player.whipRangeMultiplier -= 0.50f;
+                    player.maxMinions -= 1;
                 }
 
                 if (item.type == ItemType<FlightMask>())
@@ -175,10 +218,26 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                     player.GetDamage(DamageClass.Throwing) -= 0.05f;
                 }
 
-                if (item.type == ItemType<TideTurnerGreaves>())
+                if (item.type == ItemType<TideTurnerGreaves>() && InfernalCrossmod.ThoriumRework.Loaded)
                 {
                     player.GetAttackSpeed(DamageClass.Melee) -= 0.2f;
                     player.GetAttackSpeed(DamageClass.Throwing) -= 0.2f;
+                }
+
+                if (item.type == ItemType<EbonHood>())
+                {
+                    player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.1f;
+                }
+
+                if (item.type == ItemType<EbonCloak>())
+                {
+                    player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) += 0.1f;
+                }
+
+                if (item.type == ItemType<EbonLeggings>())
+                {
+                    player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance) -= 0.07f;
+                    player.GetDamage(ThoriumDamageBase<HealerDamage>.Instance).Flat += 1f;
                 }
 
                 if (item.type == ItemType<IridescentHelmet>())

@@ -35,6 +35,7 @@ namespace InfernalEclipseAPI.Common.Projectiles
         private static int darkType = -1;
         private static int whirlwindType = -1;
         private static int marbleType = -1;
+        private static int terraType = -1;
 
         public override void SetStaticDefaults()
         {
@@ -59,6 +60,7 @@ namespace InfernalEclipseAPI.Common.Projectiles
                     crimsonType = thorium.Find<ModProjectile>("CrimtaneScythePro")?.Type ?? -1;
                     iceType = thorium.Find<ModProjectile>("IceShaverPro")?.Type ?? -1;
                     darkType = thorium.Find<ModProjectile>("DemoniteScythePro")?.Type ?? -1;
+                    terraType = thorium.Find<ModProjectile>("TerraScythePro")?.Type ?? -1;
                 }
 
                 if (ModLoader.TryGetMod("RagnarokMod", out Mod ragnarok))
@@ -99,6 +101,7 @@ namespace InfernalEclipseAPI.Common.Projectiles
             var t when t == darkType => 1.1f,
             var t when t == whirlwindType => 1.5f,
             var t when t == marbleType => 1.75f,
+            var t when t == terraType => 1.6f,
             _ => 1f,
         };
 
@@ -140,7 +143,7 @@ namespace InfernalEclipseAPI.Common.Projectiles
                     fallingTwilightType, bloodHarvestType, trueFallingTwilightType,
                     trueBloodHarvestType, theBlackScytheType, titanScytheType,
                     boneBatonType, windSlashType, trueHallowedType,
-                    crimsonType, iceType, darkType, marbleType,
+                    crimsonType, iceType, darkType, marbleType, terraType
                 };
 
                 if (!Array.Exists(staticProjectiles, t => t == projectile.type))
@@ -436,6 +439,11 @@ namespace InfernalEclipseAPI.Common.Projectiles
                     {
                         entity.idStaticNPCHitCooldown = -1;
                     }
+                }
+
+                if (GetProj(entity, thorRework, "ValadiumHeavyScytheWave"))
+                {
+                    entity.penetrate = 5;
                 }
             }
 

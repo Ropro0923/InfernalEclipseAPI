@@ -3,9 +3,15 @@ using CalamityMod.Events;
 using InfernumSaveSystem = InfernumMode.Core.GlobalInstances.Systems.WorldSaveSystem;
 using SOTS.NPCs.Boss;
 using SOTS.NPCs.Boss.Advisor;
-using CalamityMod;
 using CalamityMod.UI;
 using InfernalEclipseAPI.Core.Systems;
+using SOTS.NPCs.Boss.Glowmoth;
+using System.Linq;
+using SOTS.Projectiles.Earth.Glowmoth;
+using InfernalEclipseAPI.Core.Utils;
+using CalamityMod;
+using System.Security.Policy;
+using InfernalEclipseAPI.Common.Globals.GlobalNPCs;
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {
@@ -13,9 +19,16 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
     [ExtendsFromMod("SOTS")]
     public class SOTSBossStatScaling : GlobalNPC
     {
+        public static readonly int[] sotsMinionTypes =
+        {
+            ModContent.NPCType<GlowmothMinion>(),
+            ModContent.NPCType<PutridPinky1>(),
+            ModContent.NPCType<PutridHook>()
+        };
+
         public override bool AppliesToEntity(NPC npc, bool lateInstatiation)
         {
-            return (npc.boss || npc.type == ModContent.NPCType<PutridPinky1>() || npc.type == ModContent.NPCType<PutridHook>()) && npc.ModNPC?.Mod.Name == "SOTS";
+            return (npc.boss || sotsMinionTypes.Contains(npc.type)) && npc.ModNPC?.Mod.Name == "SOTS";
         }
 
         public override void SetDefaults(NPC entity)
@@ -23,6 +36,16 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             if (entity.ModNPC.Name.Contains("Excavator") && InfernumActive.InfernumActive)
             {
                 entity.defense += 5;
+            }
+
+            if (entity.type == ModContent.NPCType<GlowmothMinion>())
+            {
+                entity.Calamity().canBreakPlayerDefense = true;
+            }
+
+            if (entity.type == ModContent.NPCType<Glowmoth>() || entity.type == ModContent.NPCType<GlowmothMinion>())
+            {
+                entity.GetGlobalNPC<SOTSGlobalNPC>().canDoVoidDamage = true;
             }
         }
 
@@ -123,68 +146,123 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                     npc.position += npc.velocity * 0.35f;
             }
         }
+    }
 
-        [ExtendsFromMod("SOTS")]
-        public class AdvisorDefenseReset : GlobalNPC
+    [JITWhenModsEnabled(InfernalCrossmod.SOTS.Name)]
+    [ExtendsFromMod("SOTS")]
+    public class AdvisorDefenseReset : GlobalNPC
+    {
+        public override bool InstancePerEntity => true;
+        // This issue has been fixed in main Revengence+ - ..nevermind
+        private bool scaledBossRushHP = false;
+
+        public override bool AppliesToEntity(NPC entity, bool lateInstantiation)
         {
-            public override bool InstancePerEntity => true;
-            // This issue has been fixed in main Revengence+ - ..nevermind
-            private bool scaledBossRushHP = false;
+            return entity.type == ModContent.NPCType<TheAdvisorHead>();
+        }
 
-            public override bool AppliesToEntity(NPC entity, bool lateInstantiation)
+        public override bool PreAI(NPC npc)
+        {
+            if (!npc.boss && !BossHealthBarManager.BossExclusionList.Contains(npc.type))
+                BossHealthBarManager.BossExclusionList.Add(npc.type);
+            else if (npc.boss && BossHealthBarManager.BossExclusionList.Contains(npc.type))
+                BossHealthBarManager.BossExclusionList.Remove(npc.type);
+            return base.PreAI(npc);
+        }
+
+        public override void PostAI(NPC npc)
+        {
+            if (BossRushEvent.BossRushActive && !scaledBossRushHP)
             {
-                return entity.type == ModContent.NPCType<TheAdvisorHead>();
+                npc.lifeMax += (int)(((double).25) * (double)npc.lifeMax);
+                npc.life = npc.lifeMax;
+                scaledBossRushHP = true;
+                return;
             }
 
-            public override bool PreAI(NPC npc)
-            {
-                if (!npc.boss && !BossHealthBarManager.BossExclusionList.Contains(npc.type))
-                    BossHealthBarManager.BossExclusionList.Add(npc.type);
-                else if (npc.boss && BossHealthBarManager.BossExclusionList.Contains(npc.type))
-                    BossHealthBarManager.BossExclusionList.Remove(npc.type);
-                return base.PreAI(npc);
-            }
+            int targetDefense = 24;
 
-            public override void PostAI(NPC npc)
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamity))
             {
-                if (BossRushEvent.BossRushActive && !scaledBossRushHP)
+                // These calls must match Calamity's internal names exactly:
+                object isDeath = calamity.Call("GetDifficultyActive", "Death");
+                object isRevenge = calamity.Call("GetDifficultyActive", "Revengeance");
+
+                if (isDeath is bool bDeath && bDeath)
                 {
-                    npc.lifeMax += (int)(((double).25) * (double)npc.lifeMax);
-                    npc.life = npc.lifeMax;
-                    scaledBossRushHP = true;
-                    return;
+                    // Death Mode
+                    npc.position += npc.velocity * 0.35f;
+                    targetDefense = 39;
                 }
-
-                int targetDefense = 24;
-
-                if (ModLoader.TryGetMod("CalamityMod", out Mod calamity))
+                else if (isRevenge is bool bRev && bRev)
                 {
-                    // These calls must match Calamity's internal names exactly:
-                    object isDeath = calamity.Call("GetDifficultyActive", "Death");
-                    object isRevenge = calamity.Call("GetDifficultyActive", "Revengeance");
-
-                    if (isDeath is bool bDeath && bDeath)
-                    {
-                        // Death Mode
-                        npc.position += npc.velocity * 0.35f;
-                        targetDefense = 39;
-                    }
-                    else if (isRevenge is bool bRev && bRev)
-                    {
-                        // Revengeance Mode
-                        npc.position += npc.velocity * 0.25f;
-                        targetDefense = 32;
-                    }
+                    // Revengeance Mode
+                    npc.position += npc.velocity * 0.25f;
+                    targetDefense = 32;
                 }
-
-                npc.defense = targetDefense;
             }
 
-            public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
+            npc.defense = targetDefense;
+        }
+
+        public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
+        {
+            if (InfernumSaveSystem.InfernumModeEnabled)
+                modifiers.SourceDamage *= 1.35f;
+        }
+    }
+
+    [JITWhenModsEnabled(InfernalCrossmod.SOTS.Name)]
+    [ExtendsFromMod("SOTS")]
+    public class SOTSProjStatScaling : GlobalProjectile
+    {
+        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation)
+        {
+            int[] types =
             {
-                if (InfernumSaveSystem.InfernumModeEnabled)
-                    modifiers.SourceDamage *= 1.35f;
+                //Glowmoth
+                ModContent.ProjectileType<WaveBall>(),
+                ModContent.ProjectileType<GlowBombOrb>(),
+                ModContent.ProjectileType<GlowBombShard>(),
+                ModContent.ProjectileType<GlowSparkle>()
+            };
+
+            foreach (int type in types)
+            {
+                if (entity.type == type)
+                    return true;
             }
+            return false;
+        }
+
+        public override void SetDefaults(Projectile entity)
+        {
+            entity.GetGlobalProjectile<VoidDamageProjectile>().canDoVoidDamage = true;
+        }
+
+        public override void ModifyHitPlayer(Projectile projectile, Player target, ref Player.HurtModifiers modifiers)
+        {
+            float damageMod = 1f;
+
+            if (InfernalUtilities.IsWorldLegendary())
+            {
+                damageMod *= 1.35f;
+            }
+
+            if (InfernalUtilities.IsInfernumActive() || InfernalUtilities.GetFargoDifficullty("MasochistMode"))
+            {
+                damageMod *= 2.2f;
+            }
+            else if (InfernalUtilities.GetFargoDifficullty("EternityMode"))
+            {
+                damageMod *= 1.675f;
+            }
+            else if (InfernalUtilities.GetCalDifficulty("death"))
+            {
+                damageMod *= 1.5f;
+            }
+
+            modifiers.SourceDamage *= damageMod;
         }
     }
 }

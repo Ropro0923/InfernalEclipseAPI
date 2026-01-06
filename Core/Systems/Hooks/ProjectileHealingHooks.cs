@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -14,7 +9,7 @@ namespace InfernalEclipseAPI.Core.Systems.Hooks
     {
         public override void Load()
         {
-            if (!ModLoader.TryGetMod("ThoriumMod", out var thorium) || !InfernalConfig.Instance.ThoriumBalanceChangess)
+            if (!ModLoader.TryGetMod("ThoriumMod", out var thorium) || !InfernalConfig.Instance.ThoriumBalanceChangess || InfernalCrossmod.Hummus.Loaded)
                 return;
 
             // --- Patch the BrainCoralPro projectile ---
@@ -74,6 +69,7 @@ namespace InfernalEclipseAPI.Core.Systems.Hooks
                     MonoModHooks.Modify(aiMethod, IL_SetGigaNeedleHeal);
             }
 
+            /*
             var projType6 = thorium.Code.GetType("CalamityBardHealer.Projectiles.Healer.PurgedSoulPro");
             if (projType6 != null)
             {
@@ -83,6 +79,7 @@ namespace InfernalEclipseAPI.Core.Systems.Hooks
                 if (aiMethod != null)
                     MonoModHooks.Modify(aiMethod, IL_EditHealAmount);
             }
+            */
 
             // Get the RecoveryWandPro type
             var projType7 = thorium.Code.GetType("ThoriumMod.Projectiles.Healer.RecoveryWandPro");
@@ -94,6 +91,7 @@ namespace InfernalEclipseAPI.Core.Systems.Hooks
                     MonoModHooks.Modify(aiMethod, IL_PatchRecoveryWandHeal);
             }
 
+            /*
             if (ModLoader.TryGetMod("ThoriumRework", out var rework))
             {
                 var projType8 = rework.Code.GetType("ThoriumRework.Projectiles.BiteyBaby");
@@ -106,6 +104,7 @@ namespace InfernalEclipseAPI.Core.Systems.Hooks
                         MonoModHooks.Modify(aiMethod, IL_FixHealAmount);
                 }
             }
+            */
 
             // Get the TheGoodBookPro type
             var projType9 = thorium.Code.GetType("ThoriumMod.Projectiles.Healer.TheGoodBookPro");
@@ -131,15 +130,10 @@ namespace InfernalEclipseAPI.Core.Systems.Hooks
             }
         }
 
+        /*
         private void IL_FixHealAmount(ILContext il)
         {
             var c = new ILCursor(il);
-
-            /*
-             * We search for:
-             *   ldfld Terraria.Projectile::ai
-             * but ONLY when it happens after loading the Projectile instance!
-             */
 
             while (c.TryGotoNext(
                 i => i.OpCode == OpCodes.Ldfld &&
@@ -158,6 +152,7 @@ namespace InfernalEclipseAPI.Core.Systems.Hooks
                 }
             }
         }
+        */
 
         private void IL_PatchRecoveryWandHeal(ILContext il)
         {
@@ -268,16 +263,10 @@ namespace InfernalEclipseAPI.Core.Systems.Hooks
             }
         }
 
+        /*
         private void IL_EditHealAmount(ILContext il)
         {
             var c = new ILCursor(il);
-
-            /*
-             * We search for:
-             *    ldc.i4.s 12
-             * used as the argument to:
-             *    HealerHelper.HealPlayer(..., 12, 120)
-             */
 
             if (c.TryGotoNext(i => i.MatchLdcI4(12)))
             {
@@ -292,6 +281,7 @@ namespace InfernalEclipseAPI.Core.Systems.Hooks
                     "PurgedSoulHealPlayerPatch: Could not find heal constant 12.");
             }
         }
+        */
         #endregion
     }
 }

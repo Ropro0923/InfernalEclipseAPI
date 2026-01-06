@@ -68,6 +68,12 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                 #endregion
 
                 #region Vanilla
+                if (recipe.HasResult(ItemID.Sashimi))
+                    recipe.DisableDecraft();
+
+                if (recipe.HasResult(ItemID.TempleKey))
+                    recipe.DisableRecipe();
+
                 if (InfernalConfig.Instance.BossKillCheckOnOres)
                 {
                     int[] lockUntilWorldEvil =
@@ -866,7 +872,8 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
 
                         if (recipe.HasResult(sots.Find<ModItem>("VoidmageIncubator")))
                         {
-                            recipe.AddIngredient(sots.Find<ModItem>("PhaseBar"), 3);
+                            recipe.AddIngredient(ItemID.FragmentStardust, 10);
+                            recipe.AddIngredient<Necroplasm>(5);
                         }
 
                         if (recipe.HasResult(ItemID.TrueNightsEdge))
