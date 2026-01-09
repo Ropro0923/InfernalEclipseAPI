@@ -4227,6 +4227,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.damage = 24;
                 }
 
+                if (UnsafeGetItem(calBardHeal, "HarpY", item))
+                {
+                    item.damage = 22;
+                }
+
                 #region Healer
                 #region Pre-Hardmode
                 //Wulfrum Weed Wacker
