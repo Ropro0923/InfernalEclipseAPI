@@ -150,7 +150,7 @@ ItemTooltip: {
 		'''
 	SpiritGlove: 增加5%虚空恢复速度和4%近战暴击率
 	DiamondRingText: 根据防御增加伤害，然后会降低伤害增益的三分之二防御值
-	// EarthDrive: Max boost to melee speed is 10%
+	EarthDrive: 最多增加10%的近战攻速
 	DedTo: -献给{0}-
 
 	Dedicated: {
