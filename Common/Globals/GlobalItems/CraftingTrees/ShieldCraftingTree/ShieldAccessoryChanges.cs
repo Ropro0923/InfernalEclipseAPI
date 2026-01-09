@@ -105,11 +105,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.ShieldCraftingTree
                 item.ModItem.Mod.Name == "ThoriumMod" &&
                 item.ModItem.Name == "TerrariumDefender")
             {
-                var CalPlayer = player.GetModPlayer<CalamityPlayer>();
-
-                CalPlayer.DashID = null;
-                player.dashType = 0;
-
                 player.noKnockback = false;
                 player.longInvince = false;
                 player.fireWalk = false;
