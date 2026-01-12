@@ -363,6 +363,8 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
 
             Bosses.Add(new Boss(NPCID.SkeletronHead, TimeChangeContext.Night, type =>
             {
+                BossRushTeleports.BringPlayersBackToSpawn();
+
                 Player player = Main.player[ClosestPlayerToWorldCenter];
                 int sans = NPC.NewNPC(new EntitySource_WorldEvent(), (int)(player.position.X + Main.rand.Next(-100, 101)), (int)(player.position.Y - 400f), type, 1);
                 Main.npc[sans].timeLeft *= 20;
@@ -400,6 +402,9 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
                 SoundEngine.PlaySound(AstrumDeusHead.SpawnSound, player.Center);
                 NPC.SpawnOnPlayer(ClosestPlayerToWorldCenter, type);
             }, usesSpecialSound: true, permittedNPCs: [ModContent.NPCType<AstrumDeusBody>(), ModContent.NPCType<AstrumDeusTail>(), ModContent.NPCType<DeusSpawn>()]));
+
+            // Filler. 
+            Bosses.Add(new Boss(NPCID.CultistBoss));
 
             Bosses.Add(new Boss(NPCType<BereftVassal>(), spawnContext: type =>
             {
@@ -716,7 +721,7 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
                 Bosses.Add(new Boss(WrathNPC("AvatarOfEmptiness"), TimeChangeContext.Night, type =>
                 {
                     NPC.SpawnOnPlayer(ClosestPlayerToWorldCenter, WrathNPC("AvatarRift"));
-                }, permittedNPCs: new int[] { WrathNPC("BattleSolyn"), WrathNPC("NamelessDeityBoss") }));
+                }, permittedNPCs: new int[] { WrathNPC("BattleSolyn"), WrathNPC("NamelessDeityBoss"), WrathNPC("AvatarRift"), WrathNPC("AvatarOfEmptiness") }));
 
                 Bosses.Add(new Boss(WrathNPC("NamelessDeityBoss"), TimeChangeContext.Night, specialSpawnCountdown: 270));
             }

@@ -102,11 +102,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.ShieldCraftingTree
 
                     if (recipe.HasResult(thorium.Find<ModItem>("TerrariumDefender")))
                     {
-                        if (ModLoader.TryGetMod("ssm", out _))
-                        {
-                            recipe.RemoveIngredient(ModContent.ItemType<AsgardsValor>());
-                        }
-
                         if (sots != null)
                         {
                             recipe.RemoveIngredient(ItemID.AnkhShield);

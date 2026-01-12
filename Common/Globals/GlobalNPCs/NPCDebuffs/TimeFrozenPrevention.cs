@@ -95,7 +95,7 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalNPCs.NPCDebuffs
         {
             foreach (Player player in Main.player)
             {
-                if (player.active && !player.dead)
+                if (player.active && !player.dead && player.SOTSPlayer().VMincubator)
                 {
                     player.GetModPlayer<InfernalPlayer>().voidMagePrevention = 60;
                     player.GetModPlayer<SOTSPlayerAdjustments>().bossMessage = bossMessage;

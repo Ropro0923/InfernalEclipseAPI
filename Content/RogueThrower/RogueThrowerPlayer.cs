@@ -8,7 +8,6 @@ namespace InfernalEclipseAPI.Content.RogueThrower
     {
         private int volume2Type = -1;
         private int volume3Type = -1;
-        private int volume4Type = -1;
         private int soul1Type = -1;
         private int soul2Type = -1;
         private int soul3Type = -1;
@@ -166,9 +165,8 @@ namespace InfernalEclipseAPI.Content.RogueThrower
         {
             EnsureInitialized();
 
-            // Accessory slots start at index 3. We stop before vanity slots.
             int start = 3;
-            int end = Player.armor.Length - 10; // Excludes vanity and dye slots
+            int end = Player.armor.Length - 10;
 
             for (int i = start; i < end; i++)
             {
@@ -177,13 +175,37 @@ namespace InfernalEclipseAPI.Content.RogueThrower
 
                 Item accessory = Player.armor[i];
 
-                // Skip empty slots
-                if (accessory.IsAir)
+                if (accessory == null || accessory.IsAir)
                     continue;
 
                 // Match any of the exhaustion-clearing accessory types
-                if (accessory.type == volume2Type || accessory.type == volume3Type || accessory.type == volume4Type ||
-                    accessory.type == soul1Type || accessory.type == soul2Type || accessory.type == soul3Type ||
+                if (accessory.type == volume2Type ||
+                    accessory.type == volume3Type ||
+
+                    accessory.type == soul1Type ||
+                    accessory.type == soul2Type ||
+                    accessory.type == soul3Type ||
+                    accessory.type == wing1Type)
+                {
+                    return true;
+                }
+            }
+
+            foreach (ModAccessorySlot slot in ModContent.GetContent<ModAccessorySlot>())
+            {
+                if (!slot.IsEnabled())
+                    continue;
+
+                Item accessory = slot.FunctionalItem;
+
+                if (accessory == null || accessory.IsAir)
+                    continue;
+
+                if (accessory.type == volume2Type ||
+                    accessory.type == volume3Type ||
+                    accessory.type == soul1Type ||
+                    accessory.type == soul2Type ||
+                    accessory.type == soul3Type ||
                     accessory.type == wing1Type)
                 {
                     return true;

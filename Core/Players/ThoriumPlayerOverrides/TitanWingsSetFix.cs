@@ -48,23 +48,40 @@ namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides
 
             for (int i = start; i < end; i++)
             {
-                if (i >= Player.armor.Length)
-                    continue;
-
                 Item accessory = Player.armor[i];
 
-                // Skip empty slots
-                if (accessory.IsAir)
+                if (accessory.IsAir || accessory.type != titanWings)
                     continue;
 
                 // Match any of the exhaustion-clearing accessory types
                 if (accessory.type == titanWings)
                 {
-                    hasWings = true; break;
+                    hasWings = true; 
+                    break;
                 }
                 else
                 {
                     hasWings = false; break;
+                }
+            }
+
+            if (!hasWings)
+            {
+                foreach (ModAccessorySlot slot in ModContent.GetContent<ModAccessorySlot>())
+                {
+                    if (!slot.IsEnabled())
+                        continue;
+
+                    Item item = slot.FunctionalItem;
+
+                    if (item == null || item.IsAir)
+                        continue;
+
+                    if (item.type == titanWings)
+                    {
+                        hasWings = true;
+                        break;
+                    }
                 }
             }
 

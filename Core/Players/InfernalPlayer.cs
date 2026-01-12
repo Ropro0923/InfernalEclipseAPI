@@ -16,6 +16,7 @@ using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
 using InfernalEclipseAPI.Core.Systems;
 using CalamityMod.NPCs.AstrumDeus;
 using System.Collections.Generic;
+using CalamityMod.Events;
 
 namespace InfernalEclipseAPI.Core.Players
 {
@@ -275,6 +276,9 @@ namespace InfernalEclipseAPI.Core.Players
                     Player.AddBuff(InfernalCrossmod.Thorium.Mod.Find<ModBuff>("Bubbled").Type, 60);
                     Player.AddBuff(BuffID.Electrified, 60);
                 }
+
+                if (Player.HasBuff(InfernalCrossmod.Thorium.Mod.Find<ModBuff>("RealityBearer").Type) && BossRushEvent.BossRushActive)
+                    Player.ClearBuff(InfernalCrossmod.Thorium.Mod.Find<ModBuff>("RealityBearer").Type);
             }
         }
 

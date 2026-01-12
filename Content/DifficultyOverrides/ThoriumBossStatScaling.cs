@@ -106,7 +106,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
 
                 //do this 
                 if (name.Contains("BoreanStrider"))
-                    npc.lifeMax *= 65;
+                    npc.lifeMax *= 35; //less due to how much it already has
 
                 //ignore the rest if Thorium Bosses Reworked is active as this is already done in that mod.
                 if (!ModLoader.TryGetMod("ThoriumRework", out _))
