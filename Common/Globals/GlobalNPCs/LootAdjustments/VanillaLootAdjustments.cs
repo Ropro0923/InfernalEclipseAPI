@@ -2,6 +2,8 @@
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.Localization;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs.LootAdjustments
 {
@@ -12,16 +14,60 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs.LootAdjustments
             if (npc.type == NPCID.BloodNautilus)
             {
                 npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<DreadnautilusRelic>()));
-                npcLoot.Add(ItemDropRule.ByCondition(new RevengenceMode(), ModContent.ItemType<DreadnautilusRelic>(), 1, 1, 1, 1));
+                npcLoot.Add(ItemDropRule.ByCondition(
+                    new RevengenceMode(),
+                    ModContent.ItemType<DreadnautilusRelic>(),
+                    1, 1, 1, 1));
             }
+
             if (ModLoader.TryGetMod("HypnosMod", out Mod hypnos))
             {
                 if (npc.type == hypnos.Find<ModNPC>("HypnosBoss").Type)
                 {
                     npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<HypnosRelic>()));
-                    npcLoot.Add(ItemDropRule.ByCondition(new RevengenceMode(), ModContent.ItemType<HypnosRelic>(), 1, 1, 1, 1));
+                    npcLoot.Add(ItemDropRule.ByCondition(
+                        new RevengenceMode(),
+                        ModContent.ItemType<HypnosRelic>(),
+                        1, 1, 1, 1));
                 }
             }
+
+            if (IsAncientCobaltEnemy(npc.type))
+            {
+                npcLoot.RemoveWhere(rule =>
+                    rule is CommonDrop cd &&
+                    (
+                        cd.itemId == ItemID.AncientCobaltHelmet ||
+                        cd.itemId == ItemID.AncientCobaltBreastplate ||
+                        cd.itemId == ItemID.AncientCobaltLeggings
+                    )
+                );
+
+                // Gate drops behind Eye of Cthulhu
+                LeadingConditionRule eyeGate =
+                    new LeadingConditionRule(new DownedEyeOfCthulhu());
+
+                // 0.33% chance ≈ 1 / 300
+                eyeGate.OnSuccess(ItemDropRule.OneFromOptions(
+                    300,
+                    ItemID.AncientCobaltHelmet,
+                    ItemID.AncientCobaltBreastplate,
+                    ItemID.AncientCobaltLeggings
+                ));
+
+                npcLoot.Add(eyeGate);
+            }
+        }
+
+        private static bool IsAncientCobaltEnemy(int npcType)
+        {
+            return npcType == NPCID.ManEater ||
+                   npcType == NPCID.Hornet ||
+                   npcType == NPCID.HornetFatty ||
+                   npcType == NPCID.HornetHoney ||
+                   npcType == NPCID.HornetLeafy ||
+                   npcType == NPCID.HornetSpikey ||
+                   npcType == NPCID.HornetStingy;
         }
     }
 
@@ -37,53 +83,47 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs.LootAdjustments
 
         public bool CanDrop(DropAttemptInfo info)
         {
-            GameModeData gameModeInfo = Main.GameModeInfo;
-            if (gameModeInfo.IsMasterMode)
+            if (Main.GameModeInfo.IsMasterMode)
                 return false;
-            if (ModLoader.HasMod("CalamityMod"))
+
+            if (!ModLoader.HasMod("CalamityMod"))
+                return false;
+
+            Mod calamity = ModLoader.GetMod("CalamityMod");
+
+            bool active =
+                (bool)calamity.Call("GetDifficultyActive", "revengeance") ||
+                (bool)calamity.Call("GetDifficultyActive", "death");
+
+            if (!active &&
+                ModLoader.TryGetMod("FargowiltasSouls", out Mod fargo))
             {
-                Mod mod1 = ModLoader.GetMod("CalamityMod");
-                bool flag = (bool)mod1.Call(new object[2]
-                {
-        (object) "GetDifficultyActive",
-        (object) "revengeance"
-                });
-                if (!flag)
-                    flag = (bool)mod1.Call(new object[2]
-                    {
-          (object) "GetDifficultyActive",
-          (object) "death"
-                    });
-                Mod mod2;
-                if (ModLoader.TryGetMod("FargowiltasSouls", out mod2) && !flag)
-                {
-                    int num;
-                    if (!(bool)mod2.Call(new object[1]
-                    {
-          (object) "EternityMode"
-                    }))
-                        num = (bool)mod2.Call(new object[1]
-                        {
-            (object) "MasochistMode"
-                        }) ? 1 : 0;
-                    else
-                        num = 1;
-                    flag = num != 0;
-                }
-                Mod mod3;
-                if (ModLoader.TryGetMod("InfernumMode", out mod3) && !flag)
-                    flag = (bool)mod3.Call(new object[1]
-                    {
-          (object) "GetInfernumActive"
-                    });
-                return flag;
+                active =
+                    (bool)fargo.Call("EternityMode") ||
+                    (bool)fargo.Call("MasochistMode");
             }
-            ModLoader.HasMod("CalamityMod");
-            return false;
+
+            if (!active &&
+                ModLoader.TryGetMod("InfernumMode", out Mod infernum))
+            {
+                active = (bool)infernum.Call("GetInfernumActive");
+            }
+
+            return active;
         }
 
         public bool CanShowItemDropInUI() => true;
 
-        public string GetConditionDescription() => Description.Value;
+        public string GetConditionDescription() => Description?.Value ?? "";
+    }
+
+    public class DownedEyeOfCthulhu : IItemDropRuleCondition, IProvideItemConditionDescription
+    {
+        public bool CanDrop(DropAttemptInfo info) => NPC.downedBoss1;
+
+        public bool CanShowItemDropInUI() => true;
+
+        public string GetConditionDescription()
+            => "Drops after the Eye of Cthulhu has been defeated";
     }
 }
