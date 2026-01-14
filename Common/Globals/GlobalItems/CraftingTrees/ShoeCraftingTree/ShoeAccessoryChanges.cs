@@ -184,22 +184,64 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.ShoeCraftingTree
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (!InfernalConfig.Instance.MergeCraftingTrees || calamity == null || thorium == null)
+            if (calamity == null || thorium == null)
                 return;
+
+            string dashTooltip = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.SubspaceBoostersDash", InfernalEclipseAPI.SubpaceBoostHotkey.TooltipHotkeyString());
 
             if (SOTSBardHealer != null)
             {
-                if (item.type == thorium.Find<ModItem>("TerrariumParticleSprinters").Type)
+                if (item.type == thorium.Find<ModItem>("TerrariumParticleSprinters").Type && InfernalConfig.Instance.MergeCraftingTrees)
                 {
                     FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.TPS"));
+                }
+
+                if (item.type == ModContent.ItemType<TracersCelestial>() || item.type == ModContent.ItemType<TracersElysian>() || item.type == ModContent.ItemType<TracersSeraph>())
+                {
+                    
+
+                    int num = -1;
+
+                    foreach (TooltipLine tooltip in tooltips)
+                    {
+                        if (tooltip.Mod == "Terraria"
+                            && tooltip.Name.Contains("Tooltip")
+                            && !tooltip.Text.StartsWith("'")
+                            && !tooltip.Text.StartsWith("\""))
+                        {
+                            num++;
+                        }
+                    }
+
+                    string targetName = "Tooltip" + MathHelper.Max(0f, num).ToString();
+
+                    for (int i = 0; i < tooltips.Count; i++)
+                    {
+                        TooltipLine tooltip = tooltips[i];
+
+                        if (tooltip.Mod == "Terraria" && tooltip.Name == targetName)
+                        {
+                            // FULL override – replaces whatever SOTS injected
+                            tooltip.Text = dashTooltip;
+                            break;
+                        }
+                    }
                 }
             }
 
             if (sots != null)
             {
-                if (item.type == ModContent.ItemType<TracersCelestial>() || item.type == ModContent.ItemType<TracersElysian>() || item.type == ModContent.ItemType<TracersSeraph>() || item.type == sots.Find<ModItem>("SubspaceBoosters").Type || item.type == sots.Find<ModItem>("FlashsparkBoots").Type)
+                if (item.type == sots.Find<ModItem>("SubspaceBoosters").Type)
                 {
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.Hellfire"), false);
+                    FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.SubspaceBoosters", InfernalEclipseAPI.SubpaceBoostHotkey.TooltipHotkeyString()));
+                }
+
+                if (InfernalConfig.Instance.MergeCraftingTrees)
+                {
+                    if (item.type == ModContent.ItemType<TracersCelestial>() || item.type == ModContent.ItemType<TracersElysian>() || item.type == ModContent.ItemType<TracersSeraph>() || item.type == sots.Find<ModItem>("SubspaceBoosters").Type || item.type == sots.Find<ModItem>("FlashsparkBoots").Type)
+                    {
+                        AddTooltip(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.Hellfire"), false);
+                    }
                 }
             }
         }

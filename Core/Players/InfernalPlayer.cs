@@ -1,7 +1,5 @@
 ﻿using CalamityMod;
-using InfernumMode.Core.GlobalInstances.Systems;
 using Terraria.Audio;
-using InfernumActive = InfernalEclipseAPI.Content.DifficultyOverrides.hellActive;
 using Microsoft.Xna.Framework;
 using InfernalEclipseAPI.Content.Buffs;
 using Terraria.DataStructures;
@@ -17,6 +15,7 @@ using InfernalEclipseAPI.Core.Systems;
 using CalamityMod.NPCs.AstrumDeus;
 using System.Collections.Generic;
 using CalamityMod.Events;
+using Terraria.GameInput;
 
 namespace InfernalEclipseAPI.Core.Players
 {
@@ -156,6 +155,9 @@ namespace InfernalEclipseAPI.Core.Players
         public bool chaosBadge;
         public bool focusReticle;
         public bool exoSights;
+        public int BoostPressTimer;
+        public int BoostDirection;
+        public int boostCooldownTime;
 
         public bool singularityCore;
 
@@ -213,6 +215,9 @@ namespace InfernalEclipseAPI.Core.Players
             if (voidMagePrevention > 0)
                 voidMagePrevention--;
 
+            if (boostCooldownTime > 0)
+                boostCooldownTime--;
+
             if (batPoop)
             {
                 batCoinTimer++;
@@ -261,6 +266,9 @@ namespace InfernalEclipseAPI.Core.Players
 
         public override void PreUpdate()
         {
+            if (BoostPressTimer > 0)
+                BoostPressTimer--;
+
             if (Player.ZoneLihzhardTemple && !NPC.downedPlantBoss)
             {
                 Player.statLife -= 1;
@@ -609,6 +617,25 @@ namespace InfernalEclipseAPI.Core.Players
                 {
                     oceanBufferModified = false; // reset if buff is gone
                 }
+            }
+        }
+
+        public override void ProcessTriggers(TriggersSet triggersSet)
+        {
+            if (InfernalEclipseAPI.SubpaceBoostHotkey.JustPressed && boostCooldownTime <= 15)
+            {
+                //Main.NewText("SubspaceBoostHotkeyPressed");
+
+                BoostPressTimer = 2; // survive ordering differences
+                BoostDirection =
+                    Player.controlRight ? 1 :
+                    Player.controlLeft ? -1 :
+                    Player.direction;
+
+                if (boostCooldownTime >= 5)
+                    boostCooldownTime = 225;
+                else
+                    boostCooldownTime = 135;
             }
         }
 

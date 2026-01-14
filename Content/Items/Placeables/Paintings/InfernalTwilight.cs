@@ -81,7 +81,6 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Soltan",
 
             //Management
-            "Kami",
             "TheRogueX",
 
             //Major Contributors

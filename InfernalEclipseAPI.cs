@@ -49,6 +49,8 @@ namespace InfernalEclipseAPI
     }
     public class InfernalEclipseAPI : Mod
 	{
+        public static ModKeybind SubpaceBoostHotkey;
+
         public static bool FargosDLCEnabled
         {
             get
@@ -101,6 +103,8 @@ namespace InfernalEclipseAPI
             RagnarokDifficulty difficulty = new();
             DifficultyModeSystem.Difficulties.Add(difficulty);
             DifficultyModeSystem.CalculateDifficultyData();
+
+            SubpaceBoostHotkey = KeybindLoader.RegisterKeybind(this, Language.GetOrRegister("Mods.InfernalEclipseAPI.KeyBindName.SubspaceBoostHotkey").ToString(), "G");
 
             AchievementUpdateHandler = typeof(InfernumMode.Core.GlobalInstances.Players.AchievementPlayer).GetMethod("ExtraUpdateHandler", BindingFlags.Static | BindingFlags.NonPublic);
         }
