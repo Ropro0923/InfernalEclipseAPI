@@ -367,16 +367,16 @@ ItemTooltip: {
 			增加100点从药水治疗的生命值和恢复的魔力值
 			增加67%buff持续时间
 			'''
-		// SubspaceBoostersDash: Press {0} while on the ground to blast forward, granting higher speed and acceleration
-		/* SubspaceBoosters:
+		SubspaceBoostersDash: 在地面上按下{0}键可向前方进行爆裂冲刺，提供更快的的速度和加速度
+		SubspaceBoosters:
 			'''
-			Provides tremendous acceleration while running
-			Also provides flight and extra mobility on ice
-			Increases movement speed greatly
-			Provides the ability to walk on water and lava
-			Grants immunity to fire blocks and 10 seconds of immunity to lava
-			Press {0} while on the ground to blast forward, granting higher speed and acceleration
-			''' */
+			在奔跑时会获得极大的加速度
+			同时会增加飞行高度，并且在冰上时会增加额外的机动性
+			大幅增加移动速度
+			获得在水和岩浆上行走的能力
+			对火块免疫，并对岩浆免疫10秒
+			在地面上按下{0}键可向前方进行爆裂冲刺，提供更快的的速度和加速度
+			'''
 	}
 
 	AmmoConversion.Mycelium: 发射真菌弹幕
@@ -1949,5 +1949,5 @@ NPCs: {
 	}
 }
 
-// KeyBindName.SubspaceBoostHotkey: Subspace Boost Hotkey
-// Keybinds.Mods.InfernalEclipseAPI.KeyBindName.SubspaceBoostHotkey.DisplayName: Subspace Boost Hotkey
+KeyBindName.SubspaceBoostHotkey: 亚空助推冲刺热键
+Keybinds.Mods.InfernalEclipseAPI.KeyBindName.SubspaceBoostHotkey.DisplayName: 亚空助推冲刺热键
