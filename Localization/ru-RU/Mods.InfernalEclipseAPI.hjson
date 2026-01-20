@@ -350,16 +350,16 @@ ItemTooltip: {
 			Увеличивает восстановление здоровья и маны от зелий на 100
 			Увеличивает длительность баффов на 67%
 			'''
-		// SubspaceBoostersDash: Press {0} while on the ground to blast forward, granting higher speed and acceleration
-		/* SubspaceBoosters:
+		SubspaceBoostersDash: Нажмите {0} на поверхности, чтобы совершить рывок вперёд, увеличив скорость и ускорение
+		SubspaceBoosters:
 			'''
-			Provides tremendous acceleration while running
-			Also provides flight and extra mobility on ice
-			Increases movement speed greatly
-			Provides the ability to walk on water and lava
-			Grants immunity to fire blocks and 10 seconds of immunity to lava
-			Press {0} while on the ground to blast forward, granting higher speed and acceleration
-			''' */
+			Обеспечивает колоссальное ускорение при беге
+			Позволяет летать и увеличивает подвижность на льду
+			Значительно увеличивают скорость передвижения
+			Позволяет ходить по воде и лаве
+			Дает невосприимчивость к огненным блокам и 10 секунд невосприимчивости к лаве
+			Нажмите {0} на поверхности, чтобы совершить рывок вперёд, увеличив скорость и ускорение
+			'''
 	}
 
 	AmmoConversion.Mycelium: Выпускает залпы мицелия
@@ -1948,3 +1948,6 @@ Events: {
 	// BossRushTierFiveEndText_2: All that stands between you and the end of this trial are what are and once were once gods of this world.
 	// BossRushTierFiveEndText_3: Show me the strength of someone with nothing to lose now. Do not falter now.
 }
+
+KeyBindName.SubspaceBoostHotkey: Подпространственный рывок
+Keybinds.Mods.InfernalEclipseAPI.KeyBindName.SubspaceBoostHotkey.DisplayName: Подпространственный рывок
