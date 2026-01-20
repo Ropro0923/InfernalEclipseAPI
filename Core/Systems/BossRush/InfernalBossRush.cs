@@ -41,6 +41,7 @@ using CalamityMod.Projectiles.Typeless;
 using CalamityMod.Systems;
 using CalamityMod.UI.DraedonSummoning;
 using InfernalEclipseAPI.Content.Projectiles;
+using InfernalEclipseAPI.Core.Systems.BossRush.DialogueSystems;
 using InfernumMode.Content.BehaviorOverrides.BossAIs.AstrumDeus;
 using InfernumMode.Content.BehaviorOverrides.BossAIs.BoC;
 using InfernumMode.Content.BehaviorOverrides.BossAIs.Deerclops;
@@ -823,6 +824,7 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
                 {
                     BossDeathEffects.Add(NPCType<SupremeCalamitas>(), npc =>
                     {
+                        //CustomBossRushDialogue.Start(CustomBossRushDialogue.tierFiveDialogues);
                         if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             foreach (Player p in Main.ActivePlayers)
