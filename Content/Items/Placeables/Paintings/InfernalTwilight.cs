@@ -130,6 +130,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Lylittle",
             "CuddlySnake",
             "Louhii",
+            "rocket",
 
             //Helpers
             "fjiown",

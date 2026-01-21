@@ -41,7 +41,6 @@ using CalamityMod.Projectiles.Typeless;
 using CalamityMod.Systems;
 using CalamityMod.UI.DraedonSummoning;
 using InfernalEclipseAPI.Content.Projectiles;
-using InfernalEclipseAPI.Core.Systems.BossRush.DialogueSystems;
 using InfernumMode.Content.BehaviorOverrides.BossAIs.AstrumDeus;
 using InfernumMode.Content.BehaviorOverrides.BossAIs.BoC;
 using InfernumMode.Content.BehaviorOverrides.BossAIs.Deerclops;
@@ -822,20 +821,17 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
             {
                 BossDeathEffects.Add(NPCType<SupremeCalamitas>(), npc =>
                 {
-                    BossDeathEffects.Add(NPCType<SupremeCalamitas>(), npc =>
+                    CustomBossRushDialogue.StartDialogue(IEoRBossRushDialoguePhase.TierFiveComplete);
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
-                        //CustomBossRushDialogue.Start(CustomBossRushDialogue.tierFiveDialogues);
-                        if (Main.netMode != NetmodeID.MultiplayerClient)
+                        foreach (Player p in Main.ActivePlayers)
                         {
-                            foreach (Player p in Main.ActivePlayers)
-                            {
-                                if (p.dead)
-                                    continue;
+                            if (p.dead)
+                                continue;
 
-                                int animation = Projectile.NewProjectile(new EntitySource_WorldEvent(), p.Center, Vector2.Zero, ProjectileType<BossRushTier6Animation>(), 0, 0f, p.whoAmI);
-                            }
+                            int animation = Projectile.NewProjectile(new EntitySource_WorldEvent(), p.Center, Vector2.Zero, ProjectileType<BossRushTier6Animation>(), 0, 0f, p.whoAmI);
                         }
-                    });
+                    }
                 });
 
                 if (InfernalCrossmod.NoxusBoss.Loaded && InfernalConfig.Instance.WrathoftheGodsBossesInBossRush)

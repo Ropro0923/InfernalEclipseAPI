@@ -1939,8 +1939,8 @@ NPCs: {
 	}
 }
 
-// KeyBindName.SubspaceBoostHotkey: Subspace Boost Hotkey
-// Keybinds.Mods.InfernalEclipseAPI.KeyBindName.SubspaceBoostHotkey.DisplayName: Subspace Boost Hotkey
+KeyBindName.SubspaceBoostHotkey: Подпространственный рывок
+Keybinds.Mods.InfernalEclipseAPI.KeyBindName.SubspaceBoostHotkey.DisplayName: Подпространственный рывок
 
 Events: {
 	//Sequential text at the end of Boss Rush Tier 5
@@ -1948,6 +1948,3 @@ Events: {
 	// BossRushTierFiveEndText_2: All that stands between you and the end of this trial are what are and once were once gods of this world.
 	// BossRushTierFiveEndText_3: Show me the strength of someone with nothing to lose now. Do not falter now.
 }
-
-KeyBindName.SubspaceBoostHotkey: Подпространственный рывок
-Keybinds.Mods.InfernalEclipseAPI.KeyBindName.SubspaceBoostHotkey.DisplayName: Подпространственный рывок
