@@ -151,6 +151,11 @@ ItemTooltip: {
 	SpiritGlove: Increases void regeneration speed by 5% and melee critical strike chance by 4%
 	DiamondRingText: Increase damage based on defense, then decreases defense by two-thirds of the damage buff
 	EarthDrive: Max boost to melee speed is 10%
+	SyntheticLiver:
+		'''
+		Increases void received from food by 25%
+		Receiving the same buff multiple times will increase buff duration instead of resetting it, up to double the original duration
+		'''
 	DedTo: - Dedicated to {0} -
 
 	Dedicated: {
@@ -341,7 +346,9 @@ ItemTooltip: {
 			Dealing two consecutive throwing critical strikes will discharge dark lightning and increase throwing speed briefly
 			This effect has a cooldown of 2 seconds.
 			'''
-		CloverNerf: Life steal has a 0.5 second cooldown
+		CloverNerf: Life steal & inspiration regeneration have a 1 second cooldown
+		CloverNerf2: Life steal has a 1 second cooldown
+		RingofRestNerf: Inspiration regeneration has a 1 second cooldown
 		SpiritInsignia:
 			'''
 			Increases void gain by 1 and void regeneration speed by 25%
@@ -722,7 +729,7 @@ Items: {
 			Increases critical strike chance by 15%, does not stack with downgrades
 			Critical strikes deal 40 more damage, release a burst of damaging sparks, and may detonate enemies for 100% damage
 			Critical strikes steal life, regenerate void, recover mana and return inspiration
-			Life steal has a 0.5 second cooldown
+			Life steal & inspiration regeneration have a 1 second cooldown
 			Immunity to bleeding and poisoned debuffs, & grants night vision
 			'''
 		ThoriumTooltip:

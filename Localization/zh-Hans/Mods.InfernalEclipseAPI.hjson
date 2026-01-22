@@ -151,6 +151,11 @@ ItemTooltip: {
 	SpiritGlove: 增加5%虚空恢复速度和4%近战暴击率
 	DiamondRingText: 根据防御增加伤害，然后会降低伤害增益的三分之二防御值
 	EarthDrive: 最多增加10%的近战攻速
+	/* SyntheticLiver:
+		'''
+		Increases void received from food by 25%
+		Receiving the same buff multiple times will increase buff duration instead of resetting it, up to double the original duration
+		''' */
 	DedTo: -献给{0}-
 
 	Dedicated: {

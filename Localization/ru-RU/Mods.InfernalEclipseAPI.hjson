@@ -147,6 +147,11 @@ ItemTooltip: {
 	SpiritGlove: Увеличивает скорость восстановления пустоты на 5% и шанс критического удара ближнего боя на 4%
 	DiamondRingText: Увеличивает урон в зависимости от защиты, а затем снижает вашу защиту на 2/3 от полученного бонуса к урону
 	EarthDrive: Максимальное увеличение скорости ближнего боя — 10%
+	/* SyntheticLiver:
+		'''
+		Increases void received from food by 25%
+		Receiving the same buff multiple times will increase buff duration instead of resetting it, up to double the original duration
+		''' */
 	DedTo: - Посвящено: {0} -
 
 	Dedicated: {

@@ -25,21 +25,244 @@ using InfernalEclipseAPI.Content.Items.Weapons.Legendary.StellarSabre;
 using InfernalEclipseAPI.Core.Systems;
 using CalamityMod.Items.Potions;
 using InfernalEclipseAPI.Content.Items.Materials;
+using Terraria.Localization;
+using InfernalEclipseAPI.Content.Items.Consumables;
+using SOTS;
 
 namespace InfernalEclipseAPI.Common.Balance.Recipes
 {
-    internal sealed class RecipeTweaks : ModSystem
+    internal sealed class InfernalRecipeSystem : ModSystem
     {
         public static RecipeGroup EvilSkinRecipeGroup;
+        public static RecipeGroup EvilBarRecipeGroup;
         public override void Unload()
         {
             EvilSkinRecipeGroup = null;
+            EvilBarRecipeGroup = null;
         }
         public override void AddRecipeGroups()
         {
             EvilSkinRecipeGroup = new RecipeGroup(() => $"{Lang.GetItemNameValue(ItemID.ShadowScale)} or {Lang.GetItemNameValue(ItemID.TissueSample)}", ItemID.ShadowScale, ItemID.TissueSample);
             RecipeGroup.RegisterGroup("LimitedResourcesRecipes:EvilSkin", EvilSkinRecipeGroup);
+
+            EvilBarRecipeGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.CrimtaneBar)}", ItemID.DemoniteBar, ItemID.CrimtaneBar);
+            RecipeGroup.RegisterGroup("LimitedResourcesRecipes:EvilBar", EvilBarRecipeGroup);
         }
+
+        public override void AddRecipes()
+        {
+            Recipe.Create(ItemID.Terragrim)
+                .AddIngredient(ItemID.EnchantedSword, 1)
+                .AddIngredient(ItemID.JungleSpores, 5)
+                .AddRecipeGroup(EvilBarRecipeGroup, 5)
+                .AddIngredient(ItemID.Obsidian, 3)
+                .AddIngredient(ItemID.FossilOre, 3)
+                .AddTile(TileID.Anvils)
+                .Register();
+
+            Recipe.Create(ItemID.TinkerersWorkshop)
+                .AddIngredient<AbandonedWorkshop>()
+                .AddIngredient<TinkerersRepairBlueprints>()
+                .AddTile(TileID.HeavyWorkBench)
+                .Register();
+
+            Recipe recipe12 = Recipe.Create(ItemID.BlandWhip, 1);
+            recipe12.AddIngredient(ItemID.Leather, 8);
+            recipe12.AddTile(TileID.Loom);
+            recipe12.Register();
+
+            if (ModLoader.TryGetMod("NoxusBoss", out Mod noxus))
+            {
+                Recipe.Create(ModContent.ItemType<Rock>(), 2)
+                    .AddIngredient<Rock>()
+                    .AddIngredient(ItemID.StoneBlock, 30)
+                    .AddIngredient<YharonSoulFragment>(5)
+                    .AddIngredient(noxus.Find<ModItem>("MetallicChunk"))
+                    .AddIngredient<PrimordialOrchid>()
+                    .AddTile(noxus.Find<ModTile>("StarlitForgeTile"))
+                    .DisableDecraft()
+                    .Register();
+            }
+
+            if (ModLoader.TryGetMod("AlchemistNPCLite", out Mod AlchNPC))
+            {
+                int[] alchCombos =
+                {
+                    GetItem(AlchNPC, "BattleCombination").Type,
+                    GetItem(AlchNPC, "BewitchingPotion").Type,
+                    GetItem(AlchNPC, "BuilderCombination").Type,
+                    GetItem(AlchNPC, "CalamityCombination").Type,
+                    GetItem(AlchNPC, "ExplorerCombination").Type,
+                    GetItem(AlchNPC, "FishingCombination").Type,
+                    GetItem(AlchNPC, "MageCombination").Type,
+                    GetItem(AlchNPC, "RangerCombination").Type,
+                    GetItem(AlchNPC, "SummonerCombination").Type,
+                    GetItem(AlchNPC, "VanTankCombination").Type
+                };
+
+                foreach (int potion in alchCombos)
+                {
+                    Recipe newRecipe = Recipe.Create(potion, 2);
+
+                    if (InfernalConfig.Instance.BloodOrbPotionDuplication)
+                    {
+                        newRecipe.AddIngredient(potion);
+                    }
+                    else
+                    {
+                        newRecipe.AddIngredient(ItemID.BottledWater);
+                    }
+
+                    if (potion == GetItem(AlchNPC, "BattleCombination").Type)
+                        newRecipe.AddIngredient<BloodOrb>(60);
+                    if (potion == GetItem(AlchNPC, "BewitchingPotion").Type)
+                        newRecipe.AddIngredient<BloodOrb>(10);
+                    if (potion == GetItem(AlchNPC, "BuilderCombination").Type)
+                        newRecipe.AddIngredient<BloodOrb>(30);
+                    if (potion == GetItem(AlchNPC, "CalamityCombination").Type)
+                        newRecipe.AddIngredient<BloodOrb>(40);
+                    if (potion == GetItem(AlchNPC, "ExplorerCombination").Type)
+                        newRecipe.AddIngredient<BloodOrb>(90);
+                    if (potion == GetItem(AlchNPC, "MageCombination").Type)
+                    {
+                        newRecipe.AddIngredient<BloodOrb>(40);
+                        newRecipe.AddIngredient(ItemID.FallenStar, 1);
+                    }
+                    if (potion == GetItem(AlchNPC, "FishingCombination").Type)
+                        newRecipe.AddIngredient<BloodOrb>(80);
+                    if (potion == GetItem(AlchNPC, "RangerCombination").Type)
+                        newRecipe.AddIngredient<BloodOrb>(40);
+                    if (potion == GetItem(AlchNPC, "SummonerCombination").Type)
+                        newRecipe.AddIngredient<BloodOrb>(30);
+                    if (potion == GetItem(AlchNPC, "FishingCombination").Type)
+                        newRecipe.AddIngredient<BloodOrb>(80);
+                    if (potion == GetItem(AlchNPC, "VanTankCombination").Type)
+                        newRecipe.AddIngredient<BloodOrb>(60);
+
+                    newRecipe.AddTile(TileID.AlchemyTable);
+                    newRecipe.AddCondition(Condition.DownedSkeletron);
+                    newRecipe.Register();
+                }
+
+                if (ModLoader.TryGetMod("ThoriumMod", out _))
+                {
+                    int thorComboId = GetItem(AlchNPC, "ThoriumCombination").Type;
+                    Recipe thorComboBloodOrb = Recipe.Create(thorComboId, 2);
+                    if (InfernalConfig.Instance.BloodOrbPotionDuplication)
+                    {
+                        thorComboBloodOrb.AddIngredient(thorComboId);
+                    }
+                    else
+                    {
+                        thorComboBloodOrb.AddIngredient(ItemID.BottledWater);
+                    }
+                    thorComboBloodOrb.AddIngredient<BloodOrb>(90);
+
+                    thorComboBloodOrb.AddTile(TileID.AlchemyTable);
+                    thorComboBloodOrb.AddCondition(Condition.DownedSkeletron);
+                    thorComboBloodOrb.Register();
+                }
+            }
+
+            if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
+            {
+                if (ModLoader.TryGetMod("ThoriumRework", out Mod thorRework) && !InfernalConfig.Instance.DisableBloodOrbPotions)
+                {
+                    if (!InfernalConfig.Instance.ThoriumBalanceChangess)
+                    {
+                        Recipe.Create(thorRework.Find<ModItem>("DeathsingerPotion").Type)
+                            .AddIngredient(ItemID.BottledWater)
+                            .AddIngredient<BloodOrb>(10)
+                            .AddTile(TileID.AlchemyTable)
+                            .AddCondition(Condition.DownedSkeletron)
+                            .Register();
+                    }
+
+                    thorium.TryFind("ManaBerry", out ModItem manaberry);
+                    if (thorRework.TryFind("InspirationRegenerationPotion", out ModItem inspRegenPotion))
+                    {
+                        Recipe.Create(thorRework.Find<ModItem>("InspirationRegenerationPotion").Type)
+                            .AddIngredient(ItemID.BottledWater)
+                            .AddIngredient<BloodOrb>(10)
+                            .AddIngredient(manaberry.Type)
+                            .AddTile(TileID.AlchemyTable)
+                            .AddCondition(Condition.DownedSkeletron)
+                            .Register();
+                    }
+                }
+
+                if (ModLoader.TryGetMod("RagnarokMod", out Mod ragnarok))
+                {
+                    Recipe.Create(thorium.Find<ModItem>("VoltHatchet").Type)
+                        .AddIngredient(thorium.Find<ModItem>("AbyssalChitin").Type, 8)
+                        .AddIngredient(ragnarok.Find<ModItem>("EmpoweredGranite").Type, 3)
+                        .AddIngredient(thorium.Find<ModItem>("AquaiteBar").Type, 10)
+                        .AddTile(TileID.Anvils)
+                        .Register();
+                }
+            }
+
+            if (InfernalCrossmod.SOTS.Loaded)
+            {
+                Mod sots = InfernalCrossmod.SOTS.Mod;
+
+                /*
+                Recipe.Create(ModContent.ItemType<LiliesOfFinality>())
+                    .AddIngredient(ItemID.ClayPot)
+                    .AddIngredient<PlantyMush>()
+                    .AddIngredient<AscendantSpiritEssence>(3)
+                    .AddIngredient<YharonSoulFragment>(4)
+                    .AddIngredient(ItemID.DarkShard)
+                    .AddIngredient(ItemID.LightShard)
+                    .AddTile<CosmicAnvil>()
+                    .Register();
+                */
+
+                int[] sotsPotions =
+                {
+                    GetItem(sots, "AssassinationPotion").Type,
+                    GetItem(sots, "BluefirePotion").Type,
+                    GetItem(sots, "BrittlePotion").Type,
+                    GetItem(sots, "DoubleVisionPotion").Type,
+                    GetItem(sots, "HarmonyPotion").Type,
+                    GetItem(sots, "NightmarePotion").Type,
+                    GetItem(sots, "RipplePotion").Type,
+                    GetItem(sots, "RoughskinPotion").Type,
+                    GetItem(sots, "SoulAccessPotion").Type,
+                    GetItem(sots, "VibePotion").Type
+                };
+
+                foreach (int potion in sotsPotions)
+                {
+                    Recipe newRecipe = Recipe.Create(potion, 2);
+
+                    if (InfernalConfig.Instance.BloodOrbPotionDuplication)
+                    {
+                        newRecipe.AddIngredient(potion);
+                    }
+                    else
+                    {
+                        newRecipe.AddIngredient(ItemID.BottledWater);
+                    }
+                    newRecipe.AddIngredient<BloodOrb>(10);
+
+                    if (potion == GetItem(sots, "HarmonyPotion").Type)
+                    {
+                        newRecipe.AddIngredient(ItemID.SoulofLight);
+                    }
+                    else if (potion == GetItem(sots, "NightmarePotion").Type)
+                    {
+                        newRecipe.AddIngredient(ItemID.SoulofNight);
+                    }
+                    newRecipe.AddTile(TileID.AlchemyTable);
+                    newRecipe.AddCondition(Condition.DownedSkeletron);
+                    newRecipe.Register();
+                }
+
+                SOTSWormholeRecipes.Initialize();
+            }
+        }
+
         public override void PostAddRecipes()
         {
             base.PostAddRecipes();
@@ -1008,6 +1231,19 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
         private static ModItem GetItem(Mod mod, string name)
         {
             return mod.Find<ModItem>(name);
+        }
+    }
+
+    [JITWhenModsEnabled("SOTS")]
+    [ExtendsFromMod("SOTS")]
+    public static class SOTSWormholeRecipes
+    {
+        public static void Initialize()
+        {
+            if (ModLoader.TryGetMod("CalamityHunt", out Mod calHunt))
+            {
+                ItemHelpers.WormholeRecipes.Add(new ItemHelpers.WormholeRecipe(calHunt.Find<ModItem>("ChromaticMass").Type, ModContent.ItemType<AngryPudding>()));
+            }
         }
     }
 }
