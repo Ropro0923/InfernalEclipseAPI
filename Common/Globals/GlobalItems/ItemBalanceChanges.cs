@@ -932,6 +932,34 @@ namespace InfernalEclipseAPI.Common.GlobalItems
             }
             #endregion
 
+            #region Hypnos
+            if (InfernalConfig.Instance.VanillaBalanceChanges && (ModLoader.TryGetMod("Miscellanaria", out Mod misc)))
+            {
+                if (item.type == ItemID.SkeletonBow)
+                {
+                    item.useTime = 24;
+                    item.useAnimation = 24;
+                }
+
+                if (item.type == misc.Find<ModItem>("Icemourne").Type)
+                {
+                    item.damage = 52;
+                    item.useTime = 17;
+                    item.scale = 1.25f;
+                }
+
+                if (item.type == misc.Find<ModItem>("Scythe").Type)
+                {
+
+                }
+
+                if (item.type == misc.Find<ModItem>("SoulScythe").Type)
+                {
+                    item.scale = 1.25f;
+                }
+            }
+            #endregion
+
             if (ModLoader.TryGetMod("NoxusPort", out Mod noxusPort))
             {
                 if (UnsafeGetItem(noxusPort, "EntropicBar", item))
@@ -4971,6 +4999,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.shootSpeed = 12;
                 }
 
+                if (GetItem(sots, "StarshardSaber", item))
+                {
+                    item.damage = 21;
+                }
+
                 if (GetItem(sots, "Hellbreaker", item))
                 {
                     item.damage = 70;
@@ -5094,7 +5127,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                 if (GetItem(sots, "SandstormPouch", item))
                 {
-                    item.damage = 16;
+                    item.damage = 21;
                 }
 
                 if (GetItem(sots, "CoconutGun", item))
@@ -5187,6 +5220,18 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 if (GetItem(sots, "IlluminantStaff", item))
                 {
                     item.damage = 13;
+                }
+
+                if (GetItem(sots, "PlagueSpitter", item))
+                {
+                    item.useTime = 12;
+                    item.useAnimation = 12;
+                }
+
+                if (GetItem(sots, "Blongus", item))
+                {
+                    item.useTime = 22;
+                    item.useAnimation = 22;
                 }
 
                 if (GetItem(sots, "PhotonGeyser", item))
@@ -5476,7 +5521,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                 if (GetItem(sots, "ChaosSpiritStaff", item))
                 {
-                    item.damage = 20;
+                    item.damage = 27;
                 }
 
                 if (GetItem(sots, "EtherealScepter", item))
