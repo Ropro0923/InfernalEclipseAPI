@@ -13,6 +13,7 @@ using CalamityMod.Items.TreasureBags;
 using CalamityMod.Items.Accessories;
 using CalamityMod;
 using CalamityMod.Items.Accessories.Wings;
+using InfernalEclipseAPI.Content.Items.Armor.Vanity;
 
 namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
 {
@@ -70,6 +71,10 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                 itemLoot.Add(ItemDropRule.ByCondition(new CheesePlayerCondition(), ModContent.ItemType<DeathWhistle>()));
 
                 itemLoot.Add(ItemDropRule.ByCondition(new devListPlayerCondition(), ModContent.ItemType<InfernalTwilight>()));
+
+                itemLoot.Add(ItemDropRule.ByCondition(new AkiraPlayerCondition(), ModContent.ItemType<PhantomMask>()));
+                itemLoot.Add(ItemDropRule.ByCondition(new AkiraPlayerCondition(), ModContent.ItemType<PhantomSuitCoat>()));
+                itemLoot.Add(ItemDropRule.ByCondition(new AkiraPlayerCondition(), ModContent.ItemType<PhantomSuitPants>()));
             }
 
             if (InfernalConfig.Instance.CalamityExpertAccessories) 
@@ -248,6 +253,24 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
             {
                 Player player = Main.player[i];
                 if (player.active && player.name == "lifenuggets")
+                    return true;
+            }
+            return false;
+        }
+
+        public bool CanShowItemDropInUI() => false;
+        public string GetConditionDescription() => "A certain person must be present...";
+    }
+
+    public class AkiraPlayerCondition : IItemDropRuleCondition
+    {
+        public bool CanDrop(DropAttemptInfo info)
+        {
+            // Loop through all players in the world
+            for (int i = 0; i < Main.maxPlayers; i++)
+            {
+                Player player = Main.player[i];
+                if (player.active && player.name == "Akira")
                     return true;
             }
             return false;

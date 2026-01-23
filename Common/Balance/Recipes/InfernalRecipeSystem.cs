@@ -259,6 +259,12 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     newRecipe.Register();
                 }
 
+                Recipe.Create(GetItem(sots, "RoyalGoldBrick").Type, 25)
+                    .AddIngredient(ItemID.AncientGoldBrick, 25)
+                    .AddIngredient(GetItem(sots, "SoulResidue"))
+                    .AddTile(TileID.HeavyWorkBench)
+                    .Register();
+                    
                 SOTSWormholeRecipes.Initialize();
             }
         }

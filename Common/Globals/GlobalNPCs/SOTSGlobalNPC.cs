@@ -77,7 +77,7 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalNPCs
 
         public override bool PreAI(NPC npc)
         {
-            if (!InfernalConfig.Instance.SOTSBalanceChanges || !npc.active || npc.type != ModContent.NPCType<SubspaceSerpentHead>()) return base.PreAI(npc);
+            if (!InfernalConfig.Instance.SOTSBalanceChanges || !npc.active || (npc.type != ModContent.NPCType<SubspaceSerpentHead>() && npc.type != ModContent.NPCType<Lux>())) return base.PreAI(npc);
 
             for (int i = 0; i < Main.maxPlayers; i++)
             {

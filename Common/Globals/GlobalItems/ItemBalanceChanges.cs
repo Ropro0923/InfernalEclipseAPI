@@ -2500,7 +2500,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     //Storm Hatchling Staff
                     if (item.type == thorium.Find<ModItem>("StormHatchlingStaff").Type)
                     {
-                        item.damage = 26;
+                        item.damage = 20;
                     }
 
                     //Meteor Head Staff

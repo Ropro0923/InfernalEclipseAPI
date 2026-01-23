@@ -95,9 +95,9 @@ namespace InfernalEclipseAPI.Content.Items.Accessories.ExoSights
             {
                 string nerf;
                 if (InfernalCrossmod.SOTSBardHealer.Loaded)
-                    nerf = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.CloverNerf2");
-                else
                     nerf = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.CloverNerf");
+                else
+                    nerf = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.CloverNerf2");
 
                 AddTooltip(tooltips, nerf, true);
             }
