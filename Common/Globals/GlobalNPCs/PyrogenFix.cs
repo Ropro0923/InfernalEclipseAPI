@@ -33,7 +33,7 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
                 }
                 if (WorldSaveSystem.InfernumModeEnabled)
                 {
-                    lifeBoost += 0.25f;
+                    lifeBoost += 0.20f;
                 }
 
                 npc.lifeMax += (int)(npc.lifeMax * lifeBoost);

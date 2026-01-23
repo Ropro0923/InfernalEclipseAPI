@@ -1381,6 +1381,21 @@ Items: {
 			Can only be used once
 			'''
 	}
+
+	PhantomMask: {
+		DisplayName: Phantom Mask
+		Tooltip: ""
+	}
+
+	PhantomSuitCoat: {
+		DisplayName: Phantom Suit Coat
+		Tooltip: ""
+	}
+
+	PhantomSuitPants: {
+		DisplayName: Phantom Suit Pants
+		Tooltip: ""
+	}
 }
 
 Projectiles: {

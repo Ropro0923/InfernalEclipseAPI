@@ -37,7 +37,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
 
         public override void ApplyDifficultyAndPlayerScaling(NPC npc, int numPlayers, float balance, float bossAdjustment)
         {
-            if (npc.boss && npc.type != ModContent.NPCType<PyrogenBoss>())
+            if (npc.boss && npc.type != ModContent.NPCType<PyrogenBoss>() && npc.type != ModContent.NPCType<PyrogenShield>())
             {
                 npc.lifeMax += npc.lifeMax;
 

@@ -4,7 +4,10 @@ using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.Localization;
 
 namespace InfernalEclipseAPI.Content.Items.Weapons.Donor
@@ -110,4 +113,81 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Donor
         {
         }
     }
+
+    public class StreetsignPlayer : ModPlayer
+    {
+        public int improbabilityCharge;
+        public bool fullyCharged;
+
+        public override void PostUpdate()
+        {
+            if (fullyCharged)
+            {
+                Lighting.AddLight(Player.Center, 0.2f, 0.4f, 1.0f);
+                if (Main.rand.NextBool(5))
+                    Dust.NewDust(Player.Center, 10, 10, DustID.Electric, 0, 0, 150, Color.Cyan, 0.75f);
+            }
+        }
+    }
+
+    public class StreetsignChargeLayer : PlayerDrawLayer
+    {
+        public override Position GetDefaultPosition() => new AfterParent(PlayerDrawLayers.Head);
+
+        protected override void Draw(ref PlayerDrawSet drawInfo)
+        {
+            Player player = drawInfo.drawPlayer;
+            var modPlayer = player.GetModPlayer<StreetsignPlayer>();
+
+            if (player.HeldItem.ModItem is not Streetsign) return;
+            if (modPlayer.improbabilityCharge <= 0) return;
+
+            Texture2D barBG = ModContent.Request<Texture2D>("CalamityMod/UI/MiscTextures/GenericBarBack", AssetRequestMode.ImmediateLoad).Value;
+            Texture2D barFG = ModContent.Request<Texture2D>("CalamityMod/UI/MiscTextures/GenericBarFront", AssetRequestMode.ImmediateLoad).Value;
+
+            Vector2 barOrigin = barBG.Size() * 0.5f;
+            float barScale = 0.95f;
+            Vector2 drawPos = player.Top + Vector2.UnitY * (-16f) - Main.screenPosition;
+
+            Rectangle frameCrop = new Rectangle(0, 0, (int)(modPlayer.improbabilityCharge / 100f * barFG.Width), barFG.Height);
+
+            float t = (float)((Math.Sin(Main.GlobalTimeWrappedHourly * 2f) + 1f) / 2f);
+            Color color = Color.Lerp(new Color(135, 206, 250), Color.Gold, t);
+
+            Main.spriteBatch.Draw(barBG, drawPos, null, color, 0f, barOrigin, barScale, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(barFG, drawPos, frameCrop, color * 0.8f, 0f, barOrigin, barScale, SpriteEffects.None, 0f);
+        }
+    }
+
+    public static class StreetsignDrawHelper
+    {
+        public static void DrawChargeBarInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, float charge, float scale)
+        {
+            if (charge <= 0f) return;
+
+            Texture2D barBG = ModContent.Request<Texture2D>("CalamityMod/UI/MiscTextures/GenericBarBack", AssetRequestMode.ImmediateLoad).Value;
+            Texture2D barFG = ModContent.Request<Texture2D>("CalamityMod/UI/MiscTextures/GenericBarFront", AssetRequestMode.ImmediateLoad).Value;
+
+            Vector2 barOrigin = barBG.Size() * 0.5f;
+
+            // Position below the item slot
+            float yOffset = -8f;
+            Vector2 drawPos = position + Vector2.UnitY * scale * ((float)frame.Height - yOffset);
+
+            // Crop the foreground based on charge
+            Rectangle frameCrop = new Rectangle(0, 0, (int)(charge / 5f * barFG.Width), barFG.Height);
+
+            // Smooth lerp color (you can change to any color you like)
+            float t = (float)((Math.Sin(Main.GlobalTimeWrappedHourly * 2f) + 1f) / 2f);
+            Color color = Color.Lerp(new Color(135, 206, 250), Color.Gold, t);
+
+            float barScale = 0.75f;
+
+            // Draw background
+            spriteBatch.Draw(barBG, drawPos, null, color, 0f, barOrigin, scale * barScale, SpriteEffects.None, 0f);
+            // Draw foreground
+            spriteBatch.Draw(barFG, drawPos, frameCrop, color * 0.8f, 0f, barOrigin, scale * barScale, SpriteEffects.None, 0f);
+        }
+    }
+
 }

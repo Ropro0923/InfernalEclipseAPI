@@ -334,6 +334,8 @@ ItemTooltip: {
 			Этот эффект имеет 2 секунды перезарядки.
 			'''
 		CloverNerf: Вампиризм имеет полсекунды перезарядки
+		// CloverNerf2: Life steal has a 1 second cooldown
+		// RingofRestNerf: Inspiration regeneration has a 1 second cooldown
 		SpiritInsignia: "{$SOTS.Items.SpiritSymphony.Tooltip}"
 		AscendantInsignia:
 			'''
@@ -1360,6 +1362,21 @@ Items: {
 			Навсегда увеличивает максимальный запас пустоты на 100 и скорость её восстановления на 10%
 			Можно использовать только 1 раз
 			'''
+	}
+
+	PhantomMask: {
+		// DisplayName: Phantom Mask
+		// Tooltip: ""
+	}
+
+	PhantomSuitCoat: {
+		// DisplayName: Phantom Suit Coat
+		// Tooltip: ""
+	}
+
+	PhantomSuitPants: {
+		// DisplayName: Phantom Suit Pants
+		// Tooltip: ""
 	}
 }
 
