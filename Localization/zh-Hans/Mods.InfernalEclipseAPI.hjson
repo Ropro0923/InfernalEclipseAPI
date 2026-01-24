@@ -1659,6 +1659,36 @@ Configs: {
 			Label: 灾厄专家饰品
 			Tooltip: 切换灾厄模组Boss的部分掉落物是否为专家模式专属
 		}
+
+		AutomaticallyReforgeThoriumRogueItems: {
+			// Label: Automatically Reforge Thorium Rogue Items
+			/* Tooltip:
+				'''
+				Automatically adds the stat bonuses of the "Flawless" prefix onto all non-consumable Thorium Rogue Items. 
+				Can help Thorium items catch up to Calamity items with prefixes as Throium Rogue items can't be reforged.
+				Only works when Ragnarok or Unofficial Calamity Bard & Healer are enabled.
+				This setting does nothing if Merge Thrower Into Rogue is enabled.
+				''' */
+		}
+
+		UseAprilFoolsMutant: {
+			// Label: Use April Fools Mutant
+			/* Tooltip:
+				'''
+				Converts the Mutant from Fargo's Souls to Yharim.
+				This setting doesn't do anything if Fargo's Souls isn't enabled.
+				''' */
+		}
+
+		MergeThrowerIntoRogue: {
+			// Label: Merge Thrower Into Rogue
+			/* Tooltip:
+				'''
+				Merges the Thrower & Rogue class into one refined class. 
+				Allows converted thrower weapons to still recieve thier orginal reforges.
+				Also keeps the stealth bar damage scaling intact.
+				''' */
+		}
 	}
 
 	Difficulty: {
