@@ -347,8 +347,8 @@ ItemTooltip: {
 			这个效果有2秒冷却时间
 			'''
 		CloverNerf: 吸血效果有0.5秒冷却时间
-		// CloverNerf2: Life steal has a 1 second cooldown
-		// RingofRestNerf: Inspiration regeneration has a 1 second cooldown
+		CloverNerf2: 吸血效果有1秒冷却时间
+		RingofRestNerf: 灵感恢复效果有1秒冷却时间
 		SpiritInsignia:
 			'''
 			增加1点虚空恢复量，并增加25%虚空恢复速度
@@ -1387,18 +1387,18 @@ Items: {
 	}
 
 	PhantomMask: {
-		// DisplayName: Phantom Mask
-		// Tooltip: ""
+		DisplayName: 幻象面具
+		Tooltip: ""
 	}
 
 	PhantomSuitCoat: {
-		// DisplayName: Phantom Suit Coat
-		// Tooltip: ""
+		DisplayName: 幻象西装外套
+		Tooltip: ""
 	}
 
 	PhantomSuitPants: {
-		// DisplayName: Phantom Suit Pants
-		// Tooltip: ""
+		DisplayName: 幻象西装裤
+		Tooltip: ""
 	}
 }
 
