@@ -134,6 +134,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
 
             //Helpers
             "fjiown",
+            "Herbisa",
 
             //Special Thanks
             "N0t_UNowen",
