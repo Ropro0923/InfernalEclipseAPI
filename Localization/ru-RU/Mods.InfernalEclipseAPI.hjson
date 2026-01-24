@@ -1339,6 +1339,13 @@ Items: {
 			Заполненение шкалы до максимума увеличивает характеристики оружия и скорость передвижения
 			[c/7C0A02: КЛОУНА НЕ УБЬЁШЬ!!! КЛОУН УБЬЁТ ТЕБЯ!!!]
 			'''
+		/* DynamicTooltip:
+			'''
+			While holding this weapon, you have a improbability bar
+			The bar charges by dealing or taking damage
+			When the bar is full, press {0} to gain increased combat stats and movement speed for 1 minute
+			[c/7C0A02: YOU DO NOT KILL CLOWN!!! CLOWN KILLS YOU!!!]
+			''' */
 	}
 
 	AngryPudding: {
@@ -1961,8 +1968,21 @@ NPCs: {
 	}
 }
 
-KeyBindName.SubspaceBoostHotkey: Подпространственный рывок
-Keybinds.Mods.InfernalEclipseAPI.KeyBindName.SubspaceBoostHotkey.DisplayName: Подпространственный рывок
+KeyBindName: {
+	SubspaceBoostHotkey: Подпространственный рывок
+	// ItemAbility: Item Ability
+}
+
+Keybinds: {
+	Mods: {
+		InfernalEclipseAPI: {
+			KeyBindName: {
+				SubspaceBoostHotkey.DisplayName: Подпространственный рывок
+				// ItemAbility.DisplayName: Item Ability
+			}
+		}
+	}
+}
 
 Events: {
 	//Sequential text at the end of Boss Rush Tier 5

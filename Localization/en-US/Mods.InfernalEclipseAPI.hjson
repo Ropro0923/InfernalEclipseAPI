@@ -1350,11 +1350,12 @@ Items: {
 
 	Streetsign: {
 		DisplayName: Streetsign
-		Tooltip:
+		Tooltip: ""
+		DynamicTooltip:
 			'''
 			While holding this weapon, you have a improbability bar
 			The bar charges by dealing or taking damage
-			When the bar is full, you gain increased weapon stats and movement speed 
+			When the bar is full, press {0} to gain increased combat stats and movement speed for 1 minute
 			[c/7C0A02: YOU DO NOT KILL CLOWN!!! CLOWN KILLS YOU!!!]
 			'''
 	}
@@ -1980,8 +1981,21 @@ NPCs: {
 	}
 }
 
-KeyBindName.SubspaceBoostHotkey: Subspace Boost Hotkey
-Keybinds.Mods.InfernalEclipseAPI.KeyBindName.SubspaceBoostHotkey.DisplayName: Subspace Boost Hotkey
+KeyBindName: {
+	SubspaceBoostHotkey: Subspace Boost Hotkey
+	ItemAbility: Item Ability
+}
+
+Keybinds: {
+	Mods: {
+		InfernalEclipseAPI: {
+			KeyBindName: {
+				SubspaceBoostHotkey.DisplayName: Subspace Boost Hotkey
+				ItemAbility.DisplayName: Item Ability
+			}
+		}
+	}
+}
 
 Events: {
 	//Sequential text at the end of Boss Rush Tier 5
