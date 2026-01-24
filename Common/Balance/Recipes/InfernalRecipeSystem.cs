@@ -369,6 +369,28 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     {
                         recipe.DisableDecraft();
                     }
+
+                    if (recipe.HasResult(calAmmo.Find<ModItem>("AutoCalculationCoil")))
+                    {
+                        // Reduce Suspicious Scrap to 1
+                        for (int j = 0; j < recipe.requiredItem.Count; j++)
+                        {
+                            Item req = recipe.requiredItem[j];
+
+                            if (req.type == ModContent.ItemType<SuspiciousScrap>())
+                            {
+                                req.stack = 1;
+                            }
+                        }
+                        if (InfernalCrossmod.SOTS.Loaded)
+                        {
+                            recipe.AddIngredient(InfernalCrossmod.SOTS.Mod.Find<ModItem>("Calculator"));
+                        }
+                        recipe.AddIngredient<AscendantSpiritEssence>();
+                        recipe.RemoveIngredient(ModContent.ItemType<PlasmaDriveCore>());
+                        recipe.requiredTile.Clear();
+                        recipe.AddTile(ModContent.TileType<CosmicAnvil>());
+                    }
                 }
                 #endregion
 
