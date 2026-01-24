@@ -147,11 +147,11 @@ ItemTooltip: {
 	SpiritGlove: Увеличивает скорость восстановления пустоты на 5% и шанс критического удара ближнего боя на 4%
 	DiamondRingText: Увеличивает урон в зависимости от защиты, а затем снижает вашу защиту на 2/3 от полученного бонуса к урону
 	EarthDrive: Максимальное увеличение скорости ближнего боя — 10%
-	/* SyntheticLiver:
+	SyntheticLiver:
 		'''
-		Increases void received from food by 25%
-		Receiving the same buff multiple times will increase buff duration instead of resetting it, up to double the original duration
-		''' */
+		Увеличивает количество пустоты, получаемое от еды, на 25%
+		Повторное получение того же баффа увеличивает его длительность вместо сброса таймера, вплоть до двойной длительности
+		'''
 	DedTo: - Посвящено: {0} -
 
 	Dedicated: {
@@ -333,15 +333,9 @@ ItemTooltip: {
 			Нанесение двух последовательных метательных критических ударов вызывает разряд тёмной молнии и на короткое время увеличивает метательную скорость атаки
 			Этот эффект имеет 2 секунды перезарядки.
 			'''
-<<<<<<< HEAD
 		CloverNerf: Вампиризм и восстановление вдохновения имеет 1 секунду перезарядки
 		CloverNerf2: Вампиризм имеет 1 секунду перезарядки
 		RingofRestNerf: Восстановление вдохновения имеет 1 секунду перезарядки
-=======
-		CloverNerf: Вампиризм имеет полсекунды перезарядки
-		// CloverNerf2: Life steal has a 1 second cooldown
-		// RingofRestNerf: Inspiration regeneration has a 1 second cooldown
->>>>>>> 4fd1cd3960aff69291700118ce5ae84d6abd763c
 		SpiritInsignia: "{$SOTS.Items.SpiritSymphony.Tooltip}"
 		AscendantInsignia:
 			'''
@@ -1269,7 +1263,7 @@ Items: {
 			Днём увеличивает регенерацию здоровья на 2 ОЗ/сек
 			Ночью увеличивает защиту на 20
 			Во время затмения увеличивает регенерацию здоровья на 1 ОЗ/сек и защиту на 10 ед.
-			Критические удары стрел ненадолго накладывают дебафф «{$Buffs.ShadowFlame}»
+			Критические удары от стрел ненадолго накладывают дебафф «{$Buffs.ShadowFlame}»
 			Увеличивает максимальное время полёта на 20%
 			'За пламенем и искрами, если заглянуть достаточно глубоко, можно увидеть своё прошлое и будущее'
 			'''
@@ -1379,7 +1373,6 @@ Items: {
 	}
 
 	PhantomMask: {
-<<<<<<< HEAD
 		DisplayName: Phantom Mask
 		Tooltip: ""
 	}
@@ -1392,20 +1385,6 @@ Items: {
 	PhantomSuitPants: {
 		DisplayName: Phantom Suit Pants
 		Tooltip: ""
-=======
-		// DisplayName: Phantom Mask
-		// Tooltip: ""
-	}
-
-	PhantomSuitCoat: {
-		// DisplayName: Phantom Suit Coat
-		// Tooltip: ""
-	}
-
-	PhantomSuitPants: {
-		// DisplayName: Phantom Suit Pants
-		// Tooltip: ""
->>>>>>> 4fd1cd3960aff69291700118ce5ae84d6abd763c
 	}
 }
 
@@ -1992,11 +1971,7 @@ NPCs: {
 
 KeyBindName: {
 	SubspaceBoostHotkey: Подпространственный рывок
-<<<<<<< HEAD
 	ItemAbility: Способность предмета
-=======
-	// ItemAbility: Item Ability
->>>>>>> 4fd1cd3960aff69291700118ce5ae84d6abd763c
 }
 
 Keybinds: {
@@ -2004,11 +1979,7 @@ Keybinds: {
 		InfernalEclipseAPI: {
 			KeyBindName: {
 				SubspaceBoostHotkey.DisplayName: Подпространственный рывок
-<<<<<<< HEAD
 				ItemAbility.DisplayName: Способность предмета
-=======
-				// ItemAbility.DisplayName: Item Ability
->>>>>>> 4fd1cd3960aff69291700118ce5ae84d6abd763c
 			}
 		}
 	}
@@ -2016,14 +1987,7 @@ Keybinds: {
 
 Events: {
 	//Sequential text at the end of Boss Rush Tier 5
-<<<<<<< HEAD
 	BossRushTierFiveEndText_1: Мы достигли финала, Террарианец.
 	BossRushTierFiveEndText_2: Всё, что стоит между вами и окончанием этого испытания, - это те, кто есть и те, когда-то были богами этого мира.
 	BossRushTierFiveEndText_3: Покажи мне силу того, кому сейчас нечего терять. Не время колебаться.
 }
-=======
-	// BossRushTierFiveEndText_1: We have reached the finale, Terrarian.
-	// BossRushTierFiveEndText_2: All that stands between you and the end of this trial are what are and once were once gods of this world.
-	// BossRushTierFiveEndText_3: Show me the strength of someone with nothing to lose now. Do not falter now.
-}
->>>>>>> 4fd1cd3960aff69291700118ce5ae84d6abd763c
