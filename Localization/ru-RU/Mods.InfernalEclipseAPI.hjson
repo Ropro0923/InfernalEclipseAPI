@@ -286,7 +286,7 @@ ItemTooltip: {
 			Увеличивает получаемое количество пустоты на 2 и регенерацию здоровья на 2
 			Увеличивает сопротивление урону на 7% и шанс критического удара на 4%
 			'''
-		Sweet1: Увеличивает скорость передвижения и длительность неуязвимости после получения урона 
+		Sweet1: Увеличивает скорость передвижения и длительность неуязвимости после получения урона
 		Sweet2: Выпускает пчёл и обливает игрока мёдом после получения урона
 		SweetAlt: Выпускает пчёл, вызывает звездопад и обливает игрока мёдом после получения урона
 		COTS:
@@ -333,9 +333,15 @@ ItemTooltip: {
 			Нанесение двух последовательных метательных критических ударов вызывает разряд тёмной молнии и на короткое время увеличивает метательную скорость атаки
 			Этот эффект имеет 2 секунды перезарядки.
 			'''
+<<<<<<< HEAD
 		CloverNerf: Вампиризм и восстановление вдохновения имеет 1 секунду перезарядки
 		CloverNerf2: Вампиризм имеет 1 секунду перезарядки
 		RingofRestNerf: Восстановление вдохновения имеет 1 секунду перезарядки
+=======
+		CloverNerf: Вампиризм имеет полсекунды перезарядки
+		// CloverNerf2: Life steal has a 1 second cooldown
+		// RingofRestNerf: Inspiration regeneration has a 1 second cooldown
+>>>>>>> 4fd1cd3960aff69291700118ce5ae84d6abd763c
 		SpiritInsignia: "{$SOTS.Items.SpiritSymphony.Tooltip}"
 		AscendantInsignia:
 			'''
@@ -1340,6 +1346,13 @@ Items: {
 			При заполнение шкалы до максимума, нажмите {0}, чтобы увеличить атакующие характеристики и скорость передвижения на 1 минуту
 			[c/7C0A02: КЛОУНА НЕ УБЬЁШЬ!!! КЛОУН УБЬЁТ ТЕБЯ!!!]
 			'''
+		/* DynamicTooltip:
+			'''
+			While holding this weapon, you have a improbability bar
+			The bar charges by dealing or taking damage
+			When the bar is full, press {0} to gain increased combat stats and movement speed for 1 minute
+			[c/7C0A02: YOU DO NOT KILL CLOWN!!! CLOWN KILLS YOU!!!]
+			''' */
 	}
 
 	AngryPudding: {
@@ -1366,6 +1379,7 @@ Items: {
 	}
 
 	PhantomMask: {
+<<<<<<< HEAD
 		DisplayName: Phantom Mask
 		Tooltip: ""
 	}
@@ -1378,6 +1392,20 @@ Items: {
 	PhantomSuitPants: {
 		DisplayName: Phantom Suit Pants
 		Tooltip: ""
+=======
+		// DisplayName: Phantom Mask
+		// Tooltip: ""
+	}
+
+	PhantomSuitCoat: {
+		// DisplayName: Phantom Suit Coat
+		// Tooltip: ""
+	}
+
+	PhantomSuitPants: {
+		// DisplayName: Phantom Suit Pants
+		// Tooltip: ""
+>>>>>>> 4fd1cd3960aff69291700118ce5ae84d6abd763c
 	}
 }
 
@@ -1502,7 +1530,7 @@ Configs: {
 				Обязательно установите сложность перед включением этой конфигурации
 				Полезно для серверов, на которых вы не хотите, чтобы сложность менялась
 				'''
-			Label: Заблокировать ползунок сложности Calamity 
+			Label: Заблокировать ползунок сложности Calamity
 		}
 
 		SOTSBalanceChanges: {
@@ -1964,7 +1992,11 @@ NPCs: {
 
 KeyBindName: {
 	SubspaceBoostHotkey: Подпространственный рывок
+<<<<<<< HEAD
 	ItemAbility: Способность предмета
+=======
+	// ItemAbility: Item Ability
+>>>>>>> 4fd1cd3960aff69291700118ce5ae84d6abd763c
 }
 
 Keybinds: {
@@ -1972,7 +2004,11 @@ Keybinds: {
 		InfernalEclipseAPI: {
 			KeyBindName: {
 				SubspaceBoostHotkey.DisplayName: Подпространственный рывок
+<<<<<<< HEAD
 				ItemAbility.DisplayName: Способность предмета
+=======
+				// ItemAbility.DisplayName: Item Ability
+>>>>>>> 4fd1cd3960aff69291700118ce5ae84d6abd763c
 			}
 		}
 	}
@@ -1980,7 +2016,14 @@ Keybinds: {
 
 Events: {
 	//Sequential text at the end of Boss Rush Tier 5
+<<<<<<< HEAD
 	BossRushTierFiveEndText_1: Мы достигли финала, Террарианец.
 	BossRushTierFiveEndText_2: Всё, что стоит между вами и окончанием этого испытания, - это те, кто есть и те, когда-то были богами этого мира.
 	BossRushTierFiveEndText_3: Покажи мне силу того, кому сейчас нечего терять. Не время колебаться.
 }
+=======
+	// BossRushTierFiveEndText_1: We have reached the finale, Terrarian.
+	// BossRushTierFiveEndText_2: All that stands between you and the end of this trial are what are and once were once gods of this world.
+	// BossRushTierFiveEndText_3: Show me the strength of someone with nothing to lose now. Do not falter now.
+}
+>>>>>>> 4fd1cd3960aff69291700118ce5ae84d6abd763c

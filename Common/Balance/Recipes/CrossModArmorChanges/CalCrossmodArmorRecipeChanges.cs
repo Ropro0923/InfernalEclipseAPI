@@ -1,5 +1,6 @@
 ﻿namespace InfernalEclipseAPI.Common.Balance.Recipes.CrossModArmorChanges
 {
+    //TODO: Merge with class with Infernal Recipe System
     public class CalCrossmodArmorRecipeChanges : ModSystem
     {
         public override void PostAddRecipes()

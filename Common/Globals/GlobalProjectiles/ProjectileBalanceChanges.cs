@@ -44,40 +44,31 @@ namespace InfernalEclipseAPI.Common.Projectiles
 
             if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
             {
-                if (!ModLoader.TryGetMod("WHummusMultiModBalancing", out _))
-                {
-                    moltenThresherType = thorium.Find<ModProjectile>("MoltenThresherPro")?.Type ?? -1;
-                    batScytheType = thorium.Find<ModProjectile>("BatScythePro")?.Type ?? -1;
-                    batScytheType2 = thorium.Find<ModProjectile>("BatScythePro2")?.Type ?? -1;
-                    fallingTwilightType = thorium.Find<ModProjectile>("FallingTwilightPro")?.Type ?? -1;
-                    bloodHarvestType = thorium.Find<ModProjectile>("BloodHarvestPro")?.Type ?? -1;
-                    trueFallingTwilightType = thorium.Find<ModProjectile>("TrueFallingTwilightPro")?.Type ?? -1;
-                    trueBloodHarvestType = thorium.Find<ModProjectile>("TrueBloodHarvestPro")?.Type ?? -1;
-                    theBlackScytheType = thorium.Find<ModProjectile>("TheBlackScythePro")?.Type ?? -1;
-                    titanScytheType = thorium.Find<ModProjectile>("TitanScythePro")?.Type ?? -1;
-                    boneBatonType = thorium.Find<ModProjectile>("BoneBatonPro")?.Type ?? -1;
-                    trueHallowedType = thorium.Find<ModProjectile>("TrueHallowedScythePro")?.Type ?? -1;
-                    crimsonType = thorium.Find<ModProjectile>("CrimtaneScythePro")?.Type ?? -1;
-                    iceType = thorium.Find<ModProjectile>("IceShaverPro")?.Type ?? -1;
-                    darkType = thorium.Find<ModProjectile>("DemoniteScythePro")?.Type ?? -1;
-                    terraType = thorium.Find<ModProjectile>("TerraScythePro")?.Type ?? -1;
-                }
+                moltenThresherType = thorium.Find<ModProjectile>("MoltenThresherPro")?.Type ?? -1;
+                batScytheType = thorium.Find<ModProjectile>("BatScythePro")?.Type ?? -1;
+                batScytheType2 = thorium.Find<ModProjectile>("BatScythePro2")?.Type ?? -1;
+                fallingTwilightType = thorium.Find<ModProjectile>("FallingTwilightPro")?.Type ?? -1;
+                bloodHarvestType = thorium.Find<ModProjectile>("BloodHarvestPro")?.Type ?? -1;
+                trueFallingTwilightType = thorium.Find<ModProjectile>("TrueFallingTwilightPro")?.Type ?? -1;
+                trueBloodHarvestType = thorium.Find<ModProjectile>("TrueBloodHarvestPro")?.Type ?? -1;
+                theBlackScytheType = thorium.Find<ModProjectile>("TheBlackScythePro")?.Type ?? -1;
+                titanScytheType = thorium.Find<ModProjectile>("TitanScythePro")?.Type ?? -1;
+                boneBatonType = thorium.Find<ModProjectile>("BoneBatonPro")?.Type ?? -1;
+                trueHallowedType = thorium.Find<ModProjectile>("TrueHallowedScythePro")?.Type ?? -1;
+                crimsonType = thorium.Find<ModProjectile>("CrimtaneScythePro")?.Type ?? -1;
+                iceType = thorium.Find<ModProjectile>("IceShaverPro")?.Type ?? -1;
+                darkType = thorium.Find<ModProjectile>("DemoniteScythePro")?.Type ?? -1;
+                terraType = thorium.Find<ModProjectile>("TerraScythePro")?.Type ?? -1;
 
                 if (ModLoader.TryGetMod("RagnarokMod", out Mod ragnarok))
                 {
-                    if (!ModLoader.TryGetMod("WHummusMultiModBalancing", out _))
-                    {
-                        windSlashType = ragnarok.Find<ModProjectile>("WindSlashPro")?.Type ?? -1;
-                        marbleType = ragnarok.Find<ModProjectile>("MarbleScythePro")?.Type ?? -1;
-                    }
+                    windSlashType = ragnarok.Find<ModProjectile>("WindSlashPro")?.Type ?? -1;
+                    marbleType = ragnarok.Find<ModProjectile>("MarbleScythePro")?.Type ?? -1;
                 }
 
                 if (ModLoader.TryGetMod("CalamityBardHealer", out Mod calBardHeal))
                 {
-                    if (!ModLoader.TryGetMod("WHummusMultiModBalancing", out _))
-                    {
-                        whirlwindType = calBardHeal.Find<ModProjectile>("Whirlwind")?.Type ?? -1;
-                    }
+                    whirlwindType = calBardHeal.Find<ModProjectile>("Whirlwind")?.Type ?? -1;
                 }
             }
         }
@@ -135,9 +126,7 @@ namespace InfernalEclipseAPI.Common.Projectiles
 
         public override bool PreDraw(Projectile projectile, ref Color lightColor)
         {
-            if (!ModLoader.TryGetMod("WHummusMultiModBalancing", out _))
-            {
-                int[] staticProjectiles = new int[]
+            int[] staticProjectiles = new int[]
                 {
                     moltenThresherType, batScytheType, batScytheType2,
                     fallingTwilightType, bloodHarvestType, trueFallingTwilightType,
@@ -146,51 +135,49 @@ namespace InfernalEclipseAPI.Common.Projectiles
                     crimsonType, iceType, darkType, marbleType, terraType
                 };
 
-                if (!Array.Exists(staticProjectiles, t => t == projectile.type))
-                    return true;
+            if (!Array.Exists(staticProjectiles, t => t == projectile.type))
+                return true;
 
-                Texture2D texture = TextureAssets.Projectile[projectile.type].Value;
-                int frameHeight = texture.Height / Main.projFrames[projectile.type];
-                Rectangle sourceRectangle = new Rectangle(0, frameHeight * projectile.frame, texture.Width, frameHeight);
-                Vector2 origin = sourceRectangle.Size() / 2f;
-                Vector2 drawPos = projectile.Center - Main.screenPosition;
-                SpriteEffects effects = projectile.type == windSlashType
-                    ? SpriteEffects.None
-                    : (Main.player[projectile.owner].direction == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
+            Texture2D texture = TextureAssets.Projectile[projectile.type].Value;
+            int frameHeight = texture.Height / Main.projFrames[projectile.type];
+            Rectangle sourceRectangle = new Rectangle(0, frameHeight * projectile.frame, texture.Width, frameHeight);
+            Vector2 origin = sourceRectangle.Size() / 2f;
+            Vector2 drawPos = projectile.Center - Main.screenPosition;
+            SpriteEffects effects = projectile.type == windSlashType
+                ? SpriteEffects.None
+                : (Main.player[projectile.owner].direction == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
 
-                Color drawColor = lightColor;
-                if (projectile.type == windSlashType)
-                {
-                    int fadeDuration = 30;
-                    if (projectile.timeLeft < fadeDuration)
-                        drawColor *= projectile.timeLeft / (float)fadeDuration;
-                }
-
-                Main.EntitySpriteDraw(texture, drawPos, sourceRectangle, drawColor, projectile.rotation, origin, projectile.scale, effects, 0);
-
-                // Draw glowmask for known Thorium projectiles
-                string glowPath = projectile.type switch
-                {
-                    var t when t == moltenThresherType => "ThoriumMod/Projectiles/Scythe/MoltenThresherPro_Glowmask",
-                    _ => null
-                };
-
-                if (glowPath != null)
-                {
-                    Texture2D glowTexture = ModContent.Request<Texture2D>(glowPath).Value;
-
-                    Main.spriteBatch.End();
-                    Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.TransformationMatrix);
-
-                    Main.EntitySpriteDraw(glowTexture, drawPos, sourceRectangle, Color.White, projectile.rotation, origin, projectile.scale, effects, 0);
-
-                    Main.spriteBatch.End();
-                    Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.TransformationMatrix);
-                }
-
-                return false;
+            Color drawColor = lightColor;
+            if (projectile.type == windSlashType)
+            {
+                int fadeDuration = 30;
+                if (projectile.timeLeft < fadeDuration)
+                    drawColor *= projectile.timeLeft / (float)fadeDuration;
             }
-            return true;
+
+            Main.EntitySpriteDraw(texture, drawPos, sourceRectangle, drawColor, projectile.rotation, origin, projectile.scale, effects, 0);
+
+            // Draw glowmask for known Thorium projectiles
+            string glowPath = projectile.type switch
+            {
+                var t when t == moltenThresherType => "ThoriumMod/Projectiles/Scythe/MoltenThresherPro_Glowmask",
+                _ => null
+            };
+
+            if (glowPath != null)
+            {
+                Texture2D glowTexture = ModContent.Request<Texture2D>(glowPath).Value;
+
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.TransformationMatrix);
+
+                Main.EntitySpriteDraw(glowTexture, drawPos, sourceRectangle, Color.White, projectile.rotation, origin, projectile.scale, effects, 0);
+
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.TransformationMatrix);
+            }
+
+            return false;
         }
 
         public override void PostDraw(Projectile projectile, Color lightColor) { }

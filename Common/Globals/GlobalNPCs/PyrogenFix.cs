@@ -33,7 +33,7 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
                 }
                 if (WorldSaveSystem.InfernumModeEnabled)
                 {
-                    lifeBoost += 0.25f;
+                    lifeBoost += 0.20f;
                 }
 
                 npc.lifeMax += (int)(npc.lifeMax * lifeBoost);
@@ -54,7 +54,7 @@ namespace InfernalEclipseAPI.Common.GlobalNPCs
 
         public override void OnHitPlayer(NPC npc, Player target, Player.HurtInfo hurtInfo)
         {
-            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
+            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 180);
             if (hurtInfo.Damage > 400 && !BossRushEvent.BossRushActive)
                 hurtInfo.Damage = 400;
         }

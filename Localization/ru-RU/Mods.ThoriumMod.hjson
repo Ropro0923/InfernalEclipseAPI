@@ -12,11 +12,11 @@ Items: {
 
 	/*
 	ScryingGlass: {
-		DisplayName: Scrying Glass
-		Tooltip: Pressing the '{$Keybinds.AccessoryAbility.DisplayName}' key will toggle an increased range of view
+	DisplayName: Scrying Glass
+	Tooltip: Pressing the '{$Keybinds.AccessoryAbility.DisplayName}' key will toggle an increased range of view
 	}
 	*/
-
+	
 	ShootingStarHat.SetBonus:
 		'''
 		Увеличивает длительность симфонических усилений на 6 секунд
@@ -107,7 +107,7 @@ Items: {
 			'''
 	}
 
-FlightMask.Tooltip:
+	FlightMask.Tooltip:
 		'''
 		Увеличивает метательный урон на 2%
 		Увеличивает метательный шанс критического удара на 5%

@@ -8,16 +8,13 @@ namespace InfernalEclipseAPI.Common.GlobalItems
     // Wardrobe Hummus
     public class MeleeDebuffs : GlobalItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return !ModLoader.TryGetMod("WHummusMultiModBalancing", out _);
-        }
+        public bool WHummusEnabled = ModLoader.TryGetMod("WHummusMultiModBalancing", out _);
 
         public override bool InstancePerEntity => true;
 
         public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod) && InfernalConfig.Instance.ThoriumBalanceChangess)
+            if (!WHummusEnabled && ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod) && InfernalConfig.Instance.ThoriumBalanceChangess)
             {
                 var thunderTalon = thoriumMod.Find<ModItem>("ThunderTalon");
                 if (thunderTalon != null && item.type == thunderTalon.Type)
@@ -53,9 +50,29 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 }
             }
 
-            if (item.type == ItemID.LucyTheAxe && InfernalConfig.Instance.VanillaBalanceChanges)
+            if (!WHummusEnabled && item.type == ItemID.LucyTheAxe && InfernalConfig.Instance.VanillaBalanceChanges)
             {
                 target.AddBuff(ModContent.BuffType<Crumbling>(), 180);
+            }
+
+            if (ModLoader.TryGetMod("Miscellanaria", out Mod misc) && InfernalConfig.Instance.VanillaBalanceChanges)
+            {
+                var icemourne = misc.Find<ModItem>("Icemourne");
+                var scythe = misc.Find<ModItem>("Scythe");
+                var soulscythe = misc.Find<ModItem>("SoulScythe");
+                if (icemourne != null && item.type == icemourne.Type)
+                {
+                    target.AddBuff(BuffID.Frostburn2, 180);
+                }
+                if (scythe != null && item.type == scythe.Type)
+                {
+                    HealPlayer(player, 1);
+                }
+                if (soulscythe != null && item.type == soulscythe.Type)
+                {
+                    HealPlayer(player, 2);
+                    target.AddBuff(BuffID.ShadowFlame, 180);
+                }
             }
         }
 
@@ -67,43 +84,48 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
         public void AddTooltip(List<TooltipLine> tooltips, string stealthTooltip, bool InfernalRedActive = false)
         {
-            Color InfernalRed = Color.Lerp(
+            if (!WHummusEnabled)
+            {
+                Color InfernalRed = Color.Lerp(
                Color.White,
                new Color(255, 80, 0), // Infernal red/orange
                (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 2.0) * 0.5 + 0.5)
             );
 
-            int maxTooltipIndex = -1;
-            int maxNumber = -1;
+                int maxTooltipIndex = -1;
+                int maxNumber = -1;
 
-            // Find the TooltipLine with the highest TooltipX name
-            for (int i = 0; i < tooltips.Count; i++)
-            {
-                if (tooltips[i].Mod == "Terraria" && tooltips[i].Name.StartsWith("Tooltip"))
+                // Find the TooltipLine with the highest TooltipX name
+                for (int i = 0; i < tooltips.Count; i++)
                 {
-                    if (int.TryParse(tooltips[i].Name.Substring(7), out int num) && num > maxNumber)
+                    if (tooltips[i].Mod == "Terraria" && tooltips[i].Name.StartsWith("Tooltip"))
                     {
-                        maxNumber = num;
-                        maxTooltipIndex = i;
+                        if (int.TryParse(tooltips[i].Name.Substring(7), out int num) && num > maxNumber)
+                        {
+                            maxNumber = num;
+                            maxTooltipIndex = i;
+                        }
                     }
                 }
-            }
 
-            // If found, insert a new TooltipLine right after it with the desired color
-            if (maxTooltipIndex != -1)
-            {
-                int insertIndex = maxTooltipIndex + 1;
-                TooltipLine customLine = new TooltipLine(Mod, "StealthTooltip", stealthTooltip);
-                if (InfernalRedActive)
-                    customLine.OverrideColor = InfernalRed;
+                // If found, insert a new TooltipLine right after it with the desired color
+                if (maxTooltipIndex != -1)
+                {
+                    int insertIndex = maxTooltipIndex + 1;
+                    TooltipLine customLine = new TooltipLine(Mod, "StealthTooltip", stealthTooltip);
+                    if (InfernalRedActive)
+                        customLine.OverrideColor = InfernalRed;
 
-                tooltips.Insert(insertIndex, customLine);
+                    tooltips.Insert(insertIndex, customLine);
+                }
             }
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (!InfernalConfig.Instance.ThoriumBalanceChangess) return;
+
+            if (WHummusEnabled) return;
 
             if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
             {

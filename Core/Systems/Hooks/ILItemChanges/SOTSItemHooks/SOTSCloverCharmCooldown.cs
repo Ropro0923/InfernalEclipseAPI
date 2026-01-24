@@ -72,7 +72,7 @@ namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges.SOTSItemHooks
 
             // If the Clover Charm actually granted lifesteal this tick, start the 15-tick cooldown
             if (after > before)
-                cd.CloverCharmCooldown = 30;
+                cd.CloverCharmCooldown = 60;
         }
 
         private static int GetCritLifesteal(Player player)

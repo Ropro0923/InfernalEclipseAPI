@@ -10,8 +10,9 @@ using System.Linq;
 using SOTS.Projectiles.Earth.Glowmoth;
 using InfernalEclipseAPI.Core.Utils;
 using CalamityMod;
-using System.Security.Policy;
 using InfernalEclipseAPI.Common.Globals.GlobalNPCs;
+using SOTS.Projectiles.Chaos;
+using SOTS.NPCs.Boss.Lux;
 
 namespace InfernalEclipseAPI.Content.DifficultyOverrides
 {
@@ -23,7 +24,8 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
         {
             ModContent.NPCType<GlowmothMinion>(),
             ModContent.NPCType<PutridPinky1>(),
-            ModContent.NPCType<PutridHook>()
+            ModContent.NPCType<PutridHook>(),
+            ModContent.NPCType<FakeLux>(),
         };
 
         public override bool AppliesToEntity(NPC npc, bool lateInstatiation)
@@ -79,7 +81,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                     npc.lifeMax += (int)(((double).25 * npc.lifeMax));
                 }
 
-                if (npc.ModNPC?.Name?.Contains("TheAdvisorHead") == true || npc.ModNPC.Name.Contains("Excavator"))
+                if (npc.ModNPC?.Name?.Contains("TheAdvisorHead") == true || npc.ModNPC.Name.Contains("Excavator") || npc.ModNPC.Name.Contains("Lux"))
                 {
                     npc.lifeMax += (int)(0.25 * npc.lifeMax);
                 }
@@ -224,7 +226,20 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 ModContent.ProjectileType<WaveBall>(),
                 ModContent.ProjectileType<GlowBombOrb>(),
                 ModContent.ProjectileType<GlowBombShard>(),
-                ModContent.ProjectileType<GlowSparkle>()
+                ModContent.ProjectileType<GlowSparkle>(),
+
+                //Lux
+                ModContent.ProjectileType<DogmaSphere>(),
+                ModContent.ProjectileType<ChaosWave>(),
+                ModContent.ProjectileType<ChaosStar>(),
+                ModContent.ProjectileType<ChaosDart>(),
+                ModContent.ProjectileType<ChaosDiamond>(),
+                ModContent.ProjectileType<ChaosDiamondLaser>(),
+                ModContent.ProjectileType<ChaosBall>(),
+                ModContent.ProjectileType<ChaosDart2>(),
+                ModContent.ProjectileType<ChaosEraser>(),
+                ModContent.ProjectileType<ChaosEraser2>(),
+                ModContent.ProjectileType<DogmaLaser>()
             };
 
             foreach (int type in types)

@@ -23,6 +23,7 @@ using SOTS.Items;
 using Terraria.ModLoader;
 using InfernalEclipseAPI.Core.Players;
 using Microsoft.Xna.Framework;
+using System.Security.Policy;
 
 
 
@@ -110,6 +111,11 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                 if (item.type == ModContent.ItemType<SwallowedPenny>())
                 {
                     player.GetCritChance(DamageClass.Generic) -= 2f;
+                }
+
+                if (item.type == ItemType<SyntheticLiver>())
+                {
+                    sotsPlayer.DrainDebuffs = false;
                 }
 
                 if (InfernalCrossmod.SOTSBardHealer.Loaded)
@@ -283,6 +289,11 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                 if (item.type == ItemType<EarthDrive>())
                 {
                     InfernalUtilities.AddTooltip(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.EarthDrive"), InfernalRed);
+                }
+
+                if (item.type == ItemType<SyntheticLiver>())
+                {
+                    InfernalUtilities.FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.SyntheticLiver"));
                 }
             }
         }

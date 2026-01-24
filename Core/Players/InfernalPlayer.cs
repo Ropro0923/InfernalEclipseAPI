@@ -158,6 +158,7 @@ namespace InfernalEclipseAPI.Core.Players
         public int BoostPressTimer;
         public int BoostDirection;
         public int boostCooldownTime;
+        public int RingofRestCooldown;
 
         public bool singularityCore;
 
@@ -191,6 +192,17 @@ namespace InfernalEclipseAPI.Core.Players
         {
             if (Player.HasBuff(InfernalCrossmod.Thorium.Mod.Find<ModBuff>("Bubbled").Type))
                 return false;
+
+            if (ModLoader.TryGetMod("XDContentMod", out Mod heartbeat))
+            {
+                if (Player.mount.Active)
+                {
+                    if (Player.mount?.Type == heartbeat.Find<ModMount>("TapTapMinivan").Type || Player.mount?.Type == heartbeat.Find<ModMount>("LuxuryConvertible").Type || Player.mount?.Type == heartbeat.Find<ModMount>("DiDiCar").Type || Player.mount?.Type == heartbeat.Find<ModMount>("DiDiBike").Type || Player.mount?.Type == heartbeat.Find<ModMount>("KFCDeliveryScooter").Type)
+                    {
+                        return false;
+                    }
+                }
+            }
 
             return base.CanUseItem(item);
         }
@@ -370,6 +382,9 @@ namespace InfernalEclipseAPI.Core.Players
 
             if (!NPC.downedBoss3 && InfernalConfig.Instance.BossKillCheckOnOres && Player.HasBuff(BuffID.Bewitched))
                 Player.ClearBuff(BuffID.Bewitched);
+
+            if (RingofRestCooldown > 0)
+                RingofRestCooldown--;
         }
 
         public bool soltanBullying = false;

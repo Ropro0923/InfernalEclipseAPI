@@ -36,7 +36,7 @@ DifficultyUI: {
 		[c/FF0055:你能征服《诸神黄昏：炼狱蚀光》吗？]
 		'''
 	InfernumText: 炼狱蚀日已然升起……
-	InfernumText2: 另一个配不上的挑战者已经离开。
+	InfernumText2: 失格的挑战者已经离开。
 	MasterToggle: 大师模式现已启用！
 }
 
@@ -151,6 +151,11 @@ ItemTooltip: {
 	SpiritGlove: 增加5%虚空恢复速度和4%近战暴击率
 	DiamondRingText: 根据防御增加伤害，然后会降低伤害增益的三分之二防御值
 	EarthDrive: 最多增加10%的近战攻速
+	SyntheticLiver:
+		'''
+		增加25%从食物中获得的虚空值
+		多次获得相同的buff会增加buff持续时间，而非重置时间，最多可达初始持续时间的两倍
+		'''
 	DedTo: -献给{0}-
 
 	Dedicated: {
@@ -342,6 +347,8 @@ ItemTooltip: {
 			这个效果有2秒冷却时间
 			'''
 		CloverNerf: 吸血效果有0.5秒冷却时间
+		CloverNerf2: 吸血效果有1秒冷却时间
+		RingofRestNerf: 灵感恢复效果有1秒冷却时间
 		SpiritInsignia:
 			'''
 			增加1点虚空恢复量，并增加25%虚空恢复速度
@@ -367,16 +374,16 @@ ItemTooltip: {
 			增加100点从药水治疗的生命值和恢复的魔力值
 			增加67%buff持续时间
 			'''
-		// SubspaceBoostersDash: Press {0} while on the ground to blast forward, granting higher speed and acceleration
-		/* SubspaceBoosters:
+		SubspaceBoostersDash: 在地面上按下{0}键可向前方进行爆裂冲刺，提供更快的的速度和加速度
+		SubspaceBoosters:
 			'''
-			Provides tremendous acceleration while running
-			Also provides flight and extra mobility on ice
-			Increases movement speed greatly
-			Provides the ability to walk on water and lava
-			Grants immunity to fire blocks and 10 seconds of immunity to lava
-			Press {0} while on the ground to blast forward, granting higher speed and acceleration
-			''' */
+			在奔跑时会获得极大的加速度
+			同时会增加飞行高度，并且在冰上时会增加额外的机动性
+			大幅增加移动速度
+			获得在水和岩浆上行走的能力
+			对火块免疫，并对岩浆免疫10秒
+			在地面上按下{0}键可向前方进行爆裂冲刺，提供更快的的速度和加速度
+			'''
 	}
 
 	AmmoConversion.Mycelium: 发射真菌弹幕
@@ -1347,6 +1354,13 @@ Items: {
 			当不可思议条完全充满时，你的武器属性和移动速度都会提升
 			[c/7C0A02: 你杀不死小丑！！！是小丑杀死你！！！]
 			'''
+		/* DynamicTooltip:
+			'''
+			While holding this weapon, you have a improbability bar
+			The bar charges by dealing or taking damage
+			When the bar is full, press {0} to gain increased combat stats and movement speed for 1 minute
+			[c/7C0A02: YOU DO NOT KILL CLOWN!!! CLOWN KILLS YOU!!!]
+			''' */
 	}
 
 	AngryPudding: {
@@ -1370,6 +1384,21 @@ Items: {
 			永久增加100点最大虚空值和10%虚空恢复速度
 			只能使用一次
 			'''
+	}
+
+	PhantomMask: {
+		DisplayName: 幻象面具
+		Tooltip: ""
+	}
+
+	PhantomSuitCoat: {
+		DisplayName: 幻象西装外套
+		Tooltip: ""
+	}
+
+	PhantomSuitPants: {
+		DisplayName: 幻象西装裤
+		Tooltip: ""
 	}
 }
 
@@ -1874,7 +1903,7 @@ InfernumIntegration: {
 		'''
 	CeilingOfMoonlord:
 		'''
-		邪异穹顶
+		邪异天幕
 		月亮穹顶
 		'''
 	LittleCat:
@@ -1949,5 +1978,25 @@ NPCs: {
 	}
 }
 
-// KeyBindName.SubspaceBoostHotkey: Subspace Boost Hotkey
-// Keybinds.Mods.InfernalEclipseAPI.KeyBindName.SubspaceBoostHotkey.DisplayName: Subspace Boost Hotkey
+KeyBindName: {
+	SubspaceBoostHotkey: 亚空助推冲刺热键
+	// ItemAbility: Item Ability
+}
+
+Keybinds: {
+	Mods: {
+		InfernalEclipseAPI: {
+			KeyBindName: {
+				SubspaceBoostHotkey.DisplayName: 亚空助推冲刺热键
+				// ItemAbility.DisplayName: Item Ability
+			}
+		}
+	}
+}
+
+Events: {
+	//Sequential text at the end of Boss Rush Tier 5
+	BossRushTierFiveEndText_1: 我们已抵达终幕了，泰拉人。
+	BossRushTierFiveEndText_2: 如今横亘在你与试炼终点之间的，是这个世界过去和现在存在的神明
+	BossRushTierFiveEndText_3: 现在，让我看看一个已无退路之人的力量。别在这里倒下。
+}

@@ -151,6 +151,11 @@ ItemTooltip: {
 	SpiritGlove: Increases void regeneration speed by 5% and melee critical strike chance by 4%
 	DiamondRingText: Increase damage based on defense, then decreases defense by two-thirds of the damage buff
 	EarthDrive: Max boost to melee speed is 10%
+	SyntheticLiver:
+		'''
+		Increases void received from food by 25%
+		Receiving the same buff multiple times will increase buff duration instead of resetting it, up to double the original duration
+		'''
 	DedTo: - Dedicated to {0} -
 
 	Dedicated: {
@@ -341,7 +346,9 @@ ItemTooltip: {
 			Dealing two consecutive throwing critical strikes will discharge dark lightning and increase throwing speed briefly
 			This effect has a cooldown of 2 seconds.
 			'''
-		CloverNerf: Life steal has a 0.5 second cooldown
+		CloverNerf: Life steal & inspiration regeneration have a 1 second cooldown
+		CloverNerf2: Life steal has a 1 second cooldown
+		RingofRestNerf: Inspiration regeneration has a 1 second cooldown
 		SpiritInsignia:
 			'''
 			Increases void gain by 1 and void regeneration speed by 25%
@@ -722,7 +729,7 @@ Items: {
 			Increases critical strike chance by 15%, does not stack with downgrades
 			Critical strikes deal 40 more damage, release a burst of damaging sparks, and may detonate enemies for 100% damage
 			Critical strikes steal life, regenerate void, recover mana and return inspiration
-			Life steal has a 0.5 second cooldown
+			Life steal & inspiration regeneration have a 1 second cooldown
 			Immunity to bleeding and poisoned debuffs, & grants night vision
 			'''
 		ThoriumTooltip:
@@ -1343,11 +1350,12 @@ Items: {
 
 	Streetsign: {
 		DisplayName: Streetsign
-		Tooltip:
+		Tooltip: ""
+		DynamicTooltip:
 			'''
 			While holding this weapon, you have a improbability bar
 			The bar charges by dealing or taking damage
-			When the bar is full, you gain increased weapon stats and movement speed 
+			When the bar is full, press {0} to gain increased combat stats and movement speed for 1 minute
 			[c/7C0A02: YOU DO NOT KILL CLOWN!!! CLOWN KILLS YOU!!!]
 			'''
 	}
@@ -1373,6 +1381,21 @@ Items: {
 			Permanently increases max void by 100 and void regeneration speed by 10%
 			Can only be used once
 			'''
+	}
+
+	PhantomMask: {
+		DisplayName: Phantom Mask
+		Tooltip: ""
+	}
+
+	PhantomSuitCoat: {
+		DisplayName: Phantom Suit Coat
+		Tooltip: ""
+	}
+
+	PhantomSuitPants: {
+		DisplayName: Phantom Suit Pants
+		Tooltip: ""
 	}
 }
 
@@ -1958,5 +1981,25 @@ NPCs: {
 	}
 }
 
-KeyBindName.SubspaceBoostHotkey: Subspace Boost Hotkey
-Keybinds.Mods.InfernalEclipseAPI.KeyBindName.SubspaceBoostHotkey.DisplayName: Subspace Boost Hotkey
+KeyBindName: {
+	SubspaceBoostHotkey: Subspace Boost Hotkey
+	ItemAbility: Item Ability
+}
+
+Keybinds: {
+	Mods: {
+		InfernalEclipseAPI: {
+			KeyBindName: {
+				SubspaceBoostHotkey.DisplayName: Subspace Boost Hotkey
+				ItemAbility.DisplayName: Item Ability
+			}
+		}
+	}
+}
+
+Events: {
+	//Sequential text at the end of Boss Rush Tier 5
+	BossRushTierFiveEndText_1: We have reached the finale, Terrarian.
+	BossRushTierFiveEndText_2: All that stands between you and the end of this trial are what are and once were once gods of this world.
+	BossRushTierFiveEndText_3: Show me the strength of someone with nothing to lose now. Do not falter now.
+}

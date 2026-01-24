@@ -821,19 +821,17 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
             {
                 BossDeathEffects.Add(NPCType<SupremeCalamitas>(), npc =>
                 {
-                    BossDeathEffects.Add(NPCType<SupremeCalamitas>(), npc =>
+                    CustomBossRushDialogue.StartDialogue(IEoRBossRushDialoguePhase.TierFiveComplete);
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
-                        if (Main.netMode != NetmodeID.MultiplayerClient)
+                        foreach (Player p in Main.ActivePlayers)
                         {
-                            foreach (Player p in Main.ActivePlayers)
-                            {
-                                if (p.dead)
-                                    continue;
+                            if (p.dead)
+                                continue;
 
-                                int animation = Projectile.NewProjectile(new EntitySource_WorldEvent(), p.Center, Vector2.Zero, ProjectileType<BossRushTier6Animation>(), 0, 0f, p.whoAmI);
-                            }
+                            int animation = Projectile.NewProjectile(new EntitySource_WorldEvent(), p.Center, Vector2.Zero, ProjectileType<BossRushTier6Animation>(), 0, 0f, p.whoAmI);
                         }
-                    });
+                    }
                 });
 
                 if (InfernalCrossmod.NoxusBoss.Loaded && InfernalConfig.Instance.WrathoftheGodsBossesInBossRush)

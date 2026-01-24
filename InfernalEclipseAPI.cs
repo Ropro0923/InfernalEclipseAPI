@@ -50,6 +50,7 @@ namespace InfernalEclipseAPI
     public class InfernalEclipseAPI : Mod
 	{
         public static ModKeybind SubpaceBoostHotkey;
+        public static ModKeybind ItemAbility;
 
         public static bool FargosDLCEnabled
         {
@@ -105,6 +106,7 @@ namespace InfernalEclipseAPI
             DifficultyModeSystem.CalculateDifficultyData();
 
             SubpaceBoostHotkey = KeybindLoader.RegisterKeybind(this, Language.GetOrRegister("Mods.InfernalEclipseAPI.KeyBindName.SubspaceBoostHotkey").ToString(), "G");
+            ItemAbility = KeybindLoader.RegisterKeybind(this, Language.GetOrRegister("Mods.InfernalEclipseAPI.KeyBindName.ItemAbility").ToString(), "C");
 
             AchievementUpdateHandler = typeof(InfernumMode.Core.GlobalInstances.Players.AchievementPlayer).GetMethod("ExtraUpdateHandler", BindingFlags.Static | BindingFlags.NonPublic);
         }

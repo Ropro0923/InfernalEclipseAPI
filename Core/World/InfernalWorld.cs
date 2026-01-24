@@ -4,6 +4,8 @@ using CalamityMod.UI;
 using InfernalEclipseAPI.Core.Systems;
 using InfernumMode.Content.Subworlds;
 using InfernumMode.Core.GlobalInstances.Systems;
+using CalamityMod.Events;
+using InfernalEclipseAPI.Core.Systems.BossRush;
 
 namespace InfernalEclipseAPI.Core.World
 {
@@ -57,6 +59,9 @@ namespace InfernalEclipseAPI.Core.World
                     }
                 }
             }
+
+            if (BossRushEvent.BossRushActive)
+                CustomBossRushDialogue.Tick();
         }
 
         public override void OnWorldLoad()
