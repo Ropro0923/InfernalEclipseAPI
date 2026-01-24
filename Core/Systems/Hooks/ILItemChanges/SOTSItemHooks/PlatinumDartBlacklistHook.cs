@@ -2,9 +2,6 @@
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 using CalamityMod.NPCs.Perforator;
 using CalamityMod.NPCs.SlimeGod;
 using CalamityMod.NPCs.ProfanedGuardians;
@@ -12,6 +9,7 @@ using System.Collections.Generic;
 
 namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges
 {
+    //Wardrobe Hummus
     [JITWhenModsEnabled(InfernalCrossmod.SOTS.Name)]
     [ExtendsFromMod(InfernalCrossmod.SOTS.Name)]
     public class PlatinumDartBlacklistHook : ModSystem
@@ -73,39 +71,39 @@ namespace InfernalEclipseAPI.Core.Systems.Hooks.ILItemChanges
         }
 
         private static readonly HashSet<int> NPCBlacklist = new()
-{
-    NPCID.EaterofWorldsHead,
-    NPCID.EaterofWorldsBody,
-    NPCID.EaterofWorldsTail,
+        {
+            NPCID.EaterofWorldsHead,
+            NPCID.EaterofWorldsBody,
+            NPCID.EaterofWorldsTail,
 
-    NPCID.TheDestroyer,
-    NPCID.TheDestroyerBody,
-    NPCID.TheDestroyerTail,
+            NPCID.TheDestroyer,
+            NPCID.TheDestroyerBody,
+            NPCID.TheDestroyerTail,
 
-    // Perforators
-    ModContent.NPCType<PerforatorHeadSmall>(),
-    ModContent.NPCType<PerforatorBodySmall>(),
-    ModContent.NPCType<PerforatorTailSmall>(),
+            // Perforators
+            ModContent.NPCType<PerforatorHeadSmall>(),
+            ModContent.NPCType<PerforatorBodySmall>(),
+            ModContent.NPCType<PerforatorTailSmall>(),
 
-    ModContent.NPCType<PerforatorHeadMedium>(),
-    ModContent.NPCType<PerforatorBodyMedium>(),
-    ModContent.NPCType<PerforatorTailMedium>(),
+            ModContent.NPCType<PerforatorHeadMedium>(),
+            ModContent.NPCType<PerforatorBodyMedium>(),
+            ModContent.NPCType<PerforatorTailMedium>(),
 
-    ModContent.NPCType<PerforatorHeadLarge>(),
-    ModContent.NPCType<PerforatorBodyLarge>(),
-    ModContent.NPCType<PerforatorTailLarge>(),
+            ModContent.NPCType<PerforatorHeadLarge>(),
+            ModContent.NPCType<PerforatorBodyLarge>(),
+            ModContent.NPCType<PerforatorTailLarge>(),
 
-    // Slime God
-    ModContent.NPCType<CrimulanPaladin>(),
-    ModContent.NPCType<EbonianPaladin>(),
-    ModContent.NPCType<SplitCrimulanPaladin>(),
-    ModContent.NPCType<SplitEbonianPaladin>(),
+            // Slime God
+            ModContent.NPCType<CrimulanPaladin>(),
+            ModContent.NPCType<EbonianPaladin>(),
+            ModContent.NPCType<SplitCrimulanPaladin>(),
+            ModContent.NPCType<SplitEbonianPaladin>(),
 
-    // Profaned Guardians
-    ModContent.NPCType<ProfanedGuardianDefender>(),
-    ModContent.NPCType<ProfanedGuardianCommander>(),
-    ModContent.NPCType<ProfanedGuardianHealer>(),
-};
+            // Profaned Guardians
+            ModContent.NPCType<ProfanedGuardianDefender>(),
+            ModContent.NPCType<ProfanedGuardianCommander>(),
+            ModContent.NPCType<ProfanedGuardianHealer>(),
+        };
 
 
         /// <summary>

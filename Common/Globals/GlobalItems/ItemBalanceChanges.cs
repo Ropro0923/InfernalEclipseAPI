@@ -932,7 +932,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
             }
             #endregion
 
-            #region Hypnos
+            #region Miscellanaria
             if (InfernalConfig.Instance.VanillaBalanceChanges && (ModLoader.TryGetMod("Miscellanaria", out Mod misc)))
             {
                 if (item.type == ItemID.SkeletonBow)
