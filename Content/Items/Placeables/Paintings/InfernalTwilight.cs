@@ -106,6 +106,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Kes",
             "Feldy",
             "TacoConKvass",
+            "KainSett",
             "KaiTheExaminer",
             "konte1m",
             "LeEr206",
