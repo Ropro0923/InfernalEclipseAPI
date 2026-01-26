@@ -1354,13 +1354,13 @@ Items: {
 			当不可思议条完全充满时，你的武器属性和移动速度都会提升
 			[c/7C0A02: 你杀不死小丑！！！是小丑杀死你！！！]
 			'''
-		/* DynamicTooltip:
+		DynamicTooltip:
 			'''
-			While holding this weapon, you have a improbability bar
-			The bar charges by dealing or taking damage
-			When the bar is full, press {0} to gain increased combat stats and movement speed for 1 minute
-			[c/7C0A02: YOU DO NOT KILL CLOWN!!! CLOWN KILLS YOU!!!]
-			''' */
+			持有此武器时，你会获得不可思议条
+			造成伤害或承受伤害会为其充能
+			当不可思议条完全充满时，按下 {0} 键提升战斗属性和移动速度，持续1分钟
+			[c/7C0A02: 你杀不死小丑！！！是小丑杀死你！！！]
+			'''
 	}
 
 	AngryPudding: {
@@ -1980,7 +1980,7 @@ NPCs: {
 
 KeyBindName: {
 	SubspaceBoostHotkey: 亚空助推冲刺热键
-	// ItemAbility: Item Ability
+	ItemAbility: 物品能力
 }
 
 Keybinds: {
@@ -1988,7 +1988,7 @@ Keybinds: {
 		InfernalEclipseAPI: {
 			KeyBindName: {
 				SubspaceBoostHotkey.DisplayName: 亚空助推冲刺热键
-				// ItemAbility.DisplayName: Item Ability
+				ItemAbility.DisplayName: 物品能力
 			}
 		}
 	}
