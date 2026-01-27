@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Terraria.Localization;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
@@ -62,19 +63,19 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
             {
                 foreach (TooltipLine tooltip in tooltips)
                 {
-                    if (tooltip.Text.Contains("Anchors your soul and health to your current position"))
+                    if (tooltip.Text.Contains(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.SoulAnchor.OrigTooltip1")))
                     {
-                        tooltip.Text += " for 20 seconds";
+                        tooltip.Text = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.SoulAnchor.Replace1");
                     }
 
-                    if (tooltip.Text.Contains("Right click to return to your soul, reverting health to its original value"))
+                    if (tooltip.Text.Contains(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.SoulAnchor.OrigTooltip2")))
                     {
-                        tooltip.Text = "Within that period, right click to return to your soul, reverting health to half its original value";
+                        tooltip.Text = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.SoulAnchor.Replace2");
                     }
 
-                    if (tooltip.Text.Contains("Can only be used once every 5 minutes and saps your soul upon returning"))
+                    if (tooltip.Text.Contains(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.SoulAnchor.OrigTooltip3")))
                     {
-                        tooltip.Text = "Saps your soul upon returning and grants Potion Sickness\nCan only be used once every 5 minutes";
+                        tooltip.Text = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.SoulAnchor.Replace3");
                     }
                 }
             }

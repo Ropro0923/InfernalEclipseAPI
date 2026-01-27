@@ -68,6 +68,12 @@ TimeFreezePrevention: {
 	Other: Эффект инкубатора был предотвращен!
 }
 
+BossCheesePrevention: {
+	TheDestroyer: I shall not let you destroy my machine so easily.
+	Plantera: Ancient forces prevent you from using this item right now...
+	Yharon: Ancient forces prevent you from using this item right now...
+}
+
 ItemTooltip: {
 	BasicDamage: ед. базового урона
 	OmniShield: -Омни щит-
@@ -81,6 +87,29 @@ ItemTooltip: {
 	BladecrestNerf: Злая сила истощает часть силы этого оружия...
 	EclipseFang: "[IEoR]: Усиление оружия активно всегда."
 	ScytheThrow: Нажмите ПКМ, чтобы бросить косу, которая изогнётся при возвращении
+	ThorsHammerPro: Inflcts electrified for 3 seconds on hits.
+	BountifulHarvest: Fires piercing stingers in an alternating pattern
+
+	SoulAnchor: {
+		OrigTooltip1: Anchors your soul and health to your current position
+		Replace1: Anchors your soul and health to your current position for 20 seconds
+		OrigTooltip2: Right click to return to your soul, reverting health to its original value
+		Replace2: Within that period, right click to return to your soul, reverting health to half its original value
+		OrigTooltip3: Can only be used once every 5 minutes and saps your soul upon returning
+		Replace3:
+			'''
+			Saps your soul upon returning and grants Potion Sickness
+			Can only be used once every 5 minutes
+			'''
+		Player1: Your Soul Anchor has faded.
+		Player2: Soul Anchor set. You have 20 seconds to return.
+	}
+
+	WhiteDwarfSetBonus:
+		'''
+
+		Ivory flares spawn on a 2 second cooldown
+		'''
 	PhoenixStaff:
 		'''
 		Нажмите ПКМ, чтобы выпустить поток поток пламени, накладывающий дебафф «{$ThoriumMod.Buffs.HolyGlare.DisplayName}»
@@ -188,7 +217,10 @@ ItemTooltip: {
 			Увеличивает урон от всех накладываемых игроком огненных дебаффов на 50%, не суммируется с предыдущими улучшениями
 			Все атаки накладывают дебафф «{$BuffName.OnFire3}»
 			'''
-		BagOfAmmoConsume: Даёт 20% шанс не использовать боеприпасы
+		BagOfAmmoConsume: {
+			ElementalQuiver: Grants a 20% chance to not consume arrows
+			ReplaceTooltip: Даёт 20% шанс не использовать боеприпасы
+		}
 		BagOfAmmoOther:
 			'''
 			Удары по врагам могут вернуть боеприпасы
@@ -207,6 +239,12 @@ ItemTooltip: {
 			Эссенция души от лучезарных кос также восстанавливает немного пустоты
 			Эссенция души от пустотных лучезарных кос восстанавливает ещё больше пустоты
 			'''
+
+		SealedContract: {
+			OrigTooltip1: Maximum life increased by 60
+			OrigTooltip2: Healing spells grant an additional 5 life
+		}
+
 		ContractNerf: Исцеляющие заклинания дополнительно восстанавливают 2 ед. здоровья
 		Tuner1:
 			'''
@@ -252,6 +290,11 @@ ItemTooltip: {
 		Skull: После убийства врага, атаки миньонов и стражей на короткое время наносят дополнительно 2 ед. урона
 		CyanPearl: Уменьшает штраф на урон призывателя для стражей в 2 раза
 		Watch: Призванные стражи существуют бесконечно и увеличивает их урон на 15% в течение 2 минут
+		FortressGenerator: {
+			OrigTooltip1: Increases damage by 10% and life regeneration by 2
+			Replace: Increases summon damage by 10%
+			OrigTooltip2: Absorbs 25% of damage done to players on your team when above 25% life and grants immunity to knockback
+		}
 		Fortress:
 			'''
 			Создаёт 4 платформы слева и справа от вас
@@ -302,6 +345,13 @@ ItemTooltip: {
 			'''
 		Mantle: Рассеивает с вас один наносящий урон дебафф каждые 10 секунд
 		TerraDefend: Когда здоровье ниже 25%, значительно ускоряет регенерацию здоровья и увеличивает защиту
+
+		TerrariumDefender: {
+			lifeUP: Maximum life increased by 20
+			invincibility: Prolonges after hit invincibility
+			immunity: Grants immunity to most status debuffs, knockback, and fire blocks
+		}
+
 		ScytheScale: Увеличивает свою силу до победы над Пожирателем
 		ScytheSummon: Урон уменьшен, если призваны миньоны
 		ScytheSummonOn: Урон уменьшен, пока призваны миньоны
@@ -316,14 +366,59 @@ ItemTooltip: {
 		Scuttler: При скрытном ударе снаряды создают драгоценный шип
 		BloodyFilthy: Скрытные удары пробивают 8 защиты, наносят на 8% больше урона и восстанавливают 2 ед. здоровья
 		NoExhaustion: При экипировке оружие больше не изматывает вас
+
+		ToothNecklace: {
+			SandShark: {
+				OrigTooltip: Increases armor penetration by 10
+				CommonReplace: Increases armor penetration by 12
+				SOTSReplace: Increases armor penetration by 12, critical strike chance by 5%, and max life by 40
+				ThoriumReplace: Increases armor penetration by 12
+			}
+
+			Prismarine: {
+				OrigTooltip: Increases armor penetration by 8 and max life by 20
+				CommonReplace: Increases armor penetration by 5 and max life by 20
+			}
+
+			Reaper: {
+				OrigTooltip: Increases armor penetration by 15
+				SOTSReplace: Increases armor penetration by 15, critical strike chance by 5%, and max life by 40
+			}
+		}
+
 		Prisma: Переодически выпускает атакующие волны, игнорирующие 16 ед. защиты
 		Prisma2: При низком уровне здоровья выпускает больше волн
 		Prisma3: Не выпускает волны, если видимость аксессуара скрыта
 		Midnight1: Критические удары высвобождают Кошмарные руки, наносящие 10% урона и и стягивающие врагов
 		Midnight2: Имеет 6 секунд перезарядки
+
+		lifeQuartzShield: {
+			CommoTooltip: Increases the rate at which you regenerate life
+			Under25HP1:
+				'''
+				Receiving damage below 25% life surrounds you in a protective bubble
+				While in the bubble, you will recover life equal to your bonus healing every second
+				'''
+			Under25HP2:
+				'''
+				Additionally, damage taken will be reduced by 10%
+				This effect needs to recharge for 30 seconds after triggering
+				'''
+		}
+
 		SHS: "{$SOTS.Items.ShatterHeartShield.Tooltip}"
 		MoltenScale: Поджигает ближайших врагов
 		PlasmaGen: "{$ThoriumMod.Items.PlasmaGenerator.Tooltip}"
+
+		Omni: {
+			OrigTooltip: 15% increased symphonic damage, playing speed, and critical strike chance
+			Replace:
+				'''
+				15% increased symphonic damage
+				8% increased playing speed, critical strike chance, and inspiration regeneration rate
+				'''
+		}
+
 		OmniIns: Увеличивает максимальный запас вдохновения на 5
 		OmniEmp: Каждое уникальное усиление увеличивает вашу скорость передвижения на 2% и скорость игры на инструменте на 1%
 		ShinobiNerf: Этот эффект имеет 2 секунды перезарядки
@@ -336,7 +431,12 @@ ItemTooltip: {
 		CloverNerf: Вампиризм и восстановление вдохновения имеет 1 секунду перезарядки
 		CloverNerf2: Вампиризм имеет 1 секунду перезарядки
 		RingofRestNerf: Восстановление вдохновения имеет 1 секунду перезарядки
-		SpiritInsignia: "{$SOTS.Items.SpiritSymphony.Tooltip}"
+
+		SpiritInsignia: {
+			OrigTooltip: Grants infinite wing and rocket boot flight
+			Replace: Increases wing flight time by 25%
+		}
+
 		AscendantInsignia:
 			'''
 			Увеличивает скорость передвижения, прыжка и ускорение на 10%
@@ -369,7 +469,16 @@ ItemTooltip: {
 			'''
 	}
 
-	AmmoConversion.Mycelium: Выпускает залпы мицелия
+	AmmoConversion: {
+		FrostFury: Converts Wooden Arrows into Frostburn Arrows
+		StreamSting: Converts Wooden Arrows into Bone Arrows
+		CometCrossfire: Converts Wooden Arrows into Jester Arrows
+		Steel: Converts Wooden Arrows into Steel Arrows
+		SandStone: Converts Wooden Arrows into Talon Arrows
+		Durasteel: Converts Wooden Arrows into Durasteel Arrows
+		Trigun: Converts Musket balls into Hallow-point rounds
+		Mycelium: Выпускает залпы мицелия
+	}
 
 	WingInfo: {
 		5: Также увеличивает регенерацию здоровья на 5

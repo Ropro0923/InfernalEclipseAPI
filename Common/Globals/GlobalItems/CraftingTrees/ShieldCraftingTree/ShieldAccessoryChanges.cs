@@ -364,9 +364,9 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.ShieldCraftingTree
             string chiseledBarrierInfo = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.ChiseledBarrier");
             string chiseledHiddenInfo = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.ChiseledHidden");
             string olympianAegisInfo = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.Olympian");
-            string lifeQuartzShieldInfo1 = "Increases the rate at which you regenerate life";
-            string lifeUnder25Info = "Receiving damage below 25% life surrounds you in a protective bubble\nWhile in the bubble, you will recover life equal to your bonus healing every second";
-            string lifeUnder25Info2 = "Additionally, damage taken will be reduced by 10%\nThis effect needs to recharge for 30 seconds after triggering";
+            string lifeQuartzShieldInfo1 = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.lifeQuartzShield.CommoTooltip");
+            string lifeUnder25Info = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.lifeQuartzShield.Under25HP1");
+            string lifeUnder25Info2 = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.lifeQuartzShield.Under25HP2");
             string motpInfo = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.Mantle");
             string cotsInfo = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.COTS");
             string sweetInfo1 = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.Sweet1");
@@ -425,17 +425,17 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.ShieldCraftingTree
                     {
                         foreach (TooltipLine tooltip in tooltips)
                         {
-                            if (tooltip.Text.Contains("Maximum life increased by 20"))
+                            if (tooltip.Text.Contains(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.TerrariumDefender.lifeUP")))
                             {
                                 tooltip.Text = chiseledBarrierInfo;
                                 tooltip.OverrideColor = new Color?(InfernalRed);
                             }
-                            if (tooltip.Text.Contains("Prolonges after hit invincibility"))
+                            if (tooltip.Text.Contains(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.TerrariumDefender.invincibility")))
                             {
                                 tooltip.Text = olympianAegisInfo;
                                 tooltip.OverrideColor = new Color?(InfernalRed);
                             }
-                            if (tooltip.Text.Contains("Grants immunity to most status debuffs, knockback, and fire blocks"))
+                            if (tooltip.Text.Contains(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.TerrariumDefender.immunity")))
                             {
                                 tooltip.Text = chiseledHiddenInfo;
                                 tooltip.OverrideColor = new Color?(InfernalRed);
@@ -485,17 +485,17 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.ShieldCraftingTree
                     {
                         foreach (TooltipLine tooltip in tooltips)
                         {
-                            if (tooltip.Text.Contains("Maximum life increased by 20"))
+                            if (tooltip.Text.Contains(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.TerrariumDefender.lifeUP")))
                             {
                                 tooltip.Text = lifeQuartzShieldInfo1;
                                 tooltip.OverrideColor = new Color?(NoSOTSPink);
                             }
-                            if (tooltip.Text.Contains("Prolonges after hit invincibility"))
+                            if (tooltip.Text.Contains(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.TerrariumDefender.invincibility")))
                             {
                                 tooltip.Text = lifeUnder25Info;
                                 tooltip.OverrideColor = new Color?(NoSOTSPink);
                             }
-                            if (tooltip.Text.Contains("Grants immunity to most status debuffs, knockback, and fire blocks"))
+                            if (tooltip.Text.Contains(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.TerrariumDefender.immunity")))
                             {
                                 tooltip.Text = lifeUnder25Info2;
                                 tooltip.OverrideColor = new Color?(NoSOTSPink);

@@ -73,9 +73,9 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.QuiverCraftingTree
             {
                 foreach (TooltipLine tooltip in tooltips)
                 {
-                    if (tooltip.Text.Contains("Grants a 20% chance to not consume arrows"))
+                    if (tooltip.Name.Contains("Tooltip") && tooltip.Text.Contains(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.BagOfAmmoConsume.ElementalQuiver")))
                     {
-                        tooltip.Text = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.BagOfAmmoConsume");
+                        tooltip.Text = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.BagOfAmmoConsume.ReplaceTooltip");
                         tooltip.OverrideColor = new Color?(InfernalRed);
                     }
                 }

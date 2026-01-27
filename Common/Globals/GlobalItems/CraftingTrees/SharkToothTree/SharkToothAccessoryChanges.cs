@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using CalamityMod.Items.Accessories;
+using FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.SolarEclipse;
 using Microsoft.Xna.Framework;
-using CalamityMod.Items.Accessories;
+using System.Collections.Generic;
 using Terraria.Localization;
 
 namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.SharkToothTree
@@ -103,6 +104,9 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.SharkToothTree
             string prisma3 = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.Prisma3");
             string midnight1 = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.Midnight1");
             string midnight2 = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.Midnight2");
+            string sandsharkOrig = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.ToothNecklace.SandShark.OrigTooltip");
+            string prismaOrig = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.ToothNecklace.Prismarine.OrigTooltip");
+            string reaperOrig = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.ToothNecklace.Reaper.OrigTooltip");
 
 
             if (sots != null & thorium != null)
@@ -111,9 +115,9 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.SharkToothTree
                 {
                     foreach (TooltipLine tooltip in tooltips)
                     {
-                        if (tooltip.Text.Contains("Increases armor penetration by 8 and max life by 20"))
+                        if (tooltip.Text.Contains(prismaOrig))
                         {
-                            tooltip.Text = "Increases armor penetration by 5 and max life by 20";
+                            tooltip.Text = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.ToothNecklace.Prismarine.CommonReplace");
                         }
                     }
                 }
@@ -122,9 +126,9 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.SharkToothTree
                 {
                     foreach (TooltipLine tooltip in tooltips)
                     {
-                        if (tooltip.Text.Contains("Increases armor penetration by 10"))
+                        if (tooltip.Text.Contains(sandsharkOrig))
                         {
-                            tooltip.Text = "Increases armor penetration by 12";
+                            tooltip.Text = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.ToothNecklace.SandShark.CommonReplace");
                         }
                     }
                 }
@@ -135,9 +139,9 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.SharkToothTree
                 {
                     foreach (TooltipLine tooltip in tooltips)
                     {
-                        if (tooltip.Text.Contains("Increases armor penetration by 10"))
+                        if (tooltip.Text.Contains(sandsharkOrig))
                         {
-                            tooltip.Text = "Increases armor penetration by 12, critical strike chance by 5%, and max life by 40";
+                            tooltip.Text = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.ToothNecklace.SandShark.SOTSReplace");
                         }
                     }
                     tooltips.Add(new TooltipLine(Mod, "prisma1", prisma1)
@@ -168,9 +172,9 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.SharkToothTree
                 {
                     foreach (TooltipLine tooltip in tooltips)
                     {
-                        if (tooltip.Text.Contains("Increases armor penetration by 10"))
+                        if (tooltip.Text.Contains(sandsharkOrig))
                         {
-                            tooltip.Text = "Increases armor penetration by 12";
+                            tooltip.Text = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.ToothNecklace.SandShark.ThoriumReplace"); ;
                         }
                     }
                 }
@@ -182,9 +186,9 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.SharkToothTree
                 {
                     foreach (TooltipLine tooltip in tooltips)
                     {
-                        if (tooltip.Text.Contains("Increases armor penetration by 15"))
+                        if (tooltip.Text.Contains(reaperOrig))
                         {
-                            tooltip.Text = "Increases armor penetration by 15, critical strike chance by 5%, and max life by 40";
+                            tooltip.Text = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.ToothNecklace.Reaper.SOTSReplace");
                         }
                     }
                     tooltips.Add(new TooltipLine(Mod, "prisma1", prisma1)
