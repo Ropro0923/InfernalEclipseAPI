@@ -1061,6 +1061,15 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                 {
                     if (ModLoader.TryGetMod("SOTS", out Mod sots))
                     {
+                        if (InfernalConfig.Instance.MergeCraftingTrees)
+                        {
+                            if (recipe.HasResult(ModContent.ItemType<RecitationoftheBeast>()))
+                            {
+                                recipe.RemoveIngredient(ItemID.DemonScythe);
+                                recipe.AddIngredient(sots.Find<ModItem>("DanceOfDeath"));
+                            }
+                        }
+
                         // Frigid Pickaxe
                         if (sots.TryFind("FrigidPickaxe", out ModItem frigidPick))
                         {
