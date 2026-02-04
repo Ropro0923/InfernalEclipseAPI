@@ -133,7 +133,7 @@ namespace InfernalEclipseAPI.Common.Balance.ChangeUseConditions
                     Color draedon = new Color(155, 255, 255);
                     if (InfernalWorld.dreadonDestroyerDialoguePlayed == false)
                     {
-                        ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("I shall not let you destroy my machine so easily."), draedon);
+                        ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.InfernalEclipseAPI.BossCheesePrevention.TheDestroyer")), draedon);
                         InfernalWorld.dreadonDestroyerDialoguePlayed = true;
                         SoundEngine.PlaySound(CalamityMod.Sounds.CommonCalamitySounds.ExoPlasmaShootSound);
                     }
@@ -144,7 +144,7 @@ namespace InfernalEclipseAPI.Common.Balance.ChangeUseConditions
                     Color jungle = new Color(255, 240, 20);
                     if (InfernalWorld.jungleSubshockPlanteraDialoguePlayed == false)
                     {
-                        ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Ancient forces prevent you from using this item right now..."), jungle);
+                        ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.InfernalEclipseAPI.BossCheesePrevention.Plantera")), jungle);
                         InfernalWorld.jungleSubshockPlanteraDialoguePlayed = true;
                         SoundEngine.PlaySound(CalamityMod.Sounds.CommonCalamitySounds.ExoPlasmaShootSound);
                     }
@@ -165,7 +165,7 @@ namespace InfernalEclipseAPI.Common.Balance.ChangeUseConditions
                     Color draedon = new Color(155, 255, 255);
                     if (InfernalWorld.dreadonDestroyer2DialoguePlayed == false)
                     {
-                        ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("I shall not let you destroy my machine so easily."), draedon);
+                        ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.InfernalEclipseAPI.BossCheesePrevention.TheDestroyer")), draedon);
                         InfernalWorld.dreadonDestroyer2DialoguePlayed = true;
                         SoundEngine.PlaySound(CalamityMod.Sounds.CommonCalamitySounds.ExoPlasmaShootSound);
                     }
@@ -185,7 +185,7 @@ namespace InfernalEclipseAPI.Common.Balance.ChangeUseConditions
                     Color jungle = new Color(255, 240, 20);
                     if (InfernalWorld.yharonDischarge == false)
                     {
-                        ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Ancient forces prevent you from using this item right now..."), jungle);
+                        ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.InfernalEclipseAPI.BossCheesePrevention.Yharon")), jungle);
                         InfernalWorld.yharonDischarge = true;
                         SoundEngine.PlaySound(InfernumMode.Assets.Sounds.InfernumSoundRegistry.ModeToggleLaugh);
                     }
@@ -205,7 +205,7 @@ namespace InfernalEclipseAPI.Common.Balance.ChangeUseConditions
                     Color jungle = new Color(255, 240, 20);
                     if (InfernalWorld.yharonSmasher == false)
                     {
-                        ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Ancient forces prevent you from using this item right now..."), jungle);
+                        ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.InfernalEclipseAPI.BossCheesePrevention.Yharon")), jungle);
                         InfernalWorld.yharonSmasher = true;
                         SoundEngine.PlaySound(InfernumMode.Assets.Sounds.InfernumSoundRegistry.ModeToggleLaugh);
                     }

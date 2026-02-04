@@ -125,7 +125,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.HealerCraftingTree
                 {
                     foreach (TooltipLine tooltip in tooltips)
                     {
-                        if (tooltip.Text.Contains("Maximum life increased by 60"))
+                        if (tooltip.Text.Contains(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.SealedContract.OrigTooltip1")))
                         {
                             if (SOTSBardHealer != null)
                             {
@@ -137,7 +137,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.HealerCraftingTree
                                 //tooltip.Text = null;
                             }
                         }
-                        if (tooltip.Text.Contains("Healing spells grant an additional 5 life"))
+                        if (tooltip.Text.Contains(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.SealedContract.OrigTooltip2")))
                         {
                             tooltip.Text = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.ContractNerf");
                         }

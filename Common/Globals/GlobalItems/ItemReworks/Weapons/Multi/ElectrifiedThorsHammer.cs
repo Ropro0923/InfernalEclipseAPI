@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using ThoriumMod.Items.Thorium;
 using ThoriumMod.Projectiles;
+using Terraria.Localization;
 
 namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Multi
 {
@@ -21,7 +22,8 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Mult
             if (!(item.type == ModContent.ItemType<MeleeThorHammer>() || item.type == ModContent.ItemType<RangedThorHammer>() || item.type == ModContent.ItemType<MagicThorHammer>()) || !InfernalConfig.Instance.ThoriumBalanceChangess) 
                 return;
             Color color = Color.Lerp(Color.White, new Color(30, 144, byte.MaxValue), (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 2.0) * 0.5 + 0.5));
-            string str = "Inflcts electrified for 3 seconds on hits.";
+            string str = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.ThorsHammerPro");
+                //"Inflcts electrified for 3 seconds on hits.";
             tooltips.Add(new TooltipLine(Mod, "MjolnirInfo", str)
             {
                 OverrideColor = new Color?(color)
