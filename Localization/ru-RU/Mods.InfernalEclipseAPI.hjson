@@ -217,10 +217,12 @@ ItemTooltip: {
 			Увеличивает урон от всех накладываемых игроком огненных дебаффов на 50%, не суммируется с предыдущими улучшениями
 			Все атаки накладывают дебафф «{$BuffName.OnFire3}»
 			'''
+
 		BagOfAmmoConsume: {
 			ElementalQuiver: Grants a 20% chance to not consume arrows
 			ReplaceTooltip: Даёт 20% шанс не использовать боеприпасы
 		}
+
 		BagOfAmmoOther:
 			'''
 			Удары по врагам могут вернуть боеприпасы
@@ -290,11 +292,13 @@ ItemTooltip: {
 		Skull: После убийства врага, атаки миньонов и стражей на короткое время наносят дополнительно 2 ед. урона
 		CyanPearl: Уменьшает штраф на урон призывателя для стражей в 2 раза
 		Watch: Призванные стражи существуют бесконечно и увеличивает их урон на 15% в течение 2 минут
+
 		FortressGenerator: {
 			OrigTooltip1: Increases damage by 10% and life regeneration by 2
 			Replace: Increases summon damage by 10%
 			OrigTooltip2: Absorbs 25% of damage done to players on your team when above 25% life and grants immunity to knockback
 		}
+
 		Fortress:
 			'''
 			Создаёт 4 платформы слева и справа от вас

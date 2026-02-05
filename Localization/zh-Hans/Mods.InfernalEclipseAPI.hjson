@@ -353,11 +353,13 @@ ItemTooltip: {
 			'''
 		Mantle: 每10秒驱散最多一个伤害性的的减益效果
 		TerraDefend: 当生命值低于25%时，你将迅速恢复生命并获得额外防御力
+
 		TerrariumDefender: {
 			lifeUP: 最大生命值增加20
 			invincibility: 延长受伤后的无敌帧时间
 			immunity: 免疫大部分状态减益，击退和火块
 		}
+
 		ScytheScale: 持续增强直到吞噬者陨落
 		ScytheSummon: 当存在召唤物时，造成的伤害减少
 		ScytheSummonOn: 当存在召唤物时，造成的伤害减少

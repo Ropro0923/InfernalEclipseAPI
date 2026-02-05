@@ -353,11 +353,13 @@ ItemTooltip: {
 			'''
 		Mantle: Dispels up to one damaging debuff off of you every 10 seconds
 		TerraDefend: When below 25% life, you will rapidly regenerate life and gain increased defense
+
 		TerrariumDefender: {
 			lifeUP: Maximum life increased by 20
 			invincibility: Prolonges after hit invincibility
 			immunity: Grants immunity to most status debuffs, knockback, and fire blocks
 		}
+
 		ScytheScale: Grows in strength until the fall of the Devourer
 		ScytheSummon: Has reduced damage if any summons are active
 		ScytheSummonOn: Damage reduced while summons are active
