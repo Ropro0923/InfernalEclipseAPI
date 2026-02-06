@@ -951,8 +951,11 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             recipe.AddIngredient(ModContent.ItemType<Swordofthe14thGlitch>(), 1);
                             recipe.AddIngredient(ModContent.ItemType<NovaBomb>(), 1);
                             recipe.AddIngredient(ModContent.ItemType<Kevin>(), 1);
-                            recipe.AddIngredient(ModContent.ItemType<ChaosBlaster>());
-                            recipe.AddIngredient(ModContent.ItemType<NebulaGigabeam>());
+                            if (InfernalCrossmod.NoxusBoss.Loaded)
+                            {
+                                recipe.AddIngredient(ModContent.ItemType<ChaosBlaster>());
+                                recipe.AddIngredient(ModContent.ItemType<NebulaGigabeam>());
+                            }
                             recipe.AddIngredient(ModContent.ItemType<ChromaticMassInABottle>(), 1);
                             recipe.AddIngredient(ModContent.ItemType<Rock>(), 1);
                         }
