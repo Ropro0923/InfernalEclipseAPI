@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Placeables;
 using InfernalEclipseAPI.Content.Items.Weapons.Magic.ChaosBlaster;
 using InfernalEclipseAPI.Core.DamageClasses.MythicClass;
 using InfernalEclipseAPI.Core.Systems;

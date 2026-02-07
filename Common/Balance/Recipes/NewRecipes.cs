@@ -2,6 +2,7 @@
 using Terraria.Localization;
 using InfernalEclipseAPI.Content.Items.Materials;
 using CalamityMod.Items;
+using CalamityMod.Items.Placeables;
 
 namespace InfernalEclipseAPI.Common.Balance.Recipes
 {

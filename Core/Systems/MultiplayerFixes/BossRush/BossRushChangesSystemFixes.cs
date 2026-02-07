@@ -53,10 +53,12 @@ namespace InfernalEclipseAPI.Core.Systems.MultiplayerFixes.BossRush
                 if (BossRushEvent.CurrentlyFoughtBoss == ceaselessID && WorldSaveSystem.ForbiddenArchiveCenter == Point.Zero)
                 {
                     orig();
+                    /* don't know how needed this fix is but i don't know how to update it soooo
                     var netMessage = ModContent.GetInstance<CalamityMod.CalamityMod>().GetPacket();
                     netMessage.Write((byte)CalamityModMessageType.BossRushStage);
                     netMessage.Write(BossRushEvent.BossRushStage);
                     netMessage.Send();
+                    */
                 }
                 else orig();
             }

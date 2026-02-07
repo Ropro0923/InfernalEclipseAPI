@@ -42,14 +42,14 @@ public class PauldronNerfSystem : ModSystem
             pauldronCooldowns[whoAmI]--;
 
         // Track dash ticks
-        bool dashing = self.Pauldron && player.dashDelay == -1;
+        bool dashing = self.sPauldron && player.dashDelay == -1;
         if (dashing)
             pauldronDashTicks[whoAmI]++;
         else
             pauldronDashTicks[whoAmI] = 0;
 
         // --- Pauldron Dash Override ---
-        if (self.Pauldron)
+        if (self.sPauldron)
         {
             // Only run effect if not on cooldown, dash active, and first frame of dash
             if (player.dashDelay == -1 && pauldronCooldowns[whoAmI] <= 0 && pauldronDashTicks[whoAmI] == 1)
@@ -59,15 +59,15 @@ public class PauldronNerfSystem : ModSystem
 
                 // Opening blast
                 SoundEngine.PlaySound(SoundID.DD2_BetsyFireballImpact with { Volume = 0.4f, PitchVariance = 0.4f }, player.Center);
-                int openDamage = player.ApplyArmorAccDamageBonusesTo(player.GetBestClassDamage().ApplyTo(45));
+                int openDamage = (int)player.GetBestClassDamage().ApplyTo(45);
                 Projectile.NewProjectile(player.GetSource_FromThis(), player.Center + player.velocity * 1.5f, Vector2.Zero,
                     ModContent.ProjectileType<CalamityMod.Projectiles.Typeless.PauldronDash>(), openDamage, 16f, player.whoAmI);
 
-                self.HasReducedDashFirstFrame = true;
+                //self.HasReducedDashFirstFrame = true; hopefully we don't need this?
             }
             else if (player.dashDelay != -1)
             {
-                self.HasReducedDashFirstFrame = false;
+                //self.HasReducedDashFirstFrame = false; hopefully we don't need this?
                 pauldronDashTicks[whoAmI] = 0;
             }
 
@@ -81,7 +81,7 @@ public class PauldronNerfSystem : ModSystem
                 // --- Pulsing effect: every 7 ticks, 80 damage ---
                 if (pauldronDashTicks[whoAmI] % 7 == 0)
                 {
-                    int pulseDamage = player.ApplyArmorAccDamageBonusesTo(player.GetBestClassDamage().ApplyTo(80));
+                    int pulseDamage = (int)player.GetBestClassDamage().ApplyTo(80);
                     Projectile.NewProjectile(player.GetSource_FromThis(), player.Center + player.velocity * 1.5f, Vector2.Zero,
                         ModContent.ProjectileType<CalamityMod.Projectiles.Typeless.PauldronDash>(), pulseDamage, 10f, player.whoAmI);
                 }
@@ -116,11 +116,11 @@ public class PauldronNerfSystem : ModSystem
         }
 
         // Prevent original Pauldron dash block from firing:
-        bool originalPauldron = self.Pauldron;
-        if (self.Pauldron) self.Pauldron = false; // Suppress original code block
+        bool originalPauldron = self.sPauldron;
+        if (self.sPauldron) self.sPauldron = false; // Suppress original code block
 
         orig(self);
 
-        self.Pauldron = originalPauldron; // Restore for other logic
+        self.sPauldron = originalPauldron; // Restore for other logic
     }
 }

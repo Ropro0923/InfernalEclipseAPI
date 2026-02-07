@@ -104,7 +104,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.NucleogenesisTree
                         //recipe.RemoveIngredient(ItemID.PygmyNecklace);
                         //recipe.RemoveIngredient(ItemID.SummonerEmblem);
                         //recipe.RemoveIngredient(ModContent.ItemType<CoreofSunlight>());
-                        recipe.RemoveIngredient(ModContent.ItemType<CoreofSunlight>());
+                        recipe.RemoveIngredient(ModContent.ItemType<EssenceofSunlight>());
                         //recipe.AddIngredient(sots.Find<ModItem>("FortressGenerator"));
                         recipe.AddIngredient(thorium.Find<ModItem>("CrystalScorpion"));
                         //recipe.AddIngredient(thorium.Find<ModItem>("SteamkeeperWatch"));

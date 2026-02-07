@@ -1,6 +1,7 @@
 ﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items;
 using InfernalEclipseAPI.Content.Tiles.MusicBoxes;
+using CalamityMod.Items.Placeables;
 
 namespace InfernalEclipseAPI.Content.Items.Placeables.MusicBoxes
 {

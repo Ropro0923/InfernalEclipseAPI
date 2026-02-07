@@ -35,8 +35,8 @@ DifficultyUI: {
 		[c/B32E81:Enemies & bosses will now have very high base stats and scale more agressively in multiplayer.]
 		[c/FF0055:Can you master the Infernal Eclipse of Ragnarok?]
 		'''
-	InfernumText: The Infernal Eclipse has risen...
-	InfernumText2: Another unworthy challegner has walked away.
+	Activation: The Infernal Eclipse has risen...
+	Deactivation: Another unworthy challegner has walked away.
 	MasterToggle: Master mode is now enabled!
 }
 

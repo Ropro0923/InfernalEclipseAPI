@@ -39,7 +39,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.QuiverCraftingTree
             if (!InfernalConfig.Instance.MergeCraftingTrees)
                 return;
 
-            if (item.type == ModContent.ItemType<ElementalQuiver>())
+            if (item.type == ModContent.ItemType<PlanebreakersPouch>())
             {
                 if (sots != null)
                 {
@@ -69,7 +69,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.QuiverCraftingTree
                 (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 2.0) * 0.5 + 0.5)
             );
 
-            if (item.type == ModContent.ItemType<ElementalQuiver>() && sots != null)
+            if (item.type == ModContent.ItemType<PlanebreakersPouch>() && sots != null)
             {
                 foreach (TooltipLine tooltip in tooltips)
                 {

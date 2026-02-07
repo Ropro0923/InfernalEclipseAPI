@@ -3,12 +3,12 @@ using CalamityMod.NPCs.BrimstoneElemental;
 using CalamityMod.NPCs.AquaticScourge;
 using CalamityMod.NPCs.Yharon;
 using InfernalEclipseAPI.Content.Items.Placeables.Paintings;
-using CalamityMod.Items.Placeables.Furniture.DevPaintings;
 using Terraria.GameContent.ItemDropRules;
 using InfernalEclipseAPI.Core.Systems;
 using System.Collections.Generic;
 using InfernumMode.Core.GlobalInstances.Systems;
 using CalamityMod.World;
+using CalamityMod.Items.Placeables.Furniture.Paintings;
 
 namespace InfernalEclipseAPI.Common.GlobalNPCs
 {

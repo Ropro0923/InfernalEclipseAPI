@@ -41,7 +41,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.QuiverCraftingTree
                 if (!InfernalConfig.Instance.MergeCraftingTrees)
                     return;
 
-                if (recipe.HasResult<ElementalQuiver>())
+                if (recipe.HasResult<PlanebreakersPouch>())
                 {
                     if (sots != null)
                     {
@@ -80,7 +80,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.QuiverCraftingTree
 
             if (sots != null)
             {
-                Recipe blazingQuiverRecipe = Recipe.Create(ModContent.ItemType<ElementalQuiver>());
+                Recipe blazingQuiverRecipe = Recipe.Create(ModContent.ItemType<PlanebreakersPouch>());
                 blazingQuiverRecipe.AddIngredient(sots.Find<ModItem>("BlazingQuiver"));
                 blazingQuiverRecipe.AddIngredient<DeadshotBrooch>();
                 blazingQuiverRecipe.AddIngredient(sots.Find<ModItem>("BagOfAmmoGathering"));

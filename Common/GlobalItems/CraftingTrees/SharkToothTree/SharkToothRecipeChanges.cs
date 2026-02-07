@@ -1,6 +1,7 @@
 ﻿using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
+using CalamityMod.Items.Placeables.SunkenSea;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 
 namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.SharkToothTree

@@ -111,7 +111,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.ShoeCraftingTree
 
                     if (sots == null)
                     {
-                        if (recipe.HasResult<TracersCelestial>())
+                        if (recipe.HasResult<MoonWalkers>())
                         {
                             recipe.RemoveIngredient(ModContent.ItemType<AngelTreads>());
                             if (calFargo != null) recipe.RemoveIngredient(fargosSouls.Find<ModItem>("AeolusBoots").Type);
@@ -148,7 +148,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.ShoeCraftingTree
                         else if (calFargo != null) recipe.AddIngredient(fargosSouls.Find<ModItem>("AeolusBoots"));
                     }
 
-                    if (recipe.HasResult<TracersCelestial>())
+                    if (recipe.HasResult<MoonWalkers>())
                     {
                         recipe.RemoveIngredient(ModContent.ItemType<AngelTreads>());
                         if (calFargo != null) recipe.RemoveIngredient(fargosSouls.Find<ModItem>("AeolusBoots").Type);

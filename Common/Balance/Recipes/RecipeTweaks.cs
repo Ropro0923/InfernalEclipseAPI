@@ -23,8 +23,8 @@ using InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc;
 using InfernalEclipseAPI.Content.Items.Weapons.Magic.ChaosBlaster;
 using InfernalEclipseAPI.Content.Items.Weapons.Nameless.NebulaGigabeam;
 using CalamityMod.Items.Potions;
-using System.Security.Policy;
-using ThoriumMod.Items.MeleeItems;
+using CalamityMod.Items.Placeables.SunkenSea;
+using CalamityMod.Tiles.FurnitureStatigel;
 
 namespace InfernalEclipseAPI.Common.Balance.Recipes
 {
@@ -182,7 +182,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
 
                     if (!ModLoader.TryGetMod("WHummusMultiModBalancing", out _))
                     {
-                        if (recipe.HasResult(ModContent.ItemType<ElementalDisk>()))
+                        if (recipe.HasResult(ModContent.ItemType<ReboundingRainbow>()))
                         {
                             thorium.TryFind("TerraKnife", out ModItem terraKnife);
                             recipe.AddIngredient(terraKnife.Type);
@@ -835,14 +835,16 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         if (recipe.HasResult(ModContent.ItemType<MOAB>()))
                             recipe.AddIngredient(sots.Find<ModItem>("SoulOfPlight"), 1);
 
-                        if (recipe.HasResult<BloodOrange>())
+                        if (recipe.HasResult<SanguineTangerine>())
                             recipe.AddIngredient(sots.Find<ModItem>("SoulOfPlight"), 5);
 
                         if (recipe.HasResult<ValkyrieRay>())
                             recipe.AddIngredient(sots.Find<ModItem>("SoulOfPlight"), 1);
 
+                        /* Removed in Calamity 2.1
                         if (recipe.HasResult<CatastropheClaymore>())
                             recipe.AddIngredient(sots.Find<ModItem>("SoulOfPlight"), 3);
+                        */
 
                         if (recipe.HasResult<Pwnagehammer>())
                             recipe.AddIngredient(sots.Find<ModItem>("SoulOfPlight"), 3);

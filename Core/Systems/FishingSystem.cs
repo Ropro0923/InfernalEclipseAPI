@@ -228,6 +228,7 @@ public class FishingSystem : ModSystem
                     obj12.SetDefaults(3120);
                     objList.Add(obj12);
                     break;
+                /* well idk soooo
                 case 7:
                     Item obj13 = new Item();
                     obj13.SetDefaults(2498);
@@ -242,6 +243,7 @@ public class FishingSystem : ModSystem
                     obj16.SetDefaults(ModContent.ItemType<SandyAnglingKit>());
                     objList.Add(obj16);
                     break;
+                */
                 case 8:
                     Item obj17 = new Item();
                     obj17.SetDefaults(4067);
@@ -272,6 +274,7 @@ public class FishingSystem : ModSystem
                     obj22.SetDefaults(2368);
                     objList.Add(obj22);
                     break;
+                /* same here
                 case 14:
                     Item obj23 = new Item();
                     obj23.SetDefaults(2417);
@@ -286,6 +289,7 @@ public class FishingSystem : ModSystem
                     obj26.SetDefaults(ModContent.ItemType<SandyAnglingKit>());
                     objList.Add(obj26);
                     break;
+                */
                 case 15:
                     Item obj27 = new Item();
                     obj27.SetDefaults(3096);
@@ -372,12 +376,6 @@ public class FishingSystem : ModSystem
                 Item obj43 = new Item();
                 obj43.SetDefaults(2422);
                 objList.Add(obj43);
-            }
-            if (Main.rand.NextBool((int)(12.0 * (double)num2)) && anglerQuestsFinished > 30)
-            {
-                Item obj44 = new Item();
-                obj44.SetDefaults(Main.hardMode ? ModContent.ItemType<BleachedAnglingKit>() : ModContent.ItemType<SandyAnglingKit>());
-                objList.Add(obj44);
             }
             if (Main.rand.NextBool((int)(500.0 * (double)num2)) && anglerQuestsFinished > 30)
             {
