@@ -90,7 +90,7 @@ namespace InfernalEclipseAPI.Core.Systems
             ParseNewOre(ModContent.TileType<HallowedOre>(), 2100, 1.25, () => NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3);
             ParseNewOre(ModContent.TileType<PerennialOre>(), 4100, 1.25, () => NPC.downedPlantBoss);
             ParseNewOre(ModContent.TileType<ScoriaOre>(), 4300, 1.25, () => NPC.downedGolemBoss);
-            ParseNewOre(ModContent.TileType<AstralOre>(), 10000, 1.25, () => DownedBossSystem.downedAstrumAureus);
+            ParseNewOre(ModContent.TileType<AstralOre>(), 10000, 1.25, () => DownedBossSystem.downedAstrumDeus);
             ParseNewOre(ModContent.TileType<ExodiumOre>(), 11100, 1.25, () => NPC.downedMoonlord);
             ParseNewOre(ModContent.TileType<UelibloomOre>(), 11250, 1.3, () => DownedBossSystem.downedProvidence);
             ParseNewOre(ModContent.TileType<AuricOre>(), 11300, 1.35, () => DownedBossSystem.downedYharon);

@@ -81,7 +81,6 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Soltan",
 
             //Management
-            "Kami",
             "TheRogueX",
 
             //Major Contributors
@@ -107,6 +106,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Kes",
             "Feldy",
             "TacoConKvass",
+            "KainSett",
             "KaiTheExaminer",
             "konte1m",
             "LeEr206",
@@ -122,18 +122,21 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Tencvin",
             "Jillyfish",
 
-            //Supporters
-            "Lylittle",
-            "Sharktank6",
-            "CuddlySnake",
-            "Na69754",
-            "Louhii",
-
             //Donors
             "bryce27",
-            "evil81",
+            "Bomberr",
             "Goldsockz2",
             "rosé",
+
+            //Supporters
+            "Lylittle",
+            "CuddlySnake",
+            "Louhii",
+            "rocket",
+
+            //Helpers
+            "fjiown",
+            "Herbisa",
 
             //Special Thanks
             "N0t_UNowen",

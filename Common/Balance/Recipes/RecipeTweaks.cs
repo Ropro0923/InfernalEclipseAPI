@@ -25,6 +25,7 @@ using InfernalEclipseAPI.Content.Items.Weapons.Nameless.NebulaGigabeam;
 using CalamityMod.Items.Potions;
 using CalamityMod.Items.Placeables.SunkenSea;
 using CalamityMod.Tiles.FurnitureStatigel;
+using InfernalEclipseAPI.Core.Systems;
 
 namespace InfernalEclipseAPI.Common.Balance.Recipes
 {
@@ -155,6 +156,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         recipe.AddIngredient(thorium.Find<ModItem>("SoulofPlight"), 5);
                     }
 
+                    /* moved in calamity 2.1
                     if (!ModLoader.TryGetMod("WHummusMultiModBalancing", out _))
                     {
                         if (recipe.HasResult(ModContent.ItemType<EmpyreanKnives>()))
@@ -166,6 +168,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             recipe.AddTile(TileID.LunarCraftingStation);
                         }
                     }
+                    */
                 }
 
                 if (InfernalConfig.Instance.ThoriumBalanceChangess && thorium != null)
@@ -216,8 +219,11 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             recipe.AddIngredient(ModContent.ItemType<Swordofthe14thGlitch>(), 1);
                             recipe.AddIngredient(ModContent.ItemType<NovaBomb>(), 1);
                             recipe.AddIngredient(ModContent.ItemType<Kevin>(), 1);
-                            recipe.AddIngredient(ModContent.ItemType<ChaosBlaster>());
-                            recipe.AddIngredient(ModContent.ItemType<NebulaGigabeam>());
+                            if (InfernalCrossmod.NoxusBoss.Loaded)
+                            {
+                                recipe.AddIngredient(ModContent.ItemType<ChaosBlaster>());
+                                recipe.AddIngredient(ModContent.ItemType<NebulaGigabeam>());
+                            }
                             recipe.AddIngredient(ModContent.ItemType<ChromaticMassInABottle>(), 1);
                             recipe.AddIngredient(ModContent.ItemType<Rock>(), 1);
                         }

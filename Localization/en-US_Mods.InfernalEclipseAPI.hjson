@@ -36,7 +36,7 @@ DifficultyUI: {
 		[c/FF0055:Can you master the Infernal Eclipse of Ragnarok?]
 		'''
 	Activation: The Infernal Eclipse has risen...
-	Deactivation: Another unworthy challegner has walked away.
+	Deactivation: Another unworthy challenger has walked away.
 	MasterToggle: Master mode is now enabled!
 }
 

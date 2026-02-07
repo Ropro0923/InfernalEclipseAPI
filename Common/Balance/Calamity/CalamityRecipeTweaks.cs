@@ -13,7 +13,7 @@ namespace InfernalEclipseAPI.Common.Balance.Calamity
                 Recipe recipe = Main.recipe[index];
 
                 if (recipe.Mod == null)
-                    return;
+                    continue;
 
                 bool hasThor = false;
                 if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
