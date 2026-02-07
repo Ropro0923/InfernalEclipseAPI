@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using CalamityMod.Systems;
 using CalamityMod.World;
-using InfernalEclipseAPI.Core.Netcode;
 using InfernalEclipseAPI.Core.World;
 using InfernumMode.Content.UI;
 using InfernumMode.Core.GlobalInstances.Systems;
@@ -11,10 +10,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.Audio;
-using Terraria.GameContent.Creative;
 using Terraria.Localization;
 using static CalamityMod.Systems.DifficultyModeSystem;
-using static Terraria.GameContent.Creative.CreativePowers;
 
 namespace InfernalEclipseAPI.Content.UI
 {
@@ -43,25 +40,37 @@ namespace InfernalEclipseAPI.Content.UI
                 return _textureDisabled;
             }
         }
-        public override float DifficultyScale => 999999999f;
+        public override float DifficultyScale => 0.25f;
 
         public override bool Enabled
         {
             get => InfernalWorld.RagnarokModeEnabled;
             set
             {
-                InfernalWorld.RagnarokModeEnabled = value;
                 if (value)
                 {
                     CalamityWorld.revenge = true;
                     CalamityWorld.death = true;
                     WorldSaveSystem.InfernumModeEnabled = true;
-
                 }
 
-                if (value)
+                if (Main.getGoodWorld)
                 {
-                    Main.GameMode = GameModeID.Master;
+                    if (!Main.GameModeInfo.IsJourneyMode)
+                    {
+                        Main.GameMode = value == true ? GameModeID.Expert : GameModeID.Normal;
+                    }
+                    else
+                    {
+                        AlignJourneyDifficultySlider();
+                    }
+                    InfernalWorld.RagnarokModeEnabled = value;
+                }
+                else
+                {
+                    InfernalWorld.RagnarokModeEnabled = value;
+                    if (value && !Main.GameModeInfo.IsJourneyMode)
+                        Main.GameMode = BackBoneGameModeID;
                 }
 
                 if (Main.netMode != NetmodeID.SinglePlayer)
@@ -123,20 +132,24 @@ namespace InfernalEclipseAPI.Content.UI
 
         public override int[] FavoredDifficultyAtTier(int tier)
         {
-            DifficultyMode[] tierList = DifficultyTiers[tier];
-            List<int> list = new List<int>();
-            for (int i = 0; i < tierList.Length; i++)
+            DifficultyMode[] difficultyTier = DifficultyTiers[tier];
+            List<int> intList = new List<int>();
+            for (int index = 0; index < difficultyTier.Length; ++index)
             {
-                if (tierList[i] is DeathDifficulty)
-                    list.Add(i);
+                if (difficultyTier[index] is MasterDifficulty || difficultyTier[index] is DeathDifficulty)
+                    intList.Add(index);
             }
-            if (list.Count <= 0) list.Add(0);
-            return list.ToArray();
+            if (intList.Count <= 0)
+                intList.Add(0);
+            return intList.ToArray();
         }
 
         public override bool IsBasedOn(DifficultyMode mode)
         {
-            return mode is InfernumDifficulty;
+            return mode is InfernumDifficulty
+                || mode is DeathDifficulty
+                || mode is MasterDifficulty
+                || mode is RevengeanceDifficulty;
         }
     }
 }

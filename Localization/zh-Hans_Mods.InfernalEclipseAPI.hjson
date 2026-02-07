@@ -30,13 +30,12 @@ DifficultyUI: {
 		''' */
 	/* ExpandedDescription:
 		'''
-		[c/B32E81:Sets the world difficulty to Master & enables Infernum mode.]
-		[c/B32E81:After enabling, Master mode cannot be disabled through the Calamity difficulty slider.]
+		[c/B32E81:Seemlessly merges both Death Mode and Infernum mode.]
 		[c/B32E81:Enemies & bosses will now have very high base stats and scale more agressively in multiplayer.]
 		[c/FF0055:Can you master the Infernal Eclipse of Ragnarok?]
 		''' */
-	// InfernumText: The Infernal Eclipse has risen...
-	// InfernumText2: Another unworthy challegner has walked away.
+	// Activation: The Infernal Eclipse has risen...
+	// Deactivation: Another unworthy challenger has walked away.
 	// MasterToggle: Master mode is now enabled!
 }
 
@@ -651,16 +650,57 @@ Items: {
 
 	Lore: {
 		MysteriousDiary.DisplayName: 神秘日记
-		LorePolaris.DisplayName: 极北灾星
-		LoreAdvisor.DisplayName: 启示异械
-		LoreGlowmoth.DisplayName: 荧灯蛾
-		LoreLux.DisplayName: 辉光圣魂
-		LorePharaoh.DisplayName: 法老咒魔
-		LorePutrid.DisplayName: 腐蚀之粉
-		LoreSerpent.DisplayName: 亚空骇蟒
-		LoreProvi.DisplayName: 星河
-		LoreMirror.DisplayName: 镜像
-		LoreDylan.DisplayName: 迪伦
+
+		LorePolaris: {
+			DisplayName: 极北灾星
+			// Tooltip: ""
+		}
+
+		LoreAdvisor: {
+			DisplayName: 启示异械
+			// Tooltip: ""
+		}
+
+		LoreGlowmoth: {
+			DisplayName: 荧灯蛾
+			// Tooltip: ""
+		}
+
+		LoreLux: {
+			DisplayName: 辉光圣魂
+			// Tooltip: ""
+		}
+
+		LorePharaoh: {
+			DisplayName: 法老咒魔
+			// Tooltip: ""
+		}
+
+		LorePutrid: {
+			DisplayName: 腐蚀之粉
+			// Tooltip: ""
+		}
+
+		LoreSerpent: {
+			DisplayName: 亚空骇蟒
+			// Tooltip: ""
+		}
+
+		LoreProvi: {
+			DisplayName: 星河
+			// Tooltip: ""
+		}
+
+		LoreMirror: {
+			DisplayName: 镜像
+			// Tooltip: ""
+		}
+
+		LoreDylan: {
+			DisplayName: 迪伦
+			// Tooltip: ""
+		}
+
 		LoreAbominationn.DisplayName: 憎恶
 		LoreDeviantt.DisplayName: 戴薇安
 		LoreMutant.DisplayName: 突变体

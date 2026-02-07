@@ -1,9 +1,6 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria.DataStructures;
-using Microsoft.Xna.Framework;
+﻿using Terraria.DataStructures;
 using InfernumMode;
+using CalamityMod.Rarities;
 
 namespace InfernalEclipseAPI.Content.Items.Accessories.ChromaticMassInABottle
 {
@@ -22,13 +19,7 @@ namespace InfernalEclipseAPI.Content.Items.Accessories.ChromaticMassInABottle
             Item.value = Item.buyPrice(copper: 0);
             Item.rare = ItemRarityID.Purple;
             Item.maxStack = 1;
-            if (ModLoader.TryGetMod("CalamityMod", out Mod cal))
-            {
-                ModRarity r;
-                cal.TryFind("Violet", out r);
-                Item.rare = r.Type;
-            }
-
+            Item.rare = ModContent.RarityType<BurnishedAuric>();
             Item.accessory = true;
 
             Item.Infernum_Tooltips().DeveloperItem = true;
