@@ -196,10 +196,8 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.ShoeCraftingTree
                     FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.TPS"));
                 }
 
-                if (item.type == ModContent.ItemType<TracersCelestial>() || item.type == ModContent.ItemType<TracersElysian>() || item.type == ModContent.ItemType<TracersSeraph>())
+                if (item.type == ModContent.ItemType<MoonWalkers>() || item.type == ModContent.ItemType<VoidStriders>() || item.type == ModContent.ItemType<SeraphTracers>())
                 {
-                    
-
                     int num = -1;
 
                     foreach (TooltipLine tooltip in tooltips)

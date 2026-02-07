@@ -116,7 +116,7 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
 
                 Bosses.Add(new Boss(NPCID.KingSlime,
                     permittedNPCs: new int[] { NPCID.BlueSlime, NPCID.YellowSlime, NPCID.PurpleSlime, NPCID.RedSlime, NPCID.GreenSlime, NPCID.RedSlime, NPCID.IceSlime, NPCID.UmbrellaSlime, NPCID.Pinky, NPCID.SlimeSpiked, NPCID.RainbowSlime,
-                                                NPCType<KingSlimeJewelRuby>(), NPCType<KingSlimeJewelSapphire>(), NPCType<KingSlimeJewelEmerald>(), NPCType<Ninja>() }));
+                                                NPCType<KingSlimeJewelRuby>(), NPCType<Ninja>() }));
             }
             else if (InfernalCrossmod.Thorium.Loaded)
             {
@@ -131,7 +131,7 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
 
                 Bosses.Add(new Boss(NPCID.KingSlime, 
                     permittedNPCs: new int[] { NPCID.BlueSlime, NPCID.YellowSlime, NPCID.PurpleSlime, NPCID.RedSlime, NPCID.GreenSlime, NPCID.RedSlime, NPCID.IceSlime, NPCID.UmbrellaSlime, NPCID.Pinky, NPCID.SlimeSpiked, NPCID.RainbowSlime,
-                                                NPCType<KingSlimeJewelRuby>(), NPCType<KingSlimeJewelSapphire>(), NPCType<KingSlimeJewelEmerald>(), NPCType<Ninja>() }));
+                                                NPCType<KingSlimeJewelRuby>(), NPCType<Ninja>() }));
             }
             else
             {
@@ -142,7 +142,7 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
                     if (!InfernalConfig.Instance.ForceFullXerocDialogue)
                         DownedBossSystem.startedBossRushAtLeastOnce = true;
                 }, permittedNPCs: new int[] { NPCID.BlueSlime, NPCID.YellowSlime, NPCID.PurpleSlime, NPCID.RedSlime, NPCID.GreenSlime, NPCID.RedSlime, NPCID.IceSlime, NPCID.UmbrellaSlime, NPCID.Pinky, NPCID.SlimeSpiked, NPCID.RainbowSlime,
-                                                NPCType<KingSlimeJewelRuby>(), NPCType<KingSlimeJewelSapphire>(), NPCType<KingSlimeJewelEmerald>(), NPCType<Ninja>() }));
+                                                NPCType<KingSlimeJewelRuby>(), NPCType<Ninja>() }));
             }
 
             if (InfernalCrossmod.Consolaria.Loaded)
@@ -281,7 +281,7 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
             Bosses.Add(new Boss(ModContent.NPCType<HiveMind>(), spawnContext: type =>
             {
                 NPC.SpawnOnPlayer(ClosestPlayerToWorldCenter, type);
-            }, permittedNPCs: [ModContent.NPCType<DankCreeper>(), ModContent.NPCType<DarkHeart>(), ModContent.NPCType<HiveBlob>(), ModContent.NPCType<HiveBlob2>()]));
+            }, permittedNPCs: [ModContent.NPCType<DankCreeper>(), ModContent.NPCType<DarkHeart>(), ModContent.NPCType<HiveBlob>()]));
 
             if (InfernalCrossmod.SOTS.Loaded)
             {
@@ -335,7 +335,7 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
 
             Bosses.Add(new Boss(ModContent.NPCType<Signus>(), specialSpawnCountdown: 360));
 
-            Bosses.Add(new Boss(ModContent.NPCType<Bumblefuck>(), TimeChangeContext.Day, permittedNPCs: [ModContent.NPCType<Bumblefuck2>(), NPCID.Spazmatism, NPCID.Retinazer]));
+            Bosses.Add(new Boss(ModContent.NPCType<Dragonfolly>(), TimeChangeContext.Day, permittedNPCs: [ModContent.NPCType<DraconicSwarmer>(), NPCID.Spazmatism, NPCID.Retinazer]));
 
             if (HomewardLoaded())
             {

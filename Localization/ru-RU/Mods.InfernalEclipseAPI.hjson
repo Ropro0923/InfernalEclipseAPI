@@ -35,8 +35,8 @@ DifficultyUI: {
 		[c/B32E81:Враги и боссы обладают большими характеристиками и более агрессивным масштабированием в мультиплеере.]
 		[c/FF0055:Сможешь ли ты осилить «Infernal Eclipse of Ragnarok»?]
 		'''
-	InfernumText: Инфернальное затмение наступило...
-	InfernumText2: Ещё один недостойный претендент сбился с пути.
+	// Activation: The Infernal Eclipse has risen...
+	// Deactivation: Another unworthy challenger has walked away.
 	MasterToggle: Режим Мастера включён!
 }
 
@@ -847,24 +847,81 @@ Items: {
 
 	Lore: {
 		MysteriousDiary.DisplayName: Таинственный дневник
-		LorePolaris.DisplayName: Полярис
-		LoreAdvisor.DisplayName: Аналитик
-		LoreGlowmoth.DisplayName: Светомотылёк
-		LoreLux.DisplayName: Люкс
-		LorePharaoh.DisplayName: Проклятие Фараона
-		LorePutrid.DisplayName: Гнилостный пинки
-		LoreSerpent.DisplayName: Субпространственный змей
-		LoreProvi.DisplayName: Галактика
-		LoreMirror.DisplayName: Проклятое зеркало
-		LoreDylan.DisplayName: Дилан
+
+		LorePolaris: {
+			DisplayName: Полярис
+			// Tooltip: ""
+		}
+
+		LoreAdvisor: {
+			DisplayName: Аналитик
+			// Tooltip: ""
+		}
+
+		LoreGlowmoth: {
+			DisplayName: Светомотылёк
+			// Tooltip: ""
+		}
+
+		LoreLux: {
+			DisplayName: Люкс
+			// Tooltip: ""
+		}
+
+		LorePharaoh: {
+			DisplayName: Проклятие Фараона
+			// Tooltip: ""
+		}
+
+		LorePutrid: {
+			DisplayName: Гнилостный пинки
+			// Tooltip: ""
+		}
+
+		LoreSerpent: {
+			DisplayName: Субпространственный змей
+			// Tooltip: ""
+		}
+
+		LoreProvi: {
+			DisplayName: Галактика
+			// Tooltip: ""
+		}
+
+		LoreMirror: {
+			DisplayName: Проклятое зеркало
+			// Tooltip: ""
+		}
+
+		LoreDylan: {
+			DisplayName: Дилан
+			// Tooltip: ""
+		}
+
 		LoreAbominationn.DisplayName: Мерзостть
 		LoreDeviantt.DisplayName: Девиантт
 		LoreMutant.DisplayName: Мутант
 		SoltanBullyingSlip.DisplayName: Анти-Солтановская записка-чип Дилана
-		LoreMjolnir.DisplayName: Мьёльнир
-		LorePrimordials.DisplayName: Первородные
-		LoreThunderBird.DisplayName: Великая громовая птица
-		LoreRagnarok.DisplayName: Рагнарёк
+
+		LoreMjolnir: {
+			DisplayName: Мьёльнир
+			// Tooltip: ""
+		}
+
+		LorePrimordials: {
+			DisplayName: Первородные
+			// Tooltip: ""
+		}
+
+		LoreThunderBird: {
+			DisplayName: Великая громовая птица
+			// Tooltip: ""
+		}
+
+		LoreRagnarok: {
+			DisplayName: Рагнарёк
+			// Tooltip: ""
+		}
 	}
 
 	CatastrophicFabricationsMusicBox: {

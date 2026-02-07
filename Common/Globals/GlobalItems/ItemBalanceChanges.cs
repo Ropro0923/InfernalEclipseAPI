@@ -364,6 +364,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 #endregion
             }
 
+            /* Added by Calamity in 2.1
             if (InfernalConfig.Instance.CalamityExpertAccessories)
             {
                 int[] expertAccessoires =
@@ -438,6 +439,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.rare = ItemRarityID.Master;
                 }
             }
+            */
 
             #endregion
 
@@ -648,6 +650,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     #endregion
                 }
 
+                /* Implemented by catalyst after cal 2.1
                 if (InfernalConfig.Instance.CalamityExpertAccessories)
                 {
                     if (GetItem(calHunt, "SplendorJam", item))
@@ -660,6 +663,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                         item.master = true;
                     }
                 }
+                */
             }
             #endregion
 

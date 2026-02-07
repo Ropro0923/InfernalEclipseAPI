@@ -335,16 +335,6 @@ namespace InfernalEclipseAPI
                         }
                         break;
                     }
-
-                case InfernalEclipseMessageType.SyncRagnarokState:
-                    {
-                        if (Main.netMode == NetmodeID.Server)
-                        {
-                            InfernalWorld.RagnarokModeEnabled = reader.ReadBoolean();
-                            NetMessage.SendData(MessageID.WorldData);
-                        }
-                        break;
-                    }
             }
 
             //int npcIndex = reader.ReadInt32();

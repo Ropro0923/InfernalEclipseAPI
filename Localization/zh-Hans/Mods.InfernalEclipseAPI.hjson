@@ -28,10 +28,12 @@ DifficultyUI: {
 		[c/B32E81:炼狱模式的极端版本以及作为诸神黄昏：炼狱蚀光的预期难度。]
 		[c/B32E81:该模式无法在For the Worthy种子中运行。]
 		'''
+	ExpandedDescription:
+		'''
 		[c/B32E81:Seemlessly merges both Death Mode and Infernum mode.]
 		[c/B32E81:Enemies & bosses will now have very high base stats and scale more agressively in multiplayer.]
 		[c/FF0055:Can you master the Infernal Eclipse of Ragnarok?]
-		''' */
+		'''
 	// Activation: The Infernal Eclipse has risen...
 	// Deactivation: Another unworthy challenger has walked away.
 	// MasterToggle: Master mode is now enabled!
@@ -910,10 +912,26 @@ Items: {
 		LoreDeviantt.DisplayName: 戴薇安
 		LoreMutant.DisplayName: 突变体
 		SoltanBullyingSlip.DisplayName: 迪伦的反索坦芯片便笺
-		LoreMjolnir.DisplayName: 雷神之锤
-		LorePrimordials.DisplayName: 始源诸神
-		LoreThunderBird.DisplayName: 惊雷王鹰
-		LoreRagnarok.DisplayName: 诸神黄昏
+
+		LoreMjolnir: {
+			DisplayName: 雷神之锤
+			// Tooltip: ""
+		}
+
+		LorePrimordials: {
+			DisplayName: 始源诸神
+			// Tooltip: ""
+		}
+
+		LoreThunderBird: {
+			DisplayName: 惊雷王鹰
+			// Tooltip: ""
+		}
+
+		LoreRagnarok: {
+			DisplayName: 诸神黄昏
+			// Tooltip: ""
+		}
 	}
 
 	CatastrophicFabricationsMusicBox: {

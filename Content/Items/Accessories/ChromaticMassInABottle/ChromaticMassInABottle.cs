@@ -1,6 +1,11 @@
 ﻿using Terraria.DataStructures;
 using InfernumMode;
 using CalamityMod.Rarities;
+using CalamityMod;
+using Microsoft.Xna.Framework;
+using Terraria.Localization;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Input;
 
 namespace InfernalEclipseAPI.Content.Items.Accessories.ChromaticMassInABottle
 {
@@ -31,9 +36,12 @@ namespace InfernalEclipseAPI.Content.Items.Accessories.ChromaticMassInABottle
         {
             Color color = CalamityUtils.ColorSwap(Color.OrangeRed, Color.DarkRed, 2f);
 
-            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Yob")));
-            dedTo.OverrideColor = color;
-            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
+            if (Main.keyState.IsKeyDown(Keys.LeftShift))
+            {
+                TooltipLine line5 = new(Mod, "DedicatedItem", $"{Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Yob"))}");
+                line5.OverrideColor = color;
+                tooltips.Add(line5);
+            }
         }
 
         public override void AddRecipes()

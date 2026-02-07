@@ -318,7 +318,7 @@ ItemTooltip: {
 		TwoSentry: Increases max sentries by 2
 		ThreeSentry: Increases max sentries by 3
 		Murky: Every sixth magic cast is free and grants you the mana cost
-		Hungering: Instead grants the effects of the Hungering Blossom if visibility is off
+		Hungering: Grants the effects of the Hungering Blossom when visibility is off
 		SlagsplitterCooldown: This effect has a 1.5 second cooldown
 		Grace:
 			'''
@@ -915,10 +915,26 @@ Items: {
 		LoreDeviantt.DisplayName: The Deviantt
 		LoreMutant.DisplayName: The Mutant
 		SoltanBullyingSlip.DisplayName: Dylan's Anti-Soltan Chipnote
-		LoreMjolnir.DisplayName: Mjolnir
-		LorePrimordials.DisplayName: The Primordials
-		LoreThunderBird.DisplayName: The Grand Thunder Bird
-		LoreRagnarok.DisplayName: Ragnarok
+
+		LoreMjolnir: {
+			DisplayName: Mjolnir
+			Tooltip: ""
+		}
+
+		LorePrimordials: {
+			DisplayName: The Primordials
+			Tooltip: ""
+		}
+
+		LoreThunderBird: {
+			DisplayName: The Grand Thunder Bird
+			Tooltip: ""
+		}
+
+		LoreRagnarok: {
+			DisplayName: Ragnarok
+			Tooltip: ""
+		}
 	}
 
 	CatastrophicFabricationsMusicBox: {
