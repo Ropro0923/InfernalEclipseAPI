@@ -1,14 +1,15 @@
-﻿using CalamityMod.Systems;
+﻿using System.Collections.Generic;
+using CalamityMod.Systems;
 using CalamityMod.World;
-using InfernalEclipseAPI.Core.Netcode;
 using InfernalEclipseAPI.Core.World;
+using InfernumMode.Content.UI;
 using InfernumMode.Core.GlobalInstances.Systems;
 using InfernumMode.Core.Netcode;
 using InfernumMode.Core.Netcode.Packets;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using Terraria.GameContent.Creative;
+using Terraria.Audio;
 using Terraria.Localization;
 using static CalamityMod.Systems.DifficultyModeSystem;
 using static Terraria.GameContent.Creative.CreativePowers;
@@ -17,40 +18,60 @@ namespace InfernalEclipseAPI.Content.UI
 {
     public class RagnarokDifficulty : DifficultyMode
     {
+        public override Asset<Texture2D> OutlineTexture
+        {
+            get
+            {
+                _outlineTexture ??= ModContent.Request<Texture2D>("CalamityMod/Projectiles/InvisibleProj");
+
+                return _outlineTexture;
+            }
+        }
+        public override LocalizedText Name => Language.GetText("Mods.InfernalEclipseAPI.DifficultyUI.Name");
+        public override Color ChatTextColor => new Color(196, 62, 0);
+        public override SoundStyle ActivationSound => new("InfernalEclipseAPI/Assets/Sounds/NamelessDeityRageFail");
+        public override int BackBoneGameModeID => GameModeID.Master;
+        public override LocalizedText ShortDescription => Language.GetText("Mods.InfernalEclipseAPI.DifficultyUI.ShortDescription");
+        public override Asset<Texture2D> TextureDisabled
+        {
+            get
+            {
+                _textureDisabled ??= ModContent.Request<Texture2D>("InfernalEclipseAPI/Assets/RagnarokIcon");
+
+                return _textureDisabled;
+            }
+        }
+        public override float DifficultyScale => 0.25f;
+
         public override bool Enabled
         {
             get => InfernalWorld.RagnarokModeEnabled;
             set
             {
-                InfernalWorld.RagnarokModeEnabled = value;
-
                 if (value)
                 {
-                    WorldSaveSystem.InfernumModeEnabled = true;
                     CalamityWorld.revenge = true;
+                    CalamityWorld.death = true;
+                    WorldSaveSystem.InfernumModeEnabled = true;
+                }
 
-                    if (Main.netMode == NetmodeID.SinglePlayer)
+                if (Main.getGoodWorld)
+                {
+                    if (!Main.GameModeInfo.IsJourneyMode)
                     {
-                        if (Main.GameModeInfo.IsJourneyMode)
-                        {
-                            float journeyDiff = 1f;
-                            var slider = CreativePowerManager.Instance.GetPower<DifficultySliderPower>();
-                            typeof(DifficultySliderPower).GetMethod("SetValueKeyboardForced", LumUtils.UniversalBindingFlags).Invoke(slider, [journeyDiff]);
-                        }
-                        else if (Main.GameMode != GameModeID.Master)
-                        {
-                            Main.GameMode = GameModeID.Master;
-
-                            Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.DifficultyUI.MasterToggle"), new Color(175, 75, 255));
-                        }
+                        Main.GameMode = value == true ? GameModeID.Expert : GameModeID.Normal;
                     }
                     else
                     {
-                        var netMessage = InfernalEclipseAPI.Instance.GetPacket();
-                        netMessage.Write((byte)InfernalEclipseMessageType.ToggleRagnarok);
-                        netMessage.Write((byte)Main.LocalPlayer.whoAmI);
-                        netMessage.Send();
+                        AlignJourneyDifficultySlider();
                     }
+                    InfernalWorld.RagnarokModeEnabled = value;
+                }
+                else
+                {
+                    InfernalWorld.RagnarokModeEnabled = value;
+                    if (value && !Main.GameModeInfo.IsJourneyMode)
+                        Main.GameMode = BackBoneGameModeID;
                 }
 
                 if (Main.netMode != NetmodeID.SinglePlayer)
@@ -64,10 +85,40 @@ namespace InfernalEclipseAPI.Content.UI
 
                     NetMessage.SendData(MessageID.WorldData); //extra safety
                 }
+
+                /* old implementation stuff
+                if (value)
+                    {
+                        WorldSaveSystem.InfernumModeEnabled = true;
+                        CalamityWorld.revenge = true;
+
+                        if (Main.netMode == NetmodeID.SinglePlayer)
+                        {
+                            if (Main.GameModeInfo.IsJourneyMode)
+                            {
+                                float journeyDiff = 1f;
+                                var slider = CreativePowerManager.Instance.GetPower<DifficultySliderPower>();
+                                typeof(DifficultySliderPower).GetMethod("SetValueKeyboardForced", LumUtils.UniversalBindingFlags).Invoke(slider, [journeyDiff]);
+                            }
+                            else if (Main.GameMode != GameModeID.Master)
+                            {
+                                Main.GameMode = GameModeID.Master;
+
+                                Main.NewText(Language.GetTextValue("Mods.InfernalEclipseAPI.DifficultyUI.MasterToggle"), new Color(175, 75, 255));
+                            }
+                        }
+                        else
+                        {
+                            var netMessage = InfernalEclipseAPI.Instance.GetPacket();
+                            netMessage.Write((byte)InfernalEclipseMessageType.ToggleRagnarok);
+                            netMessage.Write((byte)Main.LocalPlayer.whoAmI);
+                            netMessage.Send();
+                        }
+                    }
+                */
             }
         }
 
-        private Asset<Texture2D> _texture;
         public override Asset<Texture2D> Texture
         {
             get
@@ -80,30 +131,26 @@ namespace InfernalEclipseAPI.Content.UI
 
         public override LocalizedText ExpandedDescription => Language.GetText("Mods.InfernalEclipseAPI.DifficultyUI.ExpandedDescription");
 
-        public RagnarokDifficulty()
+        public override int[] FavoredDifficultyAtTier(int tier)
         {
-            DifficultyScale = 999999999f;
-            Name = Language.GetText("Mods.InfernalEclipseAPI.DifficultyUI.Name");
-            ShortDescription = Language.GetText("Mods.InfernalEclipseAPI.DifficultyUI.ShortDescription");
-
-            ActivationTextKey = "Mods.InfernalEclipseAPI.DifficultyUI.InfernumText";
-            DeactivationTextKey = "Mods.InfernalEclipseAPI.DifficultyUI.InfernumText2";
-
-            ActivationSound = new("InfernalEclipseAPI/Assets/Sounds/NamelessDeityRageFail");
-            ChatTextColor = new Color(196, 62, 0);
+            DifficultyMode[] difficultyTier = DifficultyTiers[tier];
+            List<int> intList = new List<int>();
+            for (int index = 0; index < difficultyTier.Length; ++index)
+            {
+                if (difficultyTier[index] is MasterDifficulty || difficultyTier[index] is DeathDifficulty)
+                    intList.Add(index);
+            }
+            if (intList.Count <= 0)
+                intList.Add(0);
+            return intList.ToArray();
         }
 
-        public override int FavoredDifficultyAtTier(int tier)
+        public override bool IsBasedOn(DifficultyMode mode)
         {
-            DifficultyMode[] tierList = DifficultyTiers[tier];
-
-            for (int i = 0; i < tierList.Length; i++)
-            {
-                if (tierList[i].Name.Value == "Death")
-                    return i;
-            }
-
-            return 0;
+            return mode is InfernumDifficulty
+                || mode is DeathDifficulty
+                || mode is MasterDifficulty
+                || mode is RevengeanceDifficulty;
         }
     }
 }

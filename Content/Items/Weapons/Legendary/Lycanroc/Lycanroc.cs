@@ -35,7 +35,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc
             Item.shoot = ProjectileID.PurificationPowder;
             Item.useAmmo = AmmoID.Bullet;
             Item.shootSpeed = 16f;
-            Item.Calamity().canFirePointBlankShots = true;
+            //Item.Calamity().canFirePointBlankShots = true; Renoved in Calamity 2.1
             Item.Infernum_Tooltips().DeveloperItem = true;
             Item.scale = 0.65f;
         }

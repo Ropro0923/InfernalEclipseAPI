@@ -125,6 +125,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             //Donors
             "bryce27",
             "Bomberr",
+            "Goldsockz2",
             "rosé",
 
             //Supporters

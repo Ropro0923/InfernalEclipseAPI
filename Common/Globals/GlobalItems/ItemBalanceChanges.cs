@@ -187,12 +187,14 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.DamageType = DamageClass.Melee;
                 }
 
+                /*
                 if (GetItem(cal, "EmpyreanKnives", item))
                 {
                     item.useTime = 16;
                     item.useAnimation = 16;
                     item.damage = 90;
                 }
+                */
 
                 if (item.type == ModContent.ItemType<GalvanizingGlaive>())
                 {
@@ -283,10 +285,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.damage = 850;
                 }
 
+                /*
                 if (item.type == ModContent.ItemType<ReedBlowgun>())
                 {
                     item.damage = 30;
                 }
+                */
 
                 if (item.type == ModContent.ItemType<Voidragon>())
                 {

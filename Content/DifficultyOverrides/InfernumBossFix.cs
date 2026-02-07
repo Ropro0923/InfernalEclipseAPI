@@ -124,7 +124,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             yield return CreateBaseChangeModded(ModContent.NPCType<CrimulanPaladin>(), 7464 * Boost);
             yield return CreateBaseChangeVanilla(114, 3232 * Boost);
             yield return CreateBaseChangeVanilla(113, 10476 * Boost);
-            yield return CreateBaseChangeModded(ModContent.NPCType<ThiccWaifu>(), 18000 * Boost);
+            //yield return CreateBaseChangeModded(ModContent.NPCType<ThiccWaifu>(), 18000 * Boost);
             yield return CreateBaseChangeModded(576, 15100 * Boost);
             yield return CreateBaseChangeModded(657, 30000 * Boost);
             yield return new NPCHPBalancingChange(126, AccountForExpertHP1Point4((int)(23960.0 * Boost)), (BalancePriority)10, InfernumFirstMechCondition);
@@ -189,8 +189,8 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             yield return CreateBaseChangeModded(ModContent.NPCType<ProfanedGuardianCommander>(), 132000 * Boost);
             yield return CreateBaseChangeModded(ModContent.NPCType<ProfanedGuardianDefender>(), 80000 * Boost);
             yield return CreateBaseChangeModded(ModContent.NPCType<ProfanedGuardianHealer>(), 80000 * Boost);
-            yield return CreateBaseChangeModded(ModContent.NPCType<Bumblefuck>(), 256000 * Boost);
-            yield return CreateBaseChangeModded(ModContent.NPCType<Bumblefuck2>(), 14300 * Boost);
+            yield return CreateBaseChangeModded(ModContent.NPCType<Dragonfolly>(), 256000 * Boost);
+            //yield return CreateBaseChangeModded(ModContent.NPCType<Bumblefuck2>(), 14300 * Boost);
             yield return CreateBaseChangeModded(ModContent.NPCType<ProfanedRocks>(), 2300 * Boost);
             yield return CreateBaseChangeModded(ModContent.NPCType<CalamityMod.NPCs.Providence.Providence>(), 900000 * Boost);
             yield return CreateBaseChangeModded(ModContent.NPCType<StormWeaverHead>(), 646400 * Boost);
@@ -270,8 +270,8 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             yield return CreateBossRushChange(ModContent.NPCType<ProfanedGuardianCommander>(), 720000 * Boost);
             yield return CreateBossRushChange(ModContent.NPCType<ProfanedGuardianDefender>(), 205000 * Boost);
             yield return CreateBossRushChange(ModContent.NPCType<ProfanedGuardianHealer>(), 205000 * Boost);
-            yield return CreateBossRushChange(ModContent.NPCType<Bumblefuck>(), 860000 * Boost);
-            yield return CreateBossRushChange(ModContent.NPCType<Bumblefuck2>(), 999 * Boost);
+            yield return CreateBossRushChange(ModContent.NPCType<Dragonfolly>(), 860000 * Boost);
+            //yield return CreateBossRushChange(ModContent.NPCType<Bumblefuck>(), 999 * Boost);
             yield return CreateBossRushChange(ModContent.NPCType<ProfanedRocks>(), 7500 * Boost);
             yield return CreateBossRushChange(ModContent.NPCType<CalamityMod.NPCs.Providence.Providence>(), 3900000 * Boost);
             yield return CreateBossRushChange(ModContent.NPCType<StormWeaverHead>(), 1232100 * Boost);

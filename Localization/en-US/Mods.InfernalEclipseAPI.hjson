@@ -30,13 +30,12 @@ DifficultyUI: {
 		'''
 	ExpandedDescription:
 		'''
-		[c/B32E81:Sets the world difficulty to Master & enables Infernum mode.]
-		[c/B32E81:After enabling, Master mode cannot be disabled through the Calamity difficulty slider.]
+		[c/B32E81:Seemlessly merges both Death Mode and Infernum mode.]
 		[c/B32E81:Enemies & bosses will now have very high base stats and scale more agressively in multiplayer.]
 		[c/FF0055:Can you master the Infernal Eclipse of Ragnarok?]
 		'''
-	InfernumText: The Infernal Eclipse has risen...
-	InfernumText2: Another unworthy challenger has walked away.
+	Activation: The Infernal Eclipse has risen...
+	Deactivation: Another unworthy challenger has walked away.
 	MasterToggle: Master mode is now enabled!
 }
 
@@ -861,16 +860,57 @@ Items: {
 
 	Lore: {
 		MysteriousDiary.DisplayName: Mysterious Diary
-		LorePolaris.DisplayName: Polaris
-		LoreAdvisor.DisplayName: The Advisor
-		LoreGlowmoth.DisplayName: Glowmoth
-		LoreLux.DisplayName: Lux
-		LorePharaoh.DisplayName: Pharaoh's Curse
-		LorePutrid.DisplayName: Putrid Pinky
-		LoreSerpent.DisplayName: Subspace Serpent
-		LoreProvi.DisplayName: The Radiant One
-		LoreMirror.DisplayName: Cursed Mirror
-		LoreDylan.DisplayName: Dylan
+
+		LorePolaris: {
+			DisplayName: Polaris
+			Tooltip: ""
+		}
+
+		LoreAdvisor: {
+			DisplayName: The Advisor
+			Tooltip: ""
+		}
+
+		LoreGlowmoth: {
+			DisplayName: Glowmoth
+			Tooltip: ""
+		}
+
+		LoreLux: {
+			DisplayName: Lux
+			Tooltip: ""
+		}
+
+		LorePharaoh: {
+			DisplayName: Pharaoh's Curse
+			Tooltip: ""
+		}
+
+		LorePutrid: {
+			DisplayName: Putrid Pinky
+			Tooltip: ""
+		}
+
+		LoreSerpent: {
+			DisplayName: Subspace Serpent
+			Tooltip: ""
+		}
+
+		LoreProvi: {
+			DisplayName: The Radiant One
+			Tooltip: ""
+		}
+
+		LoreMirror: {
+			DisplayName: The Mirror
+			Tooltip: ""
+		}
+
+		LoreDylan: {
+			DisplayName: Dylan
+			Tooltip: ""
+		}
+
 		LoreAbominationn.DisplayName: The Abominationn
 		LoreDeviantt.DisplayName: The Deviantt
 		LoreMutant.DisplayName: The Mutant

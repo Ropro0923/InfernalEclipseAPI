@@ -30,7 +30,7 @@ namespace InfernalEclipseAPI.Content.Items.Accessories.ExoSights
             Item.width = 44;
             Item.height = 36;
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<BurnishedAuric>();
             Item.accessory = true;
             Item.defense = 3;
         }
