@@ -120,7 +120,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.ShoeCraftingTree
                 }
             }
 
-            if (item.type == ModContent.ItemType<TracersCelestial>() || item.type == ModContent.ItemType<TracersElysian>() || item.type == ModContent.ItemType<TracersSeraph>())
+            if (item.type == ModContent.ItemType<MoonWalkers>() || item.type == ModContent.ItemType<VoidStriders>() || item.type == ModContent.ItemType<SeraphTracers>())
             {
                 CalamityPlayer modPlayer = player.Calamity();
                 modPlayer.hellfireTreads = true;
@@ -196,10 +196,8 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.ShoeCraftingTree
                     FullTooltipOveride(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.TPS"));
                 }
 
-                if (item.type == ModContent.ItemType<TracersCelestial>() || item.type == ModContent.ItemType<TracersElysian>() || item.type == ModContent.ItemType<TracersSeraph>())
+                if (item.type == ModContent.ItemType<MoonWalkers>() || item.type == ModContent.ItemType<VoidStriders>() || item.type == ModContent.ItemType<SeraphTracers>())
                 {
-                    
-
                     int num = -1;
 
                     foreach (TooltipLine tooltip in tooltips)
@@ -238,7 +236,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.ShoeCraftingTree
 
                 if (InfernalConfig.Instance.MergeCraftingTrees)
                 {
-                    if (item.type == ModContent.ItemType<TracersCelestial>() || item.type == ModContent.ItemType<TracersElysian>() || item.type == ModContent.ItemType<TracersSeraph>() || item.type == sots.Find<ModItem>("SubspaceBoosters").Type || item.type == sots.Find<ModItem>("FlashsparkBoots").Type)
+                    if (item.type == ModContent.ItemType<MoonWalkers>() || item.type == ModContent.ItemType<VoidStriders>() || item.type == ModContent.ItemType<SeraphTracers>() || item.type == sots.Find<ModItem>("SubspaceBoosters").Type || item.type == sots.Find<ModItem>("FlashsparkBoots").Type)
                     {
                         AddTooltip(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.Hellfire"), false);
                     }

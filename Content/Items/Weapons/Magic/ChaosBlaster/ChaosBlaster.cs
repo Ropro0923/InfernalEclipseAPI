@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CalamityMod.Items;
+using CalamityMod.Items.Placeables;
 using InfernalEclipseAPI.Content.Items.Materials;
 using Microsoft.Xna.Framework;
 using NoxusBoss.Content.Items;

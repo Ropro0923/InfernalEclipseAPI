@@ -177,22 +177,26 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 ModLoader.TryGetMod("CalamityMod", out Mod cal);
 
                 #region Melee
+                /*
                 if (GetItem(cal, "SubmarineShocker", item))
                 {
                     item.damage = 55;
                 }
+                */
 
                 if (item.type == ModContent.ItemType<InfernaCutter>())
                 {
                     item.DamageType = DamageClass.Melee;
                 }
 
+                /*
                 if (GetItem(cal, "EmpyreanKnives", item))
                 {
                     item.useTime = 16;
                     item.useAnimation = 16;
                     item.damage = 90;
                 }
+                */
 
                 if (item.type == ModContent.ItemType<GalvanizingGlaive>())
                 {
@@ -268,10 +272,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.useAnimation = 19;
                 }
 
+                /*
                 if (GetItem(cal, "Arietes41", item))
                 {
                     item.damage = 70;
                 }
+                */
 
                 if (GetItem(cal, "ElementalEruption", item))
                 {
@@ -283,10 +289,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.damage = 850;
                 }
 
+                /*
                 if (item.type == ModContent.ItemType<ReedBlowgun>())
                 {
                     item.damage = 30;
                 }
+                */
 
                 if (item.type == ModContent.ItemType<Voidragon>())
                 {
@@ -348,10 +356,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 #endregion
 
                 #region Rogue
+                /*
                 if (item.type == ModContent.ItemType<FishboneBoomerang>())
                 {
                     item.damage = 35;
                 }
+                */
 
                 if (item.type == ModContent.ItemType<Turbulance>())
                 {
@@ -360,6 +370,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 #endregion
             }
 
+            /* Added by Calamity in 2.1
             if (InfernalConfig.Instance.CalamityExpertAccessories)
             {
                 int[] expertAccessoires =
@@ -434,6 +445,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.rare = ItemRarityID.Master;
                 }
             }
+            */
 
             #endregion
 
@@ -644,6 +656,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     #endregion
                 }
 
+                /* Implemented by catalyst after cal 2.1
                 if (InfernalConfig.Instance.CalamityExpertAccessories)
                 {
                     if (GetItem(calHunt, "SplendorJam", item))
@@ -656,6 +669,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                         item.master = true;
                     }
                 }
+                */
             }
             #endregion
 

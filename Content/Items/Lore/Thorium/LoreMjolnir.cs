@@ -15,15 +15,15 @@ namespace InfernalEclipseAPI.Content.Items.Lore.Thorium
         {
             Item.width = 38;
             Item.height = 26;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<BurnishedAuric>();
             Item.consumable = false;
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             TooltipLine fullLore = new(Mod, "Lore", Language.GetTextValue("Mods.InfernalEclipseAPI.Lore.Mjolnir"));
-            if (LoreColor.HasValue)
-                fullLore.OverrideColor = LoreColor.Value;
+            if (ExtensionIndicatorColor.HasValue)
+                fullLore.OverrideColor = ExtensionIndicatorColor.Value;
             HoldShiftTooltip(tooltips, new TooltipLine[] { fullLore }, true);
         }
 

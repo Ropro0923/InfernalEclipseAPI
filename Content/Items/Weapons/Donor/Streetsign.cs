@@ -5,6 +5,7 @@ using CalamityMod.Items;
 using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using ReLogic.Content;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -32,7 +33,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Donor
             Item.knockBack = 6f;
 
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<BurnishedAuric>();
             Item.UseSound = SoundID.DD2_MonkStaffSwing;
 
             Item.Calamity().donorItem = true;
@@ -106,9 +107,12 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Donor
         {
             tooltips.Add(new TooltipLine(Mod, "Tooltip", Language.GetTextValue("Mods.InfernalEclipseAPI.Items.Streetsign.DynamicTooltip", InfernalEclipseAPI.ItemAbility.TooltipHotkeyString())));
 
-            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.rose")));
-            dedTo.OverrideColor = new Color(196, 35, 44);
-            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
+            if (Main.keyState.IsKeyDown(Keys.LeftShift))
+            {
+                TooltipLine line5 = new(Mod, "DedicatedItem", $"{Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.rose"))}");
+                line5.OverrideColor = new(196, 35, 44);
+                tooltips.Add(line5);
+            }
         }
 
         public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)

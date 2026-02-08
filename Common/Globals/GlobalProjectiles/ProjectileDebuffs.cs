@@ -104,7 +104,7 @@ namespace InfernalEclipseAPI.Common.GlobalProjectiles
                         target.AddBuff(calamity1.Find<ModBuff>("RiptideDebuff")?.Type ?? -1, 120);
                     }
 
-                    if (projectile.type == (calamity1.Find<ModProjectile>("UrchinMaceProjectile")?.Type ?? -1) || projectile.type == (calamity1.Find<ModProjectile>("RedtideWhirlpool")?.Type ?? -1))
+                    if (projectile.type == (calamity1.Find<ModProjectile>("RedtideWhirlpool")?.Type ?? -1))
                     {
                         target.AddBuff(BuffID.Poisoned, 120);
                     }

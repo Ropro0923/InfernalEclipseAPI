@@ -81,9 +81,9 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.OmniSpeakerCraftin
                 {
                     foreach (TooltipLine tooltip in tooltips)
                     {
-                        if (tooltip.Text.Contains("Increases symphonic damage by 15%"))
+                        if (tooltip.Text.Contains("15%"))
                         {
-                            tooltip.Text = "Increases symphonic damage by 12%";
+                            tooltip.Text = tooltip.Text.Replace("15%", "12%");
                         }
                     }
                 }
@@ -92,21 +92,17 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.OmniSpeakerCraftin
                 {
                     foreach (TooltipLine tooltip in tooltips)
                     {
-                        if (tooltip.Text.Contains("Increases symphonic damage by 20%"))
+                        if (tooltip.Text.Contains("20%"))
                         {
-                            tooltip.Text = "Increases symphonic damage by 14%";
+                            tooltip.Text = tooltip.Text.Replace("20%", "14%");
                         }
-                        if (tooltip.Text.Contains("Increases symphonic critical strike chance by 7%"))
+                        if (tooltip.Text.Contains("7%"))
                         {
-                            tooltip.Text = "Increases symphonic critical strike chance by 5%";
+                            tooltip.Text = tooltip.Text.Replace("7%", "5%");
                         }
-                        if (tooltip.Text.Contains("Increases symphonic playing speed by 10%"))
+                        if (tooltip.Text.Contains("10%"))
                         {
-                            tooltip.Text = "Increases symphonic playing speed by 8%";
-                        }
-                        if (tooltip.Text.Contains("Increases inspiration regeneration rate by 10%"))
-                        {
-                            tooltip.Text = "Increases inspiration regeneration rate by 8%";
+                            tooltip.Text =  tooltip.Text.Replace("10%","8%");
                         }
                     }
                 }
@@ -115,9 +111,9 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.OmniSpeakerCraftin
                 {
                     foreach (TooltipLine tooltip in tooltips)
                     {
-                        if (tooltip.Text.Contains("15% increased symphonic damage, playing speed, and critical strike chance"))
+                        if (tooltip.Text.Contains(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.Omni.OrigTooltip")))
                         {
-                            tooltip.Text = "15% increased symphonic damage\n8% increased playing speed, critical strike chance, and inspiration regeneration rate";
+                            tooltip.Text = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.Omni.Replace");
                             tooltip.OverrideColor = new Color?(InfernalRed);
                         }
                     }

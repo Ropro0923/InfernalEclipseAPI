@@ -135,7 +135,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
         {
             if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.ModItem.Name == "FrostFury")
             {
-                tooltips.Add(new TooltipLine(Mod, "AmmoChange", "Converts Wooden Arrows into Frostburn Arrows")
+                tooltips.Add(new TooltipLine(Mod, "AmmoChange", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.AmmoConversion.FrostFury"))
                 {
                     OverrideColor = Microsoft.Xna.Framework.Color.White
                 });
@@ -143,7 +143,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
 
             if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.ModItem.Name == "StreamSting")
             {
-                tooltips.Add(new TooltipLine(Mod, "AmmoChange", "Converts Wooden Arrows into Bone Arrows")
+                tooltips.Add(new TooltipLine(Mod, "AmmoChange", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.AmmoConversion.StreamSting"))
                 {
                     OverrideColor = Microsoft.Xna.Framework.Color.White
                 });
@@ -151,7 +151,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
 
             if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.ModItem.Name == "CometCrossfire")
             {
-                tooltips.Add(new TooltipLine(Mod, "AmmoChange", "Converts Wooden Arrows into Jester Arrows")
+                tooltips.Add(new TooltipLine(Mod, "AmmoChange", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.AmmoConversion.CometCrossfire"))
                 {
                     OverrideColor = Microsoft.Xna.Framework.Color.White
                 });
@@ -159,7 +159,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
 
             if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.ModItem.Name == "SteelBow")
             {
-                tooltips.Add(new TooltipLine(Mod, "AmmoChange", "Converts Wooden Arrows into Steel Arrows")
+                tooltips.Add(new TooltipLine(Mod, "AmmoChange", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.AmmoConversion.Steel"))
                 {
                     OverrideColor = Microsoft.Xna.Framework.Color.White
                 });
@@ -167,7 +167,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
 
             if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.ModItem.Name == "eSandStoneBow")
             {
-                tooltips.Add(new TooltipLine(Mod, "AmmoChange", "Converts Wooden Arrows into Talon Arrows")
+                tooltips.Add(new TooltipLine(Mod, "AmmoChange", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.AmmoConversion.SandStone"))
                 {
                     OverrideColor = Microsoft.Xna.Framework.Color.White
                 });
@@ -175,7 +175,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
 
             if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.ModItem.Name == "DurasteelRepeater")
             {
-                tooltips.Add(new TooltipLine(Mod, "AmmoChange", "Converts Wooden Arrows into Durasteel Arrows")
+                tooltips.Add(new TooltipLine(Mod, "AmmoChange", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.AmmoConversion.Durasteel"))
                 {
                     OverrideColor = Microsoft.Xna.Framework.Color.White
                 });
@@ -183,7 +183,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
 
             if (item.ModItem != null && item.ModItem.Mod.Name == "ThoriumMod" && item.ModItem.Name == "Trigun" && ModLoader.TryGetMod("CalamityMod", out _))
             {
-                tooltips.Add(new TooltipLine(Mod, "AmmoChange", "Converts Musket balls into Hallow-point rounds")
+                tooltips.Add(new TooltipLine(Mod, "AmmoChange", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.AmmoConversion.Trigun"))
                 {
                     OverrideColor = Microsoft.Xna.Framework.Color.White
                 });

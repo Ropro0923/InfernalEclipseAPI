@@ -117,7 +117,7 @@ namespace InfernalEclipseAPI.Common.Balance.Calamity
                   (short) 5211
             };
 
-            int[] numArray2 = new int[12]
+            int[] numArray2 = new int[11]
             {
               ModContent.ItemType<PotionofOmniscience>(),
               ModContent.ItemType<BoundingPotion>(),
@@ -128,7 +128,6 @@ namespace InfernalEclipseAPI.Common.Balance.Calamity
               ModContent.ItemType<ShadowPotion>(),
               ModContent.ItemType<SoaringPotion>(),
               ModContent.ItemType<SulphurskinPotion>(),
-              ModContent.ItemType<TeslaPotion>(),
               ModContent.ItemType<ZenPotion>(),
               ModContent.ItemType<ZergPotion>()
             };

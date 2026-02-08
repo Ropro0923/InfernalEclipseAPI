@@ -18,6 +18,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
 
         public override void SetDefaults(Item item)
         {
+            /*
             if (InfernalConfig.Instance.CalamityExpertAccessories)
             {
                 if (item.type == ModContent.ItemType<InfluxCluster>())
@@ -25,6 +26,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.ItemReworks
                     item.rare = CatalystItem.RarityExpertSuperboss;
                 }
             }
+            */
         }
 
         public override void UpdateInventory(Item item, Player player)

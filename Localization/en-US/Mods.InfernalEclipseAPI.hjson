@@ -1,4 +1,5 @@
 UI: {
+	RagnarokIconText: Ragnarok Mode is enabled
 	NoRespawn: Respawn prevented: Only one respawn per boss in {0} multiplayer!
 	NoRespawn2: Respawn prevented: Only {0} respawns per boss in {1} multiplayer!
 	NoRespawn3: Respawn prevented: No respawns during bosses in {0} multiplayer!
@@ -30,13 +31,12 @@ DifficultyUI: {
 		'''
 	ExpandedDescription:
 		'''
-		[c/B32E81:Sets the world difficulty to Master & enables Infernum mode.]
-		[c/B32E81:After enabling, Master mode cannot be disabled through the Calamity difficulty slider.]
+		[c/B32E81:Seemlessly merges both Death Mode and Infernum mode.]
 		[c/B32E81:Enemies & bosses will now have very high base stats and scale more agressively in multiplayer.]
 		[c/FF0055:Can you master the Infernal Eclipse of Ragnarok?]
 		'''
-	InfernumText: The Infernal Eclipse has risen...
-	InfernumText2: Another unworthy challenger has walked away.
+	Activation: The Infernal Eclipse has risen...
+	Deactivation: Another unworthy challenger has walked away.
 	MasterToggle: Master mode is now enabled!
 }
 
@@ -68,6 +68,12 @@ TimeFreezePrevention: {
 	Other: The incubator's effects was prevented!
 }
 
+BossCheesePrevention: {
+	TheDestroyer: I shall not let you destroy my machine so easily.
+	Plantera: Ancient forces prevent you from using this item right now...
+	Yharon: Ancient forces prevent you from using this item right now...
+}
+
 ItemTooltip: {
 	BasicDamage: basic damage
 	OmniShield: -Omni Shield-
@@ -81,6 +87,29 @@ ItemTooltip: {
 	BladecrestNerf: An evil force is sapping part of its power...
 	EclipseFang: "[IEoR]: Weapon empowerment always active."
 	ScytheThrow: Right Click to throw the scythe, which will curve on its way back
+	ThorsHammerPro: Inflcts electrified for 3 seconds on hits.
+	BountifulHarvest: Fires piercing stingers in an alternating pattern
+
+	SoulAnchor: {
+		OrigTooltip1: Anchors your soul and health to your current position
+		Replace1: Anchors your soul and health to your current position for 20 seconds
+		OrigTooltip2: Right click to return to your soul, reverting health to its original value
+		Replace2: Within that period, right click to return to your soul, reverting health to half its original value
+		OrigTooltip3: Can only be used once every 5 minutes and saps your soul upon returning
+		Replace3:
+			'''
+			Saps your soul upon returning and grants Potion Sickness
+			Can only be used once every 5 minutes
+			'''
+		Player1: Your Soul Anchor has faded.
+		Player2: Soul Anchor set. You have 20 seconds to return.
+	}
+
+	WhiteDwarfSetBonus:
+		'''
+
+		Ivory flares spawn on a 2 second cooldown
+		'''
 	PhoenixStaff:
 		'''
 		Right click to spew a stream of flames that inflict 'Holy Glare'
@@ -192,7 +221,12 @@ ItemTooltip: {
 			Multiplies all fire-based debuff damage by 1.5, does not stack with downgrades
 			All attacks inflict Hellfire
 			'''
-		BagOfAmmoConsume: Grants a 20% chance not to consume ammo
+
+		BagOfAmmoConsume: {
+			ElementalQuiver: Grants a 20% chance to not consume arrows
+			ReplaceTooltip: Grants a 20% chance not to consume ammo
+		}
+
 		BagOfAmmoOther:
 			'''
 			Striking enemies has a chance to refund ammo
@@ -211,6 +245,12 @@ ItemTooltip: {
 			Soul essence from radiant scythes will also recover some void
 			Soul essence from void-radiant scythes recover even more void
 			'''
+
+		SealedContract: {
+			OrigTooltip1: Maximum life increased by 60
+			OrigTooltip2: Healing spells grant an additional 5 life
+		}
+
 		ContractNerf: Healing spells grant an additional 2 life
 		Tuner1:
 			'''
@@ -256,6 +296,13 @@ ItemTooltip: {
 		Skull: Minion and sentry attacks briefly deal 2 more damage after killing an enemy
 		CyanPearl: Halves summon penalty for sentries
 		Watch: Your sentries last forever and gain up to 15% damage over the course of 2 minutes
+
+		FortressGenerator: {
+			OrigTooltip1: Increases damage by 10% and life regeneration by 2
+			Replace: Increases summon damage by 10%
+			OrigTooltip2: Absorbs 25% of damage done to players on your team when above 25% life and grants immunity to knockback
+		}
+
 		Fortress:
 			'''
 			Generates 4 platforms to the left and right of you
@@ -272,7 +319,7 @@ ItemTooltip: {
 		TwoSentry: Increases max sentries by 2
 		ThreeSentry: Increases max sentries by 3
 		Murky: Every sixth magic cast is free and grants you the mana cost
-		Hungering: Instead grants the effects of the Hungering Blossom if visibility is off
+		Hungering: Grants the effects of the Hungering Blossom when visibility is off
 		SlagsplitterCooldown: This effect has a 1.5 second cooldown
 		Grace:
 			'''
@@ -306,6 +353,13 @@ ItemTooltip: {
 			'''
 		Mantle: Dispels up to one damaging debuff off of you every 10 seconds
 		TerraDefend: When below 25% life, you will rapidly regenerate life and gain increased defense
+
+		TerrariumDefender: {
+			lifeUP: Maximum life increased by 20
+			invincibility: Prolonges after hit invincibility
+			immunity: Grants immunity to most status debuffs, knockback, and fire blocks
+		}
+
 		ScytheScale: Grows in strength until the fall of the Devourer
 		ScytheSummon: Has reduced damage if any summons are active
 		ScytheSummonOn: Damage reduced while summons are active
@@ -320,11 +374,46 @@ ItemTooltip: {
 		Scuttler: Stealth strike projectiles spawn a jewel spike when destroyed
 		BloodyFilthy: Stealth strikes have +8 armor penetration, deal 8% more damage, and heal for 2 HP
 		NoExhaustion: Removes all Exhaustion when equipped
+
+		ToothNecklace: {
+			SandShark: {
+				OrigTooltip: Increases armor penetration by 10
+				CommonReplace: Increases armor penetration by 12
+				SOTSReplace: Increases armor penetration by 12, critical strike chance by 5%, and max life by 40
+				ThoriumReplace: Increases armor penetration by 12
+			}
+
+			Prismarine: {
+				OrigTooltip: Increases armor penetration by 8 and max life by 20
+				CommonReplace: Increases armor penetration by 5 and max life by 20
+			}
+
+			Reaper: {
+				OrigTooltip: Increases armor penetration by 15
+				SOTSReplace: Increases armor penetration by 15, critical strike chance by 5%, and max life by 40
+			}
+		}
+
 		Prisma: Release waves of damage periodically that ignore up to 16 defense total
 		Prisma2: Release more waves at lower health
 		Prisma3: Waves disabled when hidden
 		Midnight1: Critical strikes unleash Nightmare Arms that do 10% damage and pull enemies together
 		Midnight2: Has a 6 second cooldown
+
+		lifeQuartzShield: {
+			CommoTooltip: Increases the rate at which you regenerate life
+			Under25HP1:
+				'''
+				Receiving damage below 25% life surrounds you in a protective bubble
+				While in the bubble, you will recover life equal to your bonus healing every second
+				'''
+			Under25HP2:
+				'''
+				Additionally, damage taken will be reduced by 10%
+				This effect needs to recharge for 30 seconds after triggering
+				'''
+		}
+
 		SHS:
 			'''
 			Getting hit surrounds you with ice shards
@@ -337,6 +426,16 @@ ItemTooltip: {
 			After burning a projectile, the shield must regenerate for 10 seconds  
 			While below 25% life, the shield generates twice as fast  
 			'''
+
+		Omni: {
+			OrigTooltip: 15% increased symphonic damage, playing speed, and critical strike chance
+			Replace:
+				'''
+				15% increased symphonic damage
+				8% increased playing speed, critical strike chance, and inspiration regeneration rate
+				'''
+		}
+
 		OmniIns: Increase maximum inspiration by 5
 		OmniEmp: Each unique empowerment you have increases movement speed by 2% and playing speed by 1%
 		ShinobiNerf: This effect has a cooldowwn of 2 seconds
@@ -349,11 +448,12 @@ ItemTooltip: {
 		CloverNerf: Life steal & inspiration regeneration have a 1 second cooldown
 		CloverNerf2: Life steal has a 1 second cooldown
 		RingofRestNerf: Inspiration regeneration has a 1 second cooldown
-		SpiritInsignia:
-			'''
-			Increases void gain by 1 and void regeneration speed by 25%
-			Doubles damage done to non-Lux spirit enemies
-			'''
+
+		SpiritInsignia: {
+			OrigTooltip: Grants infinite wing and rocket boot flight
+			Replace: Increases wing flight time by 25%
+		}
+
 		AscendantInsignia:
 			'''
 			Increases movement and jump speed by 10% and acceleration by 1.1x
@@ -386,7 +486,16 @@ ItemTooltip: {
 			'''
 	}
 
-	AmmoConversion.Mycelium: Fires barrages of Mycelium
+	AmmoConversion: {
+		FrostFury: Converts Wooden Arrows into Frostburn Arrows
+		StreamSting: Converts Wooden Arrows into Bone Arrows
+		CometCrossfire: Converts Wooden Arrows into Jester Arrows
+		Steel: Converts Wooden Arrows into Steel Arrows
+		SandStone: Converts Wooden Arrows into Talon Arrows
+		Durasteel: Converts Wooden Arrows into Durasteel Arrows
+		Trigun: Converts Musket balls into Hallow-point rounds
+		Mycelium: Fires barrages of Mycelium
+	}
 
 	WingInfo: {
 		5: Also increases life regen by 5
@@ -752,24 +861,81 @@ Items: {
 
 	Lore: {
 		MysteriousDiary.DisplayName: Mysterious Diary
-		LorePolaris.DisplayName: Polaris
-		LoreAdvisor.DisplayName: The Advisor
-		LoreGlowmoth.DisplayName: Glowmoth
-		LoreLux.DisplayName: Lux
-		LorePharaoh.DisplayName: Pharaoh's Curse
-		LorePutrid.DisplayName: Putrid Pinky
-		LoreSerpent.DisplayName: Subspace Serpent
-		LoreProvi.DisplayName: The Radiant One
-		LoreMirror.DisplayName: Cursed Mirror
-		LoreDylan.DisplayName: Dylan
+
+		LorePolaris: {
+			DisplayName: Polaris
+			Tooltip: ""
+		}
+
+		LoreAdvisor: {
+			DisplayName: The Advisor
+			Tooltip: ""
+		}
+
+		LoreGlowmoth: {
+			DisplayName: Glowmoth
+			Tooltip: ""
+		}
+
+		LoreLux: {
+			DisplayName: Lux
+			Tooltip: ""
+		}
+
+		LorePharaoh: {
+			DisplayName: Pharaoh's Curse
+			Tooltip: ""
+		}
+
+		LorePutrid: {
+			DisplayName: Putrid Pinky
+			Tooltip: ""
+		}
+
+		LoreSerpent: {
+			DisplayName: Subspace Serpent
+			Tooltip: ""
+		}
+
+		LoreProvi: {
+			DisplayName: The Radiant One
+			Tooltip: ""
+		}
+
+		LoreMirror: {
+			DisplayName: The Mirror
+			Tooltip: ""
+		}
+
+		LoreDylan: {
+			DisplayName: Dylan
+			Tooltip: ""
+		}
+
 		LoreAbominationn.DisplayName: The Abominationn
 		LoreDeviantt.DisplayName: The Deviantt
 		LoreMutant.DisplayName: The Mutant
 		SoltanBullyingSlip.DisplayName: Dylan's Anti-Soltan Chipnote
-		LoreMjolnir.DisplayName: Mjolnir
-		LorePrimordials.DisplayName: The Primordials
-		LoreThunderBird.DisplayName: The Grand Thunder Bird
-		LoreRagnarok.DisplayName: Ragnarok
+
+		LoreMjolnir: {
+			DisplayName: Mjolnir
+			Tooltip: ""
+		}
+
+		LorePrimordials: {
+			DisplayName: The Primordials
+			Tooltip: ""
+		}
+
+		LoreThunderBird: {
+			DisplayName: The Grand Thunder Bird
+			Tooltip: ""
+		}
+
+		LoreRagnarok: {
+			DisplayName: Ragnarok
+			Tooltip: ""
+		}
 	}
 
 	CatastrophicFabricationsMusicBox: {

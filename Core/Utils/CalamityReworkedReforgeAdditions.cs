@@ -1,13 +1,11 @@
 ﻿using System.Reflection;
-using CalamityMod;
+using CalamityMod.Prefixes;
 using InfernalEclipseAPI.Core.Systems;
-using InfernalEclipseAPI.Core.Utils;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 using SOTS.Void;
 using SOTSBardHealer;
-using Terraria.DataStructures;
 using Terraria.Utilities;
 using ThoriumMod;
 
@@ -19,13 +17,13 @@ namespace InfernalEclipseAPI.Core.Utils
 
         public override void Load()
         {
-            MethodInfo m = typeof(CalamityUtils).GetMethod(
+            MethodInfo m = typeof(ReforgeChange).GetMethod(
                 "GetReworkedReforge",
-                BindingFlags.Static | BindingFlags.NonPublic
+                BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public
             );
 
             if (m == null)
-                throw new MissingMethodException("CalamityUtils.GetReworkedReforge(Item, UnifiedRandom, int) not found.");
+                throw new MissingMethodException("ReforgeChange.GetReworkedReforge(Item, UnifiedRandom, int) not found.");
 
             _hook = new ILHook(m, InjectCrossmodReforgeLogic);
         }
@@ -48,7 +46,7 @@ namespace InfernalEclipseAPI.Core.Utils
                 i => i.MatchStloc(out prefixLocal)
             ))
             {
-                InfernalEclipseAPI.Instance.Logger.Error("[CalamityReforgeIL] Failed to locate 'prefix = -1' initialization.");
+                InfernalEclipseAPI.Instance.Logger.Error("[CalamityReforgeIL] Failed to locate 'prefix = -1' initialization in ReforgeChange.GetReworkedReforge.");
                 return;
             }
 
@@ -91,7 +89,6 @@ namespace InfernalEclipseAPI.Core.Utils
             // ------------------------------------------------------------
             EmitNestedLoadedCheckOrBranchFalse(c, nestedClassName: "Thorium", skipLabel: skipThorium);
 
-            // if (InfernalCrossmod.SOTSBardHealer.Loaded)
             EmitNestedLoadedCheckOrBranchFalse(c, nestedClassName: "SOTSBardHealer", skipLabel: skipBH);
 
             c.Emit(OpCodes.Ldarg_0); // item
@@ -104,7 +101,6 @@ namespace InfernalEclipseAPI.Core.Utils
 
             c.MarkLabel(skipBH);
 
-            // prefix = CalamityThoriumClassReforgeRework.ChooseThoriumPrefix(...)
             c.Emit(OpCodes.Ldarg_0); // item
             c.Emit(OpCodes.Ldarg_1); // rand
             c.Emit(OpCodes.Ldarg_2); // currentPrefix
@@ -115,7 +111,7 @@ namespace InfernalEclipseAPI.Core.Utils
 
             c.MarkLabel(skipThorium);
 
-            InfernalEclipseAPI.Instance.Logger.Info("[CalamityReforgeIL] Injection applied successfully.");
+            InfernalEclipseAPI.Instance.Logger.Info("[CalamityReforgeIL] Injection applied successfully (ReforgeChange.GetReworkedReforge).");
         }
 
         /// <summary>
@@ -124,12 +120,10 @@ namespace InfernalEclipseAPI.Core.Utils
         /// </summary>
         private static void EmitNestedLoadedCheckOrBranchFalse(ILCursor c, string nestedClassName, ILLabel skipLabel)
         {
-            // Locate nested type: InfernalCrossmod+{nestedClassName}
             Type nested = typeof(InfernalCrossmod).GetNestedType(nestedClassName, BindingFlags.Public);
             if (nested == null)
                 throw new MissingMemberException($"InfernalCrossmod nested class '{nestedClassName}' not found.");
 
-            // Prefer property: public static bool Loaded { get; }
             var loadedProp = nested.GetProperty("Loaded", BindingFlags.Public | BindingFlags.Static);
             if (loadedProp?.GetGetMethod() != null)
             {
@@ -138,7 +132,6 @@ namespace InfernalEclipseAPI.Core.Utils
                 return;
             }
 
-            // Fallback field: public static bool Loaded;
             var loadedField = nested.GetField("Loaded", BindingFlags.Public | BindingFlags.Static);
             if (loadedField != null && loadedField.FieldType == typeof(bool))
             {
@@ -176,55 +169,6 @@ namespace InfernalEclipseAPI.Core.Utils
             return m;
         }
     }
-
-    /*
-    public class CrossModCalReforgeRework : GlobalItem
-    {
-        public override void OnCreated(Item item, ItemCreationContext context)
-        {
-            storedPrefix = -1;
-        }
-
-        private static int storedPrefix = -1;
-
-        public override void PreReforge(Item item)
-        {
-            storedPrefix = item.prefix;
-        }
-
-        public override int ChoosePrefix(Item item, UnifiedRandom rand)
-        {
-            if (!CalamityServerConfig.Instance.RemoveReforgeRNG || Main.gameMenu || storedPrefix == -1) return -1;
-
-            int prefix;
-
-            if (InfernalCrossmod.SOTS.Loaded)
-            {
-                prefix = CalamityVoidClassReforgeRework.ChooseSOTSPrefix(item, rand, storedPrefix);
-                if (prefix != -1) return prefix;
-            }
-
-            if (InfernalCrossmod.Thorium.Loaded)
-            {
-                if (InfernalCrossmod.SOTSBardHealer.Loaded)
-                {
-                    prefix = CalamitySOTSThoriumVoidHybridClassReforgeRework.ChooseSOTSPrefix(item, rand, storedPrefix);
-                    if (prefix != -1) return prefix;
-                }
-
-                prefix = CalamityThoriumClassReforgeRework.ChooseThoriumPrefix(item, rand, storedPrefix);
-                if (prefix != -1) return prefix;
-            }
-
-            return -1;
-        }
-
-        public override void PostReforge(Item item)
-        {
-            storedPrefix = -1;
-        }
-    }
-    */
 
     [JITWhenModsEnabled("ThoriumMod")]
     [ExtendsFromMod("ThoriumMod")]

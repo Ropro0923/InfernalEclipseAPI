@@ -1,6 +1,7 @@
 ﻿using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
+using CalamityMod.Items.Placeables.Abyss;
 using CalamityMod.Items.SummonItems;
 using CalamityMod.Tiles.DraedonSummoner;
 using CalamityMod.Tiles.Furniture.CraftingStations;
@@ -60,10 +61,12 @@ namespace InfernalEclipseAPI.Common.ProgressionRework
                     {
                         if (hasRagnarok)
                         {
+                            /* Items removed in Calamity 2.1
                             if (recipe.HasIngredient(ModContent.ItemType<BloodSample>()))
                                 recipe.DisableRecipe(); //we only need one recipe enabled
                             if (recipe.HasIngredient(ModContent.ItemType<RottenMatter>()))
                                 recipe.RemoveIngredient(ModContent.ItemType<RottenMatter>());
+                            */
                         }
 
                         recipe.AddIngredient(sots.Find<ModItem>("OtherworldlyAlloy"), 3);
@@ -87,7 +90,7 @@ namespace InfernalEclipseAPI.Common.ProgressionRework
                     recipe.DisableRecipe();
 
                 //Fight providence, idc
-                if (recipe.HasResult(ModContent.ItemType<RuneofKos>()) && recipe.HasIngredient(ModContent.ItemType<UnholyEssence>()))
+                if (recipe.HasResult(ModContent.ItemType<MarkofProvidence>()) && recipe.HasIngredient(ModContent.ItemType<UnholyEssence>()))
                     recipe.DisableRecipe();
 
                 //Plantera
@@ -248,12 +251,12 @@ namespace InfernalEclipseAPI.Common.ProgressionRework
             recipe5.AddIngredient(ItemID.ClayBlock, 30);
             recipe5.AddIngredient(ModContent.ItemType<UnholyCore>(), 5);
             recipe5.AddIngredient(ModContent.ItemType<AshesofCalamity>(), 30);
-            recipe5.AddIngredient(ModContent.ItemType<DemonicBoneAsh>(), 20);
+            recipe5.AddIngredient(ItemID.AshBlock, 5);
             recipe5.AddTile(ModContent.TileType<SCalAltar>());
             recipe5.Register();
 
             //Sentinals
-            Recipe recipe2 = Recipe.Create(ModContent.ItemType<RuneofKos>(), 1);
+            Recipe recipe2 = Recipe.Create(ModContent.ItemType<MarkofProvidence>(), 1);
             recipe2.AddIngredient(ItemID.LunarBar, 3);
             recipe2.AddIngredient(ModContent.ItemType<DivineGeode>(), 10);
             recipe2.AddIngredient(ItemID.FragmentSolar, 5);
@@ -266,7 +269,7 @@ namespace InfernalEclipseAPI.Common.ProgressionRework
             recipe7.AddIngredient(ItemID.MartianConduitPlating, 30);
             recipe7.AddIngredient(ModContent.ItemType<DubiousPlating>(), 5);
             recipe7.AddIngredient(ModContent.ItemType<MysteriousCircuitry>(), 5);
-            recipe7.AddIngredient(ModContent.ItemType<OldPowerCell>(), 1);
+            recipe7.AddIngredient(ItemID.LihzahrdPowerCell, 1);
             recipe7.AddTile(ModContent.TileType<CodebreakerTile>());
             recipe7.Register();
 

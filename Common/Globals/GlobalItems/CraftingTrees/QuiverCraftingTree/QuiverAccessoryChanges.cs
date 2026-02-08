@@ -39,7 +39,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.QuiverCraftingTree
             if (!InfernalConfig.Instance.MergeCraftingTrees)
                 return;
 
-            if (item.type == ModContent.ItemType<ElementalQuiver>())
+            if (item.type == ModContent.ItemType<PlanebreakersPouch>())
             {
                 if (sots != null)
                 {
@@ -69,13 +69,13 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.QuiverCraftingTree
                 (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 2.0) * 0.5 + 0.5)
             );
 
-            if (item.type == ModContent.ItemType<ElementalQuiver>() && sots != null)
+            if (item.type == ModContent.ItemType<PlanebreakersPouch>() && sots != null)
             {
                 foreach (TooltipLine tooltip in tooltips)
                 {
-                    if (tooltip.Text.Contains("Grants a 20% chance to not consume arrows"))
+                    if (tooltip.Name.Contains("Tooltip") && tooltip.Text.Contains(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.BagOfAmmoConsume.ElementalQuiver")))
                     {
-                        tooltip.Text = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.BagOfAmmoConsume");
+                        tooltip.Text = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.BagOfAmmoConsume.ReplaceTooltip");
                         tooltip.OverrideColor = new Color?(InfernalRed);
                     }
                 }

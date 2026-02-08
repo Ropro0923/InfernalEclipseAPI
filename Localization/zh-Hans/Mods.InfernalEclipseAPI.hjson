@@ -1,4 +1,5 @@
 UI: {
+	RagnarokIconText: Ragnarok Mode is enabled
 	NoRespawn: 复活受限：在 {0} 人联机时，每场 Boss 战中每位玩家只有一次重生机会！
 	NoRespawn2: 复活受限：在 {1} 人联机时，每场 Boss 战中每位玩家只有 {0} 次重生机会！
 	NoRespawn3: 复活受限：在 {0} 人联机时，Boss 战期间不允许复活！
@@ -30,14 +31,13 @@ DifficultyUI: {
 		'''
 	ExpandedDescription:
 		'''
-		[c/B32E81:将世界难度设置为大师并启用炼狱模式。]
-		[c/B32E81:启用后无法通过灾厄难度滑块禁用大师模式。]
-		[c/B32E81:敌怪和Boss现在将拥有非常高的基础属性，并在多人游戏中的增幅更加危险。]
-		[c/FF0055:你能征服《诸神黄昏：炼狱蚀光》吗？]
+		[c/B32E81:Seemlessly merges both Death Mode and Infernum mode.]
+		[c/B32E81:Enemies & bosses will now have very high base stats and scale more agressively in multiplayer.]
+		[c/FF0055:Can you master the Infernal Eclipse of Ragnarok?]
 		'''
-	InfernumText: 炼狱蚀日已然升起……
-	InfernumText2: 失格的挑战者已经离开。
-	MasterToggle: 大师模式现已启用！
+	// Activation: The Infernal Eclipse has risen...
+	// Deactivation: Another unworthy challenger has walked away.
+	// MasterToggle: Master mode is now enabled!
 }
 
 WelcomeMessage: {
@@ -68,6 +68,12 @@ TimeFreezePrevention: {
 	Other: 虚空魔法孵化器的效果被阻拦！
 }
 
+BossCheesePrevention: {
+	TheDestroyer: 我不会让你轻易摧毁我的造物。
+	Plantera: 远古力量正阻止你使用该物品……
+	Yharon: 远古力量正阻止你使用该物品……
+}
+
 ItemTooltip: {
 	BasicDamage: 基本伤害
 	OmniShield: -至高神盾-
@@ -81,6 +87,29 @@ ItemTooltip: {
 	BladecrestNerf: 一股邪恶的力量正在侵蚀它的部分威能……
 	EclipseFang: "[炼狱蚀光]: 武器增强永久生效"
 	ScytheThrow: 右键投掷镰刀，它会以弧线轨迹返回
+	ThorsHammerPro: 命中时施加3秒的带电
+	BountifulHarvest: 交替射出穿透毒刺
+
+	SoulAnchor: {
+		OrigTooltip1: 将你的灵魂和生命值锚定在当前位置
+		Replace1: 将你的灵魂和生命值锚定在当前位置，持续20秒
+		OrigTooltip2: 右键回到你的灵魂处并将生命值回退到原先的值
+		Replace2: 在此期间，右键回到你的灵魂处并将生命值回退到原先的一半
+		OrigTooltip3: 每5分钟只能使用一次且在回来后会侵蚀你的灵魂
+		Replace3:
+			'''
+			回来后会侵蚀你的灵魂并获得耐药性
+			每5分钟只能使用一次
+			'''
+		Player1: 你的定魂锚已消失。
+		Player2: 定魂锚已设置，你有20秒的时间返回。
+	}
+
+	WhiteDwarfSetBonus:
+		'''
+
+		象牙状火焰触发后有2秒冷却时间
+		'''
 	PhoenixStaff:
 		'''
 		右键喷射火焰流，对敌怪造成神圣之怒减益
@@ -192,7 +221,12 @@ ItemTooltip: {
 			所有火系减益的伤害倍率乘以1.5，不与下位效果叠加
 			攻击附带狱火效果
 			'''
-		BagOfAmmoConsume: 有20%的概率不消耗弹药
+
+		BagOfAmmoConsume: {
+			ElementalQuiver: 20%几率不消耗箭矢
+			ReplaceTooltip: 有20%的概率不消耗弹药
+		}
+
 		BagOfAmmoOther:
 			'''
 			命中敌人概率返还弹药
@@ -211,6 +245,12 @@ ItemTooltip: {
 			光辉镰刀的灵魂精华也会回复虚空值
 			虚空镰刀的灵魂精华回复更多虚空值
 			'''
+
+		SealedContract: {
+			OrigTooltip1: 最大生命增加60
+			OrigTooltip2: 治疗法术会额外治疗5点生命值
+		}
+
 		ContractNerf: 治疗法术额外治疗2生命值
 		Tuner1:
 			'''
@@ -256,6 +296,13 @@ ItemTooltip: {
 		Skull: 仆从和哨兵在击杀敌人后短暂地多造成2点伤害
 		CyanPearl: 减半哨兵受到的召唤伤害惩罚
 		Watch: 你的哨兵会永久存在，并在两分钟内增加最多15%伤害
+
+		FortressGenerator: {
+			OrigTooltip1: 增加10%伤害和2点生命恢复速度
+			Replace: 增加10%召唤伤害
+			OrigTooltip2: 当生命值超过25%时，会吸收队伍中玩家25%的所受伤害，并对击退免疫
+		}
+
 		Fortress:
 			'''
 			在你的左右生成4个平台
@@ -306,6 +353,13 @@ ItemTooltip: {
 			'''
 		Mantle: 每10秒驱散最多一个伤害性的的减益效果
 		TerraDefend: 当生命值低于25%时，你将迅速恢复生命并获得额外防御力
+
+		TerrariumDefender: {
+			lifeUP: 最大生命值增加20
+			invincibility: 延长受伤后的无敌帧时间
+			immunity: 免疫大部分状态减益，击退和火块
+		}
+
 		ScytheScale: 持续增强直到吞噬者陨落
 		ScytheSummon: 当存在召唤物时，造成的伤害减少
 		ScytheSummonOn: 当存在召唤物时，造成的伤害减少
@@ -320,11 +374,46 @@ ItemTooltip: {
 		Scuttler: 潜伏攻击的弹幕消失时会生成一根宝石尖刺
 		BloodyFilthy: 潜伏攻击会附带8点护甲穿透，额外造成8%伤害并为你回复2点生命值
 		NoExhaustion: 装备时移除所有疲劳值效果
+
+		ToothNecklace: {
+			SandShark: {
+				OrigTooltip: 增加10点护甲穿透
+				CommonReplace: 增加12点护甲穿透
+				SOTSReplace: 增加12点护甲穿透，5%暴击率和40点最大生命值
+				ThoriumReplace: 增加12点护甲穿透
+			}
+
+			Prismarine: {
+				OrigTooltip: 增加8点护甲穿透和20点最大生命值
+				CommonReplace: 增加5点护甲穿透和20点最大生命值
+			}
+
+			Reaper: {
+				OrigTooltip: 增加15点护甲穿透
+				SOTSReplace: 增加12点护甲穿透，5%暴击率和40点最大生命值
+			}
+		}
+
 		Prisma: 定期释放会伤害敌人的水波，最多无视敌人16点防御
 		Prisma2: 生命值越低，释放的水波就越多
 		Prisma3: 隐藏饰品可见性时会禁用水波
 		Midnight1: 暴击会释放梦魇手臂，造成10%伤害并将敌人吸引到一起
 		Midnight2: 有6秒冷却时间
+
+		lifeQuartzShield: {
+			CommoTooltip: 增加你的生命再生速率
+			Under25HP1:
+				'''
+				低于25%生命值时受到伤害会在你周围环绕一个保护性泡泡
+				在泡泡中时，你每秒会恢复与治疗加成相同的生命值
+				'''
+			Under25HP2:
+				'''
+				另外，受到的伤害会降低10%
+				此效果触发后需要30秒重新充能
+				'''
+		}
+
 		SHS:
 			'''
 			受伤时会使冰碎块围绕你
@@ -337,6 +426,16 @@ ItemTooltip: {
 			点燃弹幕后，护盾必须要10秒再生
 			低于25%生命值时，护盾生成的速度翻倍
 			'''
+
+		Omni: {
+			OrigTooltip: 增加15%的音波伤害,演奏速度,和音波暴击率
+			Replace:
+				'''
+				增加15%音波伤害
+				增加8%的音波演奏速度,音波暴击率,和灵感值恢复速度
+				'''
+		}
+
 		OmniIns: 最大灵感值增加5
 		OmniEmp: 每拥有一种咒音增幅使移动速度增加2%，音波演奏速度增加1%
 		ShinobiNerf: 这个效果有2秒冷却时间
@@ -349,11 +448,12 @@ ItemTooltip: {
 		CloverNerf: 吸血效果有0.5秒冷却时间
 		CloverNerf2: 吸血效果有1秒冷却时间
 		RingofRestNerf: 灵感恢复效果有1秒冷却时间
-		SpiritInsignia:
-			'''
-			增加1点虚空恢复量，并增加25%虚空恢复速度
-			对除了辉光圣魂以外的灵魂敌怪造成双倍伤害
-			'''
+
+		SpiritInsignia: {
+			OrigTooltip: 使你获得无限的翅膀和火箭靴飞行时间
+			Replace: 增加25%翅膀飞行时间
+		}
+
 		AscendantInsignia:
 			'''
 			移动和跳跃速度提高10%，加速度提高至1.1倍
@@ -386,7 +486,16 @@ ItemTooltip: {
 			'''
 	}
 
-	AmmoConversion.Mycelium: 发射真菌弹幕
+	AmmoConversion: {
+		FrostFury: 将木箭转换为霜冻箭
+		StreamSting: 将木箭转换为骨箭
+		CometCrossfire: 将木箭转换为小丑之箭
+		Steel: 将木箭转换为钢箭
+		SandStone: 将木箭转换为爪箭
+		Durasteel: 将木箭转换为耐钢箭
+		Trigun: 将火枪弹转换为神圣空尖弹
+		Mycelium: 发射真菌弹幕
+	}
 
 	WingInfo: {
 		5: +5HP/s生命再生
@@ -749,24 +858,81 @@ Items: {
 
 	Lore: {
 		MysteriousDiary.DisplayName: 神秘日记
-		LorePolaris.DisplayName: 极北灾星
-		LoreAdvisor.DisplayName: 启示异械
-		LoreGlowmoth.DisplayName: 荧灯蛾
-		LoreLux.DisplayName: 辉光圣魂
-		LorePharaoh.DisplayName: 法老咒魔
-		LorePutrid.DisplayName: 腐蚀之粉
-		LoreSerpent.DisplayName: 亚空骇蟒
-		LoreProvi.DisplayName: 星河
-		LoreMirror.DisplayName: 诅咒镜像
-		LoreDylan.DisplayName: 迪伦
+
+		LorePolaris: {
+			DisplayName: 极北灾星
+			// Tooltip: ""
+		}
+
+		LoreAdvisor: {
+			DisplayName: 启示异械
+			// Tooltip: ""
+		}
+
+		LoreGlowmoth: {
+			DisplayName: 荧灯蛾
+			// Tooltip: ""
+		}
+
+		LoreLux: {
+			DisplayName: 辉光圣魂
+			// Tooltip: ""
+		}
+
+		LorePharaoh: {
+			DisplayName: 法老咒魔
+			// Tooltip: ""
+		}
+
+		LorePutrid: {
+			DisplayName: 腐蚀之粉
+			// Tooltip: ""
+		}
+
+		LoreSerpent: {
+			DisplayName: 亚空骇蟒
+			// Tooltip: ""
+		}
+
+		LoreProvi: {
+			DisplayName: 星河
+			// Tooltip: ""
+		}
+
+		LoreMirror: {
+			DisplayName: 镜像
+			// Tooltip: ""
+		}
+
+		LoreDylan: {
+			DisplayName: 迪伦
+			// Tooltip: ""
+		}
+
 		LoreAbominationn.DisplayName: 憎恶
 		LoreDeviantt.DisplayName: 戴薇安
 		LoreMutant.DisplayName: 突变体
 		SoltanBullyingSlip.DisplayName: 迪伦的反索坦芯片便笺
-		LoreMjolnir.DisplayName: 雷神之锤
-		LorePrimordials.DisplayName: 始源诸神
-		LoreThunderBird.DisplayName: 惊雷王鹰
-		LoreRagnarok.DisplayName: 诸神黄昏
+
+		LoreMjolnir: {
+			DisplayName: 雷神之锤
+			// Tooltip: ""
+		}
+
+		LorePrimordials: {
+			DisplayName: 始源诸神
+			// Tooltip: ""
+		}
+
+		LoreThunderBird: {
+			DisplayName: 惊雷王鹰
+			// Tooltip: ""
+		}
+
+		LoreRagnarok: {
+			DisplayName: 诸神黄昏
+			// Tooltip: ""
+		}
 	}
 
 	CatastrophicFabricationsMusicBox: {
@@ -1354,13 +1520,13 @@ Items: {
 			当不可思议条完全充满时，你的武器属性和移动速度都会提升
 			[c/7C0A02: 你杀不死小丑！！！是小丑杀死你！！！]
 			'''
-		/* DynamicTooltip:
+		DynamicTooltip:
 			'''
-			While holding this weapon, you have a improbability bar
-			The bar charges by dealing or taking damage
-			When the bar is full, press {0} to gain increased combat stats and movement speed for 1 minute
-			[c/7C0A02: YOU DO NOT KILL CLOWN!!! CLOWN KILLS YOU!!!]
-			''' */
+			持有此武器时，你会获得不可思议条
+			造成伤害或承受伤害会为其充能
+			当不可思议条完全充满时，按下 {0} 键提升战斗属性和移动速度，持续1分钟
+			[c/7C0A02: 你杀不死小丑！！！是小丑杀死你！！！]
+			'''
 	}
 
 	AngryPudding: {
@@ -1980,7 +2146,7 @@ NPCs: {
 
 KeyBindName: {
 	SubspaceBoostHotkey: 亚空助推冲刺热键
-	// ItemAbility: Item Ability
+	ItemAbility: 物品能力
 }
 
 Keybinds: {
@@ -1988,7 +2154,7 @@ Keybinds: {
 		InfernalEclipseAPI: {
 			KeyBindName: {
 				SubspaceBoostHotkey.DisplayName: 亚空助推冲刺热键
-				// ItemAbility.DisplayName: Item Ability
+				ItemAbility.DisplayName: 物品能力
 			}
 		}
 	}
