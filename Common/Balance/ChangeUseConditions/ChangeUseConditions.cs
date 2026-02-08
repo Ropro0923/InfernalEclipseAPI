@@ -66,10 +66,12 @@ namespace InfernalEclipseAPI.Common.Balance.ChangeUseConditions
             if (InfernalConfig.Instance.PreventBossCheese)
             {
                 ModLoader.TryGetMod("CalamityMod", out Mod cal);
+                /*
                 if (cal.TryFind("SubmarineShocker", out ModItem shocker))
                     ShockerID = shocker.Type;
 
                 CanUseItemEvent += ModifySubmarineShockerUseConditions;
+                */
 
                 if (cal.TryFind("CosmicDischarge", out ModItem discharge))
                     DischargeID = discharge.Type;
@@ -124,8 +126,10 @@ namespace InfernalEclipseAPI.Common.Balance.ChangeUseConditions
             return true;
         }
 
+        /*
         private bool ModifySubmarineShockerUseConditions(Item item, Player player)
         {
+
             if (item.type == ShockerID)
             {
                 if (NPC.AnyNPCs(NPCID.TheDestroyer))
@@ -155,6 +159,7 @@ namespace InfernalEclipseAPI.Common.Balance.ChangeUseConditions
             }
             return true;
         }
+        */
 
         private bool ModifyLodeStoneStaffUseConditions(Item item, Player player)
         {

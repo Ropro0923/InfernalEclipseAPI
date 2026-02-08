@@ -177,10 +177,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 ModLoader.TryGetMod("CalamityMod", out Mod cal);
 
                 #region Melee
+                /*
                 if (GetItem(cal, "SubmarineShocker", item))
                 {
                     item.damage = 55;
                 }
+                */
 
                 if (item.type == ModContent.ItemType<InfernaCutter>())
                 {
@@ -270,10 +272,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     item.useAnimation = 19;
                 }
 
+                /*
                 if (GetItem(cal, "Arietes41", item))
                 {
                     item.damage = 70;
                 }
+                */
 
                 if (GetItem(cal, "ElementalEruption", item))
                 {
@@ -352,10 +356,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 #endregion
 
                 #region Rogue
+                /*
                 if (item.type == ModContent.ItemType<FishboneBoomerang>())
                 {
                     item.damage = 35;
                 }
+                */
 
                 if (item.type == ModContent.ItemType<Turbulance>())
                 {

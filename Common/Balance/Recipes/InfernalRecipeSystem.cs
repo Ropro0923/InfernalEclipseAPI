@@ -343,6 +343,15 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     }
 
                 }
+                
+                if (InfernalConfig.Instance.VanillaBalanceChanges)
+                {
+                    if (recipe.HasResult(ItemID.DemonScythe))
+                    {
+                        recipe.AddCondition(Condition.DownedSkeletron);
+                    }
+                }
+
                 #endregion
 
                 #region Calamity
