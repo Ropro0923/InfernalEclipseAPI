@@ -1,4 +1,5 @@
 UI: {
+	RagnarokIconText: Ragnarok Mode is enabled
 	NoRespawn: 复活受限：在 {0} 人联机时，每场 Boss 战中每位玩家只有一次重生机会！
 	NoRespawn2: 复活受限：在 {1} 人联机时，每场 Boss 战中每位玩家只有 {0} 次重生机会！
 	NoRespawn3: 复活受限：在 {0} 人联机时，Boss 战期间不允许复活！
@@ -22,18 +23,18 @@ UI: {
 }
 
 DifficultyUI: {
-	// Name: Ragnarok
-	/* ShortDescription:
+	Name: 诸神黄昏
+	ShortDescription:
 		'''
-		[c/B32E81:An extreme version of Infernum and the intended difficulty of Infernal Eclipse of Ragnarok.]
-		[c/B32E81:This mode does not work with the For the Worthy seed.]
-		''' */
-	/* ExpandedDescription:
+		[c/B32E81:炼狱模式的极端版本以及作为诸神黄昏：炼狱蚀光的预期难度。]
+		[c/B32E81:该模式无法在For the Worthy种子中运行。]
+		'''
+	ExpandedDescription:
 		'''
 		[c/B32E81:Seemlessly merges both Death Mode and Infernum mode.]
 		[c/B32E81:Enemies & bosses will now have very high base stats and scale more agressively in multiplayer.]
 		[c/FF0055:Can you master the Infernal Eclipse of Ragnarok?]
-		''' */
+		'''
 	// Activation: The Infernal Eclipse has risen...
 	// Deactivation: Another unworthy challenger has walked away.
 	// MasterToggle: Master mode is now enabled!
@@ -53,7 +54,7 @@ WelcomeMessage: {
 	InfernumForced: 炼狱能量已注入此界……
 	RagnarokBalance: 注意：为确保武器平衡按预期生效，请在 Ragnarok 的模组配置中将“通用武器调整”选项关闭，否则改动会叠加，使武器强度远超预期。
 	RagnarokRework: 注意：检测到你同时启用了 Ragnarok 模组和 Thorium Bosses Reworked。为获得预期的游戏体验，请在 Ragnarok 模组配置中将所有 Boss 选项切换到 瑟银BOSS重置。
-	// GulaVaultMessage: The vault refuses to open. A stronger evil must be defeated first...
+	GulaVaultMessage: 暴食保险库拒绝被打开。你必须先打败一个更为强大的邪恶生物……
 }
 
 ItemTooltip: {
@@ -96,50 +97,51 @@ ItemTooltip: {
 		"你没有疯……你真是疯了!"
 		复仇模式专属
 		'''
-	/* BloodstainedCoin:
+	BloodstainedCoin:
 		'''
-		Critical strikes have a 50% chance to deal 10 more damage
-		Receiving damage has a 75% chance to bleed you
-		''' */
-	/* PutridCoin:
+		暴击有50%的概率造成10点额外伤害
+		受伤时有75%的概率对你造成流血debuff
 		'''
-		Critical strikes have a 50% chance to deal 10 more damage
-		Receiving damage has a 75% chance to poison you
-		''' */
-	/* SubspaceLocket:
+	PutridCoin:
 		'''
-		Summons a Subspace Servant to assist in combat
-		Uses the item in your last inventory slot for you
-		Decreases damage by 50% multiplicatively
-		Increases max void by 50, but reduces healing received from potions by 40
-		''' */
-	// EyeOfChaos: Increases critical strike chance by 12%, does not stack with downgrades
-	// SnakeEyes: Increases critical strike chance by 3%
-	// ChaosBadge: Increases critical strike chance by 5%
-	/* FocusReticle:
+		受伤时有75%的概率对你造成中毒debuff
+		暴击有50%的概率造成10点额外伤害
 		'''
-		Increases critical strike chance by 15%, does not stack with downgrades
-		Critical strikes deal 40 more damage
-		Immunity to bleeding and poisoned debuffs
-		''' */
-	/* Starbelt:
+	SubspaceLocket:
 		'''
-		Critical strikes recover mana
-		Increases max mana by 40
-		Increases magic critical strike chance by 5%
-		''' */
-	/* GlowSpores:
+		召唤一只亚空之仆协助战斗
+		亚空之仆会为你使用最后一格物品栏的物品
+		会成倍降低50%伤害
+		减少15%真近战伤害
+		增加50点最大虚空值，但会降低40点从药水治疗的生命值
 		'''
-		Increases mana received from potions by 40
-		Increases magic critical strike chance by 2%
-		''' */
-	/* SwallowedPenny:
+	EyeOfChaos: 增加12%暴击率，无法与下位饰品叠加
+	SnakeEyes: 增加3%暴击率
+	ChaosBadge: 增加5%暴击率
+	FocusReticle:
 		'''
-		Increases critical strike chance by 2%
-		Generate coins when hurt
-		'Gulp!'
-		''' */
-	// SpiritGlove: Increases void regeneration speed by 5% and melee critical strike chance by 4%
+		增加15%暴击率，无法与下位饰品叠加
+		暴击会造成40点额外伤害
+		对流血和中毒debuff免疫
+		'''
+	Starbelt:
+		'''
+		暴击时会恢复魔力值
+		增加40点最大魔力值
+		增加5%魔法暴击率
+		'''
+	GlowSpores:
+		'''
+		增加40点从药水恢复的魔力值
+		增加2%魔法暴击率
+		'''
+	SwallowedPenny:
+		'''
+		增加2%暴击率
+		受伤时会产生钱币
+		'咕噜！'
+		'''
+	SpiritGlove: 增加5%虚空恢复速度和4%近战暴击率
 
 	MergedCraftingTreeTooltip: {
 		Gilded: 耀刃之翼效果

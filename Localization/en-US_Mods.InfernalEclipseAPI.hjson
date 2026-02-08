@@ -1,4 +1,5 @@
 UI: {
+	RagnarokIconText: Ragnarok Mode is enabled
 	NoRespawn: Respawn prevented: Only one respawn per boss in {0} multiplayer!
 	NoRespawn2: Respawn prevented: Only {0} respawns per boss in {1} multiplayer!
 	NoRespawn3: Respawn prevented: No respawns during bosses in {0} multiplayer!

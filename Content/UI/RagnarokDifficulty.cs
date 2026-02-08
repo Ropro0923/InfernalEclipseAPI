@@ -21,7 +21,7 @@ namespace InfernalEclipseAPI.Content.UI
         {
             get
             {
-                _outlineTexture ??= ModContent.Request<Texture2D>("CalamityMod/Projectiles/InvisibleProj");
+                _outlineTexture ??= ModContent.Request<Texture2D>("InfernalEclipseAPI/Assets/ExtraTextures/UI/RagnarokIcon_Outline");
 
                 return _outlineTexture;
             }
@@ -35,7 +35,7 @@ namespace InfernalEclipseAPI.Content.UI
         {
             get
             {
-                _textureDisabled ??= ModContent.Request<Texture2D>("InfernalEclipseAPI/Assets/RagnarokIcon");
+                _textureDisabled ??= ModContent.Request<Texture2D>("InfernalEclipseAPI/Assets/ExtraTextures/UI/RagnarokIcon_Off");
 
                 return _textureDisabled;
             }
@@ -122,7 +122,7 @@ namespace InfernalEclipseAPI.Content.UI
         {
             get
             {
-                _texture ??= ModContent.Request<Texture2D>("InfernalEclipseAPI/Assets/RagnarokIcon");
+                _texture ??= ModContent.Request<Texture2D>("InfernalEclipseAPI/Assets/ExtraTextures/UI/RagnarokIcon");
 
                 return _texture;
             }

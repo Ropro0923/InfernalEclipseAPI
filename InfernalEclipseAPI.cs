@@ -34,6 +34,7 @@ using InfernalEclipseAPI.Content.UI;
 using Terraria.Chat;
 using Terraria.Localization;
 using InfernalEclipseAPI.Core.Utils;
+using CalamityMod.World;
 
 namespace InfernalEclipseAPI
 {
@@ -176,11 +177,13 @@ namespace InfernalEclipseAPI
                 if (InfernalConfig.Instance.MoveDeerclopsChecklistEntry)
                 {
                     #region Get Types
+#nullable enable
                     Type? BossChecklist = bossChecklist.GetType(); // BossChecklist Type can be obtained via simply Mod.GetType()
                     // As Mod.Code.GetType(string name) is not implemented however, we use Mod.Code.GetTypes() and find the other ones we need
                     Type[]? TypeList = bossChecklist.Code.GetTypes();
                     Type? BossTracker = TypeList.Where<Type?>(type => type?.Name == "BossTracker")?.First();
                     Type? EntryInfo = TypeList.Where<Type?>(type => type?.Name == "EntryInfo")?.First();
+#nullable disable
                     #endregion
 
                     #region Get Fields
@@ -188,14 +191,20 @@ namespace InfernalEclipseAPI
                     var BCInstance = BossChecklist?.GetField("instance", LumUtils.UniversalBindingFlags)?.GetValue(null);
                     var trackerInstance = BossChecklist?.GetField("bossTracker", LumUtils.UniversalBindingFlags)?.GetValue(null);
                     // Get the EntryInfo List<> field and object by using the Boss Tracker instance
+#nullable enable
                     FieldInfo? SortedEntries_Field = BossTracker?.GetField("SortedEntries", LumUtils.UniversalBindingFlags);
+#nullable disable
                     var SortedEntries = SortedEntries_Field?.GetValue(trackerInstance);
                     // Get the field needed to readd the portrait texture after we replace the EntryInfo that contained it
+#nullable enable
                     FieldInfo? PortraitTexture_Field = EntryInfo?.GetField("portraitTexture", LumUtils.UniversalBindingFlags);
+#nullable disable
+
                     #endregion
 
                     #region Get Methods
                     // As there's no way to normally use a List<> of a non-public type, hack into its List<T> and just get the methods that handle indexing
+#nullable enable
                     PropertyInfo? List_EntryInfo_Property = SortedEntries?.GetType().GetProperty("Item", LumUtils.UniversalBindingFlags);
                     MethodInfo? List_EntryInfo_GetMethod = List_EntryInfo_Property?.GetGetMethod();
                     MethodInfo? List_EntryInfo_SetMethod = List_EntryInfo_Property?.GetSetMethod();
@@ -206,6 +215,7 @@ namespace InfernalEclipseAPI
                     // Very hackily resolve GetMethod ambiguity and obtain the method we require to make a replacement for Deerclops' EntryInfo
                     MethodInfo[]? MakeVanillaBoss_MethodList = EntryInfo?.GetMethods(LumUtils.UniversalBindingFlags);
                     MethodInfo? MakeVanillaBoss_Method = MakeVanillaBoss_MethodList?.Where(m => m.Name == "MakeVanillaBoss" && m.GetParameters().Any(p => p.Name == "npcID"))?.First();
+
                     void MakeVanillaBoss(ref object? info, string texturePath)
                     {
                         var obj = MakeVanillaBoss_Method?.Invoke(null, [0, 4.5f, "NPCName.Deerclops", Terraria.ID.NPCID.Deerclops, () => NPC.downedDeerclops]); // Make a replacement EntryInfo
@@ -215,6 +225,7 @@ namespace InfernalEclipseAPI
                         }
                         info = obj;
                     }
+#nullable disable
                     #endregion
                     // Finalize after getting everything necessary to replace Deerclops' entry
                     var DeerclopsEntry = FindEntryFromKey_Method?.Invoke(trackerInstance, ["Terraria Deerclops"]); // Get EntryInfo via FindEntryFromKey, where the key is "<ModSource> <NPCName>"
@@ -306,11 +317,42 @@ namespace InfernalEclipseAPI
 
                 case InfernalEclipseMessageType.SyncRagnarokState:
                     {
+                        bool enabled = reader.ReadBoolean();
+
                         if (Main.netMode == NetmodeID.Server)
                         {
-                            InfernalWorld.RagnarokModeEnabled = reader.ReadBoolean();
+                            InfernalWorld.RagnarokModeEnabled = enabled;
+
+                            if (enabled)
+                            {
+                                CalamityWorld.revenge = true;
+                                CalamityWorld.death = true;
+                                WorldSaveSystem.InfernumModeEnabled = true;
+                                if (!Main.GameModeInfo.IsJourneyMode)
+                                    Main.GameMode = GameModeID.Master;
+                            }
+
+                            // rebroadcast to all clients (except sender)
+                            ModPacket p = GetPacket();
+                            p.Write((byte)InfernalEclipseMessageType.SyncRagnarokState);
+                            p.Write(enabled);
+                            p.Send(-1, whoAmI);
+
                             NetMessage.SendData(MessageID.WorldData);
                         }
+                        else if (Main.netMode == NetmodeID.MultiplayerClient)
+                        {
+                            InfernalWorld.RagnarokModeEnabled = enabled;
+                            if (enabled)
+                            {
+                                CalamityWorld.revenge = true;
+                                CalamityWorld.death = true;
+                                WorldSaveSystem.InfernumModeEnabled = true;
+                                if (!Main.GameModeInfo.IsJourneyMode)
+                                    Main.GameMode = GameModeID.Master;
+                            }
+                        }
+
                         break;
                     }
             }
