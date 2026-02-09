@@ -328,7 +328,7 @@ namespace InfernalEclipseAPI.Core.Systems.BossRush
                 }, permittedNPCs: [SOTSNPC("SmallGas")]));
             }
 
-            if (InfernalCrossmod.Calamity.Loaded)
+            if (InfernalCrossmod.Clamity.Loaded)
             {
                 Bosses.Add(new Boss(ClamityNPC("ClamitasBoss")));
             }

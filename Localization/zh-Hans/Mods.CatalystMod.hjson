@@ -38,3 +38,9 @@ Items: {
 		[c/c61b40:化作毁灭之影，重返这个世界]
 		'''
 }
+
+/* ArmorSetBonus.IntergelacticRanged:
+	'''
+	Ranged weapons summon stars for 10% damage
+	You are immune to the Astral Blight and your attacks inflict it
+	''' */

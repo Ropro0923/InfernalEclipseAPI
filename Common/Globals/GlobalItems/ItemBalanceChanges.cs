@@ -2080,7 +2080,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     {
                         item.useTime = 11;
                         item.useAnimation = 11;
-                        item.damage = 1000;
+                        item.damage = 800;
                     }
                     #endregion
                     #endregion
@@ -2494,12 +2494,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
                     if (GetItem(thorium, "AlmanacofAgony", item))
                     {
-                        item.damage = 850;
+                        item.damage = 650;
                     }
 
                     if (GetItem(thorium, "DevilsClaw", item))
                     {
-                        item.damage = 600;
+                        item.damage = 675;
                     }
 
                     if (GetItem(thorium, "NorthernLight", item))
@@ -5728,18 +5728,22 @@ namespace InfernalEclipseAPI.Common.GlobalItems
 
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
+            /*
             if (item.type == ModContent.ItemType<BladecrestOathsword>() && !NPC.downedBoss2 && InfernalConfig.Instance.CalamityBalanceChanges)
             {
                 damage *= 0.71f;
             }
+            */
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
+            /*
             if (item.type == ModContent.ItemType<BladecrestOathsword>() && !NPC.downedBoss2)
             {
                 AddTooltip(tooltips, Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.BladecrestNerf"));
             }
+            */
         }
 
         public void AddTooltip(List<TooltipLine> tooltips, string stealthTooltip)
