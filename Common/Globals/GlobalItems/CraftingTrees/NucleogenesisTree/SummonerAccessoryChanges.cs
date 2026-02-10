@@ -349,6 +349,10 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.NucleogenesisTree
 
             string cyanPearlInfo = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.CyanPearl");
 
+            string fortessOrig1 = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.FortressGenerator.OrigTooltip1");
+            string fortessOrig2 = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.FortressGenerator.OrigTooltip2");
+            string replaceInfo = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.FortressGenerator.Replace");
+
             if (sots != null & thorium != null)
             {
                 //if (item.type == sots.Find<ModItem>("PlatformGenerator").Type)
@@ -363,11 +367,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.NucleogenesisTree
                 {
                     foreach (TooltipLine tooltip in tooltips)
                     {
-                        if (tooltip.Text.Contains("Increases damage by 10% and life regeneration by 2"))
+                        if (tooltip.Text.Contains(fortessOrig1))
                         {
-                            tooltip.Text = "Increases summon damage by 10%";
+                            tooltip.Text = replaceInfo;
                         }
-                        if (tooltip.Text.Contains("Absorbs 25% of damage done to players on your team when above 25% life and grants immunity to knockback"))
+                        if (tooltip.Text.Contains(fortessOrig2))
                         {
                             tooltip.Text = skullInfo;
                             tooltip.OverrideColor = new Color?(InfernalRed);
@@ -529,11 +533,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.NucleogenesisTree
                 {
                     foreach (TooltipLine tooltip in tooltips)
                     {
-                        if (tooltip.Text.Contains("Increases damage by 10% and life regeneration by 2"))
+                        if (tooltip.Text.Contains(fortessOrig1))
                         {
-                            tooltip.Text = "Increases summon damage by 10%";
+                            tooltip.Text = replaceInfo;
                         }
-                        if (tooltip.Text.Contains("Absorbs 25% of damage done to players on your team when above 25% life and grants immunity to knockback"))
+                        if (tooltip.Text.Contains(fortessOrig2))
                         {
                             tooltip.Text = cyanPearlInfo;
                             tooltip.OverrideColor = new Color?(InfernalRed);

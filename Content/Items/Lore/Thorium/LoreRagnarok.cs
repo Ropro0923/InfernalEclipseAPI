@@ -20,15 +20,15 @@ namespace InfernalEclipseAPI.Content.Items.Lore.Thorium
         {
             Item.width = 38;
             Item.height = 26;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.rare = ModContent.RarityType<CosmicPurple>();
             Item.consumable = false;
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             TooltipLine fullLore = new(Mod, "Lore", Language.GetTextValue("Mods.InfernalEclipseAPI.Lore.Ragnarok"));
-            if (LoreColor.HasValue)
-                fullLore.OverrideColor = LoreColor.Value;
+            if (ExtensionIndicatorColor.HasValue)
+                fullLore.OverrideColor = ExtensionIndicatorColor.Value;
             HoldShiftTooltip(tooltips, new TooltipLine[] { fullLore }, true);
         }
 

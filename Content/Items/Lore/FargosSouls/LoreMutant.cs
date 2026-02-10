@@ -61,8 +61,8 @@ namespace InfernalEclipseAPI.Content.Items.Lore.FargosSouls
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             TooltipLine fullLore = new(Mod, "MutantLore", Language.GetTextValue("Mods.InfernalEclipseAPI.Lore.Mutant"));
-            if (LoreColor.HasValue)
-                fullLore.OverrideColor = LoreColor.Value;
+            if (ExtensionIndicatorColor.HasValue)
+                fullLore.OverrideColor = ExtensionIndicatorColor.Value;
             HoldShiftTooltip(tooltips, new TooltipLine[] { fullLore }, true);
         }
 

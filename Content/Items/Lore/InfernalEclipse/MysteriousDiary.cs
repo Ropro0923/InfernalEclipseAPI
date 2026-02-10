@@ -37,8 +37,8 @@ namespace InfernalEclipseAPI.Content.Items.Lore.InfernalEclipse
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             TooltipLine fullLore = new(Mod, "DiaryLore", Language.GetTextValue("Mods.InfernalEclipseAPI.Lore.MysteriousDiary"));
-            if (LoreColor.HasValue)
-                fullLore.OverrideColor = LoreColor.Value;
+            if (ExtensionIndicatorColor.HasValue)
+                fullLore.OverrideColor = ExtensionIndicatorColor.Value;
             HoldShiftTooltip(tooltips, new TooltipLine[] { fullLore }, true);
         }
 

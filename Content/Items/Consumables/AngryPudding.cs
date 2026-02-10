@@ -42,7 +42,7 @@ namespace InfernalEclipseAPI.Content.Items.Consumables
             Item.useAnimation = Item.useTime = 15;
             Item.maxStack = Item.CommonMaxStack;
             Item.consumable = true;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<BurnishedAuric>();
             Item.value = 1550000;
 
             Item.scale = 0.5f;

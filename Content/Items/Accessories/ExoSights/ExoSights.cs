@@ -12,6 +12,7 @@ using CalamityMod.Tiles.Furniture.CraftingStations;
 using InfernalEclipseAPI.Core.Systems;
 using InfernalEclipseAPI.Core.Players;
 using CalamityMod;
+using Microsoft.Xna.Framework.Input;
 
 namespace InfernalEclipseAPI.Content.Items.Accessories.ExoSights
 {
@@ -30,7 +31,7 @@ namespace InfernalEclipseAPI.Content.Items.Accessories.ExoSights
             Item.width = 44;
             Item.height = 36;
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<BurnishedAuric>();
             Item.accessory = true;
             Item.defense = 3;
         }
@@ -124,14 +125,18 @@ namespace InfernalEclipseAPI.Content.Items.Accessories.ExoSights
 
             //tooltips.Add(new TooltipLine(Mod, "Lore", Language.GetTextValue("Mods.InfernalEclipseAPI.Items.ExoSights.Lore")) { OverrideColor = Color.MediumPurple });
 
-            tooltips.Add(new TooltipLine(Mod, "DedItem", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Contributor"))
+            if (Main.keyState.IsKeyDown(Keys.LeftShift))
             {
-                OverrideColor = new Microsoft.Xna.Framework.Color(50, 205, 50)
-            });
-
-            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.cheese")));
-            dedTo.OverrideColor = new Microsoft.Xna.Framework.Color(50, 205, 50);
-            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
+                TooltipLine line5 = new(Mod, "DedicatedItem", $"{Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.cheese"))}\n{Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Contributor")}");
+                line5.OverrideColor = new(50, 205, 50);
+                tooltips.Add(line5);
+            }
+            else
+            {
+                TooltipLine line5 = new(Mod, "DedicatedItem", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Contributor"));
+                line5.OverrideColor = new(50, 205, 50);
+                tooltips.Add(line5);
+            }
         }
 
         public override void AddRecipes()

@@ -106,6 +106,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "Kes",
             "Feldy",
             "TacoConKvass",
+            "KainSett",
             "KaiTheExaminer",
             "konte1m",
             "LeEr206",
@@ -124,6 +125,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             //Donors
             "bryce27",
             "Bomberr",
+            "Goldsockz2",
             "rosé",
 
             //Supporters
@@ -131,6 +133,7 @@ namespace InfernalEclipseAPI.Content.Items.Placeables.Paintings
             "CuddlySnake",
             "Louhii",
             "rocket",
+            "joshuwham",
 
             //Helpers
             "fjiown",

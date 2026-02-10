@@ -3,6 +3,7 @@ using CalamityMod;
 using InfernumMode;
 using InfernumMode.Content.Rarities.InfernumRarities;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Terraria.GameContent.Creative;
 using Terraria.Localization;
 
@@ -36,9 +37,12 @@ namespace InfernalEclipseAPI.Content.Items.Armor.Vanity
         {
             Color color = CalamityUtils.ColorSwap(Color.OrangeRed, Color.DarkRed, 2f);
 
-            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Akira")));
-            dedTo.OverrideColor = color;
-            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
+            if (Main.keyState.IsKeyDown(Keys.LeftShift))
+            {
+                TooltipLine line5 = new(Mod, "DedicatedItem", $"{Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Akira"))}");
+                line5.OverrideColor = color;
+                tooltips.Add(line5);
+            }
         }
     }
 }

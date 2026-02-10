@@ -76,7 +76,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 {
                     string name = npc.ModNPC?.Name ?? "";
                     if (name.Contains("Excavator"))
-                        npc.lifeMax *= 35; //less because holy fuck its tanky in boss rush
+                        npc.lifeMax *= 7; //less because holy fuck its tanky in boss rush
 
                     npc.lifeMax += (int)(((double).25 * npc.lifeMax));
                 }

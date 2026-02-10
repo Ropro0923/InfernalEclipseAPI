@@ -10,6 +10,7 @@ using InfernalEclipseAPI.Core.DamageClasses.LegendaryClass;
 using InfernumMode;
 using InfernumMode.Content.Rarities.InfernumRarities;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Terraria.DataStructures;
 using Terraria.Localization;
 
@@ -35,7 +36,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc
             Item.shoot = ProjectileID.PurificationPowder;
             Item.useAmmo = AmmoID.Bullet;
             Item.shootSpeed = 16f;
-            Item.Calamity().canFirePointBlankShots = true;
+            //Item.Calamity().canFirePointBlankShots = true; Renoved in Calamity 2.1
             Item.Infernum_Tooltips().DeveloperItem = true;
             Item.scale = 0.65f;
         }
@@ -176,9 +177,12 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.Lycanroc
 
             Color color = CalamityUtils.ColorSwap(Color.OrangeRed, Color.DarkRed, 2f);
 
-            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Yob")));
-            dedTo.OverrideColor = color;
-            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
+            if (Main.keyState.IsKeyDown(Keys.LeftShift))
+            {
+                TooltipLine line5 = new(Mod, "DedicatedItem", $"{Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Yob"))}");
+                line5.OverrideColor = color;
+                tooltips.Add(line5);
+            }
         }
 
         private string GetProgressionTooltip()

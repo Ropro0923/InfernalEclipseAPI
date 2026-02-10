@@ -77,6 +77,7 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                 itemLoot.Add(ItemDropRule.ByCondition(new AkiraPlayerCondition(), ModContent.ItemType<PhantomSuitPants>()));
             }
 
+            /*
             if (InfernalConfig.Instance.CalamityExpertAccessories) 
             {
                 if (item.type == ModContent.ItemType<AquaticScourgeBag>())
@@ -146,6 +147,7 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ModSpecific
                     }
                 }
             }
+            */
         }
 
         public override void OnCreated(Item item, ItemCreationContext context)

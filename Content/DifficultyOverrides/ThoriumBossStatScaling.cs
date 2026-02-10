@@ -9,7 +9,6 @@ using InfernalEclipseAPI.Core.Systems;
 using ThoriumRework.Projectiles;
 using InfernalEclipseAPI.Content.Buffs;
 using ThoriumMod.Projectiles.Enemy;
-using ThoriumMod.Projectiles;
 using ThoriumMod.NPCs.BossQueenJellyfish;
 using InfernalEclipseAPI.Common.Globals.GlobalNPCs;
 
@@ -78,11 +77,11 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             {
                 if (entity.type == ModContent.NPCType<BoreanStrider>())
                 {
-                    entity.defense += 25;
+                    entity.defense += 20;
                 }
                 if (entity.type == ModContent.NPCType<BoreanStriderPopped>())
                 {
-                    entity.defense += 10;
+                    entity.defense += 5;
                 }
                 if (entity.type == ModContent.NPCType<BoreanHopper>())
                 {
@@ -106,7 +105,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
 
                 //do this 
                 if (name.Contains("BoreanStrider"))
-                    npc.lifeMax *= 35; //less due to how much it already has
+                    npc.lifeMax *= 25; //less due to how much it already has
 
                 //ignore the rest if Thorium Bosses Reworked is active as this is already done in that mod.
                 if (!ModLoader.TryGetMod("ThoriumRework", out _))
@@ -140,7 +139,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
             {
                 if (npc.ModNPC?.Name?.Contains("BoreanStrider") == true)
                 {
-                    npc.lifeMax += (int)(npc.lifeMax * 3.5f);
+                    npc.lifeMax += (int)(npc.lifeMax * 3f);
                 }
                 if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true || npc.ModNPC.Name.Contains("QueenJellyfish"))
                 {
@@ -162,7 +161,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 {
                     if (npc.ModNPC?.Name?.Contains("BoreanStrider") == true)
                     {
-                        npc.lifeMax += (int)(npc.lifeMax * 3.25f);
+                        npc.lifeMax += (int)(npc.lifeMax * 2.75f);
                     }
                     if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true || npc.ModNPC.Name.Contains("QueenJellyfish"))
                     {
@@ -179,7 +178,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 {
                     if (npc.ModNPC?.Name?.Contains("BoreanStrider") == true)
                     {
-                        npc.lifeMax += (int)(npc.lifeMax * 3f);
+                        npc.lifeMax += (int)(npc.lifeMax * 2.5f);
                     }
                     if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true || npc.ModNPC.Name.Contains("QueenJellyfish"))
                     {
@@ -196,7 +195,7 @@ namespace InfernalEclipseAPI.Content.DifficultyOverrides
                 {
                     if (npc.ModNPC?.Name?.Contains("BoreanStrider") == true)
                     {
-                        npc.lifeMax += (int)(npc.lifeMax * 2.75f);
+                        npc.lifeMax += (int)(npc.lifeMax * 2.25f);
                     }
                     if (npc.ModNPC?.Name?.Contains("GraniteEnergyStorm") == true || npc.ModNPC?.Name?.Contains("BuriedChampion") == true || npc.ModNPC.Name.Contains("QueenJellyfish"))
                     {

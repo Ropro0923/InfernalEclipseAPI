@@ -15,7 +15,7 @@ namespace InfernalEclipseAPI.Common.ProgressionRework
                 bool hasRuneDrop = false;
                 foreach (var rule in npcLoot.Get(false))
                 {
-                    if (rule is CommonDrop commonDrop && commonDrop.itemId == ModContent.ItemType<RuneofKos>())
+                    if (rule is CommonDrop commonDrop && commonDrop.itemId == ModContent.ItemType<MarkofProvidence>())
                     {
                         hasRuneDrop = true;
                         break;
@@ -24,7 +24,7 @@ namespace InfernalEclipseAPI.Common.ProgressionRework
 
                 if (!hasRuneDrop)
                 {
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RuneofKos>(), 1));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MarkofProvidence>(), 1));
                 }
             }
         }

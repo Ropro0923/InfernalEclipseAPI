@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CalamityMod;
 using CalamityMod.Items;
+using CalamityMod.Items.Tools.SpawnBlocker;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

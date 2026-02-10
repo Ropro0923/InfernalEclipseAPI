@@ -10,6 +10,7 @@ using InfernalEclipseAPI.Content.Items.Weapons.Magic.ChaosBlaster;
 using InfernalEclipseAPI.Content.Items.Materials;
 using NoxusBoss.Content.Items;
 using NoxusBoss.Content.Tiles;
+using CalamityMod.Items.Placeables;
 
 namespace InfernalEclipseAPI.Content.Items.Weapons.Nameless.NebulaGigabeam
 {

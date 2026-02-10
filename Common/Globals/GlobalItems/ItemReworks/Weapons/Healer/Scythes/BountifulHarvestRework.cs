@@ -2,6 +2,7 @@
 using InfernalEclipseAPI.Content.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
+using Terraria.Localization;
 
 namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Healer.Scythes
 {
@@ -57,8 +58,7 @@ namespace InfernalEclipseAPI.Common.Globals.GlobalItems.ItemReworks.Weapons.Heal
         {
             if (item.type == ModContent.ItemType<ThoriumMod.Items.HealerItems.BountifulHarvest>())
             {
-                TooltipLine customTip = new TooltipLine(Mod, "RadiantStingerInfo",
-                    "Fires piercing stingers in an alternating pattern");
+                TooltipLine customTip = new TooltipLine(Mod, "RadiantStingerInfo",Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.BountifulHarvest"));
                 tooltips.Add(customTip);
             }
         }

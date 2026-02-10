@@ -32,8 +32,8 @@ namespace InfernalEclipseAPI.Content.Items.Lore.InfernalEclipse
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             TooltipLine fullLore = new(Mod, "YharimLore", "The Devourer, the Dragon, and the Witch.\nAll fell to your ambition. Your motive. Your drive.\nI had an ambition similar.\nBut never was I deemed hero.\nI freed this world of tyranny, and yet I stand known as a tyrant.\nNow one with a determination like mine arrives hell-bent on my destruction.\nI will meet the same fate the oppressor I felled had.\nDestined to be dispatched of by one with similar aspirations as themself.\nI should have known, realized it sooner.\nIt was always meant to be this way.");
-            if (LoreColor.HasValue)
-                fullLore.OverrideColor = LoreColor.Value;
+            if (ExtensionIndicatorColor.HasValue)
+                fullLore.OverrideColor = ExtensionIndicatorColor.Value;
             HoldShiftTooltip(tooltips, new TooltipLine[] { fullLore }, true);
         }
 

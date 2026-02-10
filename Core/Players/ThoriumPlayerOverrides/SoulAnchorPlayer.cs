@@ -34,7 +34,7 @@ namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides
             {
                 if (Main.GameUpdateCount - anchorSetTime > 60 * 20 && !anchorExpiredMessageShown)
                 {
-                    SendChatToPlayer("Your Soul Anchor has faded.", Color.Gray);
+                    SendChatToPlayer(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.SoulAnchor.Player1"), Color.Gray);
                     anchorExpiredMessageShown = true;
 
                     // Clear anchor automatically if desired:
@@ -52,7 +52,7 @@ namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides
             anchorSetTime = Main.GameUpdateCount;
             anchorExpiredMessageShown = false;
 
-            SendChatToPlayer("Soul Anchor set. You have 20 seconds to return.", Color.Cyan);
+            SendChatToPlayer(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.SoulAnchor.Player2"), Color.Cyan);
             Player.AddBuff(ModContent.BuffType<AnchoredSoul>(), 1200);
         }
 
@@ -71,7 +71,7 @@ namespace InfernalEclipseAPI.Core.Players.ThoriumPlayerOverrides
             }
             else if (!anchorExpiredMessageShown)
             {
-                SendChatToPlayer("Your Soul Anchor has faded.", Color.Gray);
+                SendChatToPlayer(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.SoulAnchor.Player1"), Color.Gray);
                 anchorExpiredMessageShown = true;
             }
 

@@ -28,6 +28,8 @@ using InfernalEclipseAPI.Content.Items.Materials;
 using Terraria.Localization;
 using InfernalEclipseAPI.Content.Items.Consumables;
 using SOTS;
+using CalamityMod.Items.Placeables.SunkenSea;
+using CalamityMod.Tiles.FurnitureStatigel;
 
 namespace InfernalEclipseAPI.Common.Balance.Recipes
 {
@@ -341,6 +343,15 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     }
 
                 }
+                
+                if (InfernalConfig.Instance.VanillaBalanceChanges)
+                {
+                    if (recipe.HasResult(ItemID.DemonScythe))
+                    {
+                        recipe.AddCondition(Condition.DownedSkeletron);
+                    }
+                }
+
                 #endregion
 
                 #region Calamity
@@ -368,6 +379,28 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     if (recipe.HasResult(calAmmo.Find<ModItem>("HardTack")))
                     {
                         recipe.DisableDecraft();
+                    }
+
+                    if (recipe.HasResult(calAmmo.Find<ModItem>("AutoCalculationCoil")))
+                    {
+                        // Reduce Suspicious Scrap to 1
+                        for (int j = 0; j < recipe.requiredItem.Count; j++)
+                        {
+                            Item req = recipe.requiredItem[j];
+
+                            if (req.type == ModContent.ItemType<SuspiciousScrap>())
+                            {
+                                req.stack = 1;
+                            }
+                        }
+                        if (InfernalCrossmod.SOTS.Loaded)
+                        {
+                            recipe.AddIngredient(InfernalCrossmod.SOTS.Mod.Find<ModItem>("Calculator"));
+                        }
+                        recipe.AddIngredient<AscendantSpiritEssence>();
+                        recipe.RemoveIngredient(ModContent.ItemType<PlasmaDriveCore>());
+                        recipe.requiredTile.Clear();
+                        recipe.AddTile(ModContent.TileType<CosmicAnvil>());
                     }
                 }
                 #endregion
@@ -435,7 +468,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
 
                     if (!ModLoader.TryGetMod("WHummusMultiModBalancing", out _))
                     {
-                        if (recipe.HasResult(ModContent.ItemType<ElementalDisk>()))
+                        if (recipe.HasResult(ModContent.ItemType<ReboundingRainbow>()))
                         {
                             thorium.TryFind("TerraKnife", out ModItem terraKnife);
                             recipe.AddIngredient(terraKnife.Type);
@@ -929,8 +962,11 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             recipe.AddIngredient(ModContent.ItemType<Swordofthe14thGlitch>(), 1);
                             recipe.AddIngredient(ModContent.ItemType<NovaBomb>(), 1);
                             recipe.AddIngredient(ModContent.ItemType<Kevin>(), 1);
-                            recipe.AddIngredient(ModContent.ItemType<ChaosBlaster>());
-                            recipe.AddIngredient(ModContent.ItemType<NebulaGigabeam>());
+                            if (InfernalCrossmod.NoxusBoss.Loaded)
+                            {
+                                recipe.AddIngredient(ModContent.ItemType<ChaosBlaster>());
+                                recipe.AddIngredient(ModContent.ItemType<NebulaGigabeam>());
+                            }
                             recipe.AddIngredient(ModContent.ItemType<ChromaticMassInABottle>(), 1);
                             recipe.AddIngredient(ModContent.ItemType<Rock>(), 1);
                         }
@@ -1039,6 +1075,15 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                 {
                     if (ModLoader.TryGetMod("SOTS", out Mod sots))
                     {
+                        if (InfernalConfig.Instance.MergeCraftingTrees)
+                        {
+                            if (recipe.HasResult(ModContent.ItemType<RecitationoftheBeast>()))
+                            {
+                                recipe.RemoveIngredient(ItemID.DemonScythe);
+                                recipe.AddIngredient(sots.Find<ModItem>("DanceOfDeath"));
+                            }
+                        }
+
                         // Frigid Pickaxe
                         if (sots.TryFind("FrigidPickaxe", out ModItem frigidPick))
                         {
@@ -1120,14 +1165,16 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         if (recipe.HasResult(ModContent.ItemType<MOAB>()))
                             recipe.AddIngredient(sots.Find<ModItem>("SoulOfPlight"), 1);
 
-                        if (recipe.HasResult<BloodOrange>())
+                        if (recipe.HasResult<SanguineTangerine>())
                             recipe.AddIngredient(sots.Find<ModItem>("SoulOfPlight"), 5);
 
                         if (recipe.HasResult<ValkyrieRay>())
                             recipe.AddIngredient(sots.Find<ModItem>("SoulOfPlight"), 1);
 
+                        /* Removed in Calamity 2.1
                         if (recipe.HasResult<CatastropheClaymore>())
                             recipe.AddIngredient(sots.Find<ModItem>("SoulOfPlight"), 3);
+                        */
 
                         if (recipe.HasResult<Pwnagehammer>())
                             recipe.AddIngredient(sots.Find<ModItem>("SoulOfPlight"), 3);

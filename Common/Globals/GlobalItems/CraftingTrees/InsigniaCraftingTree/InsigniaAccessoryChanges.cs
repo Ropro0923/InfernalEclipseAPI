@@ -150,9 +150,9 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.InsigniaCraftingTr
             {
                 foreach (TooltipLine tooltip in tooltips)
                 {
-                    if (tooltip.Text.Contains("Grants infinite wing and rocket boot flight"))
+                    if (tooltip.Text.Contains(Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.SpiritInsignia.OrigTooltip")))
                     {
-                        tooltip.Text = "Increases wing flight time by 25%";
+                        tooltip.Text = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MergedCraftingTreeTooltip.SpiritInsignia.Replace");
                     }
                 }
             }
