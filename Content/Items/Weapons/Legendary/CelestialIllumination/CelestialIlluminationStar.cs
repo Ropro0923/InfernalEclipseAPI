@@ -1,39 +1,24 @@
-using CalamityMod.Buffs.DamageOverTime;
 using InfernalEclipseAPI.Core.DamageClasses.LegendaryClass;
-using Terraria;
-using Terraria.ModLoader;
 
 namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIllumination
 {
     public class CelestialIlluminationStar : ModProjectile
     {
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
+        //    ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
+        //    ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+        }
         public override void SetDefaults()
         {
-            Projectile.width = 144;
-            Projectile.height = 144;
-            Projectile.alpha = 60;
-            Projectile.penetrate = 20;
-            Projectile.tileCollide = false;
-            Projectile.timeLeft = 300;
-            Projectile.DamageType = ModContent.GetInstance<LegendaryMagic>();
-            Projectile.ignoreWater = true;
-            Projectile.damage = 400;
+            Projectile.width = 46;
+            Projectile.height = 46;
             Projectile.friendly = true;
-            Projectile.hostile = false;
-        }
-        public override void AI()
-        {
-            Lighting.AddLight(Projectile.Center, 0.2f, 0.6f, 1.3f);
-        }
-
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            var CelestialPlayer = Main.player[Projectile.owner].GetModPlayer<CelestialIlluminationPlayer>();
-            if (CelestialPlayer.CelestialStarCharge < 20)
-            {
-                CelestialPlayer.CelestialStarCharge++;
-            }
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 180);
+            Projectile.penetrate = 5;
+            Projectile.DamageType = ModContent.GetInstance<LegendaryMagic>();
+            Projectile.timeLeft = 360;
+            Projectile.friendly = true;
         }
     }
 }

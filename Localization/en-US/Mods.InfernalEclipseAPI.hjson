@@ -1175,17 +1175,17 @@ Items: {
 				'''
 			ProfanedGuardians:
 				'''
-				With the defeat of the Profaned Guardians, you can fire a celestial beam
+				With the defeat of the Profaned Guardians, your stars are faster
 				Defeat the Goddess of Flame to gain more power...
 				'''
 			Providence:
 				'''
-				With the defeat of Providence, the celestial beam is stronger
+				With the defeat of Providence, you can fire a celestial beam
 				Defeat the sentinels of the scourge to gain more power...
 				'''
 			Sentinels:
 				'''
-				With the defeat of the Sentinels, the celestial beam lasts longer
+				With the defeat of the Sentinels, the celestial is more powerful  
 				Defeat the Devourer of Gods to gain more power...
 				'''
 			Full: The Celestial Illumination is fully awaked, and its maximum power is unleashed!
@@ -1827,6 +1827,36 @@ Configs: {
 		CalamityExpertAccessories: {
 			Label: Calamity Expert Accessories
 			Tooltip: Toggles certain drops from Calamity bosses being expert rarity.
+		}
+
+		AutomaticallyReforgeThoriumRogueItems: {
+			Label: Automatically Reforge Thorium Rogue Items
+			Tooltip:
+				'''
+				Automatically adds the stat bonuses of the "Flawless" prefix onto all non-consumable Thorium Rogue Items. 
+				Can help Thorium items catch up to Calamity items with prefixes as Throium Rogue items can't be reforged.
+				Only works when Ragnarok or Unofficial Calamity Bard & Healer are enabled.
+				This setting does nothing if Merge Thrower Into Rogue is enabled.
+				'''
+		}
+
+		UseAprilFoolsMutant: {
+			Label: Use April Fools Mutant
+			Tooltip:
+				'''
+				Converts the Mutant from Fargo's Souls to Yharim.
+				This setting doesn't do anything if Fargo's Souls isn't enabled.
+				'''
+		}
+
+		MergeThrowerIntoRogue: {
+			Label: Merge Thrower Into Rogue
+			Tooltip:
+				'''
+				Merges the Thrower & Rogue class into one refined class. 
+				Allows converted thrower weapons to still recieve thier orginal reforges.
+				Also keeps the stealth bar damage scaling intact.
+				'''
 		}
 	}
 
