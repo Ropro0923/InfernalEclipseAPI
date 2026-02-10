@@ -39,8 +39,8 @@ Items: {
 		'''
 }
 
-/* ArmorSetBonus.IntergelacticRanged:
+ArmorSetBonus.IntergelacticRanged:
 	'''
-	Ranged weapons summon stars for 10% damage
-	You are immune to the Astral Blight and your attacks inflict it
-	''' */
+	造成远程伤害会召唤10%伤害的星辰
+	你的攻击会造成星辉凋亡减益，并使你免疫该减益
+	'''
