@@ -504,6 +504,7 @@ ItemTooltip: {
 		Cultist: Культиста-лунатика
 		ND: Божества
 		Mars: Марса
+		// EoL: The Empress of Light's
 	}
 
 	AstrageldonRelic: {

@@ -1,4 +1,6 @@
 ﻿using CalamityMod.Tiles.Ores;
+using InfernalEclipseAPI.Core.Systems;
+using Terraria;
 using Terraria.ObjectData;
 
 namespace InfernalEclipseAPI.Common.Balance
@@ -22,6 +24,24 @@ namespace InfernalEclipseAPI.Common.Balance
                 {
                     blockDamaged = false;
                     return false;
+                }
+
+                if (IsBelowStrangeKeystone(i, j) && !NPC.downedBoss2)
+                {
+                    blockDamaged = false;
+                    return false;
+                }
+
+                if (InfernalCrossmod.SOTS.Loaded)
+                {
+                    if (tile == InfernalCrossmod.SOTS.Mod.Find<ModTile>("StrangeKeystoneTile").Type)
+                    {
+                        if (!MeetsPickRequirement(Main.LocalPlayer, 66))
+                        {
+                            blockDamaged = false;
+                            return false;
+                        }
+                    }
                 }
 
                 switch (tile)
@@ -51,6 +71,19 @@ namespace InfernalEclipseAPI.Common.Balance
             {
                 if (IsBelowSpecialTable(i, j))
                     return NPC.downedBoss3;
+
+                if (IsBelowStrangeKeystone(i, j))
+                {
+                    return NPC.downedBoss2;
+                }
+
+                if (InfernalCrossmod.SOTS.Loaded)
+                {
+                    if (type == InfernalCrossmod.SOTS.Mod.Find<ModTile>("StrangeKeystoneTile").Type)
+                    {
+                        return NPC.downedBoss2;
+                    }
+                }
 
                 switch (type)
                 {
@@ -98,6 +131,40 @@ namespace InfernalEclipseAPI.Common.Balance
             bool isBottomRow = row == data.Height - 1;
 
             return isBottomRow;
+        }
+
+        private static bool IsBelowStrangeKeystone(int x, int y)
+        {
+            int aboveY = y - 1;
+            if (aboveY < 0 || x < 0 || x >= Main.maxTilesX || y < 0 || y >= Main.maxTilesY)
+                return false;
+
+            Tile above = Framing.GetTileSafely(x, aboveY);
+            if (!above.HasTile)
+                return false;
+
+            int aboveType = above.TileType;
+            if (aboveType != InfernalCrossmod.SOTS.Mod.Find<ModTile>("StrangeKeystoneTile").Type)
+                return false;
+
+            TileObjectData data = TileObjectData.GetTileData(aboveType, 0);
+            if (data != null)
+            {
+                int row = (above.TileFrameY / 18) % data.Height;
+                return row == data.Height - 1;
+            }
+
+            const int tilePixel = 18;
+            const int heightTiles = 4;
+            int styleBlockHeightPx = heightTiles * tilePixel;
+
+            int frameYMod = above.TileFrameY % styleBlockHeightPx;
+            return frameYMod >= (styleBlockHeightPx - tilePixel);
+        }
+
+        private static bool MeetsPickRequirement(Player player, int requiredPickPower)
+        {
+            return player.HeldItem.pick >= requiredPickPower;
         }
     }
 }
