@@ -2,7 +2,6 @@
 using System.IO;
 using CalamityMod.UI;
 using InfernalEclipseAPI.Core.Systems;
-using InfernumMode.Content.Subworlds;
 using InfernumMode.Core.GlobalInstances.Systems;
 using CalamityMod.Events;
 using InfernalEclipseAPI.Core.Systems.BossRush;
@@ -22,6 +21,7 @@ namespace InfernalEclipseAPI.Core.World
         public static bool namelessDeveloperDiagloguePlayed = false;
         public static bool craftedWorkshop = false;
         public static bool RagnarokModeEnabled;
+        public static bool hasChosenDifficulty = false;
 
         public static void ResetFlags()
         {
@@ -36,6 +36,7 @@ namespace InfernalEclipseAPI.Core.World
             namelessDeveloperDiagloguePlayed = false;
             craftedWorkshop = false;
             RagnarokModeEnabled = false;
+            hasChosenDifficulty = false;
         }
 
         public override void PreUpdateWorld()
@@ -94,6 +95,7 @@ namespace InfernalEclipseAPI.Core.World
             tag["namelessDeveloperDiagloguePlayed"] = namelessDeveloperDiagloguePlayed;
             tag["craftedWorkshop"] = craftedWorkshop;
             tag["RagnarokModeEnabled"] = RagnarokModeEnabled;
+            tag["hasChosenDifficulty"] = hasChosenDifficulty;
         }
 
         public override void LoadWorldData(TagCompound tag)
@@ -108,6 +110,7 @@ namespace InfernalEclipseAPI.Core.World
             GetData(ref yharonSmasher, "yharonSmasher", tag);
             GetData(ref namelessDeveloperDiagloguePlayed, "namelessDeveloperDiagloguePlayed", tag);
             GetData(ref craftedWorkshop, "craftedWorkshop", tag);
+            GetData(ref hasChosenDifficulty, "hasChosenDifficulty", tag);
 
             if (tag.TryGet("RagnarokModeEnabled", out bool value))
                 RagnarokModeEnabled = value;
@@ -133,6 +136,7 @@ namespace InfernalEclipseAPI.Core.World
             writer.Write(namelessDeveloperDiagloguePlayed);
             writer.Write(craftedWorkshop);
             writer.Write(RagnarokModeEnabled);
+            writer.Write(hasChosenDifficulty);
         }
 
         public override void NetReceive(BinaryReader reader)
@@ -148,6 +152,7 @@ namespace InfernalEclipseAPI.Core.World
             namelessDeveloperDiagloguePlayed = reader.ReadBoolean();
             craftedWorkshop = reader.ReadBoolean();
             RagnarokModeEnabled = reader.ReadBoolean();
+            hasChosenDifficulty = reader.ReadBoolean();
         }
     }
 }

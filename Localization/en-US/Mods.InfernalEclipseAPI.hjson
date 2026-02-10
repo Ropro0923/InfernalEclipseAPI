@@ -516,6 +516,7 @@ ItemTooltip: {
 		Cultist: The Lunatic Cultist's
 		ND: The Deity's
 		Mars: Mars'
+		EoL: The Empress of Light's
 	}
 
 	AstrageldonRelic: {
@@ -802,7 +803,7 @@ Items: {
 			Plantera:
 				'''
 				With the defeat of Draedon's machines, it now inflicts Astral Infection
-				Defeat the gaurdian of the jungle to gain more power...
+				Defeat the guardian of the jungle to gain more power...
 				'''
 			Golem:
 				'''
@@ -1135,7 +1136,7 @@ Items: {
 			Plantera:
 				'''
 				With the defeat of Draedon's machines, this weapons now converts regular bullets to high velocity bullets
-				Defeat the gaurdian of the jungle to gain more power...
+				Defeat the guardian of the jungle to gain more power...
 				'''
 			Golem:
 				'''
