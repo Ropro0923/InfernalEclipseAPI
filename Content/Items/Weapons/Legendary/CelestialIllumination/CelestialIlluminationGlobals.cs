@@ -1,4 +1,4 @@
-using CatalystMod;
+using Luminance.Common.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
@@ -24,12 +24,10 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
         }
         public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
         {
-            string location = $"{this.GetPath()}".Replace("Player", "StarMini");
             Texture2D StarTexture = ModContent.Request<Texture2D>($"{this.GetPath()}".Replace("Player", "StarMini")).Value;
-
             for (int i = 0; i < StarCount; i++)
             {
-                Vector2 offset = new Vector2(0, -40).RotatedBy(MathHelper.ToRadians((360f / StarCount) * i + Main.GlobalTimeWrappedHourly * 35));
+                Vector2 offset = new Vector2(0, -40).RotatedBy(MathHelper.ToRadians(360f / StarCount * i + Main.GlobalTimeWrappedHourly * 35));
                 Main.EntitySpriteDraw(StarTexture, Player.Center - Main.screenPosition + offset, null, Color.White, 0f, StarTexture.Size() / 2, 1f, SpriteEffects.None, 0);
             }
             //    Main.EntitySpriteDraw(StarTexture);

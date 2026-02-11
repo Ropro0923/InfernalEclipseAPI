@@ -11,12 +11,14 @@ using Microsoft.Xna.Framework;
 
 namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIllumination
 {
-    // Leaving you to the balance on this one unfortunately. I am notoriously bad at balancing things.
-    // I also wanted to make a cool visual where you have stars orbiting around the player when you charge it up, and once you reach max charge, they converge and shoot the beam, but I couldn't D:
     public class CelestialIllumination : ModItem
     {
         public static bool DownedSentinels() => CalamityConditions.DownedCeaselessVoid.IsMet() && CalamityConditions.DownedStormWeaver.IsMet() && CalamityConditions.DownedSignus.IsMet();
         static int Tier() => CalamityConditions.DownedDevourerOfGods.IsMet() ? 5 : DownedSentinels() ? 4 : CalamityConditions.DownedProvidence.IsMet() ? 3 : CalamityConditions.DownedGuardians.IsMet() ? 2 : NPC.downedMoonlord ? 1 : 0;
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
+        }
         public override void SetDefaults()
         {
             Item.width = 34;
@@ -26,6 +28,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
             Item.useAnimation = 25;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.autoReuse = true;
+            Item.channel = true;
 
             Item.damage = 600;
             Item.knockBack = 1f;
@@ -40,17 +43,13 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
             Item.rare = ModContent.RarityType<InfernumProfanedRarity>();
         }
         public override bool AltFunctionUse(Player player) => Tier() >= 2;
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-        {
-            return true;
-        }
         void FireStars(Player player)
         {
 
         }
         void FireBeam(Player player)
         {
-
+            
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -72,6 +71,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
 
             // With the defeat of _
             // Defeat _
+            // or
             // The Celestial Illumination is fully awaked, and its maximum power is unleashed! (Max Tier)
             TooltipLine progression = new(Mod, "Progression", GetProgressionTooltip())
             {
@@ -81,7 +81,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
 
             if (Main.keyState.IsKeyDown(Keys.LeftShift))
             {
-                // Dedicated to Ropro0923
+                // Dedicated to Ropro0923 with the cool colour swap because yob gets one so I get one too (Ignoring the fact that Yob's a dev and I'm pointless :D)
                 TooltipLine dedicated = new(Mod, "DedicatedItem", $"{Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Ropro"))}")
                 {
                     OverrideColor = CalamityUtils.ColorSwap(new Color(50, 205, 50), new Color(23, 167, 23), 2.5f)
