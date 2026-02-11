@@ -47,9 +47,6 @@ namespace InfernalEclipseAPI.Content.RogueThrower
             if (ModContent.TryFind("FargowiltasSouls/EternitySoul", out ModItem modItem6))
                 soul3Type = modItem6.Type;
 
-            if (ModContent.TryFind("ThoriumMod/WhiteDwarfThrusters", out ModItem modItem7))
-                wing1Type = modItem7.Type;
-
             initialized = true;
         }
 
