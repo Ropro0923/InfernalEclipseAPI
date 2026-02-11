@@ -484,7 +484,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Donor
             Vector2 barOrigin = barBG.Size() * 0.5f;
 
             // Position below the item slot
-            float yOffset = -8f;
+            float yOffset = 40f;
             Vector2 drawPos = position + Vector2.UnitY * scale * ((float)frame.Height - yOffset);
 
             // Crop the foreground based on charge
@@ -492,9 +492,9 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Donor
 
             // Smooth lerp color
             float t = (float)((Math.Sin(Main.GlobalTimeWrappedHourly * 2f) + 1f) / 2f);
-            Color color = Color.Lerp(new Color(135, 206, 250), Color.Gold, t);
+            Color color = Color.Lerp(new Color(196, 35, 44), Color.DarkRed, t);
 
-            float barScale = 0.75f;
+            float barScale = 2.75f;
 
             // Draw background
             spriteBatch.Draw(barBG, drawPos, null, color, 0f, barOrigin, scale * barScale, SpriteEffects.None, 0f);
