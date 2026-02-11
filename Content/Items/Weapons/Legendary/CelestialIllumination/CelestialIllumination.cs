@@ -4,9 +4,9 @@ using CalamityMod.Items;
 using InfernalEclipseAPI.Core.DamageClasses.LegendaryClass;
 using InfernumMode.Content.Rarities.InfernumRarities;
 using Microsoft.Xna.Framework.Input;
-using Terraria.DataStructures;
 using Terraria.Localization;
 using Microsoft.Xna.Framework;
+using Terraria.DataStructures;
 
 
 namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIllumination
@@ -15,10 +15,6 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
     {
         public static bool DownedSentinels() => CalamityConditions.DownedCeaselessVoid.IsMet() && CalamityConditions.DownedStormWeaver.IsMet() && CalamityConditions.DownedSignus.IsMet();
         static int Tier() => CalamityConditions.DownedDevourerOfGods.IsMet() ? 5 : DownedSentinels() ? 4 : CalamityConditions.DownedProvidence.IsMet() ? 3 : CalamityConditions.DownedGuardians.IsMet() ? 2 : NPC.downedMoonlord ? 1 : 0;
-        public override void SetStaticDefaults()
-        {
-            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
-        }
         public override void SetDefaults()
         {
             Item.width = 34;
@@ -41,15 +37,31 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
             Item.UseSound = SoundID.Item9;
             Item.value = CalamityGlobalItem.RarityRedBuyPrice;
             Item.rare = ModContent.RarityType<InfernumProfanedRarity>();
+
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
         }
         public override bool AltFunctionUse(Player player) => Tier() >= 2;
-        void FireStars(Player player)
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
+            if (player.altFunctionUse != 2)
+            {
+                FireStars(player);
+            }
+            else
+            {
+                FireBeam(player);
+                return false;
+            }
+            return true;
         }
-        void FireBeam(Player player)
+        static void FireStars(Player player)
         {
-            
+            Main.NewText("Stars");
+        }
+        static void FireBeam(Player player)
+        {
+            int beam = Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<CelestialBeam>(), 0, 0f, player.whoAmI);
+            Main.NewText("Beam");
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {

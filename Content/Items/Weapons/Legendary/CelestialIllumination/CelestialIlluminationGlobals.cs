@@ -9,6 +9,7 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
     {
         public int StarCount = 0;
         public const int MaxStars = 13;
+        public bool FiringBeam = false;
         public override void OnRespawn()
         {
             StarCount = 0;
@@ -27,8 +28,10 @@ namespace InfernalEclipseAPI.Content.Items.Weapons.Legendary.CelestialIlluminati
             Texture2D StarTexture = ModContent.Request<Texture2D>($"{this.GetPath()}".Replace("Player", "StarMini")).Value;
             for (int i = 0; i < StarCount; i++)
             {
-                Vector2 offset = new Vector2(0, -40).RotatedBy(MathHelper.ToRadians(360f / StarCount * i + Main.GlobalTimeWrappedHourly * 35));
-                Main.EntitySpriteDraw(StarTexture, Player.Center - Main.screenPosition + offset, null, Color.White, 0f, StarTexture.Size() / 2, 1f, SpriteEffects.None, 0);
+                Vector2 circlingOffset = Player.Center - Main.screenPosition + new Vector2(0, -40).RotatedBy(MathHelper.ToRadians(360f / StarCount * i + Main.GlobalTimeWrappedHourly * 35));
+                Vector2 starConverge = new((Main.screenPosition.X - Player.Center.X - Main.MouseWorld.X) * 2f, (Main.screenPosition.Y - Player.Center.Y - Main.MouseWorld.Y) * 2f);
+                Vector2 offset = FiringBeam ? starConverge : circlingOffset;
+                Main.EntitySpriteDraw(StarTexture, offset, null, Color.White, 0f, StarTexture.Size() / 2, 1f, SpriteEffects.None, 0);
             }
             //    Main.EntitySpriteDraw(StarTexture);
         }
