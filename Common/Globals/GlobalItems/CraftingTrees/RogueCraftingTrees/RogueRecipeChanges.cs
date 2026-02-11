@@ -102,8 +102,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.RogueCraftingTrees
 
                     if (recipe.HasResult<Nanotech>())
                     {
-                        recipe.RemoveIngredient(ItemID.LunarBar);
-                        recipe.AddIngredient<CosmiliteBar>(8);
                         if (!recipe.HasIngredient(thorium.Find<ModItem>("TerrariumCore"))) recipe.AddIngredient(thorium.Find<ModItem>("TerrariumCore"), 3);
                     }
                 }

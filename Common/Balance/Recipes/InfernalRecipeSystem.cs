@@ -2,7 +2,6 @@
 using CalamityMod.Items.Tools.ClimateChange;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityMod.Items;
 using InfernumMode.Content.Items.Weapons.Magic;
 using CalamityMod.Items.Mounts;
 using CalamityMod.Items.Accessories;
@@ -37,6 +36,8 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
     {
         public static RecipeGroup EvilSkinRecipeGroup;
         public static RecipeGroup EvilBarRecipeGroup;
+        public static RecipeGroup CobaltPalladiumRecipeGroup;
+
         public override void Unload()
         {
             EvilSkinRecipeGroup = null;
@@ -49,10 +50,14 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
 
             EvilBarRecipeGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.CrimtaneBar)}", ItemID.DemoniteBar, ItemID.CrimtaneBar);
             RecipeGroup.RegisterGroup("LimitedResourcesRecipes:EvilBar", EvilBarRecipeGroup);
+
+            CobaltPalladiumRecipeGroup = new RecipeGroup(() => $"{Lang.GetItemNameValue(ItemID.CobaltBar)} or {Lang.GetItemNameValue(ItemID.PalladiumBar)}", ItemID.CobaltBar, ItemID.PalladiumBar);
+            RecipeGroup.RegisterGroup("LimitedResourcesRecipes:CobaltPalladium", CobaltPalladiumRecipeGroup);
         }
 
         public override void AddRecipes()
         {
+            #region Vanilla
             Recipe.Create(ItemID.Terragrim)
                 .AddIngredient(ItemID.EnchantedSword, 1)
                 .AddIngredient(ItemID.JungleSpores, 5)
@@ -68,11 +73,13 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                 .AddTile(TileID.HeavyWorkBench)
                 .Register();
 
-            Recipe recipe12 = Recipe.Create(ItemID.BlandWhip, 1);
-            recipe12.AddIngredient(ItemID.Leather, 8);
-            recipe12.AddTile(TileID.Loom);
-            recipe12.Register();
+            Recipe.Create(ItemID.BlandWhip)
+                .AddIngredient(ItemID.Leather, 8)
+                .AddTile(TileID.Loom)
+                .Register();
+            #endregion
 
+            #region Wrath of the Gods
             if (ModLoader.TryGetMod("NoxusBoss", out Mod noxus))
             {
                 Recipe.Create(ModContent.ItemType<Rock>(), 2)
@@ -85,7 +92,9 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     .DisableDecraft()
                     .Register();
             }
+            #endregion
 
+            #region AlchNPC
             if (ModLoader.TryGetMod("AlchemistNPCLite", out Mod AlchNPC))
             {
                 int[] alchCombos =
@@ -165,7 +174,9 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     thorComboBloodOrb.Register();
                 }
             }
+            #endregion
 
+            #region Thorium
             if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
             {
                 if (ModLoader.TryGetMod("ThoriumRework", out Mod thorRework) && !InfernalConfig.Instance.DisableBloodOrbPotions)
@@ -203,7 +214,9 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         .Register();
                 }
             }
+            #endregion
 
+            #region Secrets of the Shadows
             if (InfernalCrossmod.SOTS.Loaded)
             {
                 Mod sots = InfernalCrossmod.SOTS.Mod;
@@ -219,6 +232,13 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     .AddTile<CosmicAnvil>()
                     .Register();
                 */
+
+                Recipe.Create(ModContent.ItemType<ThePointer>())
+                    .AddIngredient(sots.Find<ModItem>("Calculator"))
+                    .AddRecipeGroup(CobaltPalladiumRecipeGroup, 5)
+                    .AddIngredient(ItemID.ManaCrystal)
+                    .AddTile(TileID.Anvils)
+                    .Register();
 
                 int[] sotsPotions =
                 {
@@ -280,6 +300,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     
                 SOTSWormholeRecipes.Initialize();
             }
+            #endregion
         }
 
         public override void PostAddRecipes()
@@ -398,6 +419,14 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     }
                 }
 
+                if (InfernalCrossmod.SOTS.Loaded)
+                {
+                    if (recipe.HasResult<ThePointer>() && recipe.HasIngredient(ItemID.Glass))
+                    {
+                        recipe.DisableRecipe();
+                    }
+                }
+
                 #region Calamity Ranger Expansion
                 if (ModLoader.TryGetMod("CalamityAmmo", out Mod calAmmo))
                 {
@@ -406,26 +435,26 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         recipe.DisableDecraft();
                     }
 
-                    if (recipe.HasResult(calAmmo.Find<ModItem>("AutoCalculationCoil")))
+                    if (InfernalConfig.Instance.MergeCraftingTrees)
                     {
-                        // Reduce Suspicious Scrap to 1
-                        for (int j = 0; j < recipe.requiredItem.Count; j++)
+                        if (recipe.HasResult(calAmmo.Find<ModItem>("AutoCalculationCoil")))
                         {
-                            Item req = recipe.requiredItem[j];
-
-                            if (req.type == ModContent.ItemType<SuspiciousScrap>())
+                            // Reduce Suspicious Scrap to 1
+                            for (int j = 0; j < recipe.requiredItem.Count; j++)
                             {
-                                req.stack = 1;
+                                Item req = recipe.requiredItem[j];
+
+                                if (req.type == ModContent.ItemType<SuspiciousScrap>())
+                                {
+                                    req.stack = 1;
+                                }
                             }
+                            recipe.AddIngredient<ThePointer>();
+                            recipe.AddIngredient<AscendantSpiritEssence>(3);
+                            recipe.RemoveIngredient(ModContent.ItemType<PlasmaDriveCore>());
+                            recipe.requiredTile.Clear();
+                            recipe.AddTile(ModContent.TileType<CosmicAnvil>());
                         }
-                        if (InfernalCrossmod.SOTS.Loaded)
-                        {
-                            recipe.AddIngredient(InfernalCrossmod.SOTS.Mod.Find<ModItem>("Calculator"));
-                        }
-                        recipe.AddIngredient<AscendantSpiritEssence>();
-                        recipe.RemoveIngredient(ModContent.ItemType<PlasmaDriveCore>());
-                        recipe.requiredTile.Clear();
-                        recipe.AddTile(ModContent.TileType<CosmicAnvil>());
                     }
                 }
                 #endregion
@@ -588,7 +617,7 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                         if (recipe.HasIngredient(thorium.Find<ModItem>("MoltenKnife")))
                         {
                             recipe.RemoveIngredient(thorium.Find<ModItem>("MoltenKnife").Type);
-                            recipe.AddIngredient<InfernalKris>(500);
+                            recipe.AddIngredient<InfernalKris>();
                         }
                     }
 

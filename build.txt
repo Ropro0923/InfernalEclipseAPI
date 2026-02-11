@@ -8,5 +8,5 @@ sortBefore = RagnarokMod, ThrowerUnification
 sortAfter = CalamityMod, InfernumMode, NoxusBoss, CalamityHunt, ThoriumMod, ThoriumRework, YouBoss, FargowiltasSouls, FargowiltasCrossmod, Clamity, CatalystMod, InfernumMode, RevengeancePlus, CalamityMinus, ZenithToilet, Consolaria, SOTS, NoxusPort, SOTSBardHealer, CalamityBardHealer, ssm, CalamityAmmo, DraedonExpansion, SpookyBardHealer, Spooky, CalamityExpert, HuntExpert, CatalystExpert, CalValEX, HypnosMod
 hideCode = true
 hideResources = true
-buildIgnore = .vs\*, Properties\*, *.csproj, *.user, obj\*, bin\*, *.config, .git\*, .github\*, LICENSE, README.md, .editorconfig, .gitignore, .gitattributes
+buildIgnore = .vs\*, Properties\*, *.csproj, *.user, obj\*, bin\*, *.config, .git\*, .github\*, LICENSE, README.md, .editorconfig, .gitignore, .gitattributes, lib/Assemblies\*
 homepage = https://discord.gg/ieor

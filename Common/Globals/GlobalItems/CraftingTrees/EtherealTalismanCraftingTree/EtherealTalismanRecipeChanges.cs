@@ -42,8 +42,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.EtherealTalismanCr
             Recipe.Create(ModContent.ItemType<EtherealTalisman>())
                .AddIngredient<SigilofCalamitas>().
                 AddRecipeGroup("AnyManaFlowerAccessory"). //Any mana flower accessory
-                AddIngredient<CosmiliteBar>(8).
-                AddIngredient<GalacticaSingularity>(4).
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddIngredient(thorium.Find<ModItem>("TerrariumCore"), 3).
                 AddTile<CosmicAnvil>().
@@ -52,8 +50,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.EtherealTalismanCr
             Recipe.Create(ModContent.ItemType<EtherealTalisman>())
                .AddIngredient<SigilofCalamitas>().
                 AddIngredient(thorium.Find<ModItem>("HungeringBlossom")).
-                AddIngredient<CosmiliteBar>(8).
-                AddIngredient<GalacticaSingularity>(4).
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddIngredient(thorium.Find<ModItem>("TerrariumCore"), 3).
                 AddTile<CosmicAnvil>().

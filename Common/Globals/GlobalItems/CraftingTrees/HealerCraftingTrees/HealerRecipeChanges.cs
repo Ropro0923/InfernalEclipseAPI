@@ -49,15 +49,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.HealerCraftingTree
             }
         }
 
-        private Mod sots
-        {
-            get
-            {
-                ModLoader.TryGetMod("SOTS", out Mod sots);
-                return sots;
-            }
-        }
-
         public override void PostAddRecipes()
         {
             for (int index = 0; index < Recipe.numRecipes; ++index)
@@ -76,8 +67,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.HealerCraftingTree
 
                     if (recipe.HasResult(CalBardHealer.Find<ModItem>("ElementalBloom")))
                     {
-                        recipe.RemoveIngredient(ItemID.LunarBar);
-                        recipe.AddIngredient<CosmiliteBar>(8);
                         if (!recipe.HasIngredient(thorium.Find<ModItem>("TerrariumCore"))) recipe.AddIngredient(thorium.Find<ModItem>("TerrariumCore"), 3);
                         recipe.AddIngredient(thorium.Find<ModItem>("SoulGuard"));
                     }

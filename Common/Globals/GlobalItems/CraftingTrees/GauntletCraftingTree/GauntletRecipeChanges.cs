@@ -1,5 +1,4 @@
 ﻿using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Materials;
 
 namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.GauntletCraftingTree
 {
@@ -11,14 +10,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.GauntletCraftingTr
             {
                 ModLoader.TryGetMod("ThoriumMod", out Mod thor);
                 return thor;
-            }
-        }
-        private Mod sots
-        {
-            get
-            {
-                ModLoader.TryGetMod("SOTS", out Mod sots);
-                return sots;
             }
         }
 
@@ -33,9 +24,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.GauntletCraftingTr
 
                 if (recipe.HasResult<ElementalGauntlet>())
                 {
-                    recipe.RemoveIngredient(ItemID.LunarBar);
                     if (thorium != null) if (!recipe.HasIngredient(thorium.Find<ModItem>("TerrariumCore"))) recipe.AddIngredient(thorium.Find<ModItem>("TerrariumCore"), 3);
-                    recipe.AddIngredient<CosmiliteBar>(8);
                 }
             }
         }
