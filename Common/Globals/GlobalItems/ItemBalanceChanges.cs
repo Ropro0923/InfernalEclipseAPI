@@ -174,6 +174,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 ModLoader.TryGetMod("CalamityMod", out Mod cal);
 
                 #region Melee
+                if (item.type == ModContent.ItemType<Auger>())
+                {
+                    item.damage = 76;
+                }
+
                 /*
                 if (GetItem(cal, "SubmarineShocker", item))
                 {
@@ -184,6 +189,16 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 if (item.type == ModContent.ItemType<InfernaCutter>())
                 {
                     item.DamageType = DamageClass.Melee;
+                }
+
+                if (item.type == ModContent.ItemType<ForbiddenOathblade>())
+                {
+                    item.damage = 72;
+                }
+
+                if (item.type == ModContent.ItemType<ExaltedOathblade>())
+                {
+                    item.damage = 110;
                 }
 
                 /*
@@ -202,6 +217,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 #endregion
 
                 #region Ranged
+                if (item.type == ModContent.ItemType<ShortCircuit>())
+                {
+                    item.damage = 14;
+                }
+
                 if (GetItem(cal, "CrackshotColt", item))
                 {
                     item.useTime = 28;
@@ -300,14 +320,15 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 #endregion
 
                 #region Mage
-                if (item.type == ModContent.ItemType<CoralSpout>())
-                {
-                    item.damage = 13;
-                }
-
                 if (item.type == ModContent.ItemType<HyphaeRod>())
                 {
                     item.damage = 28;
+                }
+
+                if (item.type == ModContent.ItemType<PulsePistol>())
+                {
+                    item.useTime = 30;
+                    item.useAnimation = 30;
                 }
 
                 if (item.type == ModContent.ItemType<VividClarity>())
@@ -316,7 +337,17 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 }
                 #endregion
 
-                #region Summoner
+                #region Summonerr
+                if (item.type == ModContent.ItemType<EnchantedKnifeStaff>())
+                {
+                    item.damage = 13;
+                }
+
+                if (item.type == ModContent.ItemType<SunSpiritStaff>())
+                {
+                    item.damage = 20;
+                }
+
                 //Deathstare Rod
                 if (item.type == cal.Find<ModItem>("DeathstareRod").Type)
                 {
@@ -363,6 +394,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                 if (item.type == ModContent.ItemType<Turbulance>())
                 {
                     item.damage = 24;
+                }
+
+                if (item.type == ModContent.ItemType<AerialTracker>())
+                {
+                    item.damage = 20;
                 }
                 #endregion
             }
@@ -2541,7 +2577,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     //Arsenal Staff
                     if (item.type == thorium.Find<ModItem>("ArsenalStaff").Type)
                     {
-                        item.damage = 30;
+                        item.damage = 24;
                     }
 
                     //Yarn Ball
@@ -4194,10 +4230,11 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                         item.defense = 4;
                     }
 
+                    /*
                     //Champion's Wings
                     if (item.type == thorium.Find<ModItem>("ChampionWing").Type)
                     {
-                        //item.defense = 7;
+                        item.defense = 7;
                     }
 
                     //Dragon Wings
@@ -4205,6 +4242,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                     {
                         item.defense = 10;
                     }
+                    */
 
                     //Abyssal Shell
                     if (GetItem(thorium, "AbyssalShell", item))
@@ -4212,6 +4250,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                         item.defense = 0;
                     }
 
+                    /*
                     //Subspace Wings
                     if (GetItem(thorium, "SubspaceWings", item))
                     {
@@ -4225,6 +4264,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems
                         item.defense = 10;
                         item.lifeRegen = 4;
                     }
+                    */
 
                     //Shinobi Sigil
                     if (UnsafeGetItem(thorium, "ShinobiSigil", item))

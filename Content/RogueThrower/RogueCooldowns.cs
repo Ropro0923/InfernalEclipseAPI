@@ -29,6 +29,7 @@ namespace InfernalEclipseAPI.Content.RogueThrower
                 {
                     int cooldown = 120; // Default cooldown
 
+                    /*
                     // Check if White Dwarf Thrusters accessory is equipped
                     if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium) &&
                         thorium.TryFind<ModItem>("WhiteDwarfThrusters", out var thrusterItem))
@@ -46,6 +47,7 @@ namespace InfernalEclipseAPI.Content.RogueThrower
                             }
                         }
                     }
+                    */
 
                     cdPlayer.whiteDwarfCooldown = cooldown;
                 }
