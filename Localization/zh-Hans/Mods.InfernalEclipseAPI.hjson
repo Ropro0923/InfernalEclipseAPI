@@ -1,5 +1,5 @@
 UI: {
-	RagnarokIconText: Ragnarok Mode is enabled
+	RagnarokIconText: 诸神黄昏模式已启用
 	NoRespawn: 复活受限：在 {0} 人联机时，每场 Boss 战中每位玩家只有一次重生机会！
 	NoRespawn2: 复活受限：在 {1} 人联机时，每场 Boss 战中每位玩家只有 {0} 次重生机会！
 	NoRespawn3: 复活受限：在 {0} 人联机时，Boss 战期间不允许复活！
@@ -31,13 +31,13 @@ DifficultyUI: {
 		'''
 	ExpandedDescription:
 		'''
-		[c/B32E81:Seemlessly merges both Death Mode and Infernum mode.]
-		[c/B32E81:Enemies & bosses will now have very high base stats and scale more agressively in multiplayer.]
-		[c/FF0055:Can you master the Infernal Eclipse of Ragnarok?]
+		[c/B32E81:完全融合死亡模式与炼狱模式]
+		[c/B32E81:敌怪和Boss现在将拥有非常高的基础属性，并在多人游戏中的增幅更加危险。]
+		[c/FF0055:你能征服《诸神黄昏：炼狱蚀光》吗？]
 		'''
-	// Activation: The Infernal Eclipse has risen...
-	// Deactivation: Another unworthy challenger has walked away.
-	// MasterToggle: Master mode is now enabled!
+	Activation: 炼狱蚀日已然升起……
+	Deactivation: 失格的挑战者已经离开。
+	MasterToggle: 大师模式现已启用！
 }
 
 WelcomeMessage: {
@@ -516,6 +516,7 @@ ItemTooltip: {
 		Cultist: 拜月教邪教徒
 		ND: 无名光神
 		Mars: 玛尔斯
+		// EoL: The Empress of Light's
 	}
 
 	AstrageldonRelic: {

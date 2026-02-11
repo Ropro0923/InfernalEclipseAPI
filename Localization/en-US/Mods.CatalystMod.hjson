@@ -38,3 +38,9 @@ Items: {
 		[c/c61b40:Returned to this realm as obliterating shadow.]
 		'''
 }
+
+ArmorSetBonus.IntergelacticRanged:
+	'''
+	Ranged weapons summon stars for 10% damage
+	You are immune to the Astral Blight and your attacks inflict it
+	'''

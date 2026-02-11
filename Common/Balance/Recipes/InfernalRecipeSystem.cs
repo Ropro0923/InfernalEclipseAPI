@@ -266,6 +266,17 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                     .AddIngredient(GetItem(sots, "SoulResidue"))
                     .AddTile(TileID.HeavyWorkBench)
                     .Register();
+
+                if (InfernalConfig.Instance.MergeCraftingTrees)
+                {
+                    Recipe.Create(ModContent.ItemType<Cosmolight>())
+                        .AddIngredient(GetItem(sots, "LunarClock"))
+                        .AddIngredient<Bakidon>()
+                        .AddIngredient<AstralBar>(3)
+                        .AddIngredient(ItemID.FragmentSolar, 15)
+                        .AddTile(TileID.LunarCraftingStation)
+                        .Register();
+                }
                     
                 SOTSWormholeRecipes.Initialize();
             }
@@ -364,13 +375,27 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
 
                 if (recipe.HasResult(ModContent.ItemType<OnyxExcavatorKey>()))
                 {
-                    recipe.AddIngredient(ModContent.ItemType<DepthCells>(), 3);
+                    recipe.DisableRecipe();
                     recipe.DisableDecraft();
                 }
 
                 if (recipe.HasResult(ModContent.ItemType<Roxcalibur>()))
                 {
                     recipe.DecraftConditions.Add(Condition.Hardmode);
+                }
+
+                if (InfernalConfig.Instance.CalamityRecipeTweaks)
+                {
+                    if (recipe.HasResult<VampiricTalisman>() & !recipe.HasIngredient(ItemID.AvengerEmblem) & !InfernalConfig.Instance.MergeCraftingTrees)
+                    {
+                        recipe.RemoveIngredient(ModContent.ItemType<RogueEmblem>());
+                        recipe.AddIngredient(ItemID.AvengerEmblem);
+                    }
+
+                    if (recipe.HasResult<TheAmalgam>() && thorium != null)
+                    {
+                        recipe.AddIngredient(thorium.Find<ModItem>("SoulofPlight"), 5);
+                    }
                 }
 
                 #region Calamity Ranger Expansion
@@ -415,42 +440,6 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                 }
                 #endregion
 
-                if (InfernalConfig.Instance.CalamityRecipeTweaks)
-                {
-                    //Cosmilite post-DoG - Maybe add its own config?
-                    if (recipe.HasResult<Cosmolight>())
-                    {
-                        recipe.AddIngredient<CosmiliteBar>(1);
-                        recipe.RemoveTile(16);
-                        recipe.AddTile(ModContent.TileType<CosmicAnvil>());
-                    }
-
-                    if (recipe.HasResult(ModContent.ItemType<OnyxExcavatorKey>()))
-                        recipe.DisableRecipe();
-
-                    if (recipe.HasResult<VampiricTalisman>() & !recipe.HasIngredient(ItemID.AvengerEmblem) & !InfernalConfig.Instance.MergeCraftingTrees)
-                    {
-                        recipe.RemoveIngredient(ModContent.ItemType<RogueEmblem>());
-                        recipe.AddIngredient(ItemID.AvengerEmblem);
-                    }
-
-                    if (recipe.HasResult<TheAmalgam>() && thorium != null)
-                    {
-                        recipe.AddIngredient(thorium.Find<ModItem>("SoulofPlight"), 5);
-                    }
-
-                    if (!ModLoader.TryGetMod("WHummusMultiModBalancing", out _))
-                    {
-                        if (recipe.HasResult(ModContent.ItemType<EmpyreanKnives>()))
-                        {
-                            recipe.RemoveIngredient(ModContent.ItemType<CosmiliteBar>());
-                            recipe.RemoveIngredient(ModContent.ItemType<DarksunFragment>());
-                            recipe.AddIngredient<EffulgentFeather>(8);
-                            recipe.RemoveTile(ModContent.TileType<CosmicAnvil>());
-                            recipe.AddTile(TileID.LunarCraftingStation);
-                        }
-                    }
-                }
                 #endregion
 
                 #region Thorium
@@ -1081,6 +1070,11 @@ namespace InfernalEclipseAPI.Common.Balance.Recipes
                             {
                                 recipe.RemoveIngredient(ItemID.DemonScythe);
                                 recipe.AddIngredient(sots.Find<ModItem>("DanceOfDeath"));
+                            }
+
+                            if (recipe.HasResult<Cosmolight>() && !recipe.HasIngredient(sots.Find<ModItem>("LunarClock")))
+                            {
+                                recipe.DisableRecipe();
                             }
                         }
 

@@ -1,4 +1,5 @@
-﻿using InfernalEclipseAPI.Content.Buffs;
+﻿using CalamityMod.Projectiles.Melee.MaceFlails;
+using InfernalEclipseAPI.Content.Buffs;
 using ThoriumMod;
 
 namespace InfernalEclipseAPI.Common.GlobalProjectiles
@@ -104,7 +105,7 @@ namespace InfernalEclipseAPI.Common.GlobalProjectiles
                         target.AddBuff(calamity1.Find<ModBuff>("RiptideDebuff")?.Type ?? -1, 120);
                     }
 
-                    if (projectile.type == (calamity1.Find<ModProjectile>("RedtideWhirlpool")?.Type ?? -1))
+                    if (projectile.type == ModContent.ProjectileType<UrchinMaceProj>() || projectile.type == (calamity1.Find<ModProjectile>("RedtideWhirlpool")?.Type ?? -1))
                     {
                         target.AddBuff(BuffID.Poisoned, 120);
                     }

@@ -33,21 +33,23 @@
             {
                 int[] ragnarokArmor =
                 {
-                   GetItemID("AerospecBard", ragnarok),
-                   GetItemID("AerospecHealer", ragnarok),
-                   GetItemID("AuricTeslaFrilledHelmet", ragnarok),
-                   GetItemID("AuricTeslaHealerHead", ragnarok),
-                   GetItemID("BloodflareHeadBard", ragnarok),
-                   GetItemID("BloodflareHeadHealer", ragnarok),
-                   GetItemID("DaedalusHeadBard", ragnarok),
-                   GetItemID("DaedalusHeadHealer", ragnarok),
-                   GetItemID("GodSlayerHeadBard", ragnarok),
-                   GetItemID("SilvaHeadHealer", ragnarok),
-                   GetItemID("StatigelHeadBard", ragnarok),
-                   GetItemID("StatigelHeadHealer", ragnarok),
-                   GetItemID("TarragonCowl", ragnarok),
-                   GetItemID("TarragonShroud", ragnarok),
-                   GetItemID("VictideHeadBard",ragnarok)
+                    GetItemID("AerospecBard", ragnarok),
+                    GetItemID("AerospecHealer", ragnarok),
+                    GetItemID("AuricTeslaFrilledHelmet", ragnarok),
+                    GetItemID("AuricTeslaHealerHead", ragnarok),
+                    GetItemID("BloodflareHeadBard", ragnarok),
+                    GetItemID("BloodflareHeadHealer", ragnarok),
+                    GetItemID("DaedalusHeadBard", ragnarok),
+                    GetItemID("DaedalusHeadHealer", ragnarok),
+                    GetItemID("GodSlayerHeadBard", ragnarok),
+                    GetItemID("SilvaHeadHealer", ragnarok),
+                    GetItemID("StatigelHeadBard", ragnarok),
+                    GetItemID("StatigelHeadHealer", ragnarok),
+                    GetItemID("TarragonCowl", ragnarok),
+                    GetItemID("TarragonShroud", ragnarok),
+                    GetItemID("VictideHeadBard", ragnarok),
+                    GetItemID("IntergelacticRamhelm", ragnarok),
+                    GetItemID("IntergelacticRobohelm", ragnarok)
                 };
 
                 int[] calBardHealerArmor =
@@ -66,7 +68,9 @@
                     GetItemID("StatigelFoxMask", calBardHealer),
                     GetItemID("TarragonParagonCrown", calBardHealer),
                     GetItemID("TarragonChapeau", calBardHealer),
-                    GetItemID("VictideAmmoniteHat", calBardHealer)
+                    GetItemID("VictideAmmoniteHat", calBardHealer),
+                    GetItemID("IntergelacticProtectorHelm", calBardHealer),
+                    GetItemID("IntergelacticCloche", calBardHealer)
                 };
 
                 for (int i = 0; i < ragnarokArmor.Length; i++)

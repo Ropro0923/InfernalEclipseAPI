@@ -15,6 +15,7 @@ using InfernumMode.Core.GlobalInstances.Systems;
 using CalamityMod.Projectiles.Summon;
 using CalamityMod.Projectiles.Melee;
 using Terraria.DataStructures;
+using Terraria;
 
 namespace InfernalEclipseAPI.Common.GlobalItems.Tooltips
 {
@@ -36,6 +37,9 @@ namespace InfernalEclipseAPI.Common.GlobalItems.Tooltips
             {
                 entity.DamageType = ModContent.GetInstance<MythicMagic>();
             }
+
+            if (entity.type == ProjectileID.EmpressBlade)
+                entity.DamageType = ModContent.GetInstance<MythicSummon>();
 
             if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
             {
@@ -142,6 +146,9 @@ namespace InfernalEclipseAPI.Common.GlobalItems.Tooltips
                 item.DamageType = ModContent.GetInstance<MythicMagic>();
             }
 
+            if (item.type == ItemID.EmpressBlade)
+                item.DamageType = ModContent.GetInstance<MythicSummon>();
+
             if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
             {
                 if (item.type == thorium.Find<ModItem>("AncientLight").Type)
@@ -194,6 +201,12 @@ namespace InfernalEclipseAPI.Common.GlobalItems.Tooltips
                 {
                     canAddTooltip = true;
                     importantName = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MythicTooltips.Anahita");
+                }
+
+                if (item.type == ItemID.EmpressBlade)
+                {
+                    canAddTooltip = true;
+                    importantName = Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.MythicTooltips.EoL");
                 }
 
                 if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
