@@ -13,9 +13,6 @@ using Terraria.Localization;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using InfernalEclipseAPI.Core.Systems;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Weapons.Typeless;
-using System.Linq;
 using InfernumMode.Content.Items.Weapons.Magic;
 using InfernumMode.Content.Items.Weapons.Rogue;
 
