@@ -14,15 +14,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.QuiverCraftingTree
             }
         }
 
-        private Mod clamity
-        {
-            get
-            {
-                ModLoader.TryGetMod("Clamity", out Mod clam);
-                return clam;
-            }
-        }
-
         private Mod sots
         {
             get
@@ -47,9 +38,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.QuiverCraftingTree
                     {
                         if (!recipe.HasIngredient(sots.Find<ModItem>("BlazingQuiver")))
                         {
-                            recipe.RemoveIngredient(ItemID.LunarBar);
-                            recipe.AddIngredient<CosmiliteBar>(8);
-
                             if (thorium != null)
                             {
                                 recipe.AddIngredient(thorium.Find<ModItem>("TerrariumCore"), 2);
@@ -61,9 +49,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.QuiverCraftingTree
                     }
                     else
                     {
-                        recipe.RemoveIngredient(ItemID.LunarBar);
-                        recipe.AddIngredient<CosmiliteBar>(8);
-
                         if (thorium != null)
                         {
                             if (!recipe.HasIngredient(thorium.Find<ModItem>("TerrariumCore"))) recipe.AddIngredient(thorium.Find<ModItem>("TerrariumCore"), 3);

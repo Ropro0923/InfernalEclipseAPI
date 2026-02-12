@@ -99,6 +99,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.Tooltips
                 }
             }
 
+            /*
             if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod) && InfernalConfig.Instance.ThoriumBalanceChangess && !ModLoader.TryGetMod("WHummusMultiModBalancing", out Mod WHBalance))
             {
                 if (!thoriumMod.TryFind("SubspaceWings", out ModItem subspaceWings) ||
@@ -125,6 +126,7 @@ namespace InfernalEclipseAPI.Common.GlobalItems.Tooltips
                     FullTooltipOveride(tooltips, Language.GetTextValue("Mods.ThoriumMod.Items.ChampionWing.Tooltip"));
                 }
             }
+            */
         }
     }
 }

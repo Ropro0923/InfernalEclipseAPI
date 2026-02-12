@@ -133,12 +133,6 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.NucleogenesisTree
                         }
                     }
                 }
-
-                if (recipe.HasResult(ModContent.ItemType<Nucleogenesis>()))
-                {
-                    recipe.RemoveIngredient(ItemID.LunarBar);
-                    recipe.AddIngredient(ModContent.ItemType<CosmiliteBar>(), 8);
-                }
             }
         }
     }

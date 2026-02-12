@@ -11,7 +11,6 @@ namespace InfernalEclipseAPI.Content.RogueThrower
         private int soul1Type = -1;
         private int soul2Type = -1;
         private int soul3Type = -1;
-        private int wing1Type = -1;
         private bool initialized = false;
 
         private int? previousHeldItemType;
@@ -47,9 +46,6 @@ namespace InfernalEclipseAPI.Content.RogueThrower
 
             if (ModContent.TryFind("FargowiltasSouls/EternitySoul", out ModItem modItem6))
                 soul3Type = modItem6.Type;
-
-            if (ModContent.TryFind("ThoriumMod/WhiteDwarfThrusters", out ModItem modItem7))
-                wing1Type = modItem7.Type;
 
             initialized = true;
         }
@@ -184,8 +180,7 @@ namespace InfernalEclipseAPI.Content.RogueThrower
 
                     accessory.type == soul1Type ||
                     accessory.type == soul2Type ||
-                    accessory.type == soul3Type ||
-                    accessory.type == wing1Type)
+                    accessory.type == soul3Type)
                 {
                     return true;
                 }
@@ -205,8 +200,7 @@ namespace InfernalEclipseAPI.Content.RogueThrower
                     accessory.type == volume3Type ||
                     accessory.type == soul1Type ||
                     accessory.type == soul2Type ||
-                    accessory.type == soul3Type ||
-                    accessory.type == wing1Type)
+                    accessory.type == soul3Type)
                 {
                     return true;
                 }

@@ -221,7 +221,7 @@ namespace InfernalEclipseAPI.Common.ProgressionRework
                             recipe.AddIngredient(inferno.Type);
                         }
                     }
-                    recipe.RemoveTile(ItemID.LunarCraftingStation);
+                    recipe.RemoveTile(ItemID.MythrilAnvil);
                     recipe.AddTile(ModContent.TileType<CosmicAnvil>());
                 }
 

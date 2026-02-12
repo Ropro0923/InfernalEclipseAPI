@@ -41,14 +41,14 @@ namespace InfernalEclipseAPI.Common.GlobalItems.CraftingTrees.OmniSpeakerCraftin
                     if (recipe.HasResult(Ragnarok.Find<ModItem>("UniversalHeadset")))
                     {
                         recipe.RemoveIngredient(ModContent.ItemType<AscendantSpiritEssence>());
+                        recipe.AddIngredient(ItemID.LunarBar, 8);
+                        recipe.AddIngredient<GalacticaSingularity>(4);
                         recipe.RemoveTile(ModContent.TileType<CosmicAnvil>());
                         recipe.AddTile(TileID.LunarCraftingStation);
                     }
 
                     if (recipe.HasResult(CalBardHealer.Find<ModItem>("OmniSpeaker")))
                     {
-                        recipe.RemoveIngredient(ItemID.LunarBar);
-                        recipe.AddIngredient<CosmiliteBar>(8);
                         recipe.AddIngredient(Ragnarok.Find<ModItem>("UniversalHeadset"));
                         if (!recipe.HasIngredient(thorium.Find<ModItem>("TerrariumCore"))) recipe.AddIngredient(thorium.Find<ModItem>("TerrariumCore"), 3);
                     }
